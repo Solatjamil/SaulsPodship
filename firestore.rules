@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /volumes/{volumeId} {
+      allow get, list: if true;
+      allow write: if true;
+    }
+    match /musicArchive/{artistId} {
+      allow get, list: if true;
+      allow write: if false;
+    }
+  }
+}

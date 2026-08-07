@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saul's Podship | Interactive Theological Encyclopedia</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/logo.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Saul's Podship | Interactive Theological Encyclopedia & Digital Ministry" />
+    <meta name="description" content="Saul's Podship is an interactive theological encyclopedia and digital ministry. Explore 46 volumes of visual Bible study, Christian history, gospel music archives, and deep biblical narratives to worship in Spirit and Truth." />
+    <meta name="keywords" content="Christian encyclopedia, interactive theological encyclopedia, visual Bible study, biblical history and timelines, Christian podcasts, Pakistani gospel music archive, Saul's Podship, Bible study resources online, historical context of the Bible, online theology study, Christian ministry, Masihi Geet archive, gospel music, study the bible in spirit and truth, global Christian community" />
+    <meta name="author" content="Solat Nadeem / Saul's Podship" />
+    <link rel="canonical" href="https://www.saulspodship.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.saulspodship.com/" />
+    <meta property="og:title" content="Saul's Podship | Interactive Theological Encyclopedia" />
+    <meta property="og:description" content="Explore 46 volumes of visual Bible study, Christian history, gospel music archives, and deep biblical narratives to worship in Spirit and Truth." />
+    <meta property="og:image" content="/logo.svg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.saulspodship.com/" />
+    <meta property="twitter:title" content="Saul's Podship | Interactive Theological Encyclopedia" />
+    <meta property="twitter:description" content="Explore 46 volumes of visual Bible study, Christian history, gospel music archives, and deep biblical narratives to worship in Spirit and Truth." />
+    <meta property="twitter:image" content="/logo.svg" />
+
+    <!-- GEO / Global Optimization -->
+    <meta name="geo.region" content="Global" />
+    <meta name="geo.placename" content="Worldwide" />
+
+    <!-- AEO / Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Saul's Podship",
+      "alternateName": "Saul's Podship Theological Encyclopedia",
+      "url": "https://www.saulspodship.com/",
+      "description": "An immersive, scholarly, and visual exploration of Christian theology, biblical history, and narrative podcasts. Discover the depths of Scripture through story and sound.",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Christian Theology"
+        },
+        {
+          "@type": "Thing",
+          "name": "Biblical History"
+        },
+        {
+          "@type": "Thing",
+          "name": "Gospel Music"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Saul's Podship",
+      "url": "https://www.saulspodship.com/",
+      "logo": "https://www.saulspodship.com/logo.svg",
+      "description": "A digital ministry dedicated to deep biblical study, narrative storytelling, and spiritual growth."
+    }
+    </script>
+
+    <!-- Google AdSense Account Verification -->
+    <meta name="google-adsense-account" content="ca-pub-4067724379997931">
+
+    <!-- Google AdSense Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067724379997931"
+     crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F8F4E3; /* Ivory */
+        color: #1D2D50; /* Deep Royal Blue */
+        overflow-x: hidden;
+      }
+
+      .font-serif-heading {
+        font-family: 'Merriweather', serif;
+      }
+
+      .font-scripture {
+        font-family: 'EB Garamond', serif;
+      }
+
+      /* Custom Scrollbar for the encyclopedia feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F8F4E3; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D4AF37; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b5952f; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "three/": "https://esm.sh/three@^0.182.0/",
+    "three": "https://esm.sh/three@^0.182.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root">
+      <!-- SKELETON PRE-RENDERED DOCUMENT (Ivory Parchment Theme for Google SEO & AdSense Optimization) -->
+      <div style="background-color: #F8F4E3; color: #1D2D50; font-family: 'Inter', sans-serif; min-height: 100vh; padding: 3rem 2rem; max-width: 900px; margin: 0 auto; line-height: 1.8; box-sizing: border-box;">
+        
+        <!-- HEADER -->
+        <header style="border-bottom: 2px solid #D4AF37; padding-bottom: 1.5rem; margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <h1 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 2rem; margin: 0; font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase;">Saul's Podship</h1>
+          <nav style="display: flex; gap: 1.5rem; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; flex-wrap: wrap;">
+            <a href="#about" style="color: #4A152C; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">About</a>
+            <a href="#encyclopedia" style="color: #4A152C; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">Encyclopedia</a>
+            <a href="#faq" style="color: #4A152C; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">FAQ</a>
+            <a href="/Pakistanisingersarchive" style="color: #4A152C; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s;">Music Archive</a>
+          </nav>
+        </header>
+
+        <!-- HERO / TITLE -->
+        <section style="text-align: center; margin-bottom: 5rem; padding: 3rem 0; border-bottom: 1px dashed #D4AF37;">
+          <div style="display: inline-block; border: 1px solid #D4AF37; padding: 0.3rem 1.2rem; font-size: 0.75rem; font-weight: 900; letter-spacing: 0.3em; text-transform: uppercase; color: #D4AF37; margin-bottom: 2rem; border-radius: 9999px;">
+            A Dedicated Biblical Ministry Project
+          </div>
+          <h2 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 3rem; font-weight: 900; margin: 0 0 1.5rem 0; line-height: 1.2; letter-spacing: -0.02em;">
+            Interactive Theological Encyclopedia <br> & Digital Ministry
+          </h2>
+          <p style="font-family: 'EB Garamond', serif; font-size: 1.4rem; font-style: italic; color: #4A152C; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+            "Exploring biblical history, visual Bible study, Christian podcasts, and historical gospel music to worship in Spirit and in Truth."
+          </p>
+        </section>
+
+        <!-- SCRIPTORIUM MISSION STATEMENT -->
+        <section id="about" style="margin-bottom: 5rem;">
+          <h3 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.8rem; border-bottom: 1px solid #D4AF37; padding-bottom: 0.5rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -0.02em; font-weight: 900;">
+            I. Scriptorium Dedication & Digital Ministry Mission
+          </h3>
+          <p style="margin-bottom: 1.5rem;">
+            Welcome to <strong>Saul's Podship</strong>, a premier digital sanctuary and interactive theological encyclopedia designed for scholars, pastors, students, and seekers of absolute biblical truth. Our mission is anchored in the words of Christ in John 4:24—to worship the Father in Spirit and in Truth. Through rigorous research, visual media integration, and comprehensive historical indexing, we bridge the gap between ancient manuscript study and modern digital interaction.
+          </p>
+          <p style="margin-bottom: 1.5rem;">
+            Theological literacy is a critical cornerstone of spiritual growth. Yet, in our fast-paced modern world, the massive depth of historical Christian theology can sometimes feel inaccessible. Saul's Podship addresses this challenge by providing an expansive, open-access repository of biblical knowledge. We specialize in mapping out complex scriptural themes, tracing timelines of old and new covenants, exploring the historical development of Christian denominations, and archiving rare sacred elements that tell the story of God's redemptive work across human history.
+          </p>
+          <p style="margin-bottom: 1.5rem;">
+            By integrating advanced digital visualizations with historical-critical theology, we bring ancient biblical contexts alive. Our work is structured into three primary divisions of Christian ministry:
+          </p>
+          <ul style="padding-left: 1.5rem; margin-bottom: 2rem;">
+            <li style="margin-bottom: 1rem;">
+              <strong>Interactive Visual Theology:</strong> The Saul's Podship Encyclopedia provides 46 meticulously curated volumes covering topics from Biblical Numerology, the Apostle's Creed, and Messianic Prophecies, to comprehensive historical-critical analyses of the Crusades, the Vatican, and early Church Councils.
+            </li>
+            <li style="margin-bottom: 1rem;">
+              <strong>Acoustic & Narrative Scriptorium:</strong> We produce high-fidelity narrative podcasts and scholarly commentaries that unpack the historical context of scripture, inviting listeners to hear the texts as they were understood by their original ancient audiences.
+            </li>
+            <li style="margin-bottom: 1rem;">
+              <strong>Sacred Music Preservation:</strong> As part of our commitment to global worship, we maintain a rare and unique cultural archive of South Asian Christianity, featuring the history, biographies, and recordings of Pakistani Gospel singers and classic Masihi Geet—preserving the rich devotional heritage of the Church in India and Pakistan.
+            </li>
+          </ul>
+          <p style="margin-bottom: 1.5rem;">
+            Our founder, <strong>Solat Nadeem</strong>, envisions Saul's Podship as a living archive where the beauty of Christian theology is explored with deep intellectual honesty, academic rigor, and profound spiritual devotion. We draw upon primary source texts of the early Church Fathers, rigorous archeological findings, and linguistic studies in Hebrew, Aramaic, and Greek to present a platform that honors the eternal, life-transforming Word of God.
+          </p>
+        </section>
+
+        <!-- ENCYCLOPEDIA VOLUME DIRECTORY -->
+        <section id="encyclopedia" style="margin-bottom: 5rem;">
+          <h3 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.8rem; border-bottom: 1px solid #D4AF37; padding-bottom: 0.5rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -0.02em; font-weight: 900;">
+            II. Theological Encyclopedia Directory (46 Comprehensive Volumes)
+          </h3>
+          <p style="margin-bottom: 2rem;">
+            Our research library covers 46 distinct scholarly fields. Each volume features full scripture references, theological outlines, historic connections, and beautiful illustrative works of art:
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; border-left: 2px solid #D4AF37; padding-left: 1.5rem; margin-bottom: 3rem;">
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 1: All Bible Stories</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An exploration of the unified metanarrative of Holy Scripture, tracing God's plan of redemption from Eden to the New Jerusalem.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 2: All Biblical Numerology</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A data-first visual library mapping the patterns, structural counts, and theological significance of Bible numbers.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 3: All Big Denominations & Their Differences</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A side-by-side analysis of Catholic, Orthodox, Protestant, and Evangelical theology and practice.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 4: Angels, Demons, Beasts & Monsters in the Bible</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Analyzing the biblical record of the supernatural council, angelology, and apocalyptic figures.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 5: Apologetics: 40 Critical Questions</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A reasoned and historically grounded defense of the Christian worldview against modern scientific and philosophical objections.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 6: Apostle's Creed</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">The historical pattern of sound doctrine, detailing the orthodox confession of the global Church.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 7: Ark of Covenant and other Biblical Relics</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Tracing the history, purpose, theological symbolisms, and archaeological claims of historical relics.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 8: Baptism, Sacraments & Circumcision</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">The biblical signposts of the covenants, examining baptismal regeneration, faith confession, and historical rituals.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 9: Bible Book Writers</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Scholarly and traditional authorship of the 66 canonical books of the Old and New Testaments.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 10: Biblical Creation vs Scientific Creation</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A thorough comparison of the Genesis record with modern cosmological, geological, and biological origins models.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 11: Biblical Maps & Sacred Topography</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Mapping the locations, borders, migrations, and topographical layouts of key redemptive events.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 12: Book of Revelation</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A deep, structural, and symbolic exploration of the last book of the biblical canon.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 13: Christianity in South Asia (India & Pakistan)</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">From the arrival of St. Thomas the Apostle in 52 AD to the history of the modern Church in India and Pakistan.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 14: Christmas History</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">The theological significance of the Incarnation alongside the cultural development of the Nativity.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 15: Comparative Religion</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Contrasting Christian theological claims with Judaism, Islam, Hinduism, and Buddhism.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 16: Complete Christian Theology Map</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A visual schema linking theology proper, Christology, pneumatology, soteriology, and eschatology.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 17: Crusades — Historical + Theological Analysis</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An objective, scholarly review of the crusading campaigns, examining political motives and theological justifications.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 18: Early Church Fathers & Councils</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Understanding how the early apologists, theologians, and ecumenical councils defended orthopraxy.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 19: Easter & Resurrection</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">The historical evidence and foundational theological implications of the bodily resurrection of Jesus Christ.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 20: Family Tree: Adam → Jesus</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Tracing the physical and royal lineage of Jesus across the Old Testament historical books.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 21: Forbidden Knowledge & the Watchers</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A detailed study of Gen 6, the Book of Enoch, and how ancient literature interpreted the angelic fall.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 22: Guide to Christian Living</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Developing a scripture-centered lifestyle, covering spiritual disciplines, ethics, and modern discipleship.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 23: Heaven & Hell</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Biblical terminology (Sheol, Hades, Gehenna, Tartarus, Heaven) and their theological realities.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 24: History of All 12 Disciples</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">The post-Resurrection apostolic travels, fields of mission work, and historical martyrdoms of the Twelve.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 25: Holy Communion</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">The Passover connection, scriptural establishment, and historical debate over the Eucharist.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 26: How The World Populated After Abel's Death</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An objective, textual and chronological explanation of early Genesis genealogies and city-building.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 27: Jesus Is God (Full References OT + NT)</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A comprehensive exegetical compilation of scriptural proofs for the divine nature of the Lord Jesus.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 28: Lord's Prayer</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An academic and theological dissection of the prayer template given by Jesus in Matthew 6.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 29: Messianic Prophecies</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Compiling key passages in the Law, Prophets, and Psalms fulfilled by the life, death, and resurrection of Christ.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 30: Names of God</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Studying Hebrew covenant names (Yahweh, El Shaddai, El Elyon, Adonai) and their theological context.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 31: Names of Jesus</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A thorough study of Christ's names (Emmanuel, Logos, Son of Man, Lamb of God) and roles.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 32: Non-Canonical Books & Canon Differences</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Tracing how the biblical canon was closed, highlighting the Apocrypha, Pseudepigrapha, and canon councils.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 33: Not Biblical Quotes or Sayings</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Analyzing popular idioms mistakenly believed to be biblical, contrasting them with authentic scripture.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 34: Original Scripture Languages</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An introductory manual to biblical Hebrew, covenant Aramaic, and Koine Greek grammatical structures.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 35: Primeval World Timeline & Ancient Civilizations</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Reconciling Genesis genealogies with ancient Mesopotamian and Egyptian archaeological histories.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 36: Psalm Authors</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Tracing Davidic, Asaphite, and Levitical authorship behind the Hebrew book of Tehillim (Psalms).</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 37: Revelation Judgments Timeline</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A structural layout mapping the Seven Seals, Seven Trumpets, and Seven Bowls of God's wrath.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 38: Sermon on the Mount</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A comprehensive look at the ethical manifest of God's Kingdom detailed in Matthew 5-7.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 39: Seven Last Words of Jesus</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A theological and devotional analysis of the final redemptive statements spoken from Calvary.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 40: Systematic Theology Subjects</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An introductory map to Bibliology, Theology Proper, Soteriology, Ecclesiology, and Eschatology.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 41: Ten Commandments & OT Laws</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Distinguishing the Moral, Civil, and Ceremonial laws given at Mount Sinai under the Old Covenant.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 42: The Magi</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Investigating the historical, astronomical, and theological context of the wise men from the East.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 43: True Worship vs False Worship</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Comparing biblical worship pleasing to God against dynamic empty rituals and historical warnings.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 44: Vatican and its History</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">An objective historical progression of the Bishopric of Rome to the modern Sovereign City-State.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 45: World's All Big Churches</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">Chronologically mapping major architectural landmarks in Christian history, from the Hagia Sophia to modern cathedrals.</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #4A152C; font-family: 'Merriweather', serif; font-size: 1.1rem; display: block;">Volume 46: 1-Year Sermon Guide (52 Gen-Z Topics)</strong>
+              <span style="font-size: 0.95rem; color: #2a231d;">A comprehensive yearly guide of biblically grounded sermon outlines tackling modern cultural challenges.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAKISTANI GOSPEL ARCHIVE -->
+        <section id="singers" style="margin-bottom: 5rem; padding: 2rem; border: 1.5px solid #D4AF37; border-radius: 1.5rem; background-color: rgba(74, 21, 44, 0.03);">
+          <h3 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.6rem; margin-top: 0; margin-bottom: 1rem; text-transform: uppercase;">
+            III. Special Focus: Pakistani Gospel Music Archive (Masihi Geet)
+          </h3>
+          <p style="margin-bottom: 1rem;">
+            A key element of Saul's Podship digital ministry is the preservation of historic Christian worship songs (Masihi Geet) from South Asia. We document and archive the biographies, songs, and historical contributions of pioneering Christian artists in Pakistan and India.
+          </p>
+          <p style="margin-bottom: 1.5rem;">
+            This archive serves as a crucial theological and cultural resource, highlighting how Christian worship is expressed dynamically across languages, ragas, and traditional musical forms of the subcontinent. Featured artists include:
+          </p>
+          <ul style="padding-left: 1.2rem; margin-bottom: 1rem; list-style-type: square;">
+            <li><strong>Ernest Mall:</strong> Known globally for his deep devotional poetry and classical vocal stylings.</li>
+            <li><strong>Anil Kant:</strong> Pioneering modern Indian and Pakistani gospel tunes with an elegant ghazal-style blend.</li>
+            <li><strong>Subhash Gill:</strong> Inspiring millions with energetic and scripturally saturated Masihi Geet.</li>
+            <li><strong>Tehmina Tariq:</strong> Preserving traditional classical ragas within modern church congregations.</li>
+          </ul>
+          <p style="font-size: 0.9rem; font-style: italic; color: #4A152C; margin-top: 1.5rem; border-top: 1px dashed #D4AF37; padding-top: 1rem;">
+            Access our complete digital database on the <a href="/Pakistanisingersarchive" style="color: #4A152C; font-weight: bold; text-decoration: underline;">Pakistani Singers Archive Dedicated Page</a>.
+          </p>
+        </section>
+
+        <!-- DETAILED SCHOLARLY FAQ -->
+        <section id="faq" style="margin-bottom: 5rem;">
+          <h3 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.8rem; border-bottom: 1px solid #D4AF37; padding-bottom: 0.5rem; margin-bottom: 1.5rem; text-transform: uppercase; font-weight: 900;">
+            IV. Scholarly & Ministry FAQ
+          </h3>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.15rem; margin-bottom: 0.5rem;">What makes Saul's Podship different from other online Bible studies?</h4>
+            <p>Our approach integrates rigorous, objective, academic theology with state-of-the-art interactive visual technology. We utilize standard, historical, and peer-reviewed theological schemas and ancient manuscript research while presenting the data in clean, digestible visual layouts. This allows students to grasp high-level systematic theology without losing scriptural details.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.15rem; margin-bottom: 0.5rem;">How is the content sourced for the 46 volumes?</h4>
+            <p>The encyclopedia is curated by senior theological consultants and educators, drawing directly from standard primary sources, early Ecumenical Council manuscripts, historical creeds, archaeological journals, and standard academic textbooks of systematic theology.</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.15rem; margin-bottom: 0.5rem;">Is the Pakistani Gospel archive free to access?</h4>
+            <p>Yes, all resources in Saul's Podship, including our complete educational encyclopedia, the historical media archives, and our interactive digital tools, are 100% free, public, and open-access to serve the global body of Christ.</p>
+          </div>
+        </section>
+
+        <!-- CONTACT FORM -->
+        <section id="contact" style="margin-bottom: 5rem; border-top: 1px dashed #D4AF37; padding-top: 3rem;">
+          <h3 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 1.8rem; margin-bottom: 1rem; text-transform: uppercase; text-align: center;">V. Scriptorium Inquiry Desk</h3>
+          <p style="text-align: center; max-width: 600px; margin: 0 auto 2.5rem auto; font-style: italic; font-family: 'EB Garamond', serif; font-size: 1.2rem;">
+            "Have academic inquiries, prayer requests, or editorial commentaries? Send us a scriptorium letter."
+          </p>
+          
+          <div style="max-width: 600px; margin: 0 auto; background-color: #FAF7EC; border: 1px solid rgba(212,175,55,0.25); border-radius: 1.5rem; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+            <div style="margin-bottom: 1.2rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(29,45,80,0.6); margin-bottom: 0.5rem;">Full Name</label>
+              <div style="background-color: #fff; border: 1px solid rgba(212,175,55,0.15); border-radius: 0.5rem; height: 2.8rem;"></div>
+            </div>
+            <div style="margin-bottom: 1.2rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(29,45,80,0.6); margin-bottom: 0.5rem;">Email Address</label>
+              <div style="background-color: #fff; border: 1px solid rgba(212,175,55,0.15); border-radius: 0.5rem; height: 2.8rem;"></div>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(29,45,80,0.6); margin-bottom: 0.5rem;">Detailed Inquiry</label>
+              <div style="background-color: #fff; border: 1px solid rgba(212,175,55,0.15); border-radius: 0.5rem; height: 7rem;"></div>
+            </div>
+            <div style="background-color: #4A152C; color: #D4AF37; text-align: center; padding: 1rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer;">
+              Send Inquiry Letter
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER & LEGAL -->
+        <footer style="border-top: 2px solid #D4AF37; padding-top: 2rem; text-align: center; font-size: 0.85rem; color: rgba(29,45,80,0.7); display: flex; flex-direction: column; gap: 1rem;">
+          <p style="margin: 0; font-weight: bold; color: #4A152C;">© 2026 Saul's Podship Digital Ministry. All rights reserved.</p>
+          <p style="margin: 0; font-size: 0.8rem; line-height: 1.6;">Dedicated to propagating visual theological literacy and sacred musical preservation in absolute Spirit and Truth.</p>
+          <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.8rem; font-weight: bold; margin-top: 1rem;">
+            <a href="/privacy" style="color: #4A152C; text-decoration: underline;">Privacy Policy</a>
+            <a href="/terms" style="color: #4A152C; text-decoration: underline;">Terms of Service</a>
+            <a href="/disclaimer" style="color: #4A152C; text-decoration: underline;">Legal Disclaimer</a>
+            <a href="/sitemap.xml" style="color: #4A152C; text-decoration: underline;">Sitemap</a>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

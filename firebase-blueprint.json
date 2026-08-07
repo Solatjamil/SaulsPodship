@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "Volume": {
+      "title": "Volume",
+      "description": "An individual volume of Saul's Podship Theological Encyclopedia",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The URL slug" },
+        "volumeNumber": { "type": "integer", "description": "The sequence number (1-46)" },
+        "title": { "type": "string", "description": "Title of the volume" },
+        "subtitle": { "type": "string", "description": "Subtitle of the volume" },
+        "teaser": { "type": "string", "description": "Teaser/preview text" },
+        "overview": { "type": "string", "description": "Overview of the volume" },
+        "content": {
+          "type": "object",
+          "properties": {
+            "analysis": { "type": "string" },
+            "tables": { "type": "array" },
+            "storyPanels": { "type": "array" },
+            "maps": { "type": "array" }
+          }
+        },
+        "articleLink": { "type": "string" },
+        "youtubeLink": { "type": "string" },
+        "metaTitle": { "type": "string" },
+        "metaDescription": { "type": "string" },
+        "relatedVolumeIds": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "volumeNumber", "title", "teaser", "content"]
+    },
+    "Artist": {
+      "title": "Artist",
+      "description": "An artist profile in the Pakistani Gospel Music Archive",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The URL slug" },
+        "name": { "type": "string" },
+        "also": { "type": "string" },
+        "role": { "type": "string" },
+        "dates": { "type": "string" },
+        "bio": { "type": "string" },
+        "badge": { "type": "string" },
+        "links": { "type": "object" },
+        "classes": { "type": "string" },
+        "teaser": { "type": "string" },
+        "metaTitle": { "type": "string" },
+        "metaDescription": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "bio"]
+    }
+  },
+  "firestore": {
+    "/volumes/{volumeId}": {
+      "schema": "Volume",
+      "description": "Collection of all theological encyclopedia volumes"
+    },
+    "/musicArchive/{artistId}": {
+      "schema": "Artist",
+      "description": "Collection of all Pakistani gospel artist profiles"
+    }
+  }
+}
