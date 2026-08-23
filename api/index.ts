@@ -127,6 +127,22 @@ async function queryFirestoreCollection(collectionName: string): Promise<any[]> 
   return docs;
 }
 
+// Canonical Host & Protocol Normalizer (Redirect non-www to www, http to https)
+app.use((req, res, next) => {
+  const host = (req.headers.host || "").toLowerCase();
+  const forwardedProto = req.headers["x-forwarded-proto"] as string;
+
+  if (host === "saulspodship.com") {
+    return res.redirect(301, `https://www.saulspodship.com${req.originalUrl || req.url}`);
+  }
+
+  if (forwardedProto === "http" && host.includes("saulspodship.com")) {
+    return res.redirect(301, `https://${host}${req.originalUrl || req.url}`);
+  }
+
+  next();
+});
+
 // Vercel Serverless Routing Normalizer and Logging Middleware
 app.use((req, res, next) => {
   console.log(`[EXPRESS REQUEST LOG] METHOD: ${req.method} | PATH: ${req.path} | FULL URL: ${req.url}`);
@@ -749,6 +765,159 @@ function markdownToHtml(md: string): string {
   return `<p style="margin-bottom:1.5rem; text-align:justify;">${html}</p>`;
 }
 
+// Structured Artist Record interface
+interface ArtistRecord {
+  id: string;
+  name: string;
+  badge?: string;
+  also?: string;
+  role: string;
+  dates?: string;
+  bio: string;
+  links?: Record<string, string>;
+}
+
+let cachedArtists: ArtistRecord[] | null = null;
+
+function getSingersList(): ArtistRecord[] {
+  if (cachedArtists && cachedArtists.length > 0) return cachedArtists;
+
+  const possiblePaths = [
+    path.join(process.cwd(), "public/singers.html"),
+    path.join(process.cwd(), "dist/singers.html"),
+    path.join(__dirname, "../public/singers.html"),
+    path.join(__dirname, "../dist/singers.html"),
+  ];
+
+  let content = "";
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      try {
+        content = fs.readFileSync(p, "utf8");
+        break;
+      } catch (_) {}
+    }
+  }
+
+  if (!content) return [];
+
+  const artists: ArtistRecord[] = [];
+  const seenSlugs = new Set<string>();
+
+  // 1. Historic Pioneer rows
+  const pioneerRegex = /<div class="pioneer-row">[\s\S]*?<div class="pioneer-name">([\s\S]*?)<\/div>[\s\S]*?<div class="pioneer-bio">([\s\S]*?)<\/div>/g;
+  let pMatch;
+  while ((pMatch = pioneerRegex.exec(content)) !== null) {
+    const rawName = pMatch[1].replace(/<[^>]+>/g, " ").trim();
+    const nameOnly = pMatch[1].split("<")[0].trim();
+    const bio = pMatch[2].replace(/<[^>]+>/g, "").trim();
+    const slug = nameOnly.toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
+    if (slug && !seenSlugs.has(slug)) {
+      seenSlugs.add(slug);
+      artists.push({
+        id: slug,
+        name: nameOnly,
+        badge: "Historic Pioneer",
+        role: "Historic Pioneer / Patriarch of Gospel",
+        dates: rawName.includes("–") || rawName.includes("-") ? rawName.replace(nameOnly, "").trim() : "",
+        bio: bio,
+        links: {}
+      });
+    }
+  }
+
+  // 2. Artist cards
+  const cardBlocks = content.split(/<div class="card\s+/).slice(1);
+  for (const block of cardBlocks) {
+    const badgeMatch = block.match(/<div class="card-badge[^"]*">([^<]+)<\/div>/);
+    const badge = badgeMatch ? badgeMatch[1].replace(/^[^\w]+/, "").trim() : "";
+    const nameMatch = block.match(/<div class="card-name">([^<]+)<\/div>/);
+    if (!nameMatch) continue;
+    const name = nameMatch[1].trim();
+    const slug = name.toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
+    if (!slug || slug.includes("directory") || slug.includes("collection") || slug.includes("archive") || slug.includes("org") || seenSlugs.has(slug)) {
+      continue;
+    }
+    seenSlugs.add(slug);
+
+    const alsoMatch = block.match(/<div class="card-also">([^<]+)<\/div>/);
+    const also = alsoMatch ? alsoMatch[1].trim() : "";
+    const roleMatch = block.match(/<div class="card-role">([^<]+)<\/div>/);
+    const role = roleMatch ? roleMatch[1].trim() : "Gospel Artist";
+    const datesMatch = block.match(/<div class="card-dates">([^<]+)<\/div>/);
+    const dates = datesMatch ? datesMatch[1].trim() : "";
+    const bioMatch = block.match(/<div class="card-bio">([\s\S]*?)<\/div>/);
+    const bio = bioMatch ? bioMatch[1].replace(/<[^>]+>/g, "").trim() : "";
+
+    const links: Record<string, string> = {};
+    const linkRegex = /<a class="link-btn[^"]*" href="([^"]+)"[^>]*>([^<]+)<\/a>/g;
+    let lMatch;
+    while ((lMatch = linkRegex.exec(block)) !== null) {
+      const href = lMatch[1];
+      const linkLabel = lMatch[2].replace(/^[^\w]+/, "").trim();
+      if (href && !href.startsWith("#")) {
+        links[linkLabel || "Link"] = href;
+      }
+    }
+
+    artists.push({
+      id: slug,
+      name,
+      badge,
+      also,
+      role,
+      dates,
+      bio,
+      links
+    });
+  }
+
+  cachedArtists = artists;
+  return artists;
+}
+
+function getVolumeSlug(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-");
+}
+
+function findVolume(identifier: string) {
+  if (!identifier) return null;
+  const norm = decodeURIComponent(identifier).toLowerCase().trim();
+  const padded = norm.padStart(2, '0');
+
+  // Match by id or padded id (e.g. "02", "2", "33")
+  let match = CATEGORIES.find(c => c.id === norm || c.id === padded);
+  if (match) return match;
+
+  // Match by title slug (e.g. "all-bible-stories", "crusades-historical-theological-analysis")
+  match = CATEGORIES.find(c => getVolumeSlug(c.title) === norm);
+  if (match) return match;
+
+  // Match by partial title
+  match = CATEGORIES.find(c => getVolumeSlug(c.title).includes(norm) || norm.includes(getVolumeSlug(c.title)));
+  return match || null;
+}
+
+function findArtist(identifier: string) {
+  if (!identifier) return null;
+  const norm = decodeURIComponent(identifier).toLowerCase().trim();
+  const list = getSingersList();
+
+  // 1. Exact slug match
+  let match = list.find(a => a.id === norm);
+  if (match) return match;
+
+  // 2. Numeric index match (e.g. 01, 1, 02)
+  const num = parseInt(norm, 10);
+  if (!isNaN(num) && num >= 1 && num <= list.length) {
+    return list[num - 1];
+  }
+
+  // 3. Partial match
+  match = list.find(a => a.id.includes(norm) || norm.includes(a.id));
+  return match || null;
+}
+
 // Explicit high-priority routes for Google AdSense crawler files
 app.get("/ads.txt", (req, res) => {
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
@@ -760,7 +929,7 @@ app.get("/robots.txt", (req, res) => {
   res.sendFile(path.join(process.cwd(), "public/robots.txt"));
 });
 
-// Dynamic XML Sitemap Generator (rebuilds dynamically from Firestore with fallback)
+// Dynamic XML Sitemap Generator with comprehensive, deduplicated URLs
 app.get("/sitemap.xml", async (req, res) => {
   res.setHeader("Content-Type", "application/xml; charset=utf-8");
   try {
@@ -780,85 +949,35 @@ app.get("/sitemap.xml", async (req, res) => {
     <priority>0.9</priority>
   </url>`;
 
-    let volumes: any[] = [];
-    let artists: any[] = [];
-    let loadedFromDb = false;
-
-    try {
-      volumes = await queryFirestoreCollection("volumes");
-      artists = await queryFirestoreCollection("musicArchive");
-      loadedFromDb = true;
-      console.log(`[SITEMAP DB SUCCESS] Loaded ${volumes.length} volumes and ${artists.length} artists from Firestore`);
-    } catch (dbErr) {
-      console.error("[SITEMAP DB ERROR] Failed to fetch sitemap from Firestore:", dbErr);
-    }
-
-    // Add Volumes
-    if (loadedFromDb && volumes.length > 0) {
-      for (const vol of volumes) {
-        const lastmod = vol.updateTime ? vol.updateTime.split("T")[0] : vol.createTime ? vol.createTime.split("T")[0] : today;
-        xml += `
-  <url>
-    <loc>https://www.saulspodship.com/encyclopedia/${vol.id}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`;
-      }
-    } else {
-      // Fallback
-      for (const cat of CATEGORIES) {
-        const slug = cat.title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+    // Add all 46 Encyclopedia Volumes cleanly with standard slug URLs
+    const seenVolumeSlugs = new Set<string>();
+    for (const cat of CATEGORIES) {
+      const slug = getVolumeSlug(cat.title);
+      if (!seenVolumeSlugs.has(slug)) {
+        seenVolumeSlugs.add(slug);
         xml += `
   <url>
     <loc>https://www.saulspodship.com/encyclopedia/${slug}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>`;
       }
     }
 
-    // Add Artists
-    if (loadedFromDb && artists.length > 0) {
-      for (const artist of artists) {
-        const lastmod = artist.updateTime ? artist.updateTime.split("T")[0] : artist.createTime ? artist.createTime.split("T")[0] : today;
+    // Add all Music Archive Artists
+    const singers = getSingersList();
+    const seenArtistSlugs = new Set<string>();
+    for (const artist of singers) {
+      if (artist.id && !seenArtistSlugs.has(artist.id)) {
+        seenArtistSlugs.add(artist.id);
         xml += `
   <url>
     <loc>https://www.saulspodship.com/music-archive/${artist.id}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`;
-      }
-    } else {
-      // Fallback
-      let filePath = "";
-      if (process.env.NODE_ENV !== "production") {
-        filePath = path.join(process.cwd(), "public/singers.html");
-      } else {
-        filePath = path.join(process.cwd(), "dist/singers.html");
-      }
-      
-      if (fs.existsSync(filePath)) {
-        const singersHtml = fs.readFileSync(filePath, "utf8");
-        const cardRegex = /<div class="card-name">([^<]+)<\/div>/g;
-        let match;
-        const seenSlugs = new Set<string>();
-        while ((match = cardRegex.exec(singersHtml)) !== null) {
-          const name = match[1].trim();
-          const slug = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
-          if (slug && !slug.includes("directory") && !slug.includes("collection") && !slug.includes("archive") && !slug.includes("org") && !seenSlugs.has(slug)) {
-            seenSlugs.add(slug);
-            xml += `
-  <url>
-    <loc>https://www.saulspodship.com/music-archive/${slug}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`;
-          }
-        }
       }
     }
 
@@ -903,29 +1022,79 @@ app.get("/Pakistanisingersarchive", (req, res) => {
 
 // Dynamic Server-Side Rendered (SSR) Volume Page for Search Indexing & AdSense Compliance
 app.get("/encyclopedia/:slug", async (req, res) => {
-  console.log(`[ENCYCLOPEDIA ROUTE LOG] Received request for /encyclopedia/:slug with slug parameter: "${req.params.slug}"`);
-  const slug = req.params.slug;
-  console.log("SLUG RECEIVED:", slug);
+  const reqSlug = req.params.slug;
+  console.log(`[ENCYCLOPEDIA ROUTE LOG] Received request for /encyclopedia/:slug with slug parameter: "${reqSlug}"`);
+
   try {
-    const volume = await getFirestoreDoc("volumes", slug);
+    // 1. Try local data first (fast, reliable, 100% available)
+    const localVolume = findVolume(reqSlug);
+    
+    // 2. Optionally check Firestore for runtime edits (with safe fallback)
+    let firestoreVolume: any = null;
+    try {
+      firestoreVolume = await getFirestoreDoc("volumes", reqSlug);
+    } catch (_) {
+      // Ignore Firestore permission/network errors and proceed with local data
+    }
+
+    const volume = firestoreVolume || localVolume;
+
     if (!volume) {
-      return res.status(404).send("Volume not found");
+      return res.status(404).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Volume Not Found | Saul's Podship Theological Encyclopedia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/src/index.css">
+</head>
+<body style="background-color:#F8F4E3; color:#1D2D50; font-family:sans-serif; text-align:center; padding:5rem 2rem;">
+  <h1 style="color:#4A152C; font-size:2rem; margin-bottom:1rem;">Volume Not Found</h1>
+  <p style="margin-bottom:2rem;">The requested encyclopedia volume could not be located.</p>
+  <a href="/" style="background-color:#4A152C; color:#D4AF37; padding:0.8rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:bold;">Return to Encyclopedia</a>
+</body>
+</html>`);
+    }
+
+    const canonicalSlug = getVolumeSlug(volume.title);
+
+    // If requested by ID (e.g. /encyclopedia/32 or /encyclopedia/08) or non-canonical slug, 301 redirect to canonical slug URL
+    if (reqSlug.toLowerCase() !== canonicalSlug.toLowerCase()) {
+      return res.redirect(301, `/encyclopedia/${canonicalSlug}`);
     }
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-
-    const title = volume.metaTitle || `${volume.title} | Saul's Podship`;
-    const description = volume.metaDescription || `Exegesis and theological analysis of ${volume.title}.`;
+    const title = volume.metaTitle || `${volume.title} | Volume ${volume.id || ''} Theological Encyclopedia | Saul's Podship`;
+    const description = volume.metaDescription || volume.overview || `Scholarly exegesis, historical context, and comprehensive theological analysis of ${volume.title}.`;
+    const volumeNumber = volume.volumeNumber || volume.id || "01";
 
     // Related links HTML
     let relatedLinksHtml = "";
     if (volume.relatedVolumeIds && volume.relatedVolumeIds.length > 0) {
       relatedLinksHtml = `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top:1.5rem;">`;
       for (const relSlug of volume.relatedVolumeIds) {
-        const relTitle = relSlug.split("-").map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+        const relVol = findVolume(relSlug);
+        const relTitle = relVol ? relVol.title : relSlug.split("-").map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+        const targetSlug = relVol ? getVolumeSlug(relVol.title) : relSlug;
         relatedLinksHtml += `
-          <a href="/encyclopedia/${relSlug}" style="background-color:rgba(74,21,44,0.04); border:1px solid rgba(74,21,44,0.15); border-radius:4px; padding:1.2rem; text-decoration:none; color:#4A152C; transition:all 0.2s;">
+          <a href="/encyclopedia/${targetSlug}" style="background-color:rgba(74,21,44,0.04); border:1px solid rgba(74,21,44,0.15); border-radius:4px; padding:1.2rem; text-decoration:none; color:#4A152C; transition:all 0.2s;">
             <strong style="display:block; font-family:'Merriweather', serif; font-size:1.05rem; margin-bottom:0.4rem;">${relTitle}</strong>
+            <span style="font-size:0.8rem; color:rgba(29,45,80,0.7);">Explore related exegesis &rarr;</span>
+          </a>`;
+      }
+      relatedLinksHtml += `</div>`;
+    } else {
+      // Generate default related links from adjacent volumes
+      relatedLinksHtml = `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top:1.5rem;">`;
+      const curIdx = CATEGORIES.findIndex(c => c.id === volume.id || getVolumeSlug(c.title) === canonicalSlug);
+      const adjacent = [
+        CATEGORIES[(curIdx + 1) % CATEGORIES.length],
+        CATEGORIES[(curIdx + 2) % CATEGORIES.length]
+      ].filter(Boolean);
+      for (const relVol of adjacent) {
+        relatedLinksHtml += `
+          <a href="/encyclopedia/${getVolumeSlug(relVol.title)}" style="background-color:rgba(74,21,44,0.04); border:1px solid rgba(74,21,44,0.15); border-radius:4px; padding:1.2rem; text-decoration:none; color:#4A152C; transition:all 0.2s;">
+            <strong style="display:block; font-family:'Merriweather', serif; font-size:1.05rem; margin-bottom:0.4rem;">${relVol.title}</strong>
             <span style="font-size:0.8rem; color:rgba(29,45,80,0.7);">Explore related exegesis &rarr;</span>
           </a>`;
       }
@@ -977,9 +1146,11 @@ app.get("/encyclopedia/:slug", async (req, res) => {
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://www.saulspodship.com/encyclopedia/${slug}`
+        "@id": `https://www.saulspodship.com/encyclopedia/${canonicalSlug}`
       }
     });
+
+    const analysisContent = volume.content?.analysis || volume.overview || "Scholarly theological analysis in progress.";
 
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -988,11 +1159,14 @@ app.get("/encyclopedia/:slug", async (req, res) => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <meta name="description" content="${description}">
-  <link rel="canonical" href="https://www.saulspodship.com/encyclopedia/${slug}" />
+  <link rel="canonical" href="https://www.saulspodship.com/encyclopedia/${canonicalSlug}" />
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
-  <meta property="og:url" content="https://www.saulspodship.com/encyclopedia/${slug}">
+  <meta property="og:url" content="https://www.saulspodship.com/encyclopedia/${canonicalSlug}">
   <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1017,11 +1191,11 @@ app.get("/encyclopedia/:slug", async (req, res) => {
       <span style="color: #1D2D50;">${volume.title}</span>
     </div>
 
-    <h1 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 2.5rem; margin: 0 0 0.5rem 0; font-weight: 900; line-height: 1.2;">Volume ${volume.volumeNumber}: ${volume.title}</h1>
+    <h1 style="font-family: 'Merriweather', serif; color: #4A152C; font-size: 2.5rem; margin: 0 0 0.5rem 0; font-weight: 900; line-height: 1.2;">Volume ${volumeNumber}: ${volume.title}</h1>
     ${volume.subtitle ? `<p style="font-style: italic; color: rgba(29,45,80,0.7); font-size: 1.15rem; margin-top: 0; margin-bottom: 2.5rem; border-left: 3px solid #D4AF37; padding-left: 1rem;">${volume.subtitle}</p>` : ''}
 
     <div style="margin-bottom: 3.5rem;">
-      ${markdownToHtml(volume.content?.analysis || '')}
+      ${markdownToHtml(analysisContent)}
     </div>
 
     ${tablesHtml}
@@ -1037,25 +1211,68 @@ app.get("/encyclopedia/:slug", async (req, res) => {
     res.send(html);
   } catch (err: any) {
     console.error("[ENCYCLOPEDIA RENDER ERROR]", err);
-    const errMsg = err instanceof Error ? err.message : String(err);
-    const errStack = err instanceof Error ? err.stack : "";
-    res.status(500).send(`Error rendering volume page: ${errMsg}\n\n${errStack}`);
+    res.status(500).send("Error rendering volume page");
   }
 });
 
 // Dynamic Server-Side Rendered (SSR) Artist Page for Search Indexing & AdSense Compliance
 app.get("/music-archive/:slug", async (req, res) => {
-  const slug = req.params.slug;
+  const reqSlug = req.params.slug || "";
+  console.log(`[MUSIC ARCHIVE ROUTE LOG] Received request for /music-archive/:slug with parameter: "${reqSlug}"`);
+
+  // Direct directory and resource queries to the main archive page
+  if (
+    reqSlug.includes("directory") ||
+    reqSlug.includes("collection") ||
+    reqSlug.includes("archive") ||
+    reqSlug.includes("pakistani-christian-gospel-singers") ||
+    reqSlug.includes("geetandzaboor") ||
+    reqSlug.includes("dailygeet") ||
+    reqSlug.includes("bonpounou")
+  ) {
+    return res.redirect(301, "/Pakistanisingersarchive");
+  }
+
   try {
-    const artist = await getFirestoreDoc("musicArchive", slug);
+    // 1. Try local parsed singer records
+    const localArtist = findArtist(reqSlug);
+
+    // 2. Optionally check Firestore for runtime updates (safely)
+    let firestoreArtist: any = null;
+    try {
+      firestoreArtist = await getFirestoreDoc("musicArchive", reqSlug);
+    } catch (_) {
+      // Ignore Firestore permission errors safely
+    }
+
+    const artist = firestoreArtist || localArtist;
+
     if (!artist) {
-      return res.status(404).send("Artist not found");
+      return res.status(404).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Artist Not Found | Pakistani Gospel Music Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-color:#0d0906; color:#f0eae1; font-family:sans-serif; text-align:center; padding:5rem 2rem;">
+  <h1 style="color:#d4af37; font-size:2rem; margin-bottom:1rem;">Artist Profile Not Found</h1>
+  <p style="margin-bottom:2rem; opacity:0.8;">The requested gospel musician profile could not be found in our archive.</p>
+  <a href="/Pakistanisingersarchive" style="background-color:#d4af37; color:#0d0906; padding:0.8rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:bold;">Return to Music Archive</a>
+</body>
+</html>`);
+    }
+
+    const canonicalSlug = artist.id || reqSlug;
+
+    // If requested with a non-canonical slug, 301 redirect to canonical slug
+    if (reqSlug.toLowerCase() !== canonicalSlug.toLowerCase()) {
+      return res.redirect(301, `/music-archive/${canonicalSlug}`);
     }
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-    
-    const title = artist.metaTitle || `${artist.name} | Saul's Podship Gospel Music Archive`;
-    const description = artist.metaDescription || `Biography of ${artist.name}.`;
+    const title = artist.metaTitle || `${artist.name} | Pakistani Christian Gospel Music Archive | Saul's Podship`;
+    const description = artist.metaDescription || `Biography, musical legacy, and historical recordings of ${artist.name}, ${artist.role} in Pakistani Christian gospel music.`;
 
     let linksHtml = "";
     if (artist.links && Object.keys(artist.links).length > 0) {
@@ -1063,10 +1280,21 @@ app.get("/music-archive/:slug", async (req, res) => {
         <h3 style="font-family:'Merriweather', serif; color:#4A152C; font-size:1.2rem; margin-bottom:1rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Official Media & Links</h3>
         <div style="display:flex; flex-wrap:wrap; gap:1rem;">`;
       for (const [key, url] of Object.entries(artist.links)) {
-        linksHtml += `<a href="${url}" target="_blank" style="background-color:#4A152C; color:#D4AF37; padding:0.6rem 1.2rem; text-decoration:none; font-weight:bold; font-size:0.8rem; border-radius:4px; text-transform:uppercase; letter-spacing:0.05em;">${key}</a>`;
+        linksHtml += `<a href="${url}" target="_blank" rel="noopener noreferrer" style="background-color:#4A152C; color:#D4AF37; padding:0.6rem 1.2rem; text-decoration:none; font-weight:bold; font-size:0.8rem; border-radius:4px; text-transform:uppercase; letter-spacing:0.05em;">${key}</a>`;
       }
       linksHtml += `</div></div>`;
     }
+
+    // JSON-LD Person Schema
+    const personSchema = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": artist.name,
+      "description": description,
+      "jobTitle": artist.role,
+      "url": `https://www.saulspodship.com/music-archive/${canonicalSlug}`,
+      "mainEntityOfPage": `https://www.saulspodship.com/music-archive/${canonicalSlug}`
+    });
 
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -1075,14 +1303,18 @@ app.get("/music-archive/:slug", async (req, res) => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <meta name="description" content="${description}">
-  <link rel="canonical" href="https://www.saulspodship.com/music-archive/${slug}" />
+  <link rel="canonical" href="https://www.saulspodship.com/music-archive/${canonicalSlug}" />
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
-  <meta property="og:url" content="https://www.saulspodship.com/music-archive/${slug}">
+  <meta property="og:url" content="https://www.saulspodship.com/music-archive/${canonicalSlug}">
   <meta property="og:type" content="profile">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">${personSchema}</script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -1119,9 +1351,7 @@ app.get("/music-archive/:slug", async (req, res) => {
     res.send(html);
   } catch (err: any) {
     console.error("[ARTIST BIO RENDER ERROR]", err);
-    const errMsg = err instanceof Error ? err.message : String(err);
-    const errStack = err instanceof Error ? err.stack : "";
-    res.status(500).send(`Error rendering artist bio page: ${errMsg}\n\n${errStack}`);
+    res.status(500).send("Error rendering artist bio page");
   }
 });
 

@@ -1,10 +1,33 @@
 {
   "version": 2,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "saulspodship.com"
+        }
+      ],
+      "destination": "https://www.saulspodship.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/music-archive/christians-of-pakistan-music-directory",
+      "destination": "/Pakistanisingersarchive",
+      "permanent": true
+    },
+    {
+      "source": "/music-archive/pakistani-christian-gospel-singers-group",
+      "destination": "/Pakistanisingersarchive",
+      "permanent": true
+    }
+  ],
   "functions": {
     "api/index.ts": {
       "memory": 1024,
       "maxDuration": 15,
-      "includeFiles": "api/data.ts,firebase-applet-config.json"
+      "includeFiles": "api/data.ts,firebase-applet-config.json,public/singers.html"
     }
   },
   "rewrites": [
@@ -16,3 +39,4 @@
     { "source": "/((?!assets/|images/|src/|dist/).*)", "destination": "/index.html" }
   ]
 }
+

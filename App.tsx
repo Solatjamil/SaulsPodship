@@ -683,8 +683,8 @@ const App: React.FC = () => {
     const handlePopState = () => {
       const path = window.location.pathname;
       if (path.startsWith('/encyclopedia/')) {
-        const slug = path.replace('/encyclopedia/', '');
-        const found = CATEGORIES.find(c => getSEOUrlSlug(c.title) === slug);
+        const slug = path.replace('/encyclopedia/', '').replace(/\/$/, '');
+        const found = CATEGORIES.find(c => getSEOUrlSlug(c.title) === slug || c.id === slug || c.id === slug.padStart(2, '0'));
         if (found) {
           setSelectedCategory(found);
           setCurrentView('encyclopedia');

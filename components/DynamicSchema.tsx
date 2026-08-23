@@ -6,6 +6,14 @@ interface DynamicSchemaProps {
   selectedCategory: TheologyCategory | null;
 }
 
+const getSEOUrlSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+};
+
 export const DynamicSchema: React.FC<DynamicSchemaProps> = ({ currentView, selectedCategory }) => {
   useEffect(() => {
     // Dynamically maintain canonical link tag in head
@@ -18,7 +26,7 @@ export const DynamicSchema: React.FC<DynamicSchemaProps> = ({ currentView, selec
 
     let canonicalPath = '/';
     if (currentView === 'encyclopedia' && selectedCategory && !selectedCategory.isPlaceholder) {
-      canonicalPath = `/encyclopedia/${selectedCategory.id}`;
+      canonicalPath = `/encyclopedia/${getSEOUrlSlug(selectedCategory.title)}`;
     } else if (currentView === 'privacy') {
       canonicalPath = '/privacy';
     } else if (currentView === 'disclaimer') {
