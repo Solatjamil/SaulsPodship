@@ -51,7 +51,7 @@ export const DynamicSchema: React.FC<DynamicSchemaProps> = ({ currentView, selec
       'alternateName': 'Sauls Podship',
       'description': 'An immersive, scholarly, and visual exploration of Christian theology, biblical history, and narrative podcasts.',
       'sameAs': [
-        'https://www.youtube.com/@thesaulspodship',
+        'https://www.youtube.com/@TheSaulsPodship',
         'https://www.patreon.com/solatnadeem/gift',
         'https://www.facebook.com/@saulspodship',
         'https://www.tiktok.com/@saulspodship'

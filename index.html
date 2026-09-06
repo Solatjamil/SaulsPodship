@@ -82,6 +82,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --hero-dim: 0.28;
+      }
+
       html {
         scroll-behavior: smooth;
       }
@@ -99,6 +103,42 @@
 
       .font-scripture {
         font-family: 'EB Garamond', serif;
+      }
+
+      /* Hero Visual Visibility & Dimming Optimization */
+      .hero-overlay {
+        background: linear-gradient(180deg,
+          rgba(8,6,10, calc(var(--hero-dim) * 0.6)) 0%,
+          rgba(8,6,10, calc(var(--hero-dim) * 0.2)) 40%,
+          rgba(8,6,10, calc(var(--hero-dim) * 0.9)) 78%,
+          rgba(11,13,18, 0.92) 100%);
+      }
+
+      .hero-content {
+        background: radial-gradient(ellipse at center, rgba(8,6,10,0.55) 0%, transparent 70%);
+        padding: 2rem;
+      }
+
+      /* Center Alignment Across Site */
+      main, section, article, header, footer {
+        text-align: center;
+      }
+      .prose, .manuscript {
+        text-align: center;
+      }
+      .prose ul, .prose ol {
+        list-style-position: inside;
+        padding-left: 0;
+      }
+      .prose li {
+        text-align: center;
+      }
+      table {
+        margin-inline: auto;
+      }
+      th, td {
+        text-align: center;
+        vertical-align: middle;
       }
 
       /* Custom Scrollbar for the encyclopedia feel */

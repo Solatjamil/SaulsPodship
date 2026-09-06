@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Volume } from '../../../types';
+import { Volume } from '../../types';
 
 export const volume_22: Volume = {
   "id": "22",
@@ -11,7 +11,7 @@ export const volume_22: Volume = {
   "slug": "guide-to-christian-living",
   "title": "Guide to Christian Living",
   "subtitle": "Daily Discipleship, Spiritual Disciplines & Moral Formation",
-  "overview": "A comprehensive practical theology of Christian living, covering prayer, Scripture intake, stewardship, fastings, digital ethics, mental health, and community fellowship.",
+  "overview": "A comprehensive practical theology of Christian living, covering prayer, Scripture intake, stewardship, fasting, biblical herbs & medicine, everyday laws, biblical day divisions, model prayers, and community fellowship.",
   "category": "devotional",
   "lastUpdated": "2026-09-06",
   "heroImage": {
@@ -33,7 +33,7 @@ export const volume_22: Volume = {
     "sanctification daily walk"
   ],
   "articleLink": "https://goshsays.blogspot.com/2026/01/the-complete-guide-to-christian-living.html",
-  "youtubeLink": "https://youtu.be/M8aR-z2f-5s",
+  "youtubeLink": "https://youtu.be/Jl4Y2q_tz5M",
   "youtubeStatus": "scheduled",
   "youtubePublishDate": "2026-11-26",
   "relatedVolumes": [
@@ -111,7 +111,7 @@ export const volume_22: Volume = {
           ],
           [
             "Sacrificial Giving",
-            "2 Cor 9:6-8; Malachi 3:10",
+            "2 Corinthians 9:6-8; Malachi 3:10",
             "Breaking the idolatry of money and supporting ministry",
             "First-fruits proportioned giving upon receiving every paycheck"
           ]
@@ -157,6 +157,241 @@ export const volume_22: Volume = {
             "Psalm 101:3"
           ]
         ]
+      },
+      {
+        "title": "III. BIBLICAL HERBS, PLANTS & NATURAL MEDICINE",
+        "headers": [
+          "Botanical / Remedy",
+          "Scripture Reference",
+          "Historical Ancient Use",
+          "Theological & Symbolic Resonance"
+        ],
+        "rows": [
+          [
+            "Hyssop (Ezov)",
+            "Exodus 12:22; Psalm 51:7; John 19:29",
+            "Purification rituals, cleansing leprosy and ceremonial defilement",
+            "Symbol of spiritual cleansing by the blood of the Lamb"
+          ],
+          [
+            "Bitter Herbs (Merorim)",
+            "Exodus 12:8; Numbers 9:11",
+            "Passover meal accompaniment (endive, chicory, wild lettuce)",
+            "Remembrance of Egyptian bondage and the bitterness of sin"
+          ],
+          [
+            "Balm of Gilead (Tsori)",
+            "Jeremiah 8:22; Genesis 37:25",
+            "Medicinal aromatic resin used for wounds and skin sores",
+            "Prophetic metaphor for Christ the Divine Physician"
+          ],
+          [
+            "Frankincense & Myrrh",
+            "Matthew 2:11; Song of Solomon 4:6",
+            "Anointing holy oil, embalming, anti-inflammatory and pain relief",
+            "Prophetic symbols of Christ's Deity, Priesthood, and Martyrdom"
+          ],
+          [
+            "Fig Cake Poultice",
+            "2 Kings 20:7; Isaiah 38:21",
+            "Hezekiah's fatal boil healed via poultice application",
+            "God utilizing natural physical agents in supernatural healing"
+          ],
+          [
+            "Anise, Mint & Cumin",
+            "Matthew 23:23; Isaiah 28:25-27",
+            "Culinary seasoning and digestive carminative aids",
+            "Christ rebuking punctilious tithing that neglects justice and mercy"
+          ],
+          [
+            "Medicinal Wine (Yayin)",
+            "1 Timothy 5:23; Luke 10:34",
+            "Antiseptic on Samaritan's wounds; digestive aid for Timothy",
+            "Responsible medicinal application versus intoxicating excess"
+          ]
+        ]
+      },
+      {
+        "title": "IV. EVERYDAY MORAL LAWS & PRACTICAL ETHICS",
+        "headers": [
+          "Life Arena",
+          "Biblical Commandment",
+          "Worldly Practice",
+          "Kingdom Conduct Protocol"
+        ],
+        "rows": [
+          [
+            "Workplace & Career",
+            "Colossians 3:23-24; Ephesians 6:5-9",
+            "Eye-service, cutting corners, complaining",
+            "Working whole-heartedly as unto the Lord, treating employers and staff with absolute equity"
+          ],
+          [
+            "Speech & Gossip",
+            "Ephesians 4:29; Proverbs 18:21",
+            "Idle chatter, slander, passive aggression",
+            "Speaking only words that impart grace to the hearer, killing malicious gossip immediately"
+          ],
+          [
+            "Financial Honesty",
+            "Proverbs 11:1; Romans 13:8",
+            "Tax evasion, deceptive advertising, usury",
+            "Just weights, prompt debt repayment, honest contracts, and radical generosity"
+          ],
+          [
+            "Digital & Media Diet",
+            "Psalm 101:3; Philippians 4:8",
+            "Doom-scrolling, consuming impure media, online rage",
+            "Refusing to set worthless things before eyes, guarding peace of heart"
+          ],
+          [
+            "Hospitality & Strangers",
+            "Hebrews 13:2; Romans 12:13",
+            "Gated isolation, xenophobia, superficial warmth",
+            "Opening the home for meals, supporting traveling teachers, sheltering the vulnerable"
+          ],
+          [
+            "Marriage Covenant",
+            "Ephesians 5:22-33; Hebrews 13:4",
+            "Disposable unions, conditional love, pornography",
+            "Unconditional sacrificial agape, mutual honoring, sacred marital fidelity"
+          ]
+        ]
+      },
+      {
+        "title": "V. THE BIBLICAL DAY & WATCH DIVISION",
+        "headers": [
+          "Biblical Period",
+          "Modern Time Equivalent",
+          "Scriptural Event & Significance",
+          "Devotional Application"
+        ],
+        "rows": [
+          [
+            "Third Hour",
+            "9:00 AM",
+            "Holy Spirit poured out at Pentecost (Acts 2:15); Jesus crucified (Mark 15:25)",
+            "Morning consecration and invoking the Spirit's empowerment"
+          ],
+          [
+            "Sixth Hour",
+            "12:00 PM (Noon)",
+            "Peter praying on the rooftop (Acts 10:9); Darkness over the land (Luke 23:44)",
+            "Midday pause to realign heart and seek divine vision"
+          ],
+          [
+            "Ninth Hour",
+            "3:00 PM",
+            "Jesus dies on cross (Matthew 27:46); Hour of prayer (Acts 3:1)",
+            "Afternoon intercession and remembering Christ's finished atonement"
+          ],
+          [
+            "First Night Watch",
+            "6:00 PM – 9:00 PM",
+            "Evening sacrifice, lighting the sanctuary menorah lamps",
+            "Family gathering, thanksgiving for daily provision, Sabbath initiation"
+          ],
+          [
+            "Midnight Watch",
+            "9:00 PM – Midnight / 3:00 AM",
+            "Paul & Silas singing in prison (Acts 16:25); Bridegroom arrives (Matthew 25:6)",
+            "Spiritual vigilance, breaking chains through nocturnal praise"
+          ],
+          [
+            "Morning Watch",
+            "3:00 AM – 6:00 AM (Dawn)",
+            "Jesus walking on the water (Matthew 14:25); Resurrection dawn",
+            "Early morning quiet devotion before the distractions of the day arise"
+          ]
+        ]
+      },
+      {
+        "title": "VI. MODEL PRAYERS OF SCRIPTURE",
+        "headers": [
+          "Prayer Name",
+          "Passage",
+          "Core Theme",
+          "Key Theological Lesson"
+        ],
+        "rows": [
+          [
+            "The Lord's Prayer",
+            "Matthew 6:9-13",
+            "Kingdom alignment, daily bread, forgiveness, protection",
+            "Prayer begins with God's glory and holiness before personal needs"
+          ],
+          [
+            "David's Penitential Prayer",
+            "Psalm 51:1-12",
+            "Brokenness, repentance, asking for a clean heart",
+            "God delights in a broken and contrite spirit above ritual offerings"
+          ],
+          [
+            "Solomon's Dedication",
+            "1 Kings 8:22-53",
+            "Covenant faithfulness, prayer towards God's temple",
+            "God's willingness to hear and forgive from heaven when His people turn back"
+          ],
+          [
+            "Paul's Apostolic Intercession",
+            "Ephesians 3:14-21",
+            "Spiritual strength in inner man, knowing Christ's love",
+            "Praying for spiritual maturity and revelation above mere physical comfort"
+          ],
+          [
+            "Jesus' High Priestly Prayer",
+            "John 17:1-26",
+            "Eternal glory, sanctification by truth, unity of believers",
+            "Christ's supreme desire for His followers to behold His eternal glory"
+          ],
+          [
+            "The Prayer of Jabez",
+            "1 Chronicles 4:10",
+            "Protection from pain, expansion of territory without harm",
+            "Bold petition for God's blessing under humble reliance on His hand"
+          ]
+        ]
+      },
+      {
+        "title": "VII. STEWARDSHIP OF THE TEMPLE: BODY, MIND & SPIRIT",
+        "headers": [
+          "Domain of Health",
+          "Biblical Grounding",
+          "Practical Discipline",
+          "Holistic Fruit"
+        ],
+        "rows": [
+          [
+            "Sleep & Sabbath",
+            "Psalm 127:2; Exodus 20:8-11",
+            "7-8 hours nightly sleep; 24-hour weekly cessation from labor",
+            "Restoration of nervous system, humility in recognizing human limits"
+          ],
+          [
+            "Nutritional Temperance",
+            "1 Corinthians 10:31; Proverbs 23:2",
+            "Wholesome unprocessed foods, avoiding gluttony and toxic excess",
+            "Sustained physical energy for Kingdom service and mental clarity"
+          ],
+          [
+            "Cognitive Renewal",
+            "Romans 12:2; 2 Corinthians 10:5",
+            "Daily Scripture memorization, filtering secular input, prayerful reflection",
+            "Deliverance from worldly cynicism, anxiety, and moral confusion"
+          ],
+          [
+            "Mental Health & Counsel",
+            "Galatians 6:2; Proverbs 11:14",
+            "Engaging professional medical/psychological care alongside pastoral counsel",
+            "Healing from trauma, balancing brain neurochemistry, deep emotional health"
+          ],
+          [
+            "Physical Labor & Exercise",
+            "1 Timothy 4:8; 1 Corinthians 6:19-20",
+            "Regular aerobic activity, honorable diligent work, bodily stewardship",
+            "Endurance, strength for daily ministry, honoring God with the body"
+          ]
+        ]
       }
     ],
     "storyPanels": [
@@ -179,6 +414,66 @@ export const volume_22: Volume = {
         "colorTheme": "#D4AF37",
         "era": "Kingdom Era",
         "theologicalTheme": "Rest, Care & God's Gentle Whisper"
+      },
+      {
+        "id": "live-3",
+        "title": "The Full Armor of God",
+        "description": "Standing firm against the schemes of darkness by putting on truth, righteousness, the gospel of peace, the shield of faith, the helmet of salvation, and the sword of the Spirit.",
+        "scripture": "Ephesians 6:10-18",
+        "imagePrompt": "A radiant Christian warrior standing resolute against darkness with the golden armor of God and the glowing sword of the Spirit",
+        "colorTheme": "#2C4A3E",
+        "era": "Apostolic Era",
+        "theologicalTheme": "Spiritual Warfare & Divine Protection"
+      },
+      {
+        "id": "live-4",
+        "title": "Abiding in the Vine",
+        "description": "Jesus teaches that apart from vital, continuous spiritual union with Him, the branches can do nothing. Bearing fruit requires remaining in His love and Word.",
+        "scripture": "John 15:1-8",
+        "imagePrompt": "Ancient lush grapevines with abundant purple clusters in the golden light of Galilee, symbolizing spiritual abiding in Christ",
+        "colorTheme": "#4A152C",
+        "era": "Gospel Era",
+        "theologicalTheme": "Spiritual Vitality & Abiding"
+      },
+      {
+        "id": "live-5",
+        "title": "Salt of the Earth & Light of the World",
+        "description": "Believers are commissioned to season culture with divine truth and illuminate dark environments with good works that bring glory to the Father.",
+        "scripture": "Matthew 5:13-16",
+        "imagePrompt": "A brilliant oil lamp set high upon a lampstand illuminating a dark ancient stone chamber, casting warm golden light",
+        "colorTheme": "#D4AF37",
+        "era": "Gospel Era",
+        "theologicalTheme": "Cultural Engagement & Witness"
+      },
+      {
+        "id": "live-6",
+        "title": "Daniel's Holy Resolution in Babylon",
+        "description": "Daniel resolved not to defile himself with the royal food and wine, demonstrating holy distinction and integrity in a pagan empire.",
+        "scripture": "Daniel 1:8-17",
+        "imagePrompt": "The young prophet Daniel refusing the king's rich meat and wine at the grand Babylonian palace court, standing firm in faith",
+        "colorTheme": "#1A2E40",
+        "era": "Exilic Era",
+        "theologicalTheme": "Holy Separation & Conviction"
+      },
+      {
+        "id": "live-7",
+        "title": "Mary Sitting at Jesus' Feet",
+        "description": "Choosing the one needful thing over anxious, distracted service, Mary prioritizes attentive listening to the Master's voice.",
+        "scripture": "Luke 10:38-42",
+        "imagePrompt": "Mary of Bethany seated quietly at the feet of Jesus listening intently to His teaching while light pours into the room",
+        "colorTheme": "#6B2D4F",
+        "era": "Gospel Era",
+        "theologicalTheme": "Devotional Priority & Discernment"
+      },
+      {
+        "id": "live-8",
+        "title": "Paul's Contentment in Roman Bonds",
+        "description": "Learning the secret of facing plenty and hunger, abundance and need through Christ who strengthens him in every earthly condition.",
+        "scripture": "Philippians 4:10-13",
+        "imagePrompt": "The Apostle Paul writing an epistle by candlelight in a Roman prison cell with peaceful joy and divine strength on his face",
+        "colorTheme": "#3E2723",
+        "era": "Apostolic Era",
+        "theologicalTheme": "Christian Contentment & Strength"
       }
     ]
   },
