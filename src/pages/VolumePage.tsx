@@ -180,7 +180,7 @@ export const VolumePage: React.FC = () => {
       <Hero variant="volume" volume={volume} />
 
       {/* 2. Sticky Quick Navigation & Resource Action Bar */}
-      <nav aria-label="Volume Section Navigation" className="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 py-3 px-4 shadow-sm">
+      <nav aria-label="Volume Section Navigation" className="sticky top-14 sm:top-16 md:top-20 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 py-2.5 px-4 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto text-xs font-semibold text-gray-700 scrollbar-none">
           <div className="flex items-center gap-4">
             <a href="#summary" className="hover:text-[#4A152C] whitespace-nowrap">Overview</a>
@@ -199,7 +199,7 @@ export const VolumePage: React.FC = () => {
             <a href="#related" className="hover:text-[#4A152C] whitespace-nowrap">Related Volumes</a>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={handleCopyCitation}
               className="inline-flex items-center gap-1 text-[11px] font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 px-2.5 py-1 rounded-md border border-gray-300 transition-colors"
@@ -223,9 +223,9 @@ export const VolumePage: React.FC = () => {
                 href={volume.articleLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 hover:bg-emerald-100"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 hover:bg-emerald-100"
               >
-                <span>Blog Article</span>
+                <span>Article</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             )}
@@ -234,9 +234,9 @@ export const VolumePage: React.FC = () => {
                 href={volume.youtubeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-md border border-red-200 hover:bg-red-100"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-md border border-red-200 hover:bg-red-100"
               >
-                <span>Video Lesson</span>
+                <span>Video</span>
                 <Play className="w-3 h-3 fill-current" />
               </a>
             ) : (
@@ -244,9 +244,9 @@ export const VolumePage: React.FC = () => {
                 href={SITE.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-md border border-red-200 hover:bg-red-100"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-md border border-red-200 hover:bg-red-100"
               >
-                <span>YouTube Channel</span>
+                <span>YouTube</span>
                 <Play className="w-3 h-3 fill-current" />
               </a>
             )}

@@ -16,7 +16,20 @@ const ScholarAssistant: React.FC = () => {
     { role: 'model', text: `Peace be with you. I am your local Scholar Assistant. I can help you navigate the ${CATEGORIES.length} volumes of this library. What topic are you looking for today?` }
   ]);
   const [input, setInput] = useState('');
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window !== 'undefined') {
+        const threshold = window.innerHeight * 0.7;
+        setScrolledPastHero(window.scrollY > threshold);
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
@@ -65,7 +78,11 @@ const ScholarAssistant: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end pointer-events-auto">
+    <div className={`fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end transition-all duration-300 ${
+      scrolledPastHero
+        ? 'opacity-100 translate-y-0 pointer-events-auto'
+        : 'opacity-0 translate-y-4 pointer-events-none md:opacity-100 md:translate-y-0 md:pointer-events-auto'
+    }`}>
       <AnimatePresence>
         {isOpen && (
           <motion.div

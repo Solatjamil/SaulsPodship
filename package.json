@@ -32,8 +32,10 @@
   },
   "scripts": {
     "dev": "tsx server.ts",
+    "prebuild": "python3 scripts/make_hero_variants.py public/images/hero/last-supper-source.jpg public/images/hero last-supper && node scripts/test-hero-variants.mjs",
     "build": "node scripts/check-links.mjs && vite build && node scripts/postbuild.mjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
+    "test": "node scripts/test-hero-variants.mjs",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   }

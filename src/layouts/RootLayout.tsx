@@ -32,8 +32,8 @@ export const RootLayout: React.FC = () => {
       <ScrollRestoration />
 
       {/* Global Navigation Header */}
-      <header className="sticky top-0 z-50 w-full bg-[#1A0812]/95 backdrop-blur-md border-b border-[#D4AF37]/20 text-white transition-all shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full bg-[#16060f]/70 backdrop-blur-md border-b border-[#D4AF37]/20 text-white transition-all shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 md:h-20 flex items-center justify-between">
           {/* Brand Logo with Correct SVG */}
           <Link to="/" className="flex items-center gap-3.5 group">
             <div className="w-10 h-10 rounded-xl bg-white/10 border border-[#D4AF37]/30 p-1 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
