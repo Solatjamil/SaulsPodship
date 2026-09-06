@@ -889,12 +889,12 @@ function findVolume(identifier: string) {
   let match = CATEGORIES.find(c => c.id === norm || c.id === padded);
   if (match) return match;
 
-  // Match by title slug (e.g. "all-bible-stories", "crusades-historical-theological-analysis")
-  match = CATEGORIES.find(c => getVolumeSlug(c.title) === norm);
+  // Match by title slug or c.slug (e.g. "all-bible-stories", "crusades-historical-theological-analysis")
+  match = CATEGORIES.find(c => (c.slug && c.slug.toLowerCase() === norm) || getVolumeSlug(c.title) === norm);
   if (match) return match;
 
-  // Match by partial title
-  match = CATEGORIES.find(c => getVolumeSlug(c.title).includes(norm) || norm.includes(getVolumeSlug(c.title)));
+  // Match by partial title or slug
+  match = CATEGORIES.find(c => (c.slug && (c.slug.includes(norm) || norm.includes(c.slug))) || getVolumeSlug(c.title).includes(norm) || norm.includes(getVolumeSlug(c.title)));
   return match || null;
 }
 
@@ -949,10 +949,10 @@ app.get("/sitemap.xml", async (req, res) => {
     <priority>0.9</priority>
   </url>`;
 
-    // Add all 46 Encyclopedia Volumes cleanly with standard slug URLs
+    // Add all 50 Encyclopedia Volumes cleanly with standard slug URLs
     const seenVolumeSlugs = new Set<string>();
     for (const cat of CATEGORIES) {
-      const slug = getVolumeSlug(cat.title);
+      const slug = cat.slug || getVolumeSlug(cat.title);
       if (!seenVolumeSlugs.has(slug)) {
         seenVolumeSlugs.add(slug);
         xml += `
@@ -1056,7 +1056,7 @@ app.get("/encyclopedia/:slug", async (req, res) => {
 </html>`);
     }
 
-    const canonicalSlug = getVolumeSlug(volume.title);
+    const canonicalSlug = volume.slug || getVolumeSlug(volume.title);
 
     // If requested by ID (e.g. /encyclopedia/32 or /encyclopedia/08) or non-canonical slug, 301 redirect to canonical slug URL
     if (reqSlug.toLowerCase() !== canonicalSlug.toLowerCase()) {
@@ -1070,12 +1070,13 @@ app.get("/encyclopedia/:slug", async (req, res) => {
 
     // Related links HTML
     let relatedLinksHtml = "";
-    if (volume.relatedVolumeIds && volume.relatedVolumeIds.length > 0) {
+    const relatedList = volume.relatedVolumes || volume.relatedVolumeIds || [];
+    if (relatedList.length > 0) {
       relatedLinksHtml = `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top:1.5rem;">`;
-      for (const relSlug of volume.relatedVolumeIds) {
+      for (const relSlug of relatedList) {
         const relVol = findVolume(relSlug);
         const relTitle = relVol ? relVol.title : relSlug.split("-").map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-        const targetSlug = relVol ? getVolumeSlug(relVol.title) : relSlug;
+        const targetSlug = relVol ? (relVol.slug || getVolumeSlug(relVol.title)) : relSlug;
         relatedLinksHtml += `
           <a href="/encyclopedia/${targetSlug}" style="background-color:rgba(74,21,44,0.04); border:1px solid rgba(74,21,44,0.15); border-radius:4px; padding:1.2rem; text-decoration:none; color:#4A152C; transition:all 0.2s;">
             <strong style="display:block; font-family:'Merriweather', serif; font-size:1.05rem; margin-bottom:0.4rem;">${relTitle}</strong>
@@ -1086,14 +1087,14 @@ app.get("/encyclopedia/:slug", async (req, res) => {
     } else {
       // Generate default related links from adjacent volumes
       relatedLinksHtml = `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top:1.5rem;">`;
-      const curIdx = CATEGORIES.findIndex(c => c.id === volume.id || getVolumeSlug(c.title) === canonicalSlug);
+      const curIdx = CATEGORIES.findIndex(c => c.id === volume.id || (c.slug && c.slug === canonicalSlug) || getVolumeSlug(c.title) === canonicalSlug);
       const adjacent = [
         CATEGORIES[(curIdx + 1) % CATEGORIES.length],
         CATEGORIES[(curIdx + 2) % CATEGORIES.length]
       ].filter(Boolean);
       for (const relVol of adjacent) {
         relatedLinksHtml += `
-          <a href="/encyclopedia/${getVolumeSlug(relVol.title)}" style="background-color:rgba(74,21,44,0.04); border:1px solid rgba(74,21,44,0.15); border-radius:4px; padding:1.2rem; text-decoration:none; color:#4A152C; transition:all 0.2s;">
+          <a href="/encyclopedia/${relVol.slug || getVolumeSlug(relVol.title)}" style="background-color:rgba(74,21,44,0.04); border:1px solid rgba(74,21,44,0.15); border-radius:4px; padding:1.2rem; text-decoration:none; color:#4A152C; transition:all 0.2s;">
             <strong style="display:block; font-family:'Merriweather', serif; font-size:1.05rem; margin-bottom:0.4rem;">${relVol.title}</strong>
             <span style="font-size:0.8rem; color:rgba(29,45,80,0.7);">Explore related exegesis &rarr;</span>
           </a>`;
@@ -1116,7 +1117,7 @@ app.get("/encyclopedia/:slug", async (req, res) => {
         }
         tablesHtml += `</tr></thead><tbody>`;
         for (const row of (tbl.rows || [])) {
-          const cells = row.cells || [];
+          const cells = Array.isArray(row) ? row : (row.cells || []);
           tablesHtml += `<tr style="border-bottom:1px solid rgba(74,21,44,0.1);">`;
           for (const cell of cells) {
             tablesHtml += `<td style="padding:0.75rem 1rem; border:1px solid rgba(74,21,44,0.1); color:#1D2D50; line-height:1.5;">${cell}</td>`;
