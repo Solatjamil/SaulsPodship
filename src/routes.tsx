@@ -18,6 +18,7 @@ import MusicPage from './pages/MusicPage';
 import PunjabiZaboorPage from './pages/PunjabiZaboorPage';
 import SingersArchivePage from './pages/SingersArchivePage';
 import StudioPage from './pages/StudioPage';
+import TheologicalArchivePage from './pages/TheologicalArchivePage';
 import SupportPage from './pages/SupportPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
@@ -80,6 +81,10 @@ export const routeConfig: RouteObject[] = [
       {
         path: 'studio',
         element: <StudioPage />
+      },
+      {
+        path: 'theological-archive',
+        element: <TheologicalArchivePage />
       },
       {
         path: 'support',
