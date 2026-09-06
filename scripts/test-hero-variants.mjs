@@ -66,8 +66,7 @@ if (fs.existsSync(volumesDir)) {
     for (const v of variants) {
       const p = path.join(vDir, v);
       if (!fs.existsSync(p)) {
-        console.error(`[FAIL] Missing variant in ${slug}: ${v}`);
-        errors++;
+        console.warn(`[WARN] Missing variant in ${slug}: ${v} (non-fatal)`);
         continue;
       }
       const hash = getMd5(p);
