@@ -39,6 +39,8 @@ export const SitemapPage: React.FC = () => {
             <Link to="/music/pakistani-singers-archive" className="text-[#4A152C] hover:underline font-semibold">Pakistani Singers Archive</Link>
             <Link to="/studio" className="text-[#4A152C] hover:underline font-semibold">Scriptorium AI Studio</Link>
             <Link to="/scholarly-standards" className="text-[#4A152C] hover:underline font-semibold">Scholarly Standards</Link>
+            <Link to="/theological-archive" className="text-[#4A152C] hover:underline font-semibold">Theological Archive (1000 Answers)</Link>
+            <Link to="/comparative-apologetics" className="text-[#4A152C] hover:underline font-semibold">Comparative Apologetics Codex</Link>
             <Link to="/about" className="text-[#4A152C] hover:underline font-semibold">About the Scriptorium</Link>
             <Link to="/support" className="text-[#4A152C] hover:underline font-semibold">Support &amp; Partner</Link>
             <Link to="/faq" className="text-[#4A152C] hover:underline font-semibold">Frequently Asked Questions</Link>

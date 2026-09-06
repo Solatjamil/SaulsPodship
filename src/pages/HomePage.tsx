@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import ArchivePillarCard from '../components/theology/ArchivePillarCard';
+import ComparativeApologeticsPillar from '../components/pillars/ComparativeApologeticsPillar';
 import { VOLUMES } from '../data/volumes';
 import { EPISODES } from '../data/episodes';
 import { PIONEERS_AND_SINGERS } from '../data/singers';
@@ -41,14 +42,14 @@ export const HomePage: React.FC = () => {
               Theological Heritage &amp; Foundations
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#4A152C] mt-2">
-              Four Pillars of Saul's Podship Scriptorium
+              Five Pillars of Saul's Podship Scriptorium
             </h2>
             <p className="text-sm sm:text-base text-gray-700 mt-2 font-light">
-              Rigorous biblical scholarship, sacred music preservation, classical hermeneutics, and rigorous apologetic archives made freely accessible for believers and scholars worldwide.
+              Rigorous biblical scholarship, sacred music preservation, classical hermeneutics, rigorous apologetic archives, and comparative apologetics made freely accessible for believers and scholars worldwide.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 w-full">
             <div className="p-8 rounded-3xl bg-white border border-[#4A152C]/10 shadow-sm flex flex-col items-center justify-between text-center group hover:border-[#D4AF37] transition-all">
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 rounded-2xl bg-[#4A152C]/10 text-[#4A152C] flex items-center justify-center mb-4 group-hover:bg-[#4A152C] group-hover:text-[#E8C96A] transition-colors">
@@ -98,6 +99,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             <ArchivePillarCard />
+            <ComparativeApologeticsPillar />
           </div>
         </div>
       </section>

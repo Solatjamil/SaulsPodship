@@ -49,7 +49,8 @@ const staticPages = [
   '/terms',
   '/disclaimer',
   '/sitemap',
-  '/theological-archive'
+  '/theological-archive',
+  '/comparative-apologetics'
 ];
 
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -61,7 +62,7 @@ for (const p of staticPages) {
     <loc>${BASE_URL}${p}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>${p === '' ? '1.0' : p === '/encyclopedia' || p === '/theological-archive' ? '0.9' : '0.8'}</priority>
+    <priority>${p === '' ? '1.0' : p === '/encyclopedia' || p === '/theological-archive' || p === '/comparative-apologetics' ? '0.9' : '0.8'}</priority>
   </url>
 `;
 }
@@ -98,6 +99,7 @@ let llmsTxt = `# Saul's Podship Scriptorium
 - [Homepage](${BASE_URL}/): Digital scriptorium portal featuring Leonardo da Vinci's Last Supper.
 - [50-Volume Encyclopedia](${BASE_URL}/encyclopedia): The complete catalog of biblical exegesis, data tables, and historical theology.
 - [Theological Archive](${BASE_URL}/theological-archive): 100 Tough Bible Questions & 1,000 Book-by-Book Bible Study Answers in English, Urdu, Hindi and Arabic across 5 traditions.
+- [Comparative Apologetics Codex](${BASE_URL}/comparative-apologetics): 400 critical dialogue questions across Islam, Judaism, Hinduism and Sikhism.
 - [Scholarly Standards](${BASE_URL}/scholarly-standards): Grammatical-historical hermeneutical framework and original language transliterations.
 - [Punjabi Zaboor](${BASE_URL}/music/punjabi-zaboor): Complete historical record of 150 biblical Psalms in native Punjabi verse (1898–1908).
 - [Pakistani Singers Archive](${BASE_URL}/music/pakistani-singers-archive): Historical archive of South Asian gospel musicians.
@@ -193,7 +195,7 @@ for (const v of volumes) {
 
 // Pre-render static HTML for all static pages
 for (const p of staticPages) {
-  if (p === '') continue; // dist/index.html already exists
+  if (p === '' || p === '/comparative-apologetics') continue; // dist/index.html already exists, codex has its own static index.html
   const targetDir = path.join(distDir, p.replace(/^\//, ''));
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });
@@ -204,6 +206,13 @@ for (const p of staticPages) {
     `<link rel="canonical" href="${pageCanonical}" />`
   );
   fs.writeFileSync(path.join(targetDir, 'index.html'), pageHtml, 'utf8');
+}
+
+// Ensure the standalone codex is in dist/comparative-apologetics/index.html
+const codexPublic = path.join(rootDir, 'public/comparative-apologetics/index.html');
+const codexDist = path.join(distDir, 'comparative-apologetics/index.html');
+if (fs.existsSync(codexPublic)) {
+  fs.copyFileSync(codexPublic, codexDist);
 }
 
 // 5. Generate 404.html
