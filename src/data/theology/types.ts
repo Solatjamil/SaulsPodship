@@ -32,7 +32,7 @@ export interface ArchiveItem {
   q: string;
   a: string;
   ref: string;
-  note?: string;
+  note?: string | null;
 }
 
 export interface ArchiveCategory {

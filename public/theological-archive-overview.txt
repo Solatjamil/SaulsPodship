@@ -1,0 +1,323 @@
+================================================================================
+THEOLOGICAL ARCHIVE - SAUL'S PODSHIP
+100 Tough Bible Questions & 1000 Book-by-Book Bible Study Answers
+================================================================================
+
+Content: 100 tough theology questions + 1,000 book-by-book Bible study answers
+Languages: English, Urdu, Hindi, Arabic
+Traditions: Catholic, Orthodox, Protestant, Anglican, Pentecostal
+Translation: Revised Version 1885/1895
+Source: https://www.saulspodship.com/theological-archive
+
+================================================================================
+PART 1: THE 100 TOUGH QUESTIONS
+================================================================================
+
+---
+QUESTION 1: WHERE DID GOD COME FROM?
+---
+
+SHORT ANSWER: God did not come from anywhere. He is uncreated and eternal — the one being who simply is, from whom everything else derives its existence.
+
+SCRIPTURE: Psalm 90:2 (RV 1885)
+"Before the mountains were brought forth, or ever thou hadst formed the earth and the world, even from everlasting to everlasting, thou art God."
+
+TIER: 1
+REGIONAL TAGS: PK, IN
+
+CATHOLIC VIEW:
+Aseity: God is ipsum esse subsistens, subsistent being itself, with no cause outside himself (Aquinas, ST I.3.4). Aquinas argues that in every creature essence and existence are distinct — a thing can be conceived without existing — whereas in God alone essence is existence. This is why the Fourth Lateran and First Vatican Councils speak of God as absolutely simple and immutable: there is nothing in him that could have been otherwise, and therefore nothing that required a cause.
+
+ORTHODOX VIEW:
+God's essence is utterly unknowable; we know him only through his uncreated energies, never as a caused being. The Cappadocian Fathers drew the decisive line between God's ousia (essence), which is entirely beyond creaturely knowledge, and his energeiai (energies), by which he genuinely acts upon and is known by creation. Gregory Palamas later defended this distinction against Barlaam: we truly encounter God, but never comprehend him, so the question 'where did God come from?' is malformed before it is answered.
+
+PROTESTANT VIEW:
+Scripture never argues for God's origin because he has none — 'from everlasting to everlasting' is a denial of the question's premise. The Reformers treated divine aseity less as a metaphysical thesis than as a pastoral one. If God depends on nothing, then his promises depend on nothing either — his faithfulness cannot be undermined by any circumstance outside himself, which is precisely the comfort Malachi 3:6 offers: 'I am the LORD, I change not; therefore ye sons of Jacob are not consumed.'
+
+ANGLICAN VIEW:
+Article I: God is 'everlasting, without body, parts, or passions' — infinite in power, wisdom and goodness. Article I's careful phrase 'without body, parts, or passions' is a compressed rejection of three errors at once: anthropomorphism, composition, and the notion that God can be acted upon by creatures against his will. Hooker develops the point in the Laws, arguing that God's law to himself is his own being, so obedience to God is never submission to arbitrary power.
+
+PENTECOSTAL VIEW:
+The eternal God is also the present God: the same 'I AM' who never began is the one who meets the believer now. Pentecostal preaching rarely argues aseity philosophically, but it assumes it constantly in worship: the God who was before the mountains is the God addressed in the room. The 'I AM' of Exodus 3:14 functions in Pentecostal spirituality as a present-tense name, which is why testimony language so often moves from what God did in Scripture straight to what he is doing now.
+
+---
+QUESTION 2: IF GOD IS GOOD, WHY IS THERE EVIL AND SUFFERING?
+---
+
+SHORT ANSWER: Scripture does not explain evil away; it says God is neither its author nor its victim, and that in Christ he entered suffering rather than merely permitting it.
+
+SCRIPTURE: Romans 8:28 (RV 1885)
+"And we know that to them that love God all things work together for good, even to them that are called according to his purpose."
+
+TIER: 1
+REGIONAL TAGS: PK, IN
+
+CATHOLIC VIEW:
+Evil is privatio boni — a lack of due good, not a substance; God permits it only to draw greater good from it. Because evil is a privation rather than a substance, it cannot have been created — God creates only being, and evil is a defect in being. Catholic teaching therefore distinguishes physical evil, permitted within a world of genuine secondary causes, from moral evil, which arises solely from the misuse of created freedom. The Catechism adds that God permits evil only because he is powerful enough to draw good from it (CCC 311-324).
+QUOTE: "Evil is the privation of a good." — St. Thomas Aquinas, Summa Theologica I, Q.49, A.1
+
+ORTHODOX VIEW:
+Evil is the misuse of created freedom; the cross and resurrection heal creation rather than merely justify God. Eastern theology is markedly less interested in justifying God than in defeating death. The Paschal troparion — 'trampling down death by death' — states the answer liturgically: God's response to evil is not an explanation but an invasion. Suffering is therefore approached through participation in Christ's descent rather than through a theoretical theodicy.
+QUOTE: "Evil is nothing else than absence of goodness, just as darkness also is absence of light." — St. John of Damascus, An Exact Exposition of the Orthodox Faith
+
+PROTESTANT VIEW:
+Free will, the fall, and God's sovereign purpose are held together: Gen 50:20 and Rom 8:28 refuse both fatalism and chance. Reformed thought distinguishes God's decretive will (what he ordains shall come to pass) from his preceptive will (what he commands), allowing Scripture to say both that Joseph's brothers sinned and that God meant it for good. Arminian theology instead grounds evil in the genuine libertarian freedom God granted, arguing that a world capable of love must be a world capable of refusal.
+QUOTE: "Evil has no positive nature; but the loss of good has received the name 'evil.'" — St. Augustine, Enchiridion, Ch. 4
+
+ANGLICAN VIEW:
+A pastoral rather than speculative answer: the Church laments with Job and trusts without a full theodicy. Anglican divines have generally resisted systematic theodicy in favour of liturgical lament. The Prayer Book gives the sufferer the Psalter — including Psalm 88 — rather than an argument, on the conviction that the Church's first duty to the afflicted is to give them words, not reasons.
+
+PENTECOSTAL VIEW:
+Suffering is real but not final; the Spirit both comforts in it and breaks into it with healing and deliverance. Pentecostal theology tends to read suffering as contested territory rather than settled providence: much of it is attributed to a real enemy whose works Christ came to destroy (1 John 3:8). This yields an activist posture — pray, resist, expect intervention — though the movement's more mature voices increasingly hold this together with a theology of endurance drawn from Paul's unremoved thorn.
+
+---
+QUESTION 3: HOW CAN GOD BE THREE PERSONS AND ONE GOD?
+---
+
+SHORT ANSWER: One divine essence subsisting in three distinct Persons — not three gods, not one Person in three masks. The distinction is of relation, not of substance.
+
+SCRIPTURE: Matthew 28:19 (RV 1885)
+"Go ye therefore, and make disciples of all the nations, baptizing them into the name of the Father and of the Son and of the Holy Spirit."
+
+TIER: 1
+REGIONAL TAGS: PK, IN
+
+CATHOLIC VIEW:
+Persons are subsistent relations; the Spirit proceeds from the Father and the Son (filioque). Augustine's De Trinitate supplies the Western grammar: the Persons are distinguished only by their relations of origin — the Father unbegotten, the Son begotten, the Spirit spirated. Everything else is common to all three, which is why the Latin axiom holds that the external works of the Trinity are undivided (opera ad extra indivisa sunt): creation, redemption and sanctification are the work of the whole Godhead.
+
+ORTHODOX VIEW:
+The Father is the sole fountainhead (monarchia); the Spirit proceeds from the Father through the Son. The East begins not with the one essence but with the Father as sole source (monarchia), from whom the Son is begotten and the Spirit proceeds. This ordering is why Orthodoxy objects to the filioque not merely as an unauthorised insertion into the Creed but as a theological error that, in their reading, subordinates the Spirit and blurs the Father's unique role.
+QUOTE: "He who is called God and appeared to the patriarchs is called both Angel and Lord, in order that… you may understand Him to be minister to the Father of all things." — St. Justin Martyr, Dialogue with Trypho, Ch. 58
+
+PROTESTANT VIEW:
+Fully affirmed as the Nicene faith, defended from Scripture rather than from conciliar authority alone. The Reformers received Nicaea wholesale and defended it exegetically rather than by conciliar appeal — Calvin's Institutes I.13 assembles the biblical case at length. Warfield's later formulation is widely quoted: the Old Testament is a room fully furnished but dimly lit, and the New Testament turns on the light rather than adding furniture.
+QUOTE: "Three, however, not in condition, but in degree; not in substance, but in form… yet of one substance, and of one condition, and of one power." — Tertullian, Against Praxeas, Ch. 2
+
+ANGLICAN VIEW:
+Article I confesses three Persons of one substance, power and eternity; the Athanasian Creed is retained. Anglicanism retains all three ecumenical creeds, including the Athanasian, whose recitation the Prayer Book once appointed for major feasts. Its uncompromising clauses — 'neither confounding the Persons, nor dividing the Substance' — were kept precisely because the errors they exclude recur in every generation.
+
+PENTECOSTAL VIEW:
+Trinitarian Pentecostals hold the classic creed; Oneness Pentecostals dissent, teaching modes of one Person. The Oneness–Trinitarian split of 1913-16 was the most serious doctrinal division in Pentecostal history, turning on baptismal formula and the nature of the Godhead. The Assemblies of God adopted its Statement of Fundamental Truths in 1916 largely to settle the matter, and classical Pentecostalism has been firmly trinitarian since, while Oneness bodies remain numerically significant.
+
+---
+QUESTION 4: DID GOD CREATE SIN?
+---
+
+SHORT ANSWER: God created beings capable of choosing, and that capacity was good. Sin arose from the misuse of that freedom, not from a defect in what God made.
+
+SCRIPTURE: James 1:13 (RV 1885)
+"Let no man say when he is tempted, I am tempted of God: for God cannot be tempted with evil, and he himself tempteth no man."
+
+TIER: 2
+
+CATHOLIC VIEW:
+God permits but never causes moral evil; he is not the deficient cause of the defective act. Aquinas explains that God is the cause of the act of sin insofar as it is an act (all being comes from God), but not of its defect, which arises from the deficient created will. The analogy offered is a limping man: the power to move comes from the leg, the limp from its injury. God supplies the motion; the creature supplies the deviation.
+
+ORTHODOX VIEW:
+Sin is a movement away from being toward non-being — a parasite on the good, with no created substance. Following Athanasius and Maximus, Orthodoxy treats sin as a movement toward non-being — a failure of the creature to move toward the God for whom it was made. Sin is therefore parasitic and ultimately self-destroying, which is why salvation is framed as healing and restoration to true existence rather than as the reversal of a legal sentence alone.
+
+PROTESTANT VIEW:
+Reformed theology distinguishes God's decree to permit from his authorship: he ordains that sin be, without sinning. The Westminster Confession III.1 states the position with unusual care: God ordains whatsoever comes to pass, 'yet so as thereby neither is God the author of sin, nor is violence offered to the will of the creatures.' Critics call this an assertion rather than an explanation; defenders reply that Scripture asserts both and that no further explanation has been revealed.
+
+ANGLICAN VIEW:
+Article IX locates the fault in the corrupted nature of man, not in the Creator. Article IX locates original sin in the 'fault and corruption of the Nature of every man,' explicitly denying the Pelagian view that sin is merely imitation of Adam's bad example. The Article's language of concupiscence remaining even in the regenerate keeps Anglican spirituality realistic about ongoing struggle.
+
+PENTECOSTAL VIEW:
+Emphasis falls on the reality of Satan as tempter and on the Spirit's power to break sin's dominion. Pentecostal teaching foregrounds the personal agency of the tempter — 'your adversary the devil' is treated as a genuine actor rather than a symbol. The practical consequence is that sin is addressed on two fronts at once: repentance for genuine human guilt, and resistance against an external accuser who has no right to the believer.
+
+---
+QUESTION 5: WHY DID GOD ALLOW SATAN TO EXIST?
+---
+
+SHORT ANSWER: Satan is a creature, not a rival deity. His existence is permitted within strict limits, and his defeat is already accomplished at the cross.
+
+SCRIPTURE: Job 1:12 (RV 1885)
+"And the LORD said unto Satan, Behold, all that he hath is in thy power; only upon himself put not forth thine hand."
+
+TIER: 2
+
+CATHOLIC VIEW:
+The devil's fall was a definitive angelic choice; his power is real but permitted and bounded. Catholic teaching holds that the angelic fall was an irrevocable choice made with full knowledge, which is why it admits no repentance — the angelic intellect does not deliberate over time as ours does. The Church nonetheless insists the devil's power is finite and permitted: 'he cannot prevent the building up of God's reign' (CCC 395).
+
+ORTHODOX VIEW:
+The demonic is engaged chiefly through asesis, prayer and the Church's exorcistic rites. Orthodoxy treats the demonic primarily as a matter of ascetic experience rather than speculative angelology. The Philokalia catalogues the logismoi — intrusive thoughts by which the enemy works — and prescribes watchfulness (nepsis) and the Jesus Prayer as the ordinary defence, with formal exorcism reserved to the priest.
+
+PROTESTANT VIEW:
+Satan is a defeated foe whose remaining activity serves, unwillingly, the purposes of God. Luther's counsel was characteristically blunt: the devil is defeated, and 'one little word shall fell him.' Reformed theology adds that Satan operates only within divinely set limits, as Job 1:12 makes explicit — the accuser must ask permission, and receives it bounded.
+
+ANGLICAN VIEW:
+Renunciation of 'the devil and all his works' remains central to the baptismal liturgy. The baptismal renunciation of 'the devil and all his works, the vain pomp and glory of the world' is retained in every Prayer Book revision. Anglican deliverance ministry is regulated: since 1975 English dioceses have required that any exorcism be authorised by the bishop and conducted in consultation with medical practitioners.
+
+PENTECOSTAL VIEW:
+Spiritual warfare is a practised discipline: binding, resisting and casting out in Jesus' name. Spiritual warfare is a developed practice rather than a doctrine held in reserve — binding and loosing, pleading the blood, and territorial intercession all feature, though the last is contested even within the movement. Critics inside Pentecostalism warn that an overdeveloped demonology can eclipse both human responsibility and the finished work of the cross.
+
+---
+QUESTION 6: IS GOD'S SOVEREIGNTY COMPATIBLE WITH HUMAN FREE WILL?
+---
+
+SHORT ANSWER: Scripture asserts both without resolving the mechanism: God works genuinely, and human choices are genuinely ours and genuinely accountable.
+
+SCRIPTURE: Philippians 2:12-13 (RV 1885)
+"Work out your own salvation with fear and trembling; for it is God which worketh in you both to will and to work, for his good pleasure."
+
+TIER: 2
+
+CATHOLIC VIEW:
+Grace perfects nature; free cooperation with grace is required and itself enabled by grace. The Molinist–Thomist controversy (the Congregatio de Auxiliis, 1597-1607) debated this question so fiercely that Rome finally forbade either side to call the other heretical. Molina proposed divine 'middle knowledge' of what free creatures would do in any circumstance; the Dominicans held to physical premotion. The Church has never settled the matter, permitting both.
+
+ORTHODOX VIEW:
+Synergy — God and the human person work together, without grace overriding personhood. Synergy (synergeia) is drawn from 1 Corinthians 3:9, 'we are labourers together with God.' The East insists this does not divide credit — grace remains wholly prior and wholly gift — but preserves the person as a genuine agent rather than a passive site of divine action, since love that cannot be withheld is not love.
+
+PROTESTANT VIEW:
+Calvinists stress effectual grace and monergism; Arminians stress resistible grace and libertarian freedom. The Synod of Dort (1618-19) answered the Arminian Remonstrance with the five heads later summarised as TULIP, of which irresistible grace is the point most directly at issue here. Wesley's later Arminianism accepted total depravity but added prevenient grace, arguing that God restores the capacity to respond to everyone rather than effectually converting some.
+
+ANGLICAN VIEW:
+Article X: we have no power to do good works without the grace of God preventing us. Article X — 'we have no power to do good works pleasant and acceptable to God, without the grace of God by Christ preventing us' — uses 'preventing' in its older sense of going before. The formulary is deliberately broad enough to house both Calvinist and Arminian Anglicans, as it has since the seventeenth century.
+
+PENTECOSTAL VIEW:
+Strongly emphasises free response to the gospel and to the Spirit's continual invitation. The 'whosoever will' of Revelation 22:17 functions almost as a Pentecostal motto, and the altar call presupposes a genuine and immediate power of response. A minority Reformed-charismatic stream dissents, holding effectual calling alongside continuationism.
+
+---
+QUESTION 7: WHAT DOES IT MEAN THAT JESUS IS FULLY GOD AND FULLY MAN?
+---
+
+SHORT ANSWER: One Person in two complete natures, divine and human, united without confusion, change, division or separation — the Chalcedonian definition of AD 451.
+
+SCRIPTURE: Colossians 2:9 (RV 1885)
+"For in him dwelleth all the fulness of the Godhead bodily."
+
+TIER: 2
+
+CATHOLIC VIEW:
+Chalcedon is dogma; the communicatio idiomatum permits saying God suffered in the flesh. The Chalcedonian formula is protected by the doctrine of the communicatio idiomatum: because there is one Person, what is true of either nature may be predicated of the Person. Hence the Church can say God was born and God died — statements true of the one Person according to his humanity, and blasphemous if taken of the divine nature as such.
+
+ORTHODOX VIEW:
+Chalcedon affirmed, with strong stress on two wills and two energies (Sixth Council). The Sixth Ecumenical Council (Constantinople III, 681) added the decisive clarification against monothelitism: two natures entail two wills and two energies, the human will freely and always deferring to the divine. Maximus the Confessor was mutilated and exiled for this position before it was vindicated, and Gethsemane — 'not my will, but thine' — is its scriptural anchor.
+
+PROTESTANT VIEW:
+Held firmly; the kenosis of Phil 2 is read as veiling, not surrender, of divine attributes. Lutheran and Reformed christology diverged over the genus maiestaticum: whether the human nature receives divine attributes such as ubiquity. Lutherans said yes, grounding the bodily presence in the Supper; the Reformed said no, insisting the finite cannot contain the infinite — the so-called extra Calvinisticum.
+
+ANGLICAN VIEW:
+Article II: two whole and perfect natures joined together in one Person, never to be divided. Article II's phrase 'two whole and perfect Natures... never to be divided, whereof is one Christ' is verbally close to Chalcedon and was framed to exclude both Anabaptist and continental speculations current in the 1550s.
+
+PENTECOSTAL VIEW:
+Practical emphasis: the Spirit-anointed humanity of Jesus is the model for Spirit-filled ministry. Pentecostal christology is orthodox but functionally focused: attention falls on Luke 4:18 and Acts 10:38, where Jesus ministers in the power of the Spirit. This 'Spirit christology' grounds the movement's expectation that the same Spirit enables the same works in the church.
+
+---
+QUESTION 8: DID JESUS HAVE TO DIE, OR WAS THERE ANOTHER WAY?
+---
+
+SHORT ANSWER: The New Testament treats the cross as necessary given God's justice and mercy together — Gethsemane's 'if it be possible' received no alternative.
+
+SCRIPTURE: Hebrews 9:22 (RV 1885)
+"And according to the law, I may almost say, all things are cleansed with blood, and apart from shedding of blood there is no remission."
+
+TIER: 2
+
+CATHOLIC VIEW:
+Satisfaction: Christ offers to the Father a reparation of infinite worth for the offence of sin. Anselm's Cur Deus Homo supplies the Western framework: sin is an infinite offence against infinite honour, which only one who is both God (of infinite worth) and man (the party who owes) can repair. The Mass is understood as the re-presentation, not repetition, of that one offering (CCC 1367).
+
+ORTHODOX VIEW:
+Christus Victor and recapitulation: death is destroyed from within by the death of the Deathless One. The East never adopted Anselm and generally regards satisfaction and penal categories as juridically overloaded. Irenaeus' recapitulation — Christ retraces and heals every stage of human life — and Athanasius' argument in On the Incarnation that corruption could only be undone from within a real human body, remain the governing accounts.
+
+PROTESTANT VIEW:
+Penal substitution: Christ bears the judicial penalty due to sinners in their place. Penal substitution was articulated most sharply by Calvin and the Reformed confessions, resting on Isaiah 53:5-6, 2 Corinthians 5:21 and Galatians 3:13. It has faced sustained internal criticism in the last century as allegedly depicting divine child abuse; defenders reply that the Trinity means God is not punishing a third party but bearing the cost in himself.
+
+ANGLICAN VIEW:
+Article XXXI: the offering of Christ once made is the perfect redemption and satisfaction for all sin. Article XXXI's insistence that Christ's offering is 'the perfect redemption, propitiation, and satisfaction, for all the sins of the whole world' and that there is 'none other satisfaction for sin but that alone' was aimed directly at the doctrine of the sacrifice of the Mass as then understood.
+
+PENTECOSTAL VIEW:
+The atonement is proclaimed as securing forgiveness, healing, deliverance and Spirit-baptism. The 'fourfold' or 'fivefold gospel' — Jesus as Saviour, Sanctifier, Healer, Spirit-Baptiser and Coming King — organises Pentecostal atonement theology. Whether physical healing is secured 'in the atonement' on the basis of Isaiah 53:4 and Matthew 8:17 remains debated within the movement.
+
+---
+QUESTION 9: IS FAITH ALONE ENOUGH FOR SALVATION?
+---
+
+SHORT ANSWER: All traditions agree salvation is by grace and that saving faith is never barren. They differ on whether works are the fruit of justification or part of its ground.
+
+SCRIPTURE: Ephesians 2:8-9 (RV 1885)
+"For by grace have ye been saved through faith; and that not of yourselves: it is the gift of God: not of works, that no man should glory."
+
+TIER: 1
+REGIONAL TAGS: PK, IN
+
+CATHOLIC VIEW:
+Justification is by grace through faith formed by charity; works done in grace truly merit increase of grace. Trent's Sixth Session (1547) affirmed that we are justified freely, that faith is the beginning and root of justification, and simultaneously anathematised the claim that faith alone suffices. The distinction turns on whether justification is a declaration about our status or a transformation of our condition — Trent said both, in one movement.
+
+ORTHODOX VIEW:
+Salvation is a healing process of theosis; the faith/works dichotomy is regarded as a Western framing. Orthodoxy generally regards the entire debate as a Western family quarrel conducted in legal categories the East never adopted. Salvation is described therapeutically as theosis: not a verdict handed down but a lifelong healing, so that asking whether faith alone justifies is like asking whether diagnosis alone cures.
+
+PROTESTANT VIEW:
+Sola fide: faith alone justifies, but the faith that justifies is never alone. The formula that clarifies the Protestant position is fides sola iustificat, sed non fides quae est sola — faith alone justifies, but not the faith that is alone. James 2 is read as testing the authenticity of professed faith rather than adding a second ground, and the 1999 Lutheran–Catholic Joint Declaration on Justification claimed a genuine, if partial, convergence.
+QUOTE: "St. James' epistle is really an epistle of straw, compared to [Romans, Galatians, and Ephesians]; for it has nothing of the nature of the Gospel about it." — Martin Luther, Preface to the New Testament, 1522
+
+ANGLICAN VIEW:
+Article XI: we are justified by faith only; Article XII: good works follow after justification. Articles XI and XII are deliberately sequential: justification by faith only is 'a most wholesome Doctrine, and very full of comfort,' and good works, though they cannot put away sins, 'do spring out necessarily of a true and lively Faith.' Cranmer's Homily of Salvation is the appointed exposition.
+
+PENTECOSTAL VIEW:
+Faith is evidenced by transformed life and Spirit-empowered witness; assurance is experiential as well as forensic. Pentecostals affirm justification by faith while placing heavy weight on evidence — a changed life, a testimony, and often a datable conversion. The Wesleyan-holiness roots of the movement add a doctrine of subsequent sanctification, which distinguishes Pentecostalordo salutis from the classical Reformed one.
+
+---
+QUESTION 10: CAN A SAVED PERSON LOSE SALVATION?
+---
+
+SHORT ANSWER: Scripture holds together strong promises of preservation and severe warnings against falling away; every tradition must account for both sets of texts.
+
+SCRIPTURE: John 10:28 (RV 1885)
+"And I give unto them eternal life; and they shall never perish, and no one shall snatch them out of my hand."
+
+TIER: 1
+
+CATHOLIC VIEW:
+Grace can be lost through mortal sin and restored through the sacrament of penance. Because sanctifying grace can be lost by mortal sin and restored through penance, Catholic teaching also denies that anyone can have infallible certainty of final perseverance apart from special revelation (Trent, Session VI, ch. 12). Assurance is real but moral rather than absolute — a confidence grounded in the sacraments rather than in introspection.
+
+ORTHODOX VIEW:
+Salvation is a lifelong path that can be abandoned; repentance is always open until death. The East frames the question as one of direction rather than status. Salvation is a road, and the possibility of turning off it remains until death — which is why the tradition's confidence is placed in continual repentance and the Church's sacramental life rather than in a decisive past moment.
+
+PROTESTANT VIEW:
+Reformed teach perseverance of the saints; Arminians teach that persistent unbelief can forfeit grace. The Canons of Dort's fifth head grants that the elect may fall grievously and for a time lose the sense of God's favour, yet God preserves the seed of regeneration. Arminians answer with Hebrews 6 and 10 and with 1 Corinthians 9:27; the exegetical stalemate has proved remarkably stable for four centuries.
+
+ANGLICAN VIEW:
+Article XVI: those who fall into sin after baptism may by grace rise again and amend their lives. Article XVI was framed against both presumption and despair: sin after baptism is not unpardonable, and 'we may depart from grace given, and fall into sin, and by the grace of God we may arise again.' Article XVII adds that predestination is comfort to the godly but a 'dangerous downfall' to the curious.
+
+PENTECOSTAL VIEW:
+Most Pentecostals hold salvation can be forfeited by settled apostasy, urging continual walk in the Spirit. Most classical Pentecostal statements of faith are Arminian on this point, teaching that persistent, wilful apostasy forfeits salvation. In practice, preaching stresses continual walking in the Spirit rather than anxious self-examination, and the pastoral emphasis is on restoration of the backslidden.
+
+================================================================================
+[Content continues with remaining 90 questions...]
+================================================================================
+
+For the complete 100 questions with all theological content, please use the JSON file:
+theological-archive-data.json
+
+This text file contains a curated selection of the most important questions.
+For full content, refer to the JSON format file.
+
+================================================================================
+CATEGORIES IN THE ARCHIVE
+================================================================================
+
+1. Law & Pentateuch - 87 questions
+2. Historical Books - 133 questions
+3. Wisdom & Psalms - 107 questions
+4. Prophets - 149 questions
+5. Gospels - 97 questions
+6. Acts - 65 questions
+7. Letters - 188 questions
+8. Apocalypse - 71 questions
+9. Apocrypha (RV 1885/1895) - 48 questions
+10. Cross-Cutting Topics - 60 questions
+11. Chronology & History - 50 questions
+
+TOTAL: 1,055 questions across 11 categories
+
+================================================================================
+PROVENANCE
+================================================================================
+
+All scripture quotations are from the Revised Version 1885/1895.
+All quotations are word-for-word and unparaphrased.
+Licence: CC-BY-NC
+Source: Saul's Podship Theological Archive
+
+================================================================================

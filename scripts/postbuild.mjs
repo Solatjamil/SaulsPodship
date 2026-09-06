@@ -48,7 +48,8 @@ const staticPages = [
   '/privacy',
   '/terms',
   '/disclaimer',
-  '/sitemap'
+  '/sitemap',
+  '/theological-archive'
 ];
 
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -60,7 +61,7 @@ for (const p of staticPages) {
     <loc>${BASE_URL}${p}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>${p === '' ? '1.0' : p === '/encyclopedia' ? '0.9' : '0.8'}</priority>
+    <priority>${p === '' ? '1.0' : p === '/encyclopedia' || p === '/theological-archive' ? '0.9' : '0.8'}</priority>
   </url>
 `;
 }
@@ -84,6 +85,7 @@ const robotsTxt = `User-agent: *
 Allow: /
 
 Sitemap: ${BASE_URL}/sitemap.xml
+Sitemap: ${BASE_URL}/sitemap-theological-archive.xml
 `;
 fs.writeFileSync(path.join(distDir, 'robots.txt'), robotsTxt, 'utf8');
 console.log(`[POSTBUILD] Generated dist/robots.txt`);
@@ -95,6 +97,7 @@ let llmsTxt = `# Saul's Podship Scriptorium
 ## Core Sections
 - [Homepage](${BASE_URL}/): Digital scriptorium portal featuring Leonardo da Vinci's Last Supper.
 - [50-Volume Encyclopedia](${BASE_URL}/encyclopedia): The complete catalog of biblical exegesis, data tables, and historical theology.
+- [Theological Archive](${BASE_URL}/theological-archive): 100 Tough Bible Questions & 1,000 Book-by-Book Bible Study Answers in English, Urdu, Hindi and Arabic across 5 traditions.
 - [Scholarly Standards](${BASE_URL}/scholarly-standards): Grammatical-historical hermeneutical framework and original language transliterations.
 - [Punjabi Zaboor](${BASE_URL}/music/punjabi-zaboor): Complete historical record of 150 biblical Psalms in native Punjabi verse (1898–1908).
 - [Pakistani Singers Archive](${BASE_URL}/music/pakistani-singers-archive): Historical archive of South Asian gospel musicians.
