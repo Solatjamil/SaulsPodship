@@ -31,7 +31,7 @@ const ComingSoonOverlay: React.FC<{ text?: string }> = ({ text = "Content Coming
   </div>
 );
 
-const Section: React.FC<{ children: React.ReactNode; id: string; className?: string }> = ({ children, id, className = "" }) => (
+const Section: React.FC<{ children: React.ReactNode; id: string; className?: string; style?: React.CSSProperties }> = ({ children, id, className = "", style }) => (
   <motion.section
     id={id}
     initial={{ opacity: 0, y: 50 }}
@@ -39,6 +39,7 @@ const Section: React.FC<{ children: React.ReactNode; id: string; className?: str
     viewport={{ once: true, margin: "-100px" }}
     transition={{ duration: 0.8, ease: "easeOut" }}
     className={`py-24 px-6 max-w-7xl mx-auto ${className}`}
+    style={style}
   >
     {children}
   </motion.section>
@@ -506,7 +507,7 @@ const App: React.FC = () => {
       return activeImages[id];
     }
 
-    // Curated high-quality, reliable, stunning classical art and theological Unsplash images for all 46 volumes
+    // Curated high-quality, reliable, stunning classical art and theological Unsplash images for all 50 volumes
     const unsplashMapping: Record<string, string> = {
       "01": "1504052434569-70ad5836ab65", // Holy Bible
       "02": "1457369804613-52c61a468e7d", // Aged writing/numerology
@@ -537,23 +538,27 @@ const App: React.FC = () => {
       "27": "1558591710-4b4a1ae0f04d", // Divine statue
       "28": "1515003197210-e0cd71810b5f", // Prayer
       "29": "1475924156734-496f6cac6ec1", // Messianic sunset
-      "30": "1492691527719-9d1e07e534b4", // Sunbeams God
-      "31": "1507608869274-d3177c8bb4c7", // Jesus cross
-      "32": "1532012197267-da84d127e765", // Open book canon
-      "33": "1455390582262-044cdead277a", // Scribe hand sayings
-      "34": "1546410531-bb4caa6b424d", // Languages Hebrew/Greek
-      "35": "1541432901042-2d8bd64b4a9b", // Ancient civilization stone
-      "36": "1511671782779-c97d3d27a1d4", // Harp string Psalms
-      "37": "1461360370896-922624d12aa1", // Apocalypse lightning
-      "38": "1501854140801-50d01698950b", // Mountain Sermon
-      "39": "1498243691581-b145c3f54a5a", // Parchment scroll
-      "40": "1529156069898-49953e39b3ac", // Systematic theology library
-      "41": "1447069387593-a5de0862481e", // Stone tablets law
-      "42": "1512343879784-a960bf40e7f2", // Magi night star
-      "43": "1518609878373-06d740f60d8b", // True Worship candle & hands
-      "44": "1552832230-c0197dd311b5", // Vatican architecture history
-      "45": "1516450360452-9312f5e86fc7", // Gothic church starry
-      "46": "1517048676732-d65bc937f952", // Gen Z study
+      "30": "1504052434569-70ad5836ab65", // Miracles of Jesus & Apostles
+      "31": "1492691527719-9d1e07e534b4", // Sunbeams God
+      "32": "1507608869274-d3177c8bb4c7", // Jesus cross
+      "33": "1532012197267-da84d127e765", // Open book canon
+      "34": "1455390582262-044cdead277a", // Scribe hand sayings
+      "35": "1546410531-bb4caa6b424d", // Languages Hebrew/Greek
+      "36": "1516979187457-637abb4f9353", // Parables of Jesus / Prodigal son
+      "37": "1541432901042-2d8bd64b4a9b", // Ancient civilization stone
+      "38": "1511671782779-c97d3d27a1d4", // Harp string Psalms
+      "39": "1461360370896-922624d12aa1", // Apocalypse lightning
+      "40": "1501854140801-50d01698950b", // Mountain Sermon
+      "41": "1498243691581-b145c3f54a5a", // Parchment scroll / Last words
+      "42": "1529156069898-49953e39b3ac", // Systematic theology library
+      "43": "1447069387593-a5de0862481e", // Stone tablets law
+      "44": "1544005313-94ddf0286df2", // Five Offerings of Leviticus
+      "45": "1512343879784-a960bf40e7f2", // Magi night star
+      "46": "1518609878373-06d740f60d8b", // True Worship candle & hands
+      "47": "1605721911519-3dfeb3be25e7", // Types of bad spirits / Saul & David
+      "48": "1552832230-c0197dd311b5", // Vatican architecture history
+      "49": "1516450360452-9312f5e86fc7", // Gothic church starry
+      "50": "1517048676732-d65bc937f952", // Gen Z study
     };
 
     if (unsplashMapping[id]) {
@@ -783,8 +788,42 @@ const App: React.FC = () => {
     setShowCookieConsent(false);
   };
   
-  // Preferences State
-  const [brightnessMode, setBrightnessMode] = useState<'light' | 'sepia' | 'dark'>('dark');
+  // Preferences State - Default to Light Mode as requested
+  const [brightnessMode, setBrightnessMode] = useState<'light' | 'sepia' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('sauls-podship-theme') || localStorage.getItem('theophilus-theme-mode');
+        if (saved === 'light' || saved === 'dark' || saved === 'sepia') {
+          return saved;
+        }
+      } catch (e) {
+        console.error("Failed to read theme from localStorage:", e);
+      }
+    }
+    return 'light'; // Light mode is the default mode
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('sauls-podship-theme', brightnessMode);
+      if (brightnessMode === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.body.style.backgroundColor = '#0a0f1c';
+        document.body.style.color = '#ffffff';
+      } else if (brightnessMode === 'sepia') {
+        document.documentElement.classList.remove('dark');
+        document.body.style.backgroundColor = '#E0C9A6';
+        document.body.style.color = '#3E2723';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.body.style.backgroundColor = '#F8F4E3';
+        document.body.style.color = '#1D2D50';
+      }
+    } catch (e) {
+      console.error("Failed to save theme to localStorage:", e);
+    }
+  }, [brightnessMode]);
+
   const [fontSize, setFontSize] = useState(18);
   const [lineHeight, setLineHeight] = useState(1.6);
   const [useSerif, setUseSerif] = useState(true);
@@ -826,6 +865,18 @@ const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const openVolumeByNumber = (volNum: number | string) => {
+    const target = CATEGORIES.find(c => c.number === Number(volNum) || String(c.id) === String(volNum));
+    if (target) {
+      setSelectedCategory(target);
+      setCurrentView('encyclopedia');
+      setIsMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      handleBibleLink();
+    }
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentView, selectedCategory]);
@@ -844,9 +895,36 @@ const App: React.FC = () => {
 
   // Dynamic Theme Styling
   const themeStyles = {
-    light: { bg: '#F8F4E3', text: '#1D2D50', card: 'rgba(0,0,0,0.05)', border: 'rgba(0,0,0,0.1)' },
-    sepia: { bg: '#E0C9A6', text: '#5D4037', card: 'rgba(0,0,0,0.07)', border: 'rgba(93, 64, 55, 0.2)' },
-    dark: { bg: '#0a0f1c', text: '#ffffff', card: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.1)' }
+    light: { 
+      bg: '#F8F4E3', 
+      text: '#1D2D50', 
+      textMuted: 'rgba(29, 45, 80, 0.75)',
+      card: '#FFFFFF', 
+      cardSubtle: '#FAF7EC',
+      border: 'rgba(74, 21, 44, 0.12)', 
+      borderDashed: 'rgba(212, 175, 55, 0.35)',
+      heroNavText: '#4A152C'
+    },
+    sepia: { 
+      bg: '#E0C9A6', 
+      text: '#3E2723', 
+      textMuted: 'rgba(62, 39, 35, 0.75)',
+      card: '#ECD5B3', 
+      cardSubtle: '#DFCCAA',
+      border: 'rgba(93, 64, 55, 0.2)', 
+      borderDashed: 'rgba(141, 110, 99, 0.35)',
+      heroNavText: '#3E2723'
+    },
+    dark: { 
+      bg: '#0a0f1c', 
+      text: '#ffffff', 
+      textMuted: 'rgba(255, 255, 255, 0.75)',
+      card: 'rgba(255,255,255,0.05)', 
+      cardSubtle: 'rgba(255,255,255,0.03)',
+      border: 'rgba(255,255,255,0.1)', 
+      borderDashed: 'rgba(212, 175, 55, 0.3)',
+      heroNavText: '#ffffff'
+    }
   }[brightnessMode];
 
   const renderLanding = () => (
@@ -989,30 +1067,37 @@ const App: React.FC = () => {
       </section>
 
       {/* The Scriptorium/About Section */}
-      <Section id="about" className="bg-[#FAF7EC] parchment-border border-y border-[#D4AF37]/15 py-32 rounded-[3.5rem] my-16 shadow-inner">
+      <Section 
+        id="about" 
+        className="parchment-border border-y py-32 rounded-[3.5rem] my-16 shadow-inner transition-colors duration-500"
+        style={{
+          backgroundColor: brightnessMode === 'dark' ? '#111827' : (brightnessMode === 'sepia' ? '#ECD5B3' : '#FAF7EC'),
+          borderColor: themeStyles.border
+        }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="space-y-8 pr-4">
             <div className="inline-flex px-4 py-1.5 bg-[#4A152C] text-[#D4AF37] rounded-full text-[9px] font-black uppercase tracking-widest shadow-md">
               The Mission
             </div>
             
-            <h2 className="text-4xl md:text-5.5xl font-serif-heading font-black tracking-tight leading-tighter text-[#4A152C]">
+            <h2 className={`text-4xl md:text-5.5xl font-serif-heading font-black tracking-tight leading-tighter ${brightnessMode === 'dark' ? 'text-white' : 'text-[#4A152C]'}`}>
               Timeless Truth, <br /><span className="text-[#D4AF37]">Modern Lens.</span>
             </h2>
             
-            <p className="text-lg leading-[1.8] opacity-85 font-serif text-[#2a231d]">
+            <p className="text-lg leading-[1.8] font-serif" style={{ color: themeStyles.text, opacity: 0.85 }}>
               Saul's Podship is an interactive theological encyclopedia and digital archive dedicated to the study of Christian scripture and historical theology. Our project integrates academic research with structured visual outlines to map the narratives and historical contexts of the Bible.
             </p>
             
-            <p className="text-md leading-[1.8] opacity-75 font-sans text-[#332b25]">
-              This resource includes a complete 46-volume theological encyclopedia, visual scripture timelines, and a dedicated cultural history archive of Masihi Geet (Pakistani gospel music).
+            <p className="text-md leading-[1.8] font-sans" style={{ color: themeStyles.text, opacity: 0.75 }}>
+              This resource includes a complete 50-volume theological encyclopedia, visual scripture timelines, and a dedicated cultural history archive of Masihi Geet (Pakistani gospel music).
             </p>
 
             {/* Scroll Blockquote */}
-            <div className="pt-8 border-t-2 border-dashed border-[#D4AF37]/25 relative pl-6">
+            <div className="pt-8 border-t-2 border-dashed relative pl-6" style={{ borderColor: themeStyles.borderDashed }}>
               <span className="absolute left-0 top-6 text-4xl text-[#D4AF37]/40 font-serif">“</span>
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-[#4A152C] mb-3">Our Legacy</h4>
-              <p className="text-sm leading-relaxed text-[#513F35] italic font-serif">
+              <h4 className={`text-[10px] font-black uppercase tracking-widest mb-3 ${brightnessMode === 'dark' ? 'text-[#D4AF37]' : 'text-[#4A152C]'}`}>Our Legacy</h4>
+              <p className="text-sm leading-relaxed italic font-serif" style={{ color: themeStyles.text, opacity: 0.8 }}>
                 What started as a small podcast in a home studio has grown into a global ministry. Our founder, Solat Nadeem, envisioned a platform where the beauty of scripture could be explored without compromise, using the best of modern technology to serve the eternal Word.
               </p>
             </div>
@@ -1025,7 +1110,7 @@ const App: React.FC = () => {
                 { name: "Spirit", icon: <Sparkles className="w-6 h-6 text-[#D4AF37]" />, bg: "bg-[#D4AF37]/5" }
               ].map((card, i) => (
                 <motion.div 
-                  key={i}
+                  key={i} 
                   whileHover={{ y: -4, boxShadow: "0 10px 20px rgba(0,0,0,0.03)" }}
                   className={`flex flex-col items-center gap-3 p-5 rounded-2xl border border-[#D4AF37]/15 ${card.bg}`}
                 >
@@ -1054,65 +1139,100 @@ const App: React.FC = () => {
       </Section>
 
       {/* Scriptorium Standards & Excerpts Combined (Luxury Slate Grid) */}
-      <Section id="scholarship" className="my-16 bg-[#FDFBF5] py-24 rounded-[3.5rem] border border-[#D4AF37]/15 relative overflow-hidden">
+      <Section 
+        id="scholarship" 
+        className="my-16 py-24 rounded-[3.5rem] border relative overflow-hidden transition-colors duration-500"
+        style={{
+          backgroundColor: brightnessMode === 'dark' ? '#0f172a' : (brightnessMode === 'sepia' ? '#F0E2CD' : '#FDFBF5'),
+          borderColor: themeStyles.border
+        }}
+      >
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-5xl mx-auto space-y-16">
           <div className="text-center space-y-4 max-w-2xl mx-auto">
             <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#D4AF37] block">Academic Integrity</span>
-            <h2 className="text-3xl md:text-5xl font-serif-heading font-black text-[#4A152C] uppercase tracking-tighter">Scholarly Standards</h2>
-            <p className="text-md opacity-70 leading-relaxed font-sans text-[#4A152C]/80">
+            <h2 className={`text-3xl md:text-5xl font-serif-heading font-black uppercase tracking-tighter ${brightnessMode === 'dark' ? 'text-white' : 'text-[#4A152C]'}`}>Scholarly Standards</h2>
+            <p className="text-md leading-relaxed font-sans" style={{ color: themeStyles.text, opacity: 0.8 }}>
               At Saul's Podship, we adhere to rigorous academic and theological standards. Every volume in our encyclopedia undergoes a multi-stage review process involving linguistic analysis of original Hebrew, Greek, and Latin texts, archaeological excavation studies, and historical context mapping.
             </p>
           </div>
 
           {/* Tri-standards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-[#D4AF37]/15">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b" style={{ borderColor: themeStyles.border }}>
             {[
               { 
+                volNumber: 35,
+                volBadge: "VOL. 35",
                 title: "Linguistic Rigor", 
-                desc: "We analyze original Hebrew, Septuagint, and Koine Greek manuscripts to ensure divine subtleties and theological definitions are preserved." 
+                subtitle: "Original Scripture Languages",
+                desc: "We analyze original Hebrew, Biblical Aramaic, Septuagint, and Koine Greek manuscripts to ensure divine subtleties and theological definitions are preserved." 
               },
               { 
+                volNumber: 9,
+                volBadge: "VOL. 09",
                 title: "Historical Method", 
-                desc: "Rooted firmly in the historical-grammatical method, respecting cultural settings, archaeological discoveries, and authorial intents." 
+                subtitle: "Bible Book Writers",
+                desc: "Rooted firmly in the historical-grammatical method, respecting cultural settings, archaeological discoveries, and canonical context." 
               },
               { 
+                volNumber: 11,
+                volBadge: "VOL. 11",
                 title: "Visual Cartography", 
+                subtitle: "Biblical Maps & Timelines",
                 desc: "Converting ancient textual data pathways into breathtaking infographics, genealogy trees, and map assets for digital students." 
               }
             ].map((std, i) => (
-              <div key={i} className="p-8 bg-white border border-[#D4AF37]/15 rounded-3xl shadow-sm flex flex-col gap-3 relative hover:scale-[1.01] transition-transform">
-                <span className="text-[10px] font-black text-[#D4AF37] tracking-[0.2em] uppercase">VOL. 0{i+1}</span>
-                <h4 className="text-lg font-serif-heading font-bold text-[#4A152C]">{std.title}</h4>
-                <p className="text-xs leading-relaxed opacity-70 text-[#4A152C]/80">{std.desc}</p>
+              <div 
+                key={i} 
+                onClick={() => openVolumeByNumber(std.volNumber)}
+                className="p-8 border rounded-3xl shadow-sm flex flex-col gap-3 relative hover:scale-[1.02] hover:border-[#D4AF37] transition-all cursor-pointer group"
+                style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border }}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] font-black text-[#D4AF37] tracking-[0.2em] uppercase">{std.volBadge}</span>
+                  <span className="text-[8px] font-black uppercase tracking-wider opacity-60 text-[#D4AF37] group-hover:opacity-100 flex items-center gap-1 transition-opacity">
+                    View Volume <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+                <h4 className={`text-lg font-serif-heading font-bold ${brightnessMode === 'dark' ? 'text-[#D4AF37]' : 'text-[#4A152C]'}`}>{std.title}</h4>
+                <p className="text-xs leading-relaxed" style={{ color: themeStyles.text, opacity: 0.75 }}>{std.desc}</p>
               </div>
             ))}
           </div>
 
           {/* Featured Manuscripts Rows */}
           <div className="space-y-8">
-            <h3 className="text-center text-xs font-black uppercase tracking-[0.3em] text-[#4a152c]">Featured Scholarly Excerpts</h3>
+            <h3 className={`text-center text-xs font-black uppercase tracking-[0.3em] ${brightnessMode === 'dark' ? 'text-[#D4AF37]' : 'text-[#4a152c]'}`}>Featured Scholarly Excerpts</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
               {[
                 {
-                  vol: "Volume 23",
-                  title: "The Deity of Christ",
+                  volNumber: 27,
+                  vol: "Volume 27",
+                  title: "Jesus Is God (The Deity of Christ)",
                   text: "The central confession of the Christian faith — that Jesus is God — is not a late development of Hellenistic philosophy. Rather, it is a conviction rooted in the strict monotheism of the Hebrew Scriptures. In John 8:58, Jesus declares the absolute divine name 'I AM' (Egō eimi), directly claiming the sovereign majesty of Exodus 3:14..."
                 },
                 {
-                  vol: "Volume 11",
-                  title: "The Scriptorium Apocrypha",
+                  volNumber: 12,
+                  vol: "Volume 12",
+                  title: "Book of Revelation (The Apokalypsis)",
                   text: "Revelation is often misunderstood as a map of apocalyptic fear. In contrast, it represents the magnificent 'unveiling' (Apokalypsis) of Jesus Christ as the triumphant King. By decoding the recursive Septenary structures (Sovereign Seals, Trumpet Echoes, Bowl Dispensations), we map the glorious renewal of Eden..."
                 }
               ].map((ex, i) => (
-                <div key={i} className="p-10 bg-white border border-[#D4AF37]/20 rounded-3xl block shadow-sm relative group hover:border-[#D4AF37] transition-all">
-                  <div className="flex justify-between items-center mb-4 pb-3 border-b border-dashed border-[#D4AF37]/15">
+                <div 
+                  key={i} 
+                  onClick={() => openVolumeByNumber(ex.volNumber)}
+                  className="p-10 border rounded-3xl block shadow-sm relative group hover:border-[#D4AF37] hover:scale-[1.01] transition-all cursor-pointer"
+                  style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border }}
+                >
+                  <div className="flex justify-between items-center mb-4 pb-3 border-b border-dashed" style={{ borderColor: themeStyles.borderDashed }}>
                     <span className="text-[9px] font-black text-[#D4AF37] uppercase tracking-widest">{ex.vol}</span>
-                    <span className="text-[8px] font-black uppercase tracking-widest opacity-40">Codex Extract</span>
+                    <span className="text-[8px] font-black uppercase tracking-widest opacity-50 group-hover:text-[#D4AF37] transition-colors flex items-center gap-1">
+                      Read Codex Extract <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </div>
-                  <h4 className="text-xl font-serif-heading font-black text-[#4a152c] mb-3">{ex.title}</h4>
-                  <p className="text-xs leading-relaxed opacity-70 italic font-serif text-[#332a22]">"{ex.text}"</p>
+                  <h4 className={`text-xl font-serif-heading font-black mb-3 ${brightnessMode === 'dark' ? 'text-white' : 'text-[#4a152c]'}`}>{ex.title}</h4>
+                  <p className="text-xs leading-relaxed italic font-serif" style={{ color: themeStyles.text, opacity: 0.75 }}>"{ex.text}"</p>
                 </div>
               ))}
             </div>
@@ -1123,9 +1243,9 @@ const App: React.FC = () => {
       {/* Encyclopedia/Resources Visual Cards */}
       <Section id="resources" className="py-24">
         <div className="text-center mb-16 max-w-xl mx-auto space-y-4">
-          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#4A152C] block">Sacred Library</span>
-          <h2 className="text-4xl md:text-5.5xl font-serif-heading font-black tracking-tight text-[#4A152C]">BIBLE RESOURCES</h2>
-          <p className="text-md opacity-70 italic font-serif">Expanding your horizon through peerless visual theological maps.</p>
+          <span className={`text-[9px] font-black uppercase tracking-[0.4em] ${brightnessMode === 'dark' ? 'text-[#D4AF37]' : 'text-[#4A152C]'} block`}>Sacred Library</span>
+          <h2 className={`text-4xl md:text-5.5xl font-serif-heading font-black tracking-tight ${brightnessMode === 'dark' ? 'text-white' : 'text-[#4A152C]'}`}>BIBLE RESOURCES</h2>
+          <p className="text-md opacity-70 italic font-serif" style={{ color: themeStyles.text }}>Expanding your horizon through peerless visual theological maps.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1146,7 +1266,7 @@ const App: React.FC = () => {
               </div>
               <h3 className="text-3xl font-serif-heading font-black text-white uppercase tracking-tight">Visual Encyclopedia</h3>
               <p className="text-white/60 text-xs leading-relaxed">
-                Dive into 46 volumes of interactive biblical genealogies, massive historical timelines, and deep theological visual narratives. Meticulously researched to guide you through the Word.
+                Dive into 50 volumes of interactive biblical genealogies, massive historical timelines, and deep theological visual narratives. Meticulously researched to guide you through the Word.
               </p>
             </div>
 
@@ -1439,37 +1559,50 @@ const App: React.FC = () => {
       </Section>
 
       {/* Partnership & Global Reach */}
-      <Section id="support" className="bg-[#FAF7EC] border-t-4 border-[#D4AF37] py-28 rounded-[3.5rem] shadow-sm relative overflow-hidden my-16">
+      <Section 
+        id="support" 
+        className="border-t-4 border-[#D4AF37] py-28 rounded-[3.5rem] shadow-sm relative overflow-hidden my-16 transition-colors duration-500"
+        style={{
+          backgroundColor: brightnessMode === 'dark' ? '#111827' : (brightnessMode === 'sepia' ? '#ECD5B3' : '#FAF7EC'),
+          borderColor: '#D4AF37'
+        }}
+      >
          <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none text-neutral-800"><HandHeart className="w-80 h-80" /></div>
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-10">
-               <div className="inline-flex px-4 py-1.5 bg-[#4a152c] text-[#D4AF37] rounded-full text-[9px] font-black uppercase tracking-widest">
+               <div className="inline-flex px-4 py-1.5 bg-[#4a152c] text-[#D4AF37] rounded-full text-[9px] font-black uppercase tracking-widest shadow-md">
                  Global Mission
                </div>
                
-               <h2 className="text-4xl md:text-5.5xl font-serif-heading font-black tracking-tight leading-none text-[#4A152C]">
+               <h2 className={`text-4xl md:text-5.5xl font-serif-heading font-black tracking-tight leading-none ${brightnessMode === 'dark' ? 'text-white' : 'text-[#4A152C]'}`}>
                  Partner in <br className="hidden md:block" /><span className="text-[#D4AF37]">The Mission.</span>
                </h2>
                
-               <p className="text-md leading-relaxed text-[#514338] font-serif">
+               <p className="text-md leading-relaxed font-serif" style={{ color: themeStyles.text, opacity: 0.85 }}>
                  Saul's Podship is sustained by the prayers and generosity of partners like you. Your support directly funds our research into ancient biblical manuscripts, our content production for visual illustration, and our translation efforts for South Asia.
                </p>
                
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-6 bg-white rounded-2xl border border-[#D4AF37]/15 flex flex-col gap-3 group hover:bg-[#4a152c] transition-colors duration-500">
-                     <div className="w-10 h-10 bg-[#FAF7EC] rounded-xl flex items-center justify-center text-[#4a152c] group-hover:bg-[#D4AF37] transition-colors">
+                  <div 
+                    className="p-6 rounded-2xl border flex flex-col gap-3 group hover:bg-[#4a152c] transition-colors duration-500 shadow-sm"
+                    style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border }}
+                  >
+                     <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[#4a152c] group-hover:bg-[#D4AF37] transition-colors" style={{ backgroundColor: themeStyles.cardSubtle }}>
                        <Globe className="w-5 h-5" />
                      </div>
-                     <h4 className="text-sm font-bold group-hover:text-white transition-colors">Global Outreach</h4>
-                     <p className="text-[11px] text-[#4A152C]/65 group-hover:text-white/60 transition-colors">Help us reach cross-cultural borders with the truths of Scripture.</p>
+                     <h4 className="text-sm font-bold group-hover:text-white transition-colors" style={{ color: themeStyles.text }}>Global Outreach</h4>
+                     <p className="text-[11px] group-hover:text-white/60 transition-colors" style={{ color: themeStyles.text, opacity: 0.65 }}>Help us reach cross-cultural borders with the truths of Scripture.</p>
                   </div>
                   
-                  <div className="p-6 bg-white rounded-2xl border border-[#D4AF37]/15 flex flex-col gap-3 group hover:bg-[#4a152c] transition-colors duration-500">
-                     <div className="w-10 h-10 bg-[#FAF7EC] rounded-xl flex items-center justify-center text-[#4a152c] group-hover:bg-[#D4AF37] transition-colors">
+                  <div 
+                    className="p-6 rounded-2xl border flex flex-col gap-3 group hover:bg-[#4a152c] transition-colors duration-500 shadow-sm"
+                    style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border }}
+                  >
+                     <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[#4a152c] group-hover:bg-[#D4AF37] transition-colors" style={{ backgroundColor: themeStyles.cardSubtle }}>
                        <MessageSquare className="w-5 h-5" />
                      </div>
-                     <h4 className="text-sm font-bold group-hover:text-white transition-colors">Free Libraries</h4>
-                     <p className="text-[11px] text-[#4A152C]/65 group-hover:text-white/60 transition-colors">Your support keeps the Visual Encyclopedia free for students globally.</p>
+                     <h4 className="text-sm font-bold group-hover:text-white transition-colors" style={{ color: themeStyles.text }}>Free Libraries</h4>
+                     <p className="text-[11px] group-hover:text-white/60 transition-colors" style={{ color: themeStyles.text, opacity: 0.65 }}>Your support keeps the Visual Encyclopedia free for students globally.</p>
                   </div>
                </div>
             </div>
@@ -1529,30 +1662,61 @@ const App: React.FC = () => {
       {/* Reimagined Contact form */}
       <Section id="contact" className="py-24">
         <div className="text-center mb-16 max-w-xl mx-auto space-y-4">
-          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#4A152C] block">Get In Touch</span>
-          <h2 className="text-3xl md:text-5xl font-serif-heading font-black text-[#4A152C] uppercase tracking-tighter">Contact the Ministry</h2>
-          <p className="text-md opacity-70 italic font-serif">We welcome editorial commentaries, collaborative invites, and prayers.</p>
+          <span className={`text-[9px] font-black uppercase tracking-[0.4em] ${brightnessMode === 'dark' ? 'text-[#D4AF37]' : 'text-[#4A152C]'} block`}>Get In Touch</span>
+          <h2 className={`text-3xl md:text-5xl font-serif-heading font-black uppercase tracking-tighter ${brightnessMode === 'dark' ? 'text-white' : 'text-[#4A152C]'}`}>Contact the Ministry</h2>
+          <p className="text-md opacity-70 italic font-serif" style={{ color: themeStyles.text }}>We welcome editorial commentaries, collaborative invites, and prayers.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto bg-white p-10 md:p-16 rounded-[2.5rem] shadow-xl border border-[#D4AF37]/15 relative">
+        <div 
+          className="max-w-3xl mx-auto p-10 md:p-16 rounded-[2.5rem] shadow-xl border relative transition-colors duration-500"
+          style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border }}
+        >
           <form onSubmit={handleContactSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-40 ml-2">Full Name</label>
-                <input required type="text" value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})} className="w-full bg-[#FAF7EC] border border-[#D4AF37]/10 focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all text-[#4a152c]" />
+                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-60 ml-2" style={{ color: themeStyles.text }}>Full Name</label>
+                <input 
+                  required 
+                  type="text" 
+                  value={formState.name} 
+                  onChange={(e) => setFormState({...formState, name: e.target.value})} 
+                  className="w-full border focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all"
+                  style={{ backgroundColor: themeStyles.cardSubtle, borderColor: themeStyles.border, color: themeStyles.text }}
+                />
               </div>
               <div className="space-y-2">
-                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-40 ml-2">Email Address</label>
-                <input required type="email" value={formState.email} onChange={(e) => setFormState({...formState, email: e.target.value})} className="w-full bg-[#FAF7EC] border border-[#D4AF37]/10 focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all text-[#4a152c]" />
+                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-60 ml-2" style={{ color: themeStyles.text }}>Email Address</label>
+                <input 
+                  required 
+                  type="email" 
+                  value={formState.email} 
+                  onChange={(e) => setFormState({...formState, email: e.target.value})} 
+                  className="w-full border focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all"
+                  style={{ backgroundColor: themeStyles.cardSubtle, borderColor: themeStyles.border, color: themeStyles.text }}
+                />
               </div>
             </div>
             <div className="space-y-2">
-                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-40 ml-2">Context Subject</label>
-                <input required type="text" value={formState.subject} onChange={(e) => setFormState({...formState, subject: e.target.value})} className="w-full bg-[#FAF7EC] border border-[#D4AF37]/10 focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all text-[#4a152c]" />
+                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-60 ml-2" style={{ color: themeStyles.text }}>Context Subject</label>
+                <input 
+                  required 
+                  type="text" 
+                  value={formState.subject} 
+                  onChange={(e) => setFormState({...formState, subject: e.target.value})} 
+                  className="w-full border focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all"
+                  style={{ backgroundColor: themeStyles.cardSubtle, borderColor: themeStyles.border, color: themeStyles.text }}
+                />
             </div>
             <div className="space-y-2">
-                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-40 ml-2">Detailed Inquiry</label>
-                <textarea required rows={5} value={formState.message} onChange={(e) => setFormState({...formState, message: e.target.value})} className="w-full bg-[#FAF7EC] border border-[#D4AF37]/10 focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all resize-none text-[#4a152c]" />
+                <label className="text-[8.5px] font-black uppercase tracking-widest opacity-60 ml-2" style={{ color: themeStyles.text }}>Detailed Inquiry</label>
+                <textarea 
+                  required 
+                  rows={5} 
+                  value={formState.message} 
+                  onChange={(e) => setFormState({...formState, message: e.target.value})} 
+                  className="w-full border focus:border-[#D4AF37] rounded-xl px-5 py-4 text-xs outline-none transition-all resize-none"
+                  style={{ backgroundColor: themeStyles.cardSubtle, borderColor: themeStyles.border, color: themeStyles.text }}
+                />
             </div>
             <motion.button 
               whileTap={{ scale: 0.98 }} 
@@ -1594,7 +1758,7 @@ const App: React.FC = () => {
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       const matchTitle = cat.title.toLowerCase().includes(q);
-      const matchOverview = cat.overview ? cat.overview.toLowerCase().includes(q) : false;
+      const matchOverview = cat.overview ? cat.overview.toLowerCase() : false;
       return matchTitle || matchOverview;
     }
     return true;
@@ -1610,15 +1774,22 @@ const App: React.FC = () => {
                 <ChevronLeft className="w-4 h-4" /> Back to Ministry Home
               </button>
               <h2 className="text-5xl md:text-7xl font-serif-heading font-black uppercase tracking-tighter mb-4">Saul's Podship Encyclopedia</h2>
-              <p className="text-xl opacity-60 font-serif-heading italic max-w-3xl mb-6">Explore 46 volumes of scholarly visual theology, mapping the divine narrative.</p>
+              <p className="text-xl opacity-60 font-serif-heading italic max-w-3xl mb-6">Explore 50 volumes of scholarly visual theology, mapping the divine narrative.</p>
               
               {/* Breadcrumb Navigation Bar */}
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest font-sans text-[#D4AF37] bg-[#4a152c]/10 border border-[#D4AF37]/10 px-4 py-2 rounded-xl inline-flex w-fit">
+              <div 
+                className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest font-sans px-4 py-2 rounded-xl inline-flex w-fit border"
+                style={{ 
+                  backgroundColor: brightnessMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(74, 21, 44, 0.08)',
+                  borderColor: themeStyles.border,
+                  color: '#D4AF37'
+                }}
+              >
                 <button onClick={() => setCurrentView('landing')} className="hover:text-white transition-colors flex items-center gap-1">
                   Home
                 </button>
                 <ChevronRight className="w-3 h-3 text-[#D4AF37]/40" />
-                <span className="opacity-60 text-[#D4AF37]">Encyclopedia</span>
+                <span className="opacity-80 text-[#D4AF37]">Encyclopedia</span>
               </div>
             </div>
             <motion.button 
@@ -2520,7 +2691,10 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#F8F4E3] text-[#1D2D50] selection:bg-[#D4AF37] font-sans scroll-smooth overflow-x-hidden">
+    <div 
+      className="min-h-screen selection:bg-[#D4AF37] font-sans scroll-smooth overflow-x-hidden transition-colors duration-500"
+      style={{ backgroundColor: themeStyles.bg, color: themeStyles.text }}
+    >
       <style>{`
         /* Illuminated Capital Dropcap with elegant Gold frame */
         .illuminated-dropcap {
@@ -2548,30 +2722,99 @@ const App: React.FC = () => {
       `}</style>
       <DynamicSchema currentView={currentView} selectedCategory={selectedCategory} />
       <motion.nav 
-        style={{ backgroundColor: currentView === 'encyclopedia' ? themeStyles.bg + 'F2' : headerBg }} 
+        style={{ 
+          backgroundColor: currentView === 'encyclopedia' 
+            ? (brightnessMode === 'dark' ? 'rgba(10, 15, 28, 0.95)' : (brightnessMode === 'sepia' ? 'rgba(224, 201, 166, 0.95)' : 'rgba(248, 244, 227, 0.95)')) 
+            : headerBg 
+        }} 
         className="fixed top-0 left-0 right-0 z-[100] border-b border-[#D4AF37]/10 backdrop-blur-md px-6 py-4 flex items-center justify-between transition-colors"
       >
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setCurrentView('landing'); setSelectedCategory(null); window.scrollTo({top: 0}); }}>
           <img src="/logo.svg" className="w-12 h-12 object-contain hover:scale-105 transition-transform" referrerPolicy="no-referrer" alt="Saul's Podship" />
-          <span className={`font-serif-heading font-black text-xl md:text-2xl tracking-tighter uppercase drop-shadow-sm ${currentView === 'encyclopedia' ? (brightnessMode === 'dark' ? 'text-white' : 'text-[#4a152c]') : 'text-white'}`}>Saul's Podship</span>
+          <span className={`font-serif-heading font-black text-xl md:text-2xl tracking-tighter uppercase drop-shadow-sm ${currentView === 'encyclopedia' ? (brightnessMode === 'dark' ? 'text-white' : (brightnessMode === 'sepia' ? 'text-[#3E2723]' : 'text-[#4a152c]')) : 'text-white'}`}>Saul's Podship</span>
         </div>
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map((item) => (
-            <button key={item.name} onClick={item.action} className={`text-[10px] font-black uppercase tracking-widest hover:text-[#D4AF37] transition-colors ${currentView === 'encyclopedia' ? (brightnessMode === 'dark' ? 'text-white/80' : 'text-[#4a152c]/80') : 'text-white/80'}`}>
+            <button key={item.name} onClick={item.action} className={`text-[10px] font-black uppercase tracking-widest hover:text-[#D4AF37] transition-colors ${currentView === 'encyclopedia' ? (brightnessMode === 'dark' ? 'text-white/80' : (brightnessMode === 'sepia' ? 'text-[#3E2723]/80' : 'text-[#4a152c]/80')) : 'text-white/80'}`}>
               {item.name}
             </button>
           ))}
           <button onClick={handleBibleLink} className="bg-[#D4AF37] text-[#4a152c] px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-black/20">Encyclopedia</button>
+          
+          {/* Light / Dark Mode Toggle Button */}
+          <button 
+            onClick={() => setBrightnessMode(prev => prev === 'light' ? 'dark' : 'light')} 
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-wider transition-all duration-300 shadow-sm ${
+              brightnessMode === 'dark'
+                ? 'bg-amber-400/10 border-amber-400/30 text-amber-300 hover:bg-amber-400/20'
+                : (currentView === 'encyclopedia'
+                    ? 'bg-[#4A152C]/10 border-[#4A152C]/20 text-[#4A152C] hover:bg-[#4A152C]/20'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20')
+            }`}
+            title={brightnessMode === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label={brightnessMode === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            {brightnessMode === 'dark' ? (
+              <>
+                <Moon className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]/30" />
+                <span className="hidden xl:inline font-sans">Dark</span>
+              </>
+            ) : (
+              <>
+                <Sun className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]/40" />
+                <span className="hidden xl:inline font-sans">Light</span>
+              </>
+            )}
+          </button>
         </div>
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={currentView === 'encyclopedia' ? (brightnessMode === 'dark' ? 'text-white' : 'text-[#4a152c]') : 'text-white'}>{isMenuOpen ? <X /> : <Menu />}</button>
+
+        <div className="flex items-center gap-3 lg:hidden">
+          {/* Mobile Light / Dark mode quick toggle */}
+          <button 
+            onClick={() => setBrightnessMode(prev => prev === 'light' ? 'dark' : 'light')}
+            className={`p-2 rounded-full border transition-colors ${
+              brightnessMode === 'dark' 
+                ? 'border-amber-400/30 bg-amber-400/10 text-amber-300' 
+                : 'border-[#D4AF37]/30 bg-white/10 text-[#D4AF37]'
+            }`}
+            aria-label={brightnessMode === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            title={brightnessMode === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            {brightnessMode === 'dark' ? <Moon className="w-4 h-4 fill-amber-300/30" /> : <Sun className="w-4 h-4" />}
+          </button>
+          
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={currentView === 'encyclopedia' ? (brightnessMode === 'dark' ? 'text-white' : 'text-[#4a152c]') : 'text-white'}>{isMenuOpen ? <X /> : <Menu />}</button>
+        </div>
       </motion.nav>
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div initial={{ opacity: 0, x: '100%' }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: '100%' }} className="fixed inset-0 z-[150] bg-[#4a152c] p-12 flex flex-col items-center justify-center gap-8">
+          <motion.div initial={{ opacity: 0, x: '100%' }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: '100%' }} className="fixed inset-0 z-[150] bg-[#4a152c] p-8 md:p-12 flex flex-col items-center justify-center gap-6 overflow-y-auto">
             <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white"><X className="w-8 h-8" /></button>
-            {navItems.map((item) => <button key={item.name} onClick={item.action} className="text-2xl font-serif-heading font-black text-white uppercase tracking-widest">{item.name}</button>)}
-            <button onClick={handleBibleLink} className="bg-[#D4AF37] text-[#4a152c] px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest mt-8">Visual Encyclopedia</button>
+            {navItems.map((item) => <button key={item.name} onClick={item.action} className="text-xl md:text-2xl font-serif-heading font-black text-white uppercase tracking-widest">{item.name}</button>)}
+            <button onClick={handleBibleLink} className="bg-[#D4AF37] text-[#4a152c] px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest mt-4 shadow-xl">Visual Encyclopedia</button>
+            
+            {/* Mobile Theme Switcher */}
+            <div className="flex items-center gap-2 p-1.5 bg-white/10 rounded-2xl border border-white/15 mt-4">
+              {[
+                { id: 'light', icon: <Sun className="w-3.5 h-3.5" />, label: 'Light' },
+                { id: 'sepia', icon: <Coffee className="w-3.5 h-3.5" />, label: 'Sepia' },
+                { id: 'dark', icon: <Moon className="w-3.5 h-3.5" />, label: 'Dark' }
+              ].map((mode) => (
+                <button
+                  key={mode.id}
+                  onClick={() => setBrightnessMode(mode.id as any)}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all ${
+                    brightnessMode === mode.id
+                      ? 'bg-[#D4AF37] text-[#4a152c] shadow-md'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  {mode.icon}
+                  <span>{mode.label}</span>
+                </button>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -2581,7 +2824,7 @@ const App: React.FC = () => {
         {currentView === 'encyclopedia' && renderEncyclopedia()}
         {currentView === 'privacy' && (
           <Section id="privacy" className="pt-32 max-w-4xl">
-            <div className="bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl border border-[#D4AF37]/20">
+            <div className="p-12 md:p-20 rounded-[4rem] shadow-2xl border transition-colors" style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border, color: themeStyles.text }}>
               <h2 className="text-4xl md:text-6xl font-serif-heading font-black mb-8">Privacy Policy</h2>
               <div className="space-y-6 opacity-80 leading-relaxed text-lg">
                 <p>Your privacy is of paramount importance to us at Saul's Podship. This Privacy Policy document outlines the types of personal information that is received and collected by www.saulspodship.com and how it is used.</p>
@@ -2610,17 +2853,17 @@ const App: React.FC = () => {
         )}
         {currentView === 'disclaimer' && (
           <Section id="disclaimer" className="pt-32 max-w-4xl">
-            <div className="bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl border border-[#D4AF37]/20">
+            <div className="p-12 md:p-20 rounded-[4rem] shadow-2xl border transition-colors" style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border, color: themeStyles.text }}>
               <h2 className="text-4xl md:text-6xl font-serif-heading font-black mb-8">Theological Disclaimer</h2>
               <div className="space-y-6 opacity-80 leading-relaxed text-lg">
                 <p>The contents of Saul's Podship, including the Saul's Podship Encyclopedia, podcasts, and scholarly excerpts, are provided for educational, historical, and spiritual exploration purposes only.</p>
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">1. Scholarly Accuracy</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">1. Scholarly Accuracy</h3>
                 <p>While we strive for high levels of historical and linguistic accuracy, theological interpretation is inherently subjective and varies across different Christian traditions. Our summaries reflect a broadly orthodox and historical Christian perspective but should not be viewed as an exhaustive or definitive authority on every doctrinal nuance.</p>
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">2. Pastoral & Academic Use</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">2. Pastoral & Academic Use</h3>
                 <p>We encourage students, pastors, and seekers to cross-reference our materials with primary scriptural sources (Hebrew, Greek, and Latin texts) and established historical commentaries. Our goal is to provide a "Visual Map" to aid understanding, not to replace personal study or the authority of the local church.</p>
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">3. AI Contributions</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">3. AI Contributions</h3>
                 <p>Certain interactive elements, such as the Theophilus AI and localized translations, utilize large language models to assist in navigation and inquiry. While these models are configured for academic rigor, users should exercise discernment and verify AI-generated theological claims against Scripture.</p>
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">4. External Resources</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">4. External Resources</h3>
                 <p>Any links provided to external digital archives, manuscript libraries, or Bible study tools are for convenience and do not imply a full endorsement of all content found on those third-party sites.</p>
               </div>
               <button onClick={() => setCurrentView('landing')} className="mt-12 bg-[#4a152c] text-[#D4AF37] px-8 py-4 rounded-2xl font-black uppercase text-xs shadow-xl flex items-center gap-2 hover:bg-black transition-all">
@@ -2631,24 +2874,24 @@ const App: React.FC = () => {
         )}
         {currentView === 'terms' && (
           <Section id="terms" className="pt-32 max-w-4xl">
-            <div className="bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl border border-[#D4AF37]/20">
+            <div className="p-12 md:p-20 rounded-[4rem] shadow-2xl border transition-colors" style={{ backgroundColor: themeStyles.card, borderColor: themeStyles.border, color: themeStyles.text }}>
               <h2 className="text-4xl md:text-6xl font-serif-heading font-black mb-8">Terms and Conditions</h2>
               <div className="space-y-6 opacity-80 leading-relaxed text-lg">
                 <p>Welcome to Saul's Podship. By accessing this website, you agree to comply with and be bound by the following terms and conditions of use.</p>
                 
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">1. Acceptance of Terms</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">1. Acceptance of Terms</h3>
                 <p>The services provided by Saul's Podship are subject to the following Terms and Conditions. We reserve the right to update these terms at any time without notice to you.</p>
                 
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">2. Description of Services</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">2. Description of Services</h3>
                 <p>Saul's Podship provides users with access to a rich collection of resources, including the Saul's Podship Encyclopedia, podcasts, and theological articles. These services are provided "as-is".</p>
                 
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">3. User Conduct</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">3. User Conduct</h3>
                 <p>You agree to use the website for lawful purposes only. You are prohibited from posting or transmitting any material that is unlawful, threatening, libelous, defamatory, obscene, or otherwise violates any law.</p>
                 
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">4. Intellectual Property</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">4. Intellectual Property</h3>
                 <p>All content included on this site, such as text, graphics, logos, and images, is the property of Saul's Podship or its content suppliers and is protected by international copyright laws.</p>
                 
-                <h3 className="text-2xl font-bold mt-8 text-[#4a152c]">5. Limitation of Liability</h3>
+                <h3 className="text-2xl font-bold mt-8 text-[#D4AF37]">5. Limitation of Liability</h3>
                 <p>Saul's Podship shall not be liable for any damages arising out of the use or inability to use the materials on this site, even if we have been notified of the possibility of such damages.</p>
               </div>
               <button onClick={() => setCurrentView('landing')} className="mt-12 bg-[#4a152c] text-[#D4AF37] px-8 py-4 rounded-2xl font-black uppercase text-xs shadow-xl flex items-center gap-2 hover:bg-black transition-all">

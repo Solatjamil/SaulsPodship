@@ -32,8 +32,6 @@ export const volume_05: Volume = {
     "does god exist",
     "science and Christianity"
   ],
-  "articleLink": "",
-  "youtubeLink": "",
   "youtubeStatus": "scheduled",
   "youtubePublishDate": "2026-10-01",
   "relatedVolumes": [

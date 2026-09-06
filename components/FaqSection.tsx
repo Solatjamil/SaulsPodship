@@ -27,8 +27,8 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ themeStyles, currentView
       answer: "Saul's Podship is an interactive theological research archive and digital ministry project led by Solat Nadeem. By combining robust historical-grammatical hermeneutics, immersive timelines, graphic lineages, and narrative audio, we make complex biblical scholarship accessible, engaging, and spiritually transformative for a modern digital generation."
     },
     {
-      question: "How do I navigate and study the 46 Volumes of Saul's Podship Encyclopedia?",
-      answer: "The library is structured into 46 distinct scholarly chapters mapping key biblical eras, original Hebrew covenants, and prophecies. To begin studying, click 'Access The Library' on the landing page, choose a active Volume card, and adjust your personal Scholar settings (such as Ivory/Sepia/Midnight, font size, and serif legibility) from the preferences drawer. Each volume features detailed timelines, maps, and scholarly analyses."
+      question: "How do I navigate and study the 50 Volumes of Saul's Podship Encyclopedia?",
+      answer: "The library is structured into 50 distinct scholarly chapters mapping key biblical eras, original Hebrew covenants, and prophecies. To begin studying, click 'Access The Library' on the landing page, choose an active Volume card, and adjust your personal Scholar settings (such as Ivory/Sepia/Midnight, font size, and serif legibility) from the preferences drawer. Each volume features detailed timelines, maps, and scholarly analyses."
     },
     {
       question: "What is the meaning and purpose of the 'Electric Border' interactive effect?",
@@ -70,15 +70,15 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ themeStyles, currentView
               >
                 <div 
                   onClick={() => toggleExpand(idx)}
-                  className="p-6 md:p-8 rounded-[1.25rem] border text-left flex flex-col transition-colors duration-300"
+                  className="p-6 md:p-8 rounded-[1.25rem] border text-left flex flex-col transition-colors duration-300 shadow-sm"
                   style={{ 
-                    backgroundColor: currentView === 'encyclopedia' ? themeStyles.card : '#ffffff', 
-                    borderColor: isExpanded ? '#D4AF37' : (currentView === 'encyclopedia' ? themeStyles.border : 'rgba(74, 21, 44, 0.1)') 
+                    backgroundColor: themeStyles.card, 
+                    borderColor: isExpanded ? '#D4AF37' : themeStyles.border 
                   }}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-[#4a152c] flex items-center justify-center text-[#D4AF37] shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-[#4a152c] flex items-center justify-center text-[#D4AF37] shrink-0 shadow-sm">
                         <HelpCircle className="w-5 h-5" />
                       </div>
                       <h4 className="font-serif-heading font-black text-sm md:text-md uppercase tracking-tight text-[#D4AF37] line-clamp-2 md:line-clamp-none">
@@ -103,8 +103,8 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ themeStyles, currentView
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-4 border-t border-dashed" style={{ borderColor: currentView === 'encyclopedia' ? themeStyles.border : 'rgba(74, 21, 44, 0.1)' }}>
-                          <p className="text-xs md:text-sm leading-relaxed" style={{ color: currentView === 'encyclopedia' ? themeStyles.text : '#1D2D50' }}>
+                        <div className="pt-4 border-t border-dashed" style={{ borderColor: themeStyles.border }}>
+                          <p className="text-xs md:text-sm leading-relaxed" style={{ color: themeStyles.text }}>
                             {faq.answer}
                           </p>
                         </div>

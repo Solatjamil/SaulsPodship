@@ -13,7 +13,7 @@ import { ChatMessage } from '../types';
 const ScholarAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Peace be with you. I am your local Scholar Assistant. I can help you navigate the 46 volumes of this library. What topic are you looking for today?' }
+    { role: 'model', text: `Peace be with you. I am your local Scholar Assistant. I can help you navigate the ${CATEGORIES.length} volumes of this library. What topic are you looking for today?` }
   ]);
   const [input, setInput] = useState('');
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ const ScholarAssistant: React.FC = () => {
           (results.length > 3 ? `\n...and ${results.length - 3} more.` : "") +
           `\n\nClick on a card in the main grid to explore the full analysis.`;
       } else if (query.includes("help") || query.includes("how")) {
-        responseText = "You can browse the 46 volumes by scrolling through the main library grid. Each volume contains data tables, visual story panels, and a full theological narrative summary.";
+        responseText = `You can browse the ${CATEGORIES.length} volumes by scrolling through the main library grid. Each volume contains data tables, visual story panels, and a full theological narrative summary.`;
       } else {
         responseText = "I couldn't find a specific volume for that query. Try searching for 'Prophecy', 'Jesus', 'Revelation', or 'Creation'.";
       }
