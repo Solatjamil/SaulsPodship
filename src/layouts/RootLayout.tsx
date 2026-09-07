@@ -108,6 +108,10 @@ const AuthorSeal: React.FC = () => (
 // chat was only reachable by navigating away). Talks to the same /api/chat
 // endpoint the Scriptorium Studio uses, with graceful degradation.
 const ChatDock: React.FC = () => {
+  const location = useLocation();
+  // The Scriptorium Studio page already ships a full-page chat experience —
+  // don't stack a second floating chat widget on top of it.
+  const onStudioPage = location.pathname.startsWith('/studio');
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState<{ role: 'user' | 'ai'; text: string }[]>([
     { role: 'ai', text: "Peace! I'm Theophilus, the Podship research assistant. Ask about any book, doctrine, hymn, or the 50 volumes." }
@@ -139,6 +143,8 @@ const ChatDock: React.FC = () => {
     }
     setBusy(false);
   };
+  if (onStudioPage) return null;
+
   return (
     <div className="fixed bottom-5 right-4 z-[70] flex flex-col items-end gap-3">
       {open && (
