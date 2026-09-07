@@ -5,21 +5,17 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { CATEGORIES } from "./data.js";
 import { EMBEDDED_ARTISTS } from "./singersData.js";
 
-import { fileURLToPath } from "url";
-
-// ESM-safe __dirname: api/package.json declares "type": "module", where __dirname
-// does not exist — referencing it threw ReferenceError and 500'd every singers
-// route (Pakistanisingersarchive, music-archive, sitemap) on Vercel.
+// ESM-safe directory anchor: this module may be executed as ESM (where
+// __dirname is undefined → ReferenceError) or bundled to CJS by the Vercel
+// function builder (where __dirname exists). import.meta must NOT appear
+// here: Vercel transpiles this file to CJS and older esbuild rejects
+// import.meta in CJS output, failing the whole build.
 const RUNTIME_DIRNAME: string = (() => {
   try {
     // eslint-disable-next-line no-typeof-undefined
     if (typeof __dirname !== "undefined") return __dirname;
   } catch (_) {}
-  try {
-    return path.dirname(fileURLToPath(import.meta.url));
-  } catch (_) {
-    return process.cwd();
-  }
+  return process.cwd();
 })();
 
 const app = express();
