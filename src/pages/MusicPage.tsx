@@ -286,7 +286,7 @@ export const MusicPage: React.FC = () => {
             {filteredPreview.map((artist) => (
               <div
                 key={artist.id}
-                className="p-4 rounded-2xl bg-gray-50 hover:bg-amber-50/40 border border-gray-100 hover:border-[#D4AF37]/50 transition-all flex flex-col justify-between space-y-3"
+                className="relative cursor-pointer p-4 rounded-2xl bg-gray-50 hover:bg-amber-50/40 border border-gray-100 hover:border-[#D4AF37]/50 transition-all flex flex-col justify-between space-y-3"
               >
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-1">
@@ -308,7 +308,7 @@ export const MusicPage: React.FC = () => {
                 <div className="pt-2 border-t border-gray-200/60">
                   <Link
                     to={`/music/pakistani-singers-archive?q=${encodeURIComponent(artist.name)}`}
-                    className="text-[11px] font-bold text-[#4A152C] hover:underline inline-flex items-center gap-1"
+                    className="text-[11px] font-bold text-[#4A152C] hover:underline inline-flex items-center gap-1 after:absolute after:inset-0 after:content-['']"
                   >
                     <span>View Biography</span>
                     <ChevronRight className="w-3 h-3" />

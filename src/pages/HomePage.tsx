@@ -143,7 +143,7 @@ export const HomePage: React.FC = () => {
             return (
               <div
                 key={vol.id}
-                className="group flex flex-col rounded-3xl bg-white border border-[#4A152C]/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center"
+                className="group relative cursor-pointer flex flex-col rounded-3xl bg-white border border-[#4A152C]/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center"
               >
                 {/* Card Image — same curated artwork as the volume's hero banner */}
                 <div className="relative h-48 w-full overflow-hidden bg-gray-100">
@@ -179,7 +179,7 @@ export const HomePage: React.FC = () => {
                     </span>
                     <Link
                       to={`/encyclopedia/${vol.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#4A152C] group-hover:text-[#8B1C2E]"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#4A152C] group-hover:text-[#8B1C2E] after:absolute after:inset-0 after:content-['']"
                     >
                       Read Volume <ChevronRight className="w-3.5 h-3.5" />
                     </Link>

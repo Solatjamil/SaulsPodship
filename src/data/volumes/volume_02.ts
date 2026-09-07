@@ -16,8 +16,8 @@ export const volume_02: Volume = {
   "lastUpdated": "2026-09-06",
   "heroImage": {
     "src": "/images/volumes/all-biblical-numerology/hero-1920.jpg",
-    "alt": "Public-domain artwork illustrating “All Biblical Numerology”",
-    "credit": "Public domain — Drawn by:   Paul Lautensack · Wikimedia Commons"
+    "alt": "Sacred numbers in the Scriptures — the seven-branched menorah, an illuminated scroll with the Hebrew numerals seven and forty, the twelve-stone breastplate and the forty days of rain",
+    "credit": "Original artwork commissioned by Saul's Podship Studio"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=800&q=80",

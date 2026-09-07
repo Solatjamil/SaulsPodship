@@ -150,7 +150,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
               return (
                 <article
                   key={volume.id}
-                  className="group flex flex-col rounded-2xl bg-white border border-[#4A152C]/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group relative cursor-pointer flex flex-col rounded-2xl bg-white border border-[#4A152C]/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Card Image */}
                   <div className="relative h-48 w-full overflow-hidden bg-gray-100">
@@ -203,7 +203,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
 
                         <Link
                           to={`/encyclopedia/${volume.slug}`}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-[#4A152C] group-hover:text-[#8B1C2E] hover:underline"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-[#4A152C] group-hover:text-[#8B1C2E] hover:underline after:absolute after:inset-0 after:content-['']"
                         >
                           <span>Open Volume</span>
                           <ChevronRight className="w-3.5 h-3.5" />

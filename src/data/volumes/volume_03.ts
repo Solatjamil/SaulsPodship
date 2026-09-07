@@ -16,8 +16,8 @@ export const volume_03: Volume = {
   "lastUpdated": "2026-09-06",
   "heroImage": {
     "src": "/images/volumes/all-big-denominations-their-differences/hero-1920.jpg",
-    "alt": "Public-domain artwork illustrating “All Big Denominations & Their Differences”",
-    "credit": "Public domain — Seattle Public Library · Wikimedia Commons"
+    "alt": "The great traditions of the one Church standing together under a single dawn — gothic cathedral, orthodox domes, a plain meeting-house, a modern worship hall and an ancient stone chapel",
+    "credit": "Original artwork commissioned by Saul's Podship Studio"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=800&q=80",

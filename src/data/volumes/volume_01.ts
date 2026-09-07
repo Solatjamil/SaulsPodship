@@ -16,8 +16,8 @@ export const volume_01: Volume = {
   "lastUpdated": "2026-09-06",
   "heroImage": {
     "src": "/images/volumes/all-bible-stories/hero-1920.jpg",
-    "alt": "Public-domain artwork illustrating “All Bible Stories”",
-    "credit": "Public domain — Internet Archive Book Images · Wikimedia Commons"
+    "alt": "The story of the Bible in one vision — creation light, the ark, the parting of the sea, David and Goliath, the nativity, the cross and the empty tomb",
+    "credit": "Original artwork commissioned by Saul's Podship Studio"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80",
