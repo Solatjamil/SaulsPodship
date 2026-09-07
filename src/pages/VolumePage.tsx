@@ -1,11 +1,5 @@
 /**
- 
-  const pagePanels = useMemo(
-    () => filteredPanels.slice(storyPage * STORY_PAGE_SIZE, (storyPage + 1) * STORY_PAGE_SIZE),
-    [filteredPanels, storyPage]
-  );
-  const storyPages = Math.max(1, Math.ceil(filteredPanels.length / STORY_PAGE_SIZE));
-  useEffect(() => { setStoryPage(0); }, [selectedEra, panelSearchQuery]);* @license
+ * @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -98,6 +92,13 @@ export const VolumePage: React.FC = () => {
       return matchEra && matchQuery;
     });
   }, [volume.content?.storyPanels, selectedEra, panelSearchQuery]);
+
+  const pagePanels = useMemo(
+    () => filteredPanels.slice(storyPage * STORY_PAGE_SIZE, (storyPage + 1) * STORY_PAGE_SIZE),
+    [filteredPanels, storyPage]
+  );
+  const storyPages = Math.max(1, Math.ceil(filteredPanels.length / STORY_PAGE_SIZE));
+  useEffect(() => { setStoryPage(0); }, [selectedEra, panelSearchQuery]);
 
   // Copy Citation Helper
   const handleCopyCitation = () => {
