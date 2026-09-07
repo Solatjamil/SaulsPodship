@@ -278,26 +278,11 @@ export const RootLayout: React.FC = () => {
           </nav>
 
           {/* Right Header Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <ChromeControls />
-            <a
-              href={SITE.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-600/90 hover:bg-red-600 text-white font-bold text-xs tracking-wide shadow transition-all"
-              title="Official YouTube Channel"
-            >
-              <Play className="w-3.5 h-3.5 fill-current" />
-              <span>YouTube</span>
-            </a>
 
-            <Link
-              to="/encyclopedia"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#E8C96A] text-[#1A0812] font-bold text-xs tracking-wide shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
-            >
-              <Search className="w-3.5 h-3.5" />
-              <span>Browse 50 Volumes</span>
-            </Link>
+
+
 
             {/* Mobile Menu Toggle Button */}
             <button
