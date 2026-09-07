@@ -22,9 +22,9 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
     const numPadded = volume.number < 10 ? `0${volume.number}` : `${volume.number}`;
 
     return (
-      <section id="volume-hero" className="relative w-full overflow-hidden min-h-[100svh] flex flex-col text-white bg-[linear-gradient(180deg,#16060F_0%,#1A0812_55%,#24101C_100%)">
+      <section id="volume-hero" className="relative w-full overflow-hidden flex flex-col text-white min-h-0 sm:min-h-[100svh] bg-[linear-gradient(180deg,#16060F_0%,#1A0812_55%,#24101C_100%)">
         <picture
-          className="absolute inset-0"
+          className="relative w-full aspect-video sm:absolute sm:inset-0 sm:aspect-auto"
           style={{ background: 'linear-gradient(180deg, #16060F 0%, #1A0812 62%, #24101C 100%)' }}
         >
           <source media="(max-width: 639px)" srcSet={`/images/volumes/${slug}/hero-1280.webp`} type="image/webp" />
@@ -37,7 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
             height="1082"
             fetchPriority="high"
             decoding="async"
-            className="h-full w-full object-contain sm:object-cover object-top sm:object-center"
+            className="h-full w-full object-cover"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               if (volume.heroImage?.src && target.src !== volume.heroImage.src) {
@@ -46,10 +46,10 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
             }}
           />
         </picture>
-        <div className="hero-overlay absolute inset-0 pointer-events-none" />
+        <div className="hero-overlay absolute inset-0 pointer-events-none hidden sm:block" />
 
         {/* content: on mobile pinned to the LOWER 40% and compact; on desktop centred */}
-        <div className="relative z-10 flex-1 flex flex-col items-center text-center px-5
+        <div className="relative z-10 flex-1 flex flex-col items-center text-center px-5 py-6 sm:py-0
                         justify-end pb-[max(1.25rem,env(safe-area-inset-bottom))]
                         md:justify-center md:pb-0">
           <div className="hero-scrim rounded-3xl px-5 py-5 md:px-8 md:py-8 max-w-xl w-full max-h-[42svh] md:max-h-none flex flex-col items-center justify-center">

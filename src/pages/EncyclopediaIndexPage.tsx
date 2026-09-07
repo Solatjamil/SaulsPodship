@@ -141,7 +141,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
                   Kings of the Bible — Full Sequence
                 </span>
                 <span className="block text-[11px] text-white/55 mt-0.5">
-                  Every throne from Saul to the Herods, canonical order · also embedded in Vols. 1, 20 &amp; 29
+                  Every throne from Saul to the Herods, canonical order
                 </span>
               </span>
               <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
