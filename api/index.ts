@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 import { GoogleGenAI, Type } from "@google/genai";
 import { CATEGORIES } from "./data.js";
+import { EMBEDDED_ARTISTS } from "./singersData.js";
 
 const app = express();
 const PORT = 3000;
@@ -749,14 +750,25 @@ function markdownToHtml(md: string): string {
         ${items}
       </div>`;
   });
-  // Convert headings
-  html = html.replace(/### (.*?)\n/g, '<h2 style="font-family:\'Merriweather\', serif; color:#4A152C; font-size:1.5rem; margin-top:2rem; margin-bottom:1rem; font-weight:700;">$1</h2>');
-  html = html.replace(/#### (.*?)\n/g, '<h3 style="font-family:\'Merriweather\', serif; color:#4A152C; font-size:1.2rem; margin-top:1.5rem; margin-bottom:0.75rem; font-weight:700;">$1</h3>');
-  // Bold
+  // Convert headings (##, ###, #### and # all normalized)
+  html = html.replace(/^####\s+(.*?)\n/gm, '<h3 style="font-family:\'Merriweather\', serif; color:#4A152C; font-size:1.2rem; margin-top:1.5rem; margin-bottom:0.75rem; font-weight:700;">$1</h3>');
+  html = html.replace(/^###\s+(.*?)\n/gm, '<h2 style="font-family:\'Merriweather\', serif; color:#4A152C; font-size:1.5rem; margin-top:2rem; margin-bottom:1rem; font-weight:700;">$1</h2>');
+  html = html.replace(/^##\s+(.*?)\n/gm, '<h2 style="font-family:\'Merriweather\', serif; color:#4A152C; font-size:1.6rem; margin-top:2rem; margin-bottom:1rem; font-weight:700;">$1</h2>');
+  html = html.replace(/^#\s+(.*?)\n/gm, '<h1 style="font-family:\'Merriweather\', serif; color:#4A152C; font-size:1.9rem; margin-top:2rem; margin-bottom:1rem; font-weight:900;">$1</h1>');
+  // Markdown links [label](url) -> anchor (http/https only, sanitized)
+  html = html.replace(/\[([^\]]{1,120})\]\((https?:\/\/[^)\s]+)\)/g, (_, label, url) => {
+    const safe = String(url).replace(/["'<>]/g, "");
+    return `<a href="${safe}" target="_blank" rel="noopener noreferrer" style="color:#8B1C2E; text-decoration:underline; text-underline-offset:3px;">${label}</a>`;
+  });
+  // Bold (inside and outside headings), then strip any stray emphasis markers
   html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  // Bullet points
-  html = html.replace(/• (.*?)\n/g, '<li style="margin-bottom:0.5rem; margin-left:1.5rem; list-style-type:disc;">$1</li>');
-  html = html.replace(/\* (.*?)\n/g, '<li style="margin-bottom:0.5rem; margin-left:1.5rem; list-style-type:disc;">$1</li>');
+  html = html.replace(/\*\*/g, "");
+  html = html.replace(/__(.*?)__/g, "<strong>$1</strong>");
+  // Bullet points: •, -, * markdown/unicode bullets all normalized
+  html = html.replace(/^[ \t]*[•⁃▪][ \t]+(.*?)\n/gm, '<li style="margin-bottom:0.5rem; margin-left:1.5rem; list-style-type:disc;">$1</li>');
+  html = html.replace(/^[ \t]*[-*][ \t]+(.*?)\n/gm, '<li style="margin-bottom:0.5rem; margin-left:1.5rem; list-style-type:disc;">$1</li>');
+  // Horizontal rules
+  html = html.replace(/^---+[ \t]*\n/gm, '<hr style="border:none; border-top:1px solid rgba(212,175,55,.4); margin:2rem auto;">');
   // Numbered lists
   html = html.replace(/\d+\. (.*?)\n/g, '<li style="margin-bottom:0.5rem; margin-left:1.5rem; list-style-type:decimal;">$1</li>');
   // Paragraphs
@@ -799,7 +811,11 @@ function getSingersList(): ArtistRecord[] {
     }
   }
 
-  if (!content) return [];
+  if (!content) {
+    // Fallback: build-time embedded data (never depend on runtime fs paths)
+    cachedArtists = EMBEDDED_ARTISTS as unknown as ArtistRecord[];
+    return cachedArtists;
+  }
 
   const artists: ArtistRecord[] = [];
   const seenSlugs = new Set<string>();
@@ -870,6 +886,15 @@ function getSingersList(): ArtistRecord[] {
       bio,
       links
     });
+  }
+
+  // Merge in any embedded artists the HTML parse missed (belt & braces)
+  const seenIds = new Set(artists.map(a => a.id));
+  for (const e of EMBEDDED_ARTISTS as unknown as ArtistRecord[]) {
+    if (!seenIds.has(e.id)) {
+      seenIds.add(e.id);
+      artists.push(e);
+    }
   }
 
   cachedArtists = artists;
@@ -991,19 +1016,23 @@ app.get("/sitemap.xml", async (req, res) => {
 
 // Dynamic route for Pakistani singers archive that appends dedicated bio links
 app.get("/Pakistanisingersarchive", (req, res) => {
-  let filePath = "";
-  if (process.env.NODE_ENV !== "production") {
-    filePath = path.join(process.cwd(), "public/singers.html");
-  } else {
-    filePath = path.join(process.cwd(), "dist/singers.html");
-  }
+  // Try every plausible runtime location for the enhanced singers page;
+  // NEVER call res.sendFile on a missing path (that threw → 500 on Vercel).
+  const candidates = [
+    path.join(process.cwd(), "public/singers.html"),
+    path.join(process.cwd(), "dist/singers.html"),
+    path.join(__dirname, "../public/singers.html"),
+    path.join(__dirname, "../dist/singers.html"),
+  ];
+  const filePath = candidates.find(p => fs.existsSync(p)) || "";
 
   try {
+    if (!filePath) throw new Error("singers.html unavailable");
     let content = fs.readFileSync(filePath, "utf8");
 
     // Replace each card's biography section to append a link to its dedicated SSR page
     const cardRegex = /<div class="card-name">([^<]+)<\/div>([\s\S]*?)<div class="card-bio">([\s\S]*?)<\/div>/g;
-    
+
     content = content.replace(cardRegex, (match, name, middle, bio) => {
       const slug = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
       if (slug && !slug.includes("directory") && !slug.includes("collection") && !slug.includes("archive") && !slug.includes("org")) {
@@ -1015,8 +1044,41 @@ app.get("/Pakistanisingersarchive", (req, res) => {
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.send(content);
   } catch (err) {
-    console.error(err);
-    res.sendFile(filePath);
+    console.error("[SINGERS ARCHIVE FALLBACK]", err);
+    // Fully server-rendered fallback archive from embedded data — always works.
+    const list = getSingersList();
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pakistani Christian Gospel Singers &amp; Musicians Archive | Saul's Podship</title>
+<meta name="description" content="Living archive of Pakistani Christian gospel musicians, composers and the Punjabi Zaboor hymn tradition — biographies, legacies and recordings.">
+<link rel="canonical" href="https://www.saulspodship.com/Pakistanisingersarchive" />
+<style>
+body{font-family:Georgia,'Times New Roman',serif;background:#1A0812;color:#f0eae1;margin:0;padding:3rem 1.5rem;}
+h1{color:#D4AF37;font-size:2rem;margin:0 0 .5rem;text-align:center;}
+.sub{text-align:center;color:rgba(240,234,225,.7);font-size:.95rem;margin-bottom:2.5rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;max-width:1100px;margin:0 auto;}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.25);border-radius:12px;padding:1.2rem;}
+.card h2{font-size:1.05rem;margin:0 0 .25rem;color:#E8C96A;}
+.role{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(240,234,225,.55);margin-bottom:.5rem;}
+.bio{font-size:.85rem;line-height:1.55;color:rgba(240,234,225,.85);margin-bottom:.75rem;}
+a{color:#D4AF37;text-decoration:none;font-weight:bold;}
+a:hover{text-decoration:underline;}
+.home{text-align:center;margin-top:2.5rem;}
+</style>
+</head>
+<body>
+<h1>Pakistani Christian Gospel Music Archive</h1>
+<p class="sub">Pioneers, composers and living voices of the Punjabi Zaboor — ${list.length} profiles documented by Saul's Podship.</p>
+<div class="grid">
+${list.map(a => `<div class="card"><h2>${a.name}</h2><div class="role">${a.badge || a.role}</div><div class="bio">${String(a.bio || "").slice(0, 260)}${String(a.bio || "").length > 260 ? "…" : ""}</div><a href="/music-archive/${a.id}">Read Biography &amp; Legacy →</a></div>`).join("\n")}
+</div>
+<div class="home"><a href="/">← Return to Saul's Podship</a></div>
+</body>
+</html>`);
   }
 });
 

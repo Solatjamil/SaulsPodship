@@ -17,7 +17,10 @@ import ManuscriptAnalysis from '../components/ManuscriptAnalysis';
 import NotFoundPage from './NotFoundPage';
 import VolumeNumberRedirect from './VolumeNumberRedirect';
 import { StoryPanel } from '../types';
-import { ScriptureRef, renderWithScriptureLinks } from '../components/ScriptureRef';
+import { ScriptureRef } from '../components/ScriptureRef';
+import { InlineMd } from '../components/InlineMd';
+import { StorySceneIcon, sceneForStory } from '../components/story/StorySceneIcon';
+import { bibleComUrl } from '../lib/bibleRef';
 import { SITE } from '../config/site';
 
 export const VolumePage: React.FC = () => {
@@ -397,7 +400,7 @@ export const VolumePage: React.FC = () => {
                             <tr key={rIdx} className="hover:bg-amber-50/40 transition-colors">
                               {row.map((cell, cIdx) => (
                                 <td key={cIdx} className="px-4 py-3.5 text-gray-700 leading-relaxed font-sans text-center align-middle">
-                                  {renderWithScriptureLinks(cell)}
+                                  <InlineMd text={cell} />
                                 </td>
                               ))}
                             </tr>
@@ -493,17 +496,24 @@ export const VolumePage: React.FC = () => {
                   className="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#D4AF37] transition-all duration-200 flex flex-col justify-between cursor-pointer group"
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#4A152C]/10 text-[#4A152C]">
-                        {panel.era}
-                      </span>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <StorySceneIcon
+                          glyph={sceneForStory(panel.title, panel.era, `${panel.description} ${panel.characters || ''}`)}
+                          accent={panel.colorTheme}
+                          size={44}
+                        />
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#4A152C]/10 text-[#4A152C] whitespace-nowrap">
+                          {panel.era}
+                        </span>
+                      </div>
                       <ScriptureRef reference={panel.scripture} className="text-xs font-semibold text-[#8B1C2E] bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded transition-colors" />
                     </div>
                     <h3 className="font-serif font-bold text-lg text-gray-900 group-hover:text-[#4A152C] transition-colors">
                       {panel.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans">
-                      {panel.description}
+                      <InlineMd text={panel.description} />
                     </p>
                   </div>
 
@@ -539,6 +549,11 @@ export const VolumePage: React.FC = () => {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
+                  <StorySceneIcon
+                    glyph={sceneForStory(activeStoryModal.title, activeStoryModal.era, `${activeStoryModal.description} ${activeStoryModal.characters || ''}`)}
+                    accent="#D4AF37"
+                    size={52}
+                  />
                   <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-[#4A152C] text-[#E8C96A]">
                     {activeStoryModal.era}
                   </span>
@@ -550,26 +565,26 @@ export const VolumePage: React.FC = () => {
               </div>
 
               <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed font-sans">
-                <p>{activeStoryModal.description}</p>
+                <p><InlineMd text={activeStoryModal.description} /></p>
                 
                 {activeStoryModal.characters && (
                   <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                     <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Key Biblical Figures</div>
-                    <div className="font-medium text-gray-900">{activeStoryModal.characters}</div>
+                    <div className="font-medium text-gray-900"><InlineMd text={activeStoryModal.characters} /></div>
                   </div>
                 )}
 
                 {activeStoryModal.theologicalTheme && (
                   <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200">
                     <div className="text-xs font-bold uppercase tracking-wider text-amber-900 mb-1">Central Theological Theme</div>
-                    <div className="font-serif font-bold text-[#4A152C] text-base">{activeStoryModal.theologicalTheme}</div>
+                    <div className="font-serif font-bold text-[#4A152C] text-base"><InlineMd text={activeStoryModal.theologicalTheme} /></div>
                   </div>
                 )}
 
                 {activeStoryModal.connections && (
                   <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200">
                     <div className="text-xs font-bold uppercase tracking-wider text-blue-900 mb-1">Typological &amp; Canonical Connections</div>
-                    <div className="text-sm text-blue-950 font-medium">{activeStoryModal.connections}</div>
+                    <div className="text-sm text-blue-950 font-medium"><InlineMd text={activeStoryModal.connections} /></div>
                   </div>
                 )}
               </div>
@@ -584,6 +599,16 @@ export const VolumePage: React.FC = () => {
                   <Copy className="w-3.5 h-3.5" />
                   <span>Copy Passage Summary</span>
                 </button>
+                {bibleComUrl(activeStoryModal.scripture) && (
+                  <a
+                    href={bibleComUrl(activeStoryModal.scripture)!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#1D4E89] hover:bg-[#2A6BB8] px-3.5 py-2 rounded-lg transition-colors"
+                  >
+                    Read Full Passage on Bible.com <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
                 <button
                   onClick={() => setActiveStoryModal(null)}
                   className="px-5 py-2.5 rounded-xl bg-[#4A152C] hover:bg-[#681E3E] text-white text-xs font-bold"

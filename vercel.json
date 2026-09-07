@@ -27,7 +27,7 @@
     "api/index.ts": {
       "memory": 1024,
       "maxDuration": 15,
-      "includeFiles": "api/data.ts,firebase-applet-config.json,public/singers.html"
+      "includeFiles": "api/**,firebase-applet-config.json,public/singers.html"
     }
   },
   "rewrites": [

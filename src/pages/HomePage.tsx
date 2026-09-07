@@ -17,6 +17,7 @@ import { VOLUMES } from '../data/volumes';
 import { EPISODES } from '../data/episodes';
 import { PIONEERS_AND_SINGERS } from '../data/singers';
 import { SITE } from '../config/site';
+import VideosRail from '../components/VideosRail';
 
 export const HomePage: React.FC = () => {
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<string>('all');
@@ -316,6 +317,9 @@ export const HomePage: React.FC = () => {
           )}
         </div>
       </section>
+
+      {/* 4.5 New from the Podship — YouTube video slider (data synced weekly) */}
+      <VideosRail />
 
       {/* 5. Sacred Music & Punjabi Zaboor Archive Teaser - Centered */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">

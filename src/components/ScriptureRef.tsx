@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
+import { scriptureUrl } from '../lib/bibleRef';
 
 interface ScriptureRefProps {
   reference: string;
@@ -41,14 +42,14 @@ export const ScriptureRef: React.FC<ScriptureRefProps> = ({
   children
 }) => {
   const cleanRef = reference.replace(/[[\]*]/g, '').trim();
-  const url = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanRef)}&version=${encodeURIComponent(version)}`;
+  const url = scriptureUrl(cleanRef);
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      title={`Read ${cleanRef} on BibleGateway (${version})`}
+      title={`Read ${cleanRef} on Bible.com (${version})`}
       className={`text-[#D4AF37] hover:text-[#E8C96A] underline decoration-dotted underline-offset-4 font-semibold inline-flex items-center gap-1 transition-colors ${className}`}
     >
       <span>{children || cleanRef}</span>

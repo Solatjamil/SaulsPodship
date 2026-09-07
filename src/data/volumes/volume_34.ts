@@ -85,7 +85,7 @@ export const volume_34: Volume = {
           [
             "“Money is the root of all evil.”",
             "Blames the tool (money) rather than the heart.",
-            "✅ It is the *love* of money that causes the issue.\n📖 1 Timothy 6:10"
+            "✅ It is the love of money that causes the issue.\n📖 1 Timothy 6:10"
           ],
           [
             "“God will never give you more than you can handle.”",

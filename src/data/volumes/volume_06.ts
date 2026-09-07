@@ -86,7 +86,7 @@ export const volume_06: Volume = {
           [
             "2",
             "📌 Nicene Creed\n📖 325 AD (Nicaea) & 381 AD (Constantinople).\n📝 Written to combat Arianism.",
-            "💡 Strictly defines the consubstantiality (*homoousios*) of the Son with the Father, and the full deity of the Holy Spirit."
+            "💡 Strictly defines the consubstantiality (homoousios) of the Son with the Father, and the full deity of the Holy Spirit."
           ],
           [
             "3",

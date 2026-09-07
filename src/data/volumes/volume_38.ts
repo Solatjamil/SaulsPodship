@@ -83,37 +83,37 @@ export const volume_38: Volume = {
             "David",
             "73",
             "[Acts 2:25 / 11QPs-a](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1)",
-            "Personal intimacy and Royal Covenant. **Proof**: [View Dead Sea Scrolls Digital Archive](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1)"
+            "Personal intimacy and Royal Covenant. Proof: [View Dead Sea Scrolls Digital Archive](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1)"
           ],
           [
             "Asaph",
             "12",
             "[1 Chronicles 16:5](https://www.biblegateway.com/passage/?search=1+Chronicles+16%3A5&version=NIV)",
-            "Divine Justice and Social Ethics. **Proof**: [Biblical Archaeology Insight](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/)"
+            "Divine Justice and Social Ethics. Proof: [Biblical Archaeology Insight](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/)"
           ],
           [
             "Sons of Korah",
             "11",
             "[1 Chronicles 9:19](https://www.biblegateway.com/passage/?search=1+Chronicles+9%3A19&version=NIV)",
-            "Passion for the Presence of God. **Proof**: [Scholarly Article on Korahite Guilds](https://www.gotquestions.org/Sons-of-Korah.html)"
+            "Passion for the Presence of God. Proof: [Scholarly Article on Korahite Guilds](https://www.gotquestions.org/Sons-of-Korah.html)"
           ],
           [
             "Solomon",
             "2",
             "[1 Kings 4:32](https://www.biblegateway.com/passage/?search=1+Kings+4%3A32&version=NIV)",
-            "Royal splendor and Wisdom. **Source**: [Ligonier Ministries Analysis](https://www.ligonier.org/learn/devocionals/david-and-solomon)"
+            "Royal splendor and Wisdom. Source: [Ligonier Ministries Analysis](https://www.ligonier.org/learn/devocionals/david-and-solomon)"
           ],
           [
             "Moses",
             "1",
             "[Psalm 90 Title](https://www.biblegateway.com/passage/?search=Psalm+90&version=NIV)",
-            "The Eternity of God vs. Human Frailty. **Source**: [Cambridge University Press Commentary](https://www.cambridge.org/core/journals/harvard-theological-review/article/authorship-of-the-psalms/D3E42B376E6A2A6C4A72E8E6966C72E8)"
+            "The Eternity of God vs. Human Frailty. Source: [Cambridge University Press Commentary](https://www.cambridge.org/core/journals/harvard-theological-review/article/authorship-of-the-psalms/D3E42B376E6A2A6C4A72E8E6966C72E8)"
           ],
           [
             "Heman/Ethan",
             "2",
             "[1 Kings 4:31](https://www.biblegateway.com/passage/?search=1+Kings+4%3A31&version=NIV)",
-            "Lament and Covenant Faithfulness. **Source**: [The Treasury of David (Spurgeon)](https://www.christianity.com/bible/commentary.php?com=spur&b=19&c=88)"
+            "Lament and Covenant Faithfulness. Source: [The Treasury of David (Spurgeon)](https://www.christianity.com/bible/commentary.php?com=spur&b=19&c=88)"
           ]
         ]
       },
@@ -130,31 +130,31 @@ export const volume_38: Volume = {
             "Book I",
             "1–41",
             "Genesis (Man & Creation)",
-            "Amen and Amen! (Ps 41:13). **Structure**: [The Torah of the Psalms](https://www.thetorah.com/article/the-five-books-of-the-psalter)"
+            "Amen and Amen! (Ps 41:13). Structure: [The Torah of the Psalms](https://www.thetorah.com/article/the-five-books-of-the-psalter)"
           ],
           [
             "Book II",
             "42–72",
             "Exodus (Deliverance)",
-            "Amen and Amen! (Ps 72:19). **Link**: [Exodus Motifs in Psalms](https://www.biblestudytools.com/commentaries/matthew-henry-complete/psalms/42.html)"
+            "Amen and Amen! (Ps 72:19). Link: [Exodus Motifs in Psalms](https://www.biblestudytools.com/commentaries/matthew-henry-complete/psalms/42.html)"
           ],
           [
             "Book III",
             "73–89",
             "Leviticus (Sanctuary)",
-            "Amen and Amen! (Ps 89:52). **Link**: [The Sanctuary Experience](https://www.ligonier.org/learn/devocionals/sanctuary-god)"
+            "Amen and Amen! (Ps 89:52). Link: [The Sanctuary Experience](https://www.ligonier.org/learn/devocionals/sanctuary-god)"
           ],
           [
             "Book IV",
             "90–106",
             "Numbers (Wilderness)",
-            "Amen! Hallelujah! (Ps 106:48). **Analysis**: [Wilderness Faith](https://www.biblegateway.com/resources/commentaries/IVP-NT/Ps/90)"
+            "Amen! Hallelujah! (Ps 106:48). Analysis: [Wilderness Faith](https://www.biblegateway.com/resources/commentaries/IVP-NT/Ps/90)"
           ],
           [
             "Book V",
             "107–150",
             "Deuteronomy (The Word)",
-            "Let everything praise the Lord! (Ps 150:6). **Finality**: [The Great Hallel](https://www.myjewishlearning.com/article/hallel/)"
+            "Let everything praise the Lord! (Ps 150:6). Finality: [The Great Hallel](https://www.myjewishlearning.com/article/hallel/)"
           ]
         ]
       }

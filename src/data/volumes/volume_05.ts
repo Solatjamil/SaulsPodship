@@ -149,7 +149,7 @@ export const volume_05: Volume = {
           [
             "13",
             "📌 Why do you call Jesus the \"Word of God\"?",
-            "💡 In Greek (*Logos*) and Hebrew (*Memra*), the Word is God’s active power and communication. Jesus is God \"speaking\" Himself into our world.\n📖 John 1:1\n❓ Can you separate a man from his word? If not, why try to separate God from His Word?"
+            "💡 In Greek (Logos) and Hebrew (Memra), the Word is God’s active power and communication. Jesus is God \"speaking\" Himself into our world.\n📖 John 1:1\n❓ Can you separate a man from his word? If not, why try to separate God from His Word?"
           ],
           [
             "14",
@@ -234,7 +234,7 @@ export const volume_05: Volume = {
           [
             "26",
             "📌 Doesn’t science disprove miracles?\n⚠️ Objection: \"Miracles violate the laws of physics, so they are impossible.\"",
-            "💡 Natural laws describe how things *usually* work; miracles describe what happens when the Creator of those laws intervenes. They are not anti-science, but supernatural.\n📖 Luke 1:37\n❓ If a programmer can change a variable in his code, why can the Creator not change a variable in His world?"
+            "💡 Natural laws describe how things usually work; miracles describe what happens when the Creator of those laws intervenes. They are not anti-science, but supernatural.\n📖 Luke 1:37\n❓ If a programmer can change a variable in his code, why can the Creator not change a variable in His world?"
           ],
           [
             "27",
@@ -254,12 +254,12 @@ export const volume_05: Volume = {
           [
             "30",
             "📌 Can we be good without God?\n⚠️ Objection: \"Atheists can be moral, so we don't need religion.\"",
-            "💡 You can *be* good without believing in God, but you cannot *define* good without God. Without a moral Lawgiver, \"good\" is just a subjective opinion.\n📖 Romans 2:14–15\n❓ If there is no objective moral standard, is murder \"wrong\" or just \"unpopular\"?"
+            "💡 You can be good without believing in God, but you cannot define good without God. Without a moral Lawgiver, \"good\" is just a subjective opinion.\n📖 Romans 2:14–15\n❓ If there is no objective moral standard, is murder \"wrong\" or just \"unpopular\"?"
           ],
           [
             "31",
             "📌 Why did the disciples die for a lie?\n⚠️ Objection: \"People die for religious lies all the time.\"",
-            "💡 People die for what they *believe* is true. The disciples died for what they *knew* was true because they saw the risen Christ with their own eyes.\n📖 Acts 5:32\n❓ Who would suffer torture and death for a story they knew they had invented?"
+            "💡 People die for what they believe is true. The disciples died for what they knew was true because they saw the risen Christ with their own eyes.\n📖 Acts 5:32\n❓ Who would suffer torture and death for a story they knew they had invented?"
           ],
           [
             "32",
@@ -309,7 +309,7 @@ export const volume_05: Volume = {
           [
             "39",
             "📌 Does God want me to be rich and successful?\n⚠️ Objection: \"Religion is just a way to get blessings.\"",
-            "💡 God wants you to be *holy*. He provides for needs, but His greatest gift is His presence, which is enough even in poverty or sickness.\n📖 Philippians 4:12–13\n❓ Is God more like a vending machine for your desires, or a Treasure that is better than your desires?"
+            "💡 God wants you to be holy. He provides for needs, but His greatest gift is His presence, which is enough even in poverty or sickness.\n📖 Philippians 4:12–13\n❓ Is God more like a vending machine for your desires, or a Treasure that is better than your desires?"
           ],
           [
             "40",
