@@ -10,7 +10,7 @@ import {
   ChevronRight, Bookmark, Share2, ShieldCheck, Sparkles, 
   Layers, MapPin, HelpCircle, CheckCircle2, Table, Info,
   Search, Download, Copy, Check, Filter, ArrowUpRight, X, FileText, Printer, Crown, Globe2
-} from 'lucide-react';
+, Network} from 'lucide-react';
 import ModuleSwitcher from '../components/modules/ModuleSwitcher';
 import { getVolumeBySlug, VOLUMES } from '../data/volumes';
 import Hero from '../components/Hero';
@@ -346,6 +346,25 @@ export const VolumePage: React.FC = () => {
                 <span className="block text-[10px] text-white/55 mt-0.5">Fulfilled, in-part &amp; future on a rotatable 3D globe</span>
               </span>
               <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            </a>
+            <a
+              href="/cross-references/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
+            >
+              <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
+                <Network className="w-5 h-5 text-[#E8C96A]" />
+              </span>
+              <span className="flex-1 text-left">
+                <span className="block font-serif font-bold text-white group-hover:text-[#E8C96A] transition-colors leading-snug">
+                  The Interlinked Bible &mdash; 344,799 Threads
+                </span>
+                <span className="block text-[11px] text-white/55 mt-0.5">
+                  Every cross-reference woven into one interactive horseshoe, plus a world faith map
+                </span>
+              </span>
+              <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
             </a>
             <a href="/encyclopedia/all-bible-stories" target="_blank" rel="noopener noreferrer"
                className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
