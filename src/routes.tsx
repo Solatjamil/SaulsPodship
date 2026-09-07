@@ -20,6 +20,7 @@ import SingersArchivePage from './pages/SingersArchivePage';
 import StudioPage from './pages/StudioPage';
 import TheologicalArchivePage from './pages/TheologicalArchivePage';
 import ComparativeApologeticsPage from './pages/ComparativeApologeticsPage';
+import { ProphecyMapPage, KingsOfTheBiblePage, CrossReferencesPage } from './pages/ModulePages';
 import SupportPage from './pages/SupportPage';
 import FaqPage from './pages/FaqPage';
 import ContactPage from './pages/ContactPage';
@@ -90,6 +91,18 @@ export const routeConfig: RouteObject[] = [
       {
         path: 'comparative-apologetics',
         element: <ComparativeApologeticsPage />
+      },
+      {
+        path: 'prophecy-map',
+        element: <ProphecyMapPage />
+      },
+      {
+        path: 'kings-of-the-bible',
+        element: <KingsOfTheBiblePage />
+      },
+      {
+        path: 'cross-references',
+        element: <CrossReferencesPage />
       },
       {
         path: 'support',

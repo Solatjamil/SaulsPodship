@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World Faith &amp; Population Map | Saul's Podship</title>
+<style>
+  html, body { margin: 0; background: #F8F4E3; color: #4A152C; font-family: 'EB Garamond', Georgia, serif; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 1rem 1rem 1.5rem; }
+</style>
+</head>
+<body>
+<div class="wrap"><div id="worldmap"></div></div>
+<script type="module">
+  import { renderWorldReligionMap } from '../cross-references/engine/worldmap.js';
+  renderWorldReligionMap(document.getElementById('worldmap'), { baseUrl: '../cross-references/data' })
+    .catch((e) => console.error('[world-religion-map]', e));
+</script>
+</body>
+</html>

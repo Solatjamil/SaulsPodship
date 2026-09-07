@@ -312,6 +312,28 @@ export const VolumePage: React.FC = () => {
           </section>
         )}
 
+        {slug === 'biblical-maps' && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+            <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-bold text-[#E8C96A] text-center">
+                World Faith &amp; Population Map
+              </h2>
+              <p className="text-center text-xs text-white/60 mb-5 max-w-xl mx-auto">
+                Every territory filled by its majority religion — Christianity in green — with global
+                adherent totals in the legend and national populations on hover.
+              </p>
+              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/40">
+                <iframe
+                  src="/world-religion-map/index.html"
+                  title="World religion and population map"
+                  loading="lazy"
+                  className="w-full h-[560px] md:h-[680px] border-0 block bg-[#F8F4E3]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Companion Modules — every volume page links the interactive companions */}
         <section id="companion-modules" className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8 scroll-mt-24">
           <div className="flex items-center justify-center gap-2 mb-1">
@@ -325,7 +347,7 @@ export const VolumePage: React.FC = () => {
             <ModuleSwitcher compact />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a href="/kings-of-the-bible.html" target="_blank" rel="noopener noreferrer"
+            <a href="/kings-of-the-bible" target="_blank" rel="noopener noreferrer"
                className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
               <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
                 <Crown className="w-5 h-5 text-[#E8C96A]" />
@@ -336,7 +358,7 @@ export const VolumePage: React.FC = () => {
               </span>
               <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
             </a>
-            <a href="/prophecy-map.html" target="_blank" rel="noopener noreferrer"
+            <a href="/prophecy-map" target="_blank" rel="noopener noreferrer"
                className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
               <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
                 <Globe2 className="w-5 h-5 text-[#E8C96A]" />
@@ -348,9 +370,7 @@ export const VolumePage: React.FC = () => {
               <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
             </a>
             <a
-              href="/cross-references/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/cross-references"
               className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
             >
               <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">

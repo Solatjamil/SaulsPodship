@@ -17,7 +17,6 @@
   .chips span i { display: inline-block; width: .55em; height: .55em; border-radius: 50%; margin-right: .4em; }
   .plate { border: 2px solid #D4AF37; background: #FAF7EC; border-radius: 8px; padding: 8px; box-shadow: 0 14px 40px rgba(74,21,44,.12); }
   #viz { height: min(74vh, 880px); min-height: 520px; }
-  .mapcard { margin-top: 1.4rem; background: #FAF7EC; border: 1px solid rgba(74,21,44,.18); border-radius: 8px; padding: 1rem 1.1rem; }
   .srcs { font-family: Inter, system-ui, sans-serif; font-size: .68rem; color: rgba(42,35,29,.6); text-align: center; margin: 1rem 0 0; line-height: 1.6; }
 </style>
 </head>
@@ -36,13 +35,11 @@
     </div>
   </div>
   <div class="plate"><div id="viz"></div></div>
-  <div class="mapcard"><div id="worldmap"></div></div>
   <p class="srcs">Cross-reference data &copy; openbible.info (CC-BY, 2024-11-04) &middot; Scripture: King James Version (public domain) &middot;
-  visual language after R&ouml;mhild &amp; Harrison, <i>Visualizing the Bible</i> (2007) &middot; map: Natural Earth &middot; populations: UN/Wikipedia 2025-26</p>
+  visual language after R&ouml;mhild &amp; Harrison, <i>Visualizing the Bible</i> (2007) &middot; world faith map: see Volume 11, Biblical Maps</p>
 </div>
 <script type="module">
   import { CrossRefViz } from './engine/index.js';
-  import { renderWorldReligionMap } from './engine/worldmap.js';
   const viz = new CrossRefViz(document.getElementById('viz'), {
     baseUrl: 'data', theme: 'podship', layout: 'horseshoe', colorMode: 'distance', minWeight: 2, intro: true,
   });
@@ -53,8 +50,6 @@
     document.getElementById('c-arcs').textContent = st.arcs.toLocaleString('en-US');
     document.getElementById('c-shown').textContent = viz.state.buckets.visible.toLocaleString('en-US');
   }).catch((e) => console.error('[cross-references]', e));
-  renderWorldReligionMap(document.getElementById('worldmap'), { baseUrl: 'data' })
-    .catch((e) => console.error('[worldmap]', e));
 </script>
 </body>
 </html>
