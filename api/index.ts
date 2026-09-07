@@ -5,6 +5,23 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { CATEGORIES } from "./data.js";
 import { EMBEDDED_ARTISTS } from "./singersData.js";
 
+import { fileURLToPath } from "url";
+
+// ESM-safe __dirname: api/package.json declares "type": "module", where __dirname
+// does not exist — referencing it threw ReferenceError and 500'd every singers
+// route (Pakistanisingersarchive, music-archive, sitemap) on Vercel.
+const RUNTIME_DIRNAME: string = (() => {
+  try {
+    // eslint-disable-next-line no-typeof-undefined
+    if (typeof __dirname !== "undefined") return __dirname;
+  } catch (_) {}
+  try {
+    return path.dirname(fileURLToPath(import.meta.url));
+  } catch (_) {
+    return process.cwd();
+  }
+})();
+
 const app = express();
 const PORT = 3000;
 
@@ -18,8 +35,8 @@ let firebaseConfig: any = {
 try {
   const possiblePaths = [
     path.join(process.cwd(), "firebase-applet-config.json"),
-    path.join(__dirname, "../firebase-applet-config.json"),
-    path.join(__dirname, "firebase-applet-config.json")
+    path.join(RUNTIME_DIRNAME, "../firebase-applet-config.json"),
+    path.join(RUNTIME_DIRNAME, "firebase-applet-config.json")
   ];
   
   let configStr = "";
@@ -190,16 +207,28 @@ app.use((req, res, next) => {
 // Enable JSON body parsing
 app.use(express.json({ limit: "10mb" }));
 
-// Initialize the Google GenAI client
+// Initialize the Google GenAI client defensively: an absent/invalid API key must
+// NEVER crash the whole serverless function (that 500s every function-routed page,
+// including the music archive on Vercel). AI routes degrade to 503 instead.
 const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY || "";
-const ai = new GoogleGenAI({
-  apiKey: apiKey,
-  httpOptions: {
-    headers: {
-      "User-Agent": "aistudio-build",
-    },
-  },
-});
+let ai: GoogleGenAI | null = null;
+try {
+  if (apiKey) {
+    ai = new GoogleGenAI({
+      apiKey: apiKey,
+      httpOptions: {
+        headers: {
+          "User-Agent": "aistudio-build",
+        },
+      },
+    });
+  } else {
+    console.warn("[AI INIT] GEMINI_API_KEY/API_KEY not set — AI endpoints disabled, rest of server stays healthy.");
+  }
+} catch (initErr) {
+  console.error("[AI INIT] GoogleGenAI client init failed — AI endpoints disabled:", initErr);
+  ai = null;
+}
 
 // Paths for database storage safely adjusted for serverless read-only environment
 const isVercel = !!process.env.VERCEL;
@@ -501,6 +530,9 @@ app.post("/api/compose", async (req, res) => {
       ],
     };
 
+    if (!ai) {
+      return res.status(503).json({ error: "AI service is not configured on this server (set GEMINI_API_KEY in the hosting environment)." });
+    }
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: userPrompt,
@@ -560,6 +592,9 @@ app.post("/api/enhance-prompt", async (req, res) => {
       Generate a single refined, highly descriptive and punchy image generation prompt based on these elements. Make it dramatic, focus on light, color, framing, and texture. Keep the prompt under 100 words. Do not wrap in quotes or add preamble.
     `;
 
+    if (!ai) {
+      return res.status(503).json({ error: "AI service is not configured on this server (set GEMINI_API_KEY in the hosting environment)." });
+    }
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: userPrompt,
@@ -593,6 +628,9 @@ app.post("/api/chat", async (req, res) => {
     }
 
     // Set up chat with history
+    if (!ai) {
+      return res.status(503).json({ error: "AI service is not configured on this server (set GEMINI_API_KEY in the hosting environment)." });
+    }
     const chat = ai.chats.create({
       model: "gemini-3.5-flash",
       config: {
@@ -623,6 +661,9 @@ app.post("/api/polyglot-search", async (req, res) => {
       return;
     }
 
+    if (!ai) {
+      return res.status(503).json({ error: "AI service is not configured on this server (set GEMINI_API_KEY in the hosting environment)." });
+    }
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: `Perform a deep polyglot search for biblical term: "${query}". Return a JSON array with one object containing keys: reference, english, hebrew, greek, aramaic, latin, nuance, context. Ensure accurate transliterations and precise historical information.`,
@@ -651,6 +692,9 @@ app.post("/api/global-search", async (req, res) => {
       return;
     }
 
+    if (!ai) {
+      return res.status(503).json({ error: "AI service is not configured on this server (set GEMINI_API_KEY in the hosting environment)." });
+    }
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: `Search the scriptures for: "${query}" in the ${language || 'English'} language. Return a JSON array of objects with keys: reference, text, explanation.`,
@@ -679,6 +723,9 @@ app.post("/api/enhance-super-nerd-content", async (req, res) => {
       return;
     }
 
+    if (!ai) {
+      return res.status(503).json({ error: "AI service is not configured on this server (set GEMINI_API_KEY in the hosting environment)." });
+    }
     const response = await ai.models.generateContent({
       model: "gemini-3.5-flash",
       contents: `Write an incredibly scholarly, academically rigorous, and objective scientific-theological analysis of "${title}" (overview context: "${overview || ''}") in the ${language || 'English'} language. Use comprehensive historical details, mention linguistic nuances, and format with beautiful markdown headings, bullet points, and citations.`,
@@ -797,8 +844,8 @@ function getSingersList(): ArtistRecord[] {
   const possiblePaths = [
     path.join(process.cwd(), "public/singers.html"),
     path.join(process.cwd(), "dist/singers.html"),
-    path.join(__dirname, "../public/singers.html"),
-    path.join(__dirname, "../dist/singers.html"),
+    path.join(RUNTIME_DIRNAME, "../public/singers.html"),
+    path.join(RUNTIME_DIRNAME, "../dist/singers.html"),
   ];
 
   let content = "";
@@ -1021,8 +1068,8 @@ app.get("/Pakistanisingersarchive", (req, res) => {
   const candidates = [
     path.join(process.cwd(), "public/singers.html"),
     path.join(process.cwd(), "dist/singers.html"),
-    path.join(__dirname, "../public/singers.html"),
-    path.join(__dirname, "../dist/singers.html"),
+    path.join(RUNTIME_DIRNAME, "../public/singers.html"),
+    path.join(RUNTIME_DIRNAME, "../dist/singers.html"),
   ];
   const filePath = candidates.find(p => fs.existsSync(p)) || "";
 
