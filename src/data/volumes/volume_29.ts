@@ -15,9 +15,9 @@ export const volume_29: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Messianic Prophecies",
-    "credit": "The Prophet Isaiah Scroll, Qumran Dead Sea Scrolls"
+    "src": "/images/volumes/messianic-prophecies/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Messianic Prophecies”",
+    "credit": "Public domain — unknown artist · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",

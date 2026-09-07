@@ -646,3 +646,37 @@ img { display: block; }
   * { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ============================================================
+   Podship motion — entrance & micro-interactions (Phase 4)
+   ============================================================ */
+@keyframes sp-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes sp-shine { 0% { background-position: -180% 0; } 100% { background-position: 260% 0; } }
+
+.v-card, .coll-card { animation: sp-rise .55s cubic-bezier(.22, 1, .36, 1) both; }
+.sp-rail .v-card:nth-child(2), .sp-coll .coll-card:nth-child(2) { animation-delay: .06s; }
+.sp-rail .v-card:nth-child(3), .sp-coll .coll-card:nth-child(3) { animation-delay: .12s; }
+.sp-rail .v-card:nth-child(4), .sp-coll .coll-card:nth-child(4) { animation-delay: .18s; }
+.sp-rail .v-card:nth-child(5), .sp-coll .coll-card:nth-child(5) { animation-delay: .24s; }
+.sp-rail .v-card:nth-child(6), .sp-coll .coll-card:nth-child(6) { animation-delay: .3s; }
+.sp-rail .v-card:nth-child(7), .sp-coll .coll-card:nth-child(7) { animation-delay: .36s; }
+.sp-rail .v-card:nth-child(8), .sp-coll .coll-card:nth-child(8) { animation-delay: .42s; }
+
+.row { animation: sp-rise .4s ease-out both; }
+
+.sp-hero h1 {
+  background: linear-gradient(112deg, var(--brand-deep, #1A0812) 0%, #1A0812 44%, #D4AF37 50%, #1A0812 56%, #1A0812 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: sp-rise .7s cubic-bezier(.22, 1, .36, 1) both, sp-shine 2.4s ease-out .35s 1 both;
+}
+.sp-hero h1 em { color: transparent; background: linear-gradient(112deg, #8B1C2E 0%, #D4AF37 50%, #8B1C2E 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; animation: sp-shine 3s ease-out .35s 1 both; }
+
+.v-card .thumb img { transition: transform .35s ease, filter .35s ease; }
+.v-card:hover .thumb img { filter: saturate(1.12); }
+
+@media (prefers-reduced-motion: reduce) {
+  .v-card, .coll-card, .row, .sp-hero h1, .sp-hero h1 em { animation: none !important; opacity: 1; transform: none; }
+  .sp-hero h1 { background: none; color: #1A0812; -webkit-text-fill-color: initial; }
+  .sp-hero h1 em { background: none; color: #8B1C2E; }
+}

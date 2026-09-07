@@ -15,9 +15,9 @@ export const volume_38: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Psalm Authors",
-    "credit": "King David Playing the Harp, Renaissance Illumination"
+    "src": "/images/volumes/psalm-authors/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Psalm Authors”",
+    "credit": "Public domain — Peter Paul Rubens · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
@@ -68,7 +68,7 @@ export const volume_38: Volume = {
     }
   ],
   "content": {
-    "analysis": "### **I. The Multi-Voiced Library of Worship**\nThe Book of Psalms is not a single book but a compilation of five \"books\" organized to reflect the structure of the Torah. While often called the \"Psalms of David,\" it is actually a divine anthology featuring multiple contributors spanning nearly 1,000 years of history.\n\n[[CHART: Davidic|48|#D4AF37, Anonymous|33|#1D2D50, Levite Guilds|15|#8B1E3F, Others|4|#4CAF50]]\n\n---\n\n### **II. David: The Royal Archetype**\nDavid is credited with 73 psalms in the Masoretic Text. His authorship is verified not only by the superscriptions but by the New Testament itself.\n• **NT Attestation**: In [Acts 2:25-28](https://www.biblegateway.com/passage/?search=Acts+2%3A25-28&version=NIV), Peter explicitly identifies David as the author of Psalm 16.\n• **Manuscript Proof**: The [Dead Sea Scrolls (11QPs-a)](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1) attribute thousands of songs and psalms to David, reinforcing the ancient tradition of his prolific musical ministry.\n\n> \"The Spirit of the Lord spoke through me; his word was on my tongue.\" — **2 Samuel 23:2** ([Source](https://www.blueletterbible.org/niv/2sa/23/2/s_290002))\n\n---\n\n### **III. The Levite Guilds: Asaph and Korah**\nProfessionalism in worship was established by David through the appointment of specific musical families.\n• **Asaph (12 Psalms)**: A seer and chief musician. His work focuses on the [Holiness of God](https://www.gotquestions.org/Asaph-the-seer.html) and national lament.\n• **Sons of Korah (11 Psalms)**: A guild of gatekeepers and singers. Their psalms are famous for their deep [Longing for Zion](https://www.biblestudytools.com/dictionary/sons-of-korah/) (e.g., Psalm 42, 84).\n\n---\n\n### **IV. Proof of Ancient Authorship**\n**1. The Superscriptions**\nThe titles at the beginning of many psalms (e.g., \"A Psalm of David\") are part of the canonical text in the Hebrew Bible. Scholars at the [Biblical Archaeology Society](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/) note that these titles provide essential historical and musical context.\n\n**2. Internal Musical Notation**\nTerms like *Selah* (pause/reflect), *Higgaion* (meditation), and *Maskil* (instructional song) prove that these texts were composed for specific liturgical functions in the First and Second Temples.\n\n---\n\n### **V. The \"Orphan\" Psalms**\nApproximately 50 psalms are anonymous. \n• **Psalm 1 and 2**: Serve as a \"Gateway\" to the collection, contrasting the two ways of life and the two kingdoms.\n• **Psalm 119**: The longest chapter in the Bible, an acrostic masterpiece honoring the Word of God, often attributed to **Ezra the Scribe** ([Scholarly Discussion](https://www.ligonier.org/learn/devocionals/author-psalm-119)).\n\n---\n\n### **VI. Theological Significance of Authorship**\nThe diversity of authors proves that the Psalms are the voice of the *entire* community of faith—kings, priests, fugitives, and orphans—all united by the same Holy Spirit. They serve as a \"Mirror of the Soul,\" reflecting every human emotion back to the Creator.\n\n---\n\n### **About the Author**\n**Written by Solat Nadeem**, Founder — Saul's Podship · Karachi, Pakistan.\nDedicated to equipping believers worldwide with historically grounded, theologically rigorous, and visually rich biblical scholarship.",
+    "analysis": "### **I. The Multi-Voiced Library of Worship**\nThe Book of Psalms is not a single book but a compilation of five \"books\" organized to reflect the structure of the Torah. While often called the \"Psalms of David,\" it is actually a divine anthology featuring multiple contributors spanning nearly 1,000 years of history.\n\n[[CHART: Davidic|48|#D4AF37, Anonymous|33|#1D2D50, Levite Guilds|15|#8B1E3F, Others|4|#4CAF50]]\n\n---\n\n### **II. David: The Royal Archetype**\nDavid is credited with 73 psalms in the Masoretic Text. His authorship is verified not only by the superscriptions but by the New Testament itself.\n• **NT Attestation**: In [Acts 2:25-28](https://www.bible.com/bible/2020/ACT.2.25.RSV), Peter explicitly identifies David as the author of Psalm 16.\n• **Manuscript Proof**: The [Dead Sea Scrolls (11QPs-a)](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1) attribute thousands of songs and psalms to David, reinforcing the ancient tradition of his prolific musical ministry.\n\n> \"The Spirit of the Lord spoke through me; his word was on my tongue.\" — **2 Samuel 23:2** ([Source](https://www.blueletterbible.org/niv/2sa/23/2/s_290002))\n\n---\n\n### **III. The Levite Guilds: Asaph and Korah**\nProfessionalism in worship was established by David through the appointment of specific musical families.\n• **Asaph (12 Psalms)**: A seer and chief musician. His work focuses on the [Holiness of God](https://www.gotquestions.org/Asaph-the-seer.html) and national lament.\n• **Sons of Korah (11 Psalms)**: A guild of gatekeepers and singers. Their psalms are famous for their deep [Longing for Zion](https://www.biblestudytools.com/dictionary/sons-of-korah/) (e.g., Psalm 42, 84).\n\n---\n\n### **IV. Proof of Ancient Authorship**\n**1. The Superscriptions**\nThe titles at the beginning of many psalms (e.g., \"A Psalm of David\") are part of the canonical text in the Hebrew Bible. Scholars at the [Biblical Archaeology Society](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/) note that these titles provide essential historical and musical context.\n\n**2. Internal Musical Notation**\nTerms like *Selah* (pause/reflect), *Higgaion* (meditation), and *Maskil* (instructional song) prove that these texts were composed for specific liturgical functions in the First and Second Temples.\n\n---\n\n### **V. The \"Orphan\" Psalms**\nApproximately 50 psalms are anonymous. \n• **Psalm 1 and 2**: Serve as a \"Gateway\" to the collection, contrasting the two ways of life and the two kingdoms.\n• **Psalm 119**: The longest chapter in the Bible, an acrostic masterpiece honoring the Word of God, often attributed to **Ezra the Scribe** ([Scholarly Discussion](https://www.ligonier.org/learn/devocionals/author-psalm-119)).\n\n---\n\n### **VI. Theological Significance of Authorship**\nThe diversity of authors proves that the Psalms are the voice of the *entire* community of faith—kings, priests, fugitives, and orphans—all united by the same Holy Spirit. They serve as a \"Mirror of the Soul,\" reflecting every human emotion back to the Creator.\n\n---\n\n### **About the Author**\n**Written by Solat Nadeem**, Founder — Saul's Podship · Karachi, Pakistan.\nDedicated to equipping believers worldwide with historically grounded, theologically rigorous, and visually rich biblical scholarship.",
     "tables": [
       {
         "title": "MANUSCRIPT & TRADITIONAL PROOF MATRIX",
@@ -88,31 +88,31 @@ export const volume_38: Volume = {
           [
             "Asaph",
             "12",
-            "[1 Chronicles 16:5](https://www.biblegateway.com/passage/?search=1+Chronicles+16%3A5&version=NIV)",
+            "[1 Chronicles 16:5](https://www.bible.com/bible/2020/1CH.16.5.RSV)",
             "Divine Justice and Social Ethics. Proof: [Biblical Archaeology Insight](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/)"
           ],
           [
             "Sons of Korah",
             "11",
-            "[1 Chronicles 9:19](https://www.biblegateway.com/passage/?search=1+Chronicles+9%3A19&version=NIV)",
+            "[1 Chronicles 9:19](https://www.bible.com/bible/2020/1CH.9.19.RSV)",
             "Passion for the Presence of God. Proof: [Scholarly Article on Korahite Guilds](https://www.gotquestions.org/Sons-of-Korah.html)"
           ],
           [
             "Solomon",
             "2",
-            "[1 Kings 4:32](https://www.biblegateway.com/passage/?search=1+Kings+4%3A32&version=NIV)",
+            "[1 Kings 4:32](https://www.bible.com/bible/2020/1KI.4.32.RSV)",
             "Royal splendor and Wisdom. Source: [Ligonier Ministries Analysis](https://www.ligonier.org/learn/devocionals/david-and-solomon)"
           ],
           [
             "Moses",
             "1",
-            "[Psalm 90 Title](https://www.biblegateway.com/passage/?search=Psalm+90&version=NIV)",
+            "[Psalm 90 Title](https://www.bible.com/bible/2020/PSA.90.RSV)",
             "The Eternity of God vs. Human Frailty. Source: [Cambridge University Press Commentary](https://www.cambridge.org/core/journals/harvard-theological-review/article/authorship-of-the-psalms/D3E42B376E6A2A6C4A72E8E6966C72E8)"
           ],
           [
             "Heman/Ethan",
             "2",
-            "[1 Kings 4:31](https://www.biblegateway.com/passage/?search=1+Kings+4%3A31&version=NIV)",
+            "[1 Kings 4:31](https://www.bible.com/bible/2020/1KI.4.31.RSV)",
             "Lament and Covenant Faithfulness. Source: [The Treasury of David (Spurgeon)](https://www.christianity.com/bible/commentary.php?com=spur&b=19&c=88)"
           ]
         ]
@@ -182,25 +182,25 @@ export const volume_38: Volume = {
     "timeline": [
       {
         "year": "1440 BC",
-        "event": "Moses composes [Psalm 90](https://www.biblegateway.com/passage/?search=Psalm+90&version=NIV), the oldest psalm in the collection, during the wilderness wandering.",
+        "event": "Moses composes [Psalm 90](https://www.bible.com/bible/2020/PSA.90.RSV), the oldest psalm in the collection, during the wilderness wandering.",
         "color": "#4CAF50",
         "era": "Mosaic"
       },
       {
         "year": "1010 BC",
-        "event": "David writes the core of the collection, including [Psalm 23](https://www.biblegateway.com/passage/?search=Psalm+23&version=NIV), and organizes the Levitical choirs.",
+        "event": "David writes the core of the collection, including [Psalm 23](https://www.bible.com/bible/2020/PSA.23.RSV), and organizes the Levitical choirs.",
         "color": "#D4AF37",
         "era": "United Monarchy"
       },
       {
         "year": "970 BC",
-        "event": "Solomon contributes [Psalm 72](https://www.biblegateway.com/passage/?search=Psalm+72&version=NIV), a majestic vision of the Messianic King's reign.",
+        "event": "Solomon contributes [Psalm 72](https://www.bible.com/bible/2020/PSA.72.RSV), a majestic vision of the Messianic King's reign.",
         "color": "#8B1E3F",
         "era": "Golden Age"
       },
       {
         "year": "586 BC",
-        "event": "Exilic authors write [Psalm 137](https://www.biblegateway.com/passage/?search=Psalm+137&version=NIV) by the rivers of Babylon, mourning the lost Temple.",
+        "event": "Exilic authors write [Psalm 137](https://www.bible.com/bible/2020/PSA.137.RSV) by the rivers of Babylon, mourning the lost Temple.",
         "color": "#1D2D50",
         "era": "Exile"
       },

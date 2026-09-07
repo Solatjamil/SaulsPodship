@@ -15,9 +15,9 @@ export const volume_18: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Early Church Fathers & Councils",
-    "credit": "The First Council of Nicaea (Fresco, Sistine Chapel)"
+    "src": "/images/volumes/early-church-fathers-councils/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Early Church Fathers & Councils”",
+    "credit": "Public domain — Симон Ушаков (?) · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80",

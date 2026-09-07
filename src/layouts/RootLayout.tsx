@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import ScholarAssistant from '../../components/ScholarAssistant';
 import { SITE } from '../config/site';
+import ChromeControls from '../components/ChromeControls';
 
 export const RootLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -103,6 +104,7 @@ export const RootLayout: React.FC = () => {
 
           {/* Right Header Controls */}
           <div className="flex items-center gap-3">
+            <ChromeControls />
             <a
               href={SITE.youtube}
               target="_blank"

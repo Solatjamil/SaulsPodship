@@ -15,9 +15,9 @@ export const volume_14: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Christmas History",
-    "credit": "Gerard van Honthorst, Adoration of the Shepherds (1622)"
+    "src": "/images/volumes/christmas-history/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Christmas History”",
+    "credit": "Public domain — Sailko · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",

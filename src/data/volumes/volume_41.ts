@@ -15,9 +15,9 @@ export const volume_41: Volume = {
   "category": "devotional",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Seven Last Words of Jesus",
-    "credit": "Diego Velázquez, Cristo Crucificado (1632)"
+    "src": "/images/volumes/seven-last-words-of-jesus/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Seven Last Words of Jesus”",
+    "credit": "Public domain — Anthony van Dyck · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80",

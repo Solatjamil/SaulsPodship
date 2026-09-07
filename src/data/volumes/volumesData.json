@@ -9,9 +9,9 @@
     "category": "reference",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1600&q=80",
-      "alt": "All Bible Stories",
-      "credit": "Gustave Doré, The Creation of Light (1866)"
+      "src": "/images/volumes/all-bible-stories/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “All Bible Stories”",
+      "credit": "Public domain — Internet Archive Book Images · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80",
@@ -828,9 +828,9 @@
     "category": "reference",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1600&q=80",
-      "alt": "All Biblical Numerology",
-      "credit": "Ancient Hebrew Manuscript Scriptorium"
+      "src": "/images/volumes/all-biblical-numerology/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “All Biblical Numerology”",
+      "credit": "Public domain — Drawn by:   Paul Lautensack · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=800&q=80",
@@ -1047,9 +1047,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80",
-      "alt": "All Big Denominations & Their Differences",
-      "credit": "Historic Gothic Cathedral of St. Peter, Cologne"
+      "src": "/images/volumes/all-big-denominations-their-differences/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “All Big Denominations & Their Differences”",
+      "credit": "Public domain — Seattle Public Library · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=800&q=80",
@@ -1414,9 +1414,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Angels, Demons, Beasts & Monsters in the Bible",
-      "credit": "Gustave Doré, St. Michael Defeating the Dragon (1866)"
+      "src": "/images/volumes/angels-demons-beasts-monsters-in-the-bible/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Angels, Demons, Beasts & Monsters in the Bible”",
+      "credit": "Public domain — Gustave Doré and Henry Holiday, license cc-by-sa-3.0 for com · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=800&q=80",
@@ -1598,9 +1598,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Apologetics: 40 Critical Questions",
-      "credit": "Raphael, The School of Athens (Apostolic Apologetics)"
+      "src": "/images/volumes/apologetics-40-critical-questions/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Apologetics: 40 Critical Questions”",
+      "credit": "Public domain — Raphael · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80",
@@ -1921,9 +1921,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Apostle's Creed",
-      "credit": "Early Christian Basilica Stained Glass, Ravenna"
+      "src": "/images/volumes/apostles-creed/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Apostle's Creed”",
+      "credit": "Public domain — James Tissot · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=800&q=80",
@@ -2049,9 +2049,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Ark of Covenant and other Biblical Relics",
-      "credit": "Gustave Doré, The Ark of the Covenant Carried by Priests"
+      "src": "/images/volumes/ark-of-covenant-and-other-biblical-relics/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Ark of Covenant and other Biblical Relics”",
+      "credit": "Public domain — Doré, Gustave (1832-1883) · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=800&q=80",
@@ -2190,23 +2190,23 @@
       "scriptures": [
         {
           "reference": "Exodus 25:10-22",
-          "text": "Have them make an ark of acacia wood... Overlaid with pure gold... I will meet with you and give you all my commands for the Israelites."
+          "text": "They shall make an ark of acacia wood... and you shall overlay it with pure gold, within and without shall you overlay it... There I will meet with you, and from above the mercy seat, from between the two cherubim that are upon the ark of the testimony, I will speak with you of all that I will give you in commandment for the people of Israel. (RSV)"
         },
         {
           "reference": "Hebrews 9:3-5",
-          "text": "Behind the second curtain was a room called the Most Holy Place, which had the golden altar of incense and the gold-covered ark of the covenant."
+          "text": "Behind the second curtain stood a tent called the Holy of Holies, having the golden altar of incense and the ark of the covenant covered on all sides with gold... above it were the cherubim of glory overshadowing the mercy seat. (RSV)"
         },
         {
           "reference": "Revelation 11:19",
-          "text": "Then God’s temple in heaven was opened, and within his temple was seen the ark of his covenant."
+          "text": "Then God’s temple in heaven was opened, and the ark of his covenant was seen within his temple; and there were flashes of lightning, voices, peals of thunder, an earthquake, and heavy hail. (RSV)"
         },
         {
           "reference": "Deuteronomy 10:1-5",
-          "text": "At that time the Lord said to me, 'Chisel out two stone tablets... and come up to me on the mountain.' ... I put the tablets in the ark I had made."
+          "text": "At that time the Lord said to me, ‘Hew two tables of stone like the first, and come up to me on the mountain, and make an ark of wood.’ ... Then I turned and came down from the mountain, and put the tables in the ark which I had made; and there they are, as the Lord commanded me. (RSV)"
         },
         {
           "reference": "John 19:34",
-          "text": "Instead, one of the soldiers pierced Jesus’ side with a spear, bringing a sudden flow of blood and water."
+          "text": "But one of the soldiers pierced his side with a spear, and at once there came out blood and water. (RSV)"
         }
       ],
       "interactiveMapPoints": [],
@@ -2225,9 +2225,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Baptism, Sacraments & Circumcision",
-      "credit": "Piero della Francesca, The Baptism of Christ (1450)"
+      "src": "/images/volumes/baptism-sacraments-circumcision/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Baptism, Sacraments & Circumcision”",
+      "credit": "Public domain — St1hart · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
@@ -2418,9 +2418,9 @@
     "category": "reference",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Bible Book Writers",
-      "credit": "Rembrandt van Rijn, The Apostle Paul Writing at His Desk"
+      "src": "/images/volumes/bible-book-writers/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Bible Book Writers”",
+      "credit": "Public domain — Walters Art Museum Illuminated Manuscripts · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80",
@@ -2658,9 +2658,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Biblical Creation vs Scientific Creation",
-      "credit": "Michelangelo, The Creation of the Sun and Moon (Sistine Chapel)"
+      "src": "/images/volumes/biblical-creation-vs-scientific-creation/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Biblical Creation vs Scientific Creation”",
+      "credit": "Public domain — Frank Vincentz · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=80",
@@ -2906,9 +2906,9 @@
     "category": "reference",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Biblical Maps",
-      "credit": "Historic Mediterranean Cartography and Maritime Chart"
+      "src": "/images/volumes/biblical-maps/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Biblical Maps”",
+      "credit": "Public domain — Abraham Ortelius · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80",
@@ -3090,9 +3090,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Book of Revelation",
-      "credit": "Albrecht Dürer, The Vision of the Seven Candlesticks (1498)"
+      "src": "/images/volumes/book-of-revelation/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Book of Revelation”",
+      "credit": "Public domain — AnonymousUnknown author · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80",
@@ -3248,9 +3248,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Christianity in South Asia (India & Pakistan)",
-      "credit": "Historic St. Thomas Mount Basilica, Chennai"
+      "src": "/images/volumes/christianity-in-south-asia-india-pakistan/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Christianity in South Asia (India & Pakistan)”",
+      "credit": "Public domain — Vis M · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=800&q=80",
@@ -3466,9 +3466,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Christmas History",
-      "credit": "Gerard van Honthorst, Adoration of the Shepherds (1622)"
+      "src": "/images/volumes/christmas-history/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Christmas History”",
+      "credit": "Public domain — Sailko · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
@@ -3671,9 +3671,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Comparative Religion",
-      "credit": "The Great Library of Comparative Sacred Texts"
+      "src": "/images/volumes/comparative-religion/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Comparative Religion”",
+      "credit": "Public domain — Thomas Rowlandson · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=800&q=80",
@@ -3988,9 +3988,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Complete Christian Theology Map",
-      "credit": "Systematic Cartography of the Divine Attributes"
+      "src": "/images/volumes/complete-christian-theology-map/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Complete Christian Theology Map”",
+      "credit": "Public domain — Abraham van der Eyk · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80",
@@ -4246,9 +4246,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Crusades — Historical + Theological Analysis",
-      "credit": "Gustave Doré, The Crusaders Capturing Jerusalem (1877)"
+      "src": "/images/volumes/crusades-historical-theological-analysis/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Crusades — Historical + Theological Analysis”",
+      "credit": "Public domain — Henri Frédéric Schopin · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=800&q=80",
@@ -4440,9 +4440,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Early Church Fathers & Councils",
-      "credit": "The First Council of Nicaea (Fresco, Sistine Chapel)"
+      "src": "/images/volumes/early-church-fathers-councils/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Early Church Fathers & Councils”",
+      "credit": "Public domain — Симон Ушаков (?) · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80",
@@ -4625,9 +4625,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Easter & Resurrection",
-      "credit": "Carl Bloch, The Resurrection of Christ (1881)"
+      "src": "/images/volumes/easter-resurrection/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Easter & Resurrection”",
+      "credit": "Public domain — Matthias Grünewald · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=800&q=80",
@@ -4858,9 +4858,9 @@
     "category": "reference",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Family Tree: Adam → Jesus",
-      "credit": "The Tree of Jesse, Medieval Illumination Manuscript"
+      "src": "/images/volumes/family-tree-adam-jesus/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Family Tree: Adam → Jesus”",
+      "credit": "Public domain — Unknown authorUnknown author · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
@@ -5118,9 +5118,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Forbidden Knowledge & the Watchers",
-      "credit": "William Blake, The Great Red Dragon and the Beast"
+      "src": "/images/volumes/forbidden-knowledge-the-watchers/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Forbidden Knowledge & the Watchers”",
+      "credit": "Public domain — Gustave Doré · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=800&q=80",
@@ -5303,9 +5303,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Guide to Christian Living",
-      "credit": "Caspar David Friedrich, Wanderer Above the Sea of Fog"
+      "src": "/images/volumes/guide-to-christian-living/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Guide to Christian Living”",
+      "credit": "Public domain — Lucas Cranach the Elder · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
@@ -5777,9 +5777,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Heaven & Hell",
-      "credit": "Fra Angelico, The Last Judgment (Heaven and Hell Detail, 1431)"
+      "src": "/images/volumes/heaven-hell/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Heaven & Hell”",
+      "credit": "Public domain — Gustave Doré · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&q=80",
@@ -5975,9 +5975,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1600&q=80",
-      "alt": "History of All 12 Disciples",
-      "credit": "Duccio di Buoninsegna, Calling of the Apostles Peter and Andrew (1308)"
+      "src": "/images/volumes/history-of-all-12-disciples/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “History of All 12 Disciples”",
+      "credit": "Public domain — Rembrandt · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
@@ -6116,9 +6116,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Holy Communion",
-      "credit": "Philippe de Champaigne, The Last Supper (1648)"
+      "src": "/images/volumes/holy-communion/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Holy Communion”",
+      "credit": "Public domain — Jacopo Tintoretto · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?auto=format&fit=crop&w=800&q=80",
@@ -6314,9 +6314,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
-      "alt": "How The World Populated After Abel's Death",
-      "credit": "Primeval Landscape and Early Civilization Settlement"
+      "src": "/images/volumes/how-the-world-populated-after-abels-death/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “How The World Populated After Abel's Death”",
+      "credit": "Public domain — Gustave Doré · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
@@ -6476,9 +6476,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Jesus Is God (Full References OT + NT)",
-      "credit": "Christ Pantocrator, Hagia Sophia Mosaic, Istanbul"
+      "src": "/images/volumes/jesus-is-god-full-references-ot-nt/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Jesus Is God (Full References OT + NT)”",
+      "credit": "Public domain — Raphael · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80",
@@ -6644,9 +6644,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Lord's Prayer",
-      "credit": "James Tissot, The Lord's Prayer (Le Pater Noster, 1890)"
+      "src": "/images/volumes/lords-prayer/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Lord's Prayer”",
+      "credit": "Public domain — Lucas Gassel · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80",
@@ -6792,9 +6792,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Messianic Prophecies",
-      "credit": "The Prophet Isaiah Scroll, Qumran Dead Sea Scrolls"
+      "src": "/images/volumes/messianic-prophecies/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Messianic Prophecies”",
+      "credit": "Public domain — unknown artist · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=800&q=80",
@@ -7219,9 +7219,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Miracles of Jesus & the Apostles: Complete Catalogue",
-      "credit": "Rembrandt van Rijn, The Storm on the Sea of Galilee (1633)"
+      "src": "/images/volumes/miracles-of-jesus-and-the-apostles-complete-catalogue/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Miracles of Jesus & the Apostles: Complete Catalogue”",
+      "credit": "Public domain — Washington Allston · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
@@ -7624,9 +7624,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Names of God",
-      "credit": "Moses and the Burning Bush (Doré Bible Illustrations, 1866)"
+      "src": "/images/volumes/names-of-god/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Names of God”",
+      "credit": "Public domain — Dead Sea Scrolls · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80",
@@ -7927,9 +7927,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Names of Jesus",
-      "credit": "Heinrich Hofmann, Christ the Shepherd (1889)"
+      "src": "/images/volumes/names-of-jesus/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Names of Jesus”",
+      "credit": "Public domain — Charles de Foucauld · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=800&q=80",
@@ -8170,9 +8170,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Non-Canonical Books & Canon Differences",
-      "credit": "Ancient Papyrus Fragment, Oxyrhynchus Manuscript Collection"
+      "src": "/images/volumes/non-canonical-books-canon-differences/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Non-Canonical Books & Canon Differences”",
+      "credit": "Public domain — unknown, facsimile editior Tischendorf · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80",
@@ -8271,37 +8271,37 @@
             [
               "Tobit",
               "Narrative of Tobias and the angel Raphael.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Tobit+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/TOB.1.NRSV-CI)"
             ],
             [
               "Judith",
               "The heroic account of a Jewish widow saving her people.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Judith+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/JDT.1.NRSV-CI)"
             ],
             [
               "Wisdom of Solomon",
               "A philosophical treatise on Jewish wisdom and righteousness.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Wisdom+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/WIS.1.NRSV-CI)"
             ],
             [
               "Sirach",
               "A large collection of moral and practical wisdom.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Sirach+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/SIR.1.NRSV-CI)"
             ],
             [
               "Baruch",
               "Prophetic-style writing attributed to Jeremiah's companion.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Baruch+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/BAR.1.NRSV-CI)"
             ],
             [
               "1 Maccabees",
               "Historical account of the Jewish revolt against the Greeks.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=1+Maccabees+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/1MA.1.NRSV-CI)"
             ],
             [
               "2 Maccabees",
               "Parallel history focusing on theology and martyrdom.",
-              "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=2+Maccabees+1&version=NRSVCE)"
+              "[Read on BibleGateway](https://www.bible.com/bible/2015/2MA.1.NRSV-CI)"
             ]
           ]
         },
@@ -8495,9 +8495,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Not Biblical Quotes or Sayings",
-      "credit": "Vintage Illuminated Scripture Manuscript and Quill"
+      "src": "/images/volumes/not-biblical-quotes-sayings/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Not Biblical Quotes or Sayings”",
+      "credit": "Public domain — Unknown authorUnknown author · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
@@ -8713,9 +8713,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Original Scripture Languages",
-      "credit": "The Aleppo Codex, Historic Masoretic Hebrew Scripture"
+      "src": "/images/volumes/original-scripture-languages/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Original Scripture Languages”",
+      "credit": "Public domain — Anonymous (Ethiopia)Unknown author · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80",
@@ -8883,9 +8883,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Parables of Jesus: All 40+ Explained",
-      "credit": "Rembrandt van Rijn, The Return of the Prodigal Son (1669)"
+      "src": "/images/volumes/parables-of-jesus-all-40-explained/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Parables of Jesus: All 40+ Explained”",
+      "credit": "Public domain — Alexandre Bida · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80",
@@ -9205,9 +9205,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Primeval World Timeline & Ancient Civilizations",
-      "credit": "Pieter Bruegel the Elder, The Tower of Babel (1563)"
+      "src": "/images/volumes/primeval-world-timeline-ancient-civilizations/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Primeval World Timeline & Ancient Civilizations”",
+      "credit": "Public domain — J. M. W. Turner · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80",
@@ -9386,9 +9386,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Psalm Authors",
-      "credit": "King David Playing the Harp, Renaissance Illumination"
+      "src": "/images/volumes/psalm-authors/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Psalm Authors”",
+      "credit": "Public domain — Peter Paul Rubens · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
@@ -9439,7 +9439,7 @@
       }
     ],
     "content": {
-      "analysis": "### **I. The Multi-Voiced Library of Worship**\nThe Book of Psalms is not a single book but a compilation of five \"books\" organized to reflect the structure of the Torah. While often called the \"Psalms of David,\" it is actually a divine anthology featuring multiple contributors spanning nearly 1,000 years of history.\n\n[[CHART: Davidic|48|#D4AF37, Anonymous|33|#1D2D50, Levite Guilds|15|#8B1E3F, Others|4|#4CAF50]]\n\n---\n\n### **II. David: The Royal Archetype**\nDavid is credited with 73 psalms in the Masoretic Text. His authorship is verified not only by the superscriptions but by the New Testament itself.\n• **NT Attestation**: In [Acts 2:25-28](https://www.biblegateway.com/passage/?search=Acts+2%3A25-28&version=NIV), Peter explicitly identifies David as the author of Psalm 16.\n• **Manuscript Proof**: The [Dead Sea Scrolls (11QPs-a)](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1) attribute thousands of songs and psalms to David, reinforcing the ancient tradition of his prolific musical ministry.\n\n> \"The Spirit of the Lord spoke through me; his word was on my tongue.\" — **2 Samuel 23:2** ([Source](https://www.blueletterbible.org/niv/2sa/23/2/s_290002))\n\n---\n\n### **III. The Levite Guilds: Asaph and Korah**\nProfessionalism in worship was established by David through the appointment of specific musical families.\n• **Asaph (12 Psalms)**: A seer and chief musician. His work focuses on the [Holiness of God](https://www.gotquestions.org/Asaph-the-seer.html) and national lament.\n• **Sons of Korah (11 Psalms)**: A guild of gatekeepers and singers. Their psalms are famous for their deep [Longing for Zion](https://www.biblestudytools.com/dictionary/sons-of-korah/) (e.g., Psalm 42, 84).\n\n---\n\n### **IV. Proof of Ancient Authorship**\n**1. The Superscriptions**\nThe titles at the beginning of many psalms (e.g., \"A Psalm of David\") are part of the canonical text in the Hebrew Bible. Scholars at the [Biblical Archaeology Society](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/) note that these titles provide essential historical and musical context.\n\n**2. Internal Musical Notation**\nTerms like *Selah* (pause/reflect), *Higgaion* (meditation), and *Maskil* (instructional song) prove that these texts were composed for specific liturgical functions in the First and Second Temples.\n\n---\n\n### **V. The \"Orphan\" Psalms**\nApproximately 50 psalms are anonymous. \n• **Psalm 1 and 2**: Serve as a \"Gateway\" to the collection, contrasting the two ways of life and the two kingdoms.\n• **Psalm 119**: The longest chapter in the Bible, an acrostic masterpiece honoring the Word of God, often attributed to **Ezra the Scribe** ([Scholarly Discussion](https://www.ligonier.org/learn/devocionals/author-psalm-119)).\n\n---\n\n### **VI. Theological Significance of Authorship**\nThe diversity of authors proves that the Psalms are the voice of the *entire* community of faith—kings, priests, fugitives, and orphans—all united by the same Holy Spirit. They serve as a \"Mirror of the Soul,\" reflecting every human emotion back to the Creator.\n\n---\n\n### **About the Author**\n**Written by Solat Nadeem**, Founder — Saul's Podship · Karachi, Pakistan.\nDedicated to equipping believers worldwide with historically grounded, theologically rigorous, and visually rich biblical scholarship.",
+      "analysis": "### **I. The Multi-Voiced Library of Worship**\nThe Book of Psalms is not a single book but a compilation of five \"books\" organized to reflect the structure of the Torah. While often called the \"Psalms of David,\" it is actually a divine anthology featuring multiple contributors spanning nearly 1,000 years of history.\n\n[[CHART: Davidic|48|#D4AF37, Anonymous|33|#1D2D50, Levite Guilds|15|#8B1E3F, Others|4|#4CAF50]]\n\n---\n\n### **II. David: The Royal Archetype**\nDavid is credited with 73 psalms in the Masoretic Text. His authorship is verified not only by the superscriptions but by the New Testament itself.\n• **NT Attestation**: In [Acts 2:25-28](https://www.bible.com/bible/2020/ACT.2.25.RSV), Peter explicitly identifies David as the author of Psalm 16.\n• **Manuscript Proof**: The [Dead Sea Scrolls (11QPs-a)](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/11Q5-1) attribute thousands of songs and psalms to David, reinforcing the ancient tradition of his prolific musical ministry.\n\n> \"The Spirit of the Lord spoke through me; his word was on my tongue.\" — **2 Samuel 23:2** ([Source](https://www.blueletterbible.org/niv/2sa/23/2/s_290002))\n\n---\n\n### **III. The Levite Guilds: Asaph and Korah**\nProfessionalism in worship was established by David through the appointment of specific musical families.\n• **Asaph (12 Psalms)**: A seer and chief musician. His work focuses on the [Holiness of God](https://www.gotquestions.org/Asaph-the-seer.html) and national lament.\n• **Sons of Korah (11 Psalms)**: A guild of gatekeepers and singers. Their psalms are famous for their deep [Longing for Zion](https://www.biblestudytools.com/dictionary/sons-of-korah/) (e.g., Psalm 42, 84).\n\n---\n\n### **IV. Proof of Ancient Authorship**\n**1. The Superscriptions**\nThe titles at the beginning of many psalms (e.g., \"A Psalm of David\") are part of the canonical text in the Hebrew Bible. Scholars at the [Biblical Archaeology Society](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/) note that these titles provide essential historical and musical context.\n\n**2. Internal Musical Notation**\nTerms like *Selah* (pause/reflect), *Higgaion* (meditation), and *Maskil* (instructional song) prove that these texts were composed for specific liturgical functions in the First and Second Temples.\n\n---\n\n### **V. The \"Orphan\" Psalms**\nApproximately 50 psalms are anonymous. \n• **Psalm 1 and 2**: Serve as a \"Gateway\" to the collection, contrasting the two ways of life and the two kingdoms.\n• **Psalm 119**: The longest chapter in the Bible, an acrostic masterpiece honoring the Word of God, often attributed to **Ezra the Scribe** ([Scholarly Discussion](https://www.ligonier.org/learn/devocionals/author-psalm-119)).\n\n---\n\n### **VI. Theological Significance of Authorship**\nThe diversity of authors proves that the Psalms are the voice of the *entire* community of faith—kings, priests, fugitives, and orphans—all united by the same Holy Spirit. They serve as a \"Mirror of the Soul,\" reflecting every human emotion back to the Creator.\n\n---\n\n### **About the Author**\n**Written by Solat Nadeem**, Founder — Saul's Podship · Karachi, Pakistan.\nDedicated to equipping believers worldwide with historically grounded, theologically rigorous, and visually rich biblical scholarship.",
       "tables": [
         {
           "title": "MANUSCRIPT & TRADITIONAL PROOF MATRIX",
@@ -9459,31 +9459,31 @@
             [
               "Asaph",
               "12",
-              "[1 Chronicles 16:5](https://www.biblegateway.com/passage/?search=1+Chronicles+16%3A5&version=NIV)",
+              "[1 Chronicles 16:5](https://www.bible.com/bible/2020/1CH.16.5.RSV)",
               "Divine Justice and Social Ethics. Proof: [Biblical Archaeology Insight](https://www.biblicalarchaeology.org/daily/biblical-artifacts/the-dead-sea-scrolls-and-the-book-of-psalms/)"
             ],
             [
               "Sons of Korah",
               "11",
-              "[1 Chronicles 9:19](https://www.biblegateway.com/passage/?search=1+Chronicles+9%3A19&version=NIV)",
+              "[1 Chronicles 9:19](https://www.bible.com/bible/2020/1CH.9.19.RSV)",
               "Passion for the Presence of God. Proof: [Scholarly Article on Korahite Guilds](https://www.gotquestions.org/Sons-of-Korah.html)"
             ],
             [
               "Solomon",
               "2",
-              "[1 Kings 4:32](https://www.biblegateway.com/passage/?search=1+Kings+4%3A32&version=NIV)",
+              "[1 Kings 4:32](https://www.bible.com/bible/2020/1KI.4.32.RSV)",
               "Royal splendor and Wisdom. Source: [Ligonier Ministries Analysis](https://www.ligonier.org/learn/devocionals/david-and-solomon)"
             ],
             [
               "Moses",
               "1",
-              "[Psalm 90 Title](https://www.biblegateway.com/passage/?search=Psalm+90&version=NIV)",
+              "[Psalm 90 Title](https://www.bible.com/bible/2020/PSA.90.RSV)",
               "The Eternity of God vs. Human Frailty. Source: [Cambridge University Press Commentary](https://www.cambridge.org/core/journals/harvard-theological-review/article/authorship-of-the-psalms/D3E42B376E6A2A6C4A72E8E6966C72E8)"
             ],
             [
               "Heman/Ethan",
               "2",
-              "[1 Kings 4:31](https://www.biblegateway.com/passage/?search=1+Kings+4%3A31&version=NIV)",
+              "[1 Kings 4:31](https://www.bible.com/bible/2020/1KI.4.31.RSV)",
               "Lament and Covenant Faithfulness. Source: [The Treasury of David (Spurgeon)](https://www.christianity.com/bible/commentary.php?com=spur&b=19&c=88)"
             ]
           ]
@@ -9553,25 +9553,25 @@
       "timeline": [
         {
           "year": "1440 BC",
-          "event": "Moses composes [Psalm 90](https://www.biblegateway.com/passage/?search=Psalm+90&version=NIV), the oldest psalm in the collection, during the wilderness wandering.",
+          "event": "Moses composes [Psalm 90](https://www.bible.com/bible/2020/PSA.90.RSV), the oldest psalm in the collection, during the wilderness wandering.",
           "color": "#4CAF50",
           "era": "Mosaic"
         },
         {
           "year": "1010 BC",
-          "event": "David writes the core of the collection, including [Psalm 23](https://www.biblegateway.com/passage/?search=Psalm+23&version=NIV), and organizes the Levitical choirs.",
+          "event": "David writes the core of the collection, including [Psalm 23](https://www.bible.com/bible/2020/PSA.23.RSV), and organizes the Levitical choirs.",
           "color": "#D4AF37",
           "era": "United Monarchy"
         },
         {
           "year": "970 BC",
-          "event": "Solomon contributes [Psalm 72](https://www.biblegateway.com/passage/?search=Psalm+72&version=NIV), a majestic vision of the Messianic King's reign.",
+          "event": "Solomon contributes [Psalm 72](https://www.bible.com/bible/2020/PSA.72.RSV), a majestic vision of the Messianic King's reign.",
           "color": "#8B1E3F",
           "era": "Golden Age"
         },
         {
           "year": "586 BC",
-          "event": "Exilic authors write [Psalm 137](https://www.biblegateway.com/passage/?search=Psalm+137&version=NIV) by the rivers of Babylon, mourning the lost Temple.",
+          "event": "Exilic authors write [Psalm 137](https://www.bible.com/bible/2020/PSA.137.RSV) by the rivers of Babylon, mourning the lost Temple.",
           "color": "#1D2D50",
           "era": "Exile"
         },
@@ -9599,9 +9599,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Revelation Judgments Timeline",
-      "credit": "Gustave Doré, The Opening of the Sixth Seal (1866)"
+      "src": "/images/volumes/revelation-judgments-timeline/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Revelation Judgments Timeline”",
+      "credit": "Public domain — Gebhard Fugel · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=800&q=80",
@@ -9772,9 +9772,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Sermon on the Mount",
-      "credit": "Carl Bloch, The Sermon on the Mount (1877)"
+      "src": "/images/volumes/sermon-on-the-mount/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Sermon on the Mount”",
+      "credit": "Public domain — This Photo was taken by Wolfgang Moroder.  \n\nFeel free to us · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",
@@ -9934,9 +9934,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Seven Last Words of Jesus",
-      "credit": "Diego Velázquez, Cristo Crucificado (1632)"
+      "src": "/images/volumes/seven-last-words-of-jesus/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Seven Last Words of Jesus”",
+      "credit": "Public domain — Anthony van Dyck · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80",
@@ -10157,9 +10157,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Systematic Theology Subjects",
-      "credit": "The Holy Trinity (Fresco by Masaccio, Santa Maria Novella, 1428)"
+      "src": "/images/volumes/systematic-theology-subjects/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Systematic Theology Subjects”",
+      "credit": "Public domain — Marie-Lan Nguyen · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
@@ -10301,9 +10301,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Ten Commandments & OT Laws",
-      "credit": "Rembrandt van Rijn, Moses with the Ten Commandments (1659)"
+      "src": "/images/volumes/ten-commandments-ot-laws/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Ten Commandments & OT Laws”",
+      "credit": "Public domain — Gustave Doré · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=800&q=80",
@@ -10516,9 +10516,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1600&q=80",
-      "alt": "The Five Offerings of Leviticus",
-      "credit": "Gustave Doré, The Sacrifice of Noah / The Burnt Offering"
+      "src": "/images/volumes/the-five-offerings-of-leviticus/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “The Five Offerings of Leviticus”",
+      "credit": "Public domain — Internet Archive Book Images · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
@@ -10693,9 +10693,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1600&q=80",
-      "alt": "The Magi",
-      "credit": "Gentile da Fabriano, Adoration of the Magi (1423)"
+      "src": "/images/volumes/the-magi/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “The Magi”",
+      "credit": "Public domain — Edward Burne-Jones · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",
@@ -10856,9 +10856,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=1600&q=80",
-      "alt": "True Worship vs False Worship",
-      "credit": "The Adoration of the Lamb, Ghent Altarpiece by Jan van Eyck (1432)"
+      "src": "/images/volumes/true-worship-vs-false-worship/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “True Worship vs False Worship”",
+      "credit": "Public domain — Frans Francken the Younger · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80",
@@ -10994,9 +10994,9 @@
     "category": "scholarly",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Types of Bad Spirits in the Bible",
-      "credit": "Gustave Doré, Jesus Casting Out the Legion of Demons"
+      "src": "/images/volumes/types-of-bad-spirits-in-the-bible/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Types of Bad Spirits in the Bible”",
+      "credit": "Public domain — Follower of Paul Bril · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",
@@ -11249,9 +11249,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1600&q=80",
-      "alt": "Vatican and its History",
-      "credit": "St. Peter's Square and Colonnade, Vatican City"
+      "src": "/images/volumes/vatican-and-its-history/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “Vatican and its History”",
+      "credit": "Public domain — Giovanni Paolo Panini · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80",
@@ -11422,9 +11422,9 @@
     "category": "history",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80",
-      "alt": "World's All Big Churches",
-      "credit": "Soaring Gothic Nave and Rose Window of Chartres Cathedral"
+      "src": "/images/volumes/worlds-all-big-churches/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “World's All Big Churches”",
+      "credit": "Public domain — William Miller · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
@@ -11681,9 +11681,9 @@
     "category": "devotional",
     "lastUpdated": "2026-09-06",
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
-      "alt": "1-Year Sermon Guide (52 Gen-Z Topics)",
-      "credit": "Young Believers Gathering in Study and Worship"
+      "src": "/images/volumes/1-year-sermon-guide-52-gen-z-topics/hero-1920.jpg",
+      "alt": "Public-domain artwork illustrating “1-Year Sermon Guide (52 Gen-Z Topics)”",
+      "credit": "Public domain — British Cartoon Prints Collection · Wikimedia Commons"
     },
     "cardImage": {
       "src": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",

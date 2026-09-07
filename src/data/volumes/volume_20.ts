@@ -15,9 +15,9 @@ export const volume_20: Volume = {
   "category": "reference",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Family Tree: Adam → Jesus",
-    "credit": "The Tree of Jesse, Medieval Illumination Manuscript"
+    "src": "/images/volumes/family-tree-adam-jesus/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Family Tree: Adam → Jesus”",
+    "credit": "Public domain — Unknown authorUnknown author · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",

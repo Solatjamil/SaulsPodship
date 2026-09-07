@@ -15,9 +15,9 @@ export const volume_15: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Comparative Religion",
-    "credit": "The Great Library of Comparative Sacred Texts"
+    "src": "/images/volumes/comparative-religion/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Comparative Religion”",
+    "credit": "Public domain — Thomas Rowlandson · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=800&q=80",

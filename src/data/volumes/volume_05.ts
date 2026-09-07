@@ -15,9 +15,9 @@ export const volume_05: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Apologetics: 40 Critical Questions",
-    "credit": "Raphael, The School of Athens (Apostolic Apologetics)"
+    "src": "/images/volumes/apologetics-40-critical-questions/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Apologetics: 40 Critical Questions”",
+    "credit": "Public domain — Raphael · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80",

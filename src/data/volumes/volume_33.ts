@@ -15,9 +15,9 @@ export const volume_33: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Non-Canonical Books & Canon Differences",
-    "credit": "Ancient Papyrus Fragment, Oxyrhynchus Manuscript Collection"
+    "src": "/images/volumes/non-canonical-books-canon-differences/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Non-Canonical Books & Canon Differences”",
+    "credit": "Public domain — unknown, facsimile editior Tischendorf · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80",
@@ -116,37 +116,37 @@ export const volume_33: Volume = {
           [
             "Tobit",
             "Narrative of Tobias and the angel Raphael.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Tobit+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/TOB.1.NRSV-CI)"
           ],
           [
             "Judith",
             "The heroic account of a Jewish widow saving her people.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Judith+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/JDT.1.NRSV-CI)"
           ],
           [
             "Wisdom of Solomon",
             "A philosophical treatise on Jewish wisdom and righteousness.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Wisdom+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/WIS.1.NRSV-CI)"
           ],
           [
             "Sirach",
             "A large collection of moral and practical wisdom.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Sirach+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/SIR.1.NRSV-CI)"
           ],
           [
             "Baruch",
             "Prophetic-style writing attributed to Jeremiah's companion.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=Baruch+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/BAR.1.NRSV-CI)"
           ],
           [
             "1 Maccabees",
             "Historical account of the Jewish revolt against the Greeks.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=1+Maccabees+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/1MA.1.NRSV-CI)"
           ],
           [
             "2 Maccabees",
             "Parallel history focusing on theology and martyrdom.",
-            "[Read on BibleGateway](https://www.biblegateway.com/passage/?search=2+Maccabees+1&version=NRSVCE)"
+            "[Read on BibleGateway](https://www.bible.com/bible/2015/2MA.1.NRSV-CI)"
           ]
         ]
       },

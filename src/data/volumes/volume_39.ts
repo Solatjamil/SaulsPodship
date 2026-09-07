@@ -15,9 +15,9 @@ export const volume_39: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Revelation Judgments Timeline",
-    "credit": "Gustave Doré, The Opening of the Sixth Seal (1866)"
+    "src": "/images/volumes/revelation-judgments-timeline/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Revelation Judgments Timeline”",
+    "credit": "Public domain — Gebhard Fugel · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=800&q=80",

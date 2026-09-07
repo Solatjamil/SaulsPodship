@@ -15,9 +15,9 @@ export const volume_01: Volume = {
   "category": "reference",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1600&q=80",
-    "alt": "All Bible Stories",
-    "credit": "Gustave Doré, The Creation of Light (1866)"
+    "src": "/images/volumes/all-bible-stories/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “All Bible Stories”",
+    "credit": "Public domain — Internet Archive Book Images · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80",

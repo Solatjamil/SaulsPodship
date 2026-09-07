@@ -15,9 +15,9 @@ export const volume_34: Volume = {
   "category": "devotional",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Not Biblical Quotes or Sayings",
-    "credit": "Vintage Illuminated Scripture Manuscript and Quill"
+    "src": "/images/volumes/not-biblical-quotes-sayings/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Not Biblical Quotes or Sayings”",
+    "credit": "Public domain — Unknown authorUnknown author · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",

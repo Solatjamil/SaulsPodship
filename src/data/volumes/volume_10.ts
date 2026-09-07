@@ -15,9 +15,9 @@ export const volume_10: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Biblical Creation vs Scientific Creation",
-    "credit": "Michelangelo, The Creation of the Sun and Moon (Sistine Chapel)"
+    "src": "/images/volumes/biblical-creation-vs-scientific-creation/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Biblical Creation vs Scientific Creation”",
+    "credit": "Public domain — Frank Vincentz · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_49: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80",
-    "alt": "World's All Big Churches",
-    "credit": "Soaring Gothic Nave and Rose Window of Chartres Cathedral"
+    "src": "/images/volumes/worlds-all-big-churches/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “World's All Big Churches”",
+    "credit": "Public domain — William Miller · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_32: Volume = {
   "category": "devotional",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Names of Jesus",
-    "credit": "Heinrich Hofmann, Christ the Shepherd (1889)"
+    "src": "/images/volumes/names-of-jesus/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Names of Jesus”",
+    "credit": "Public domain — Charles de Foucauld · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_24: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1600&q=80",
-    "alt": "History of All 12 Disciples",
-    "credit": "Duccio di Buoninsegna, Calling of the Apostles Peter and Andrew (1308)"
+    "src": "/images/volumes/history-of-all-12-disciples/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “History of All 12 Disciples”",
+    "credit": "Public domain — Rembrandt · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",

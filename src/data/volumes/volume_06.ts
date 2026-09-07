@@ -15,9 +15,9 @@ export const volume_06: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Apostle's Creed",
-    "credit": "Early Christian Basilica Stained Glass, Ravenna"
+    "src": "/images/volumes/apostles-creed/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Apostle's Creed”",
+    "credit": "Public domain — James Tissot · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=800&q=80",

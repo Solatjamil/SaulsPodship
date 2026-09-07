@@ -15,9 +15,9 @@ export const volume_13: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Christianity in South Asia (India & Pakistan)",
-    "credit": "Historic St. Thomas Mount Basilica, Chennai"
+    "src": "/images/volumes/christianity-in-south-asia-india-pakistan/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Christianity in South Asia (India & Pakistan)”",
+    "credit": "Public domain — Vis M · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_04: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Angels, Demons, Beasts & Monsters in the Bible",
-    "credit": "Gustave Doré, St. Michael Defeating the Dragon (1866)"
+    "src": "/images/volumes/angels-demons-beasts-monsters-in-the-bible/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Angels, Demons, Beasts & Monsters in the Bible”",
+    "credit": "Public domain — Gustave Doré and Henry Holiday, license cc-by-sa-3.0 for com · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=800&q=80",

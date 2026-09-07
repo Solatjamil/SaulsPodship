@@ -15,9 +15,9 @@ export const volume_08: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Baptism, Sacraments & Circumcision",
-    "credit": "Piero della Francesca, The Baptism of Christ (1450)"
+    "src": "/images/volumes/baptism-sacraments-circumcision/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Baptism, Sacraments & Circumcision”",
+    "credit": "Public domain — St1hart · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",

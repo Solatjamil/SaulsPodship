@@ -15,9 +15,9 @@ export const volume_36: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Parables of Jesus: All 40+ Explained",
-    "credit": "Rembrandt van Rijn, The Return of the Prodigal Son (1669)"
+    "src": "/images/volumes/parables-of-jesus-all-40-explained/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Parables of Jesus: All 40+ Explained”",
+    "credit": "Public domain — Alexandre Bida · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80",

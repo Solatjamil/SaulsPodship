@@ -15,9 +15,9 @@ export const volume_17: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Crusades — Historical + Theological Analysis",
-    "credit": "Gustave Doré, The Crusaders Capturing Jerusalem (1877)"
+    "src": "/images/volumes/crusades-historical-theological-analysis/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Crusades — Historical + Theological Analysis”",
+    "credit": "Public domain — Henri Frédéric Schopin · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&w=800&q=80",

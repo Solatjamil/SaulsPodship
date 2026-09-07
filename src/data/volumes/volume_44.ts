@@ -15,9 +15,9 @@ export const volume_44: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1600&q=80",
-    "alt": "The Five Offerings of Leviticus",
-    "credit": "Gustave Doré, The Sacrifice of Noah / The Burnt Offering"
+    "src": "/images/volumes/the-five-offerings-of-leviticus/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “The Five Offerings of Leviticus”",
+    "credit": "Public domain — Internet Archive Book Images · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",

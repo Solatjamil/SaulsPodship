@@ -15,9 +15,9 @@ export const volume_45: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1600&q=80",
-    "alt": "The Magi",
-    "credit": "Gentile da Fabriano, Adoration of the Magi (1423)"
+    "src": "/images/volumes/the-magi/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “The Magi”",
+    "credit": "Public domain — Edward Burne-Jones · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",

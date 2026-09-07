@@ -15,9 +15,9 @@ export const volume_30: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Miracles of Jesus & the Apostles: Complete Catalogue",
-    "credit": "Rembrandt van Rijn, The Storm on the Sea of Galilee (1633)"
+    "src": "/images/volumes/miracles-of-jesus-and-the-apostles-complete-catalogue/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Miracles of Jesus & the Apostles: Complete Catalogue”",
+    "credit": "Public domain — Washington Allston · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",

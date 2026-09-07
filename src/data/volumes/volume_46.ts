@@ -15,9 +15,9 @@ export const volume_46: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=1600&q=80",
-    "alt": "True Worship vs False Worship",
-    "credit": "The Adoration of the Lamb, Ghent Altarpiece by Jan van Eyck (1432)"
+    "src": "/images/volumes/true-worship-vs-false-worship/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “True Worship vs False Worship”",
+    "credit": "Public domain — Frans Francken the Younger · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80",

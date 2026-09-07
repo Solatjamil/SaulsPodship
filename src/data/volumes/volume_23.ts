@@ -15,9 +15,9 @@ export const volume_23: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Heaven & Hell",
-    "credit": "Fra Angelico, The Last Judgment (Heaven and Hell Detail, 1431)"
+    "src": "/images/volumes/heaven-hell/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Heaven & Hell”",
+    "credit": "Public domain — Gustave Doré · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=800&q=80",

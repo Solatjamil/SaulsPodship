@@ -15,9 +15,9 @@ export const volume_07: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Ark of Covenant and other Biblical Relics",
-    "credit": "Gustave Doré, The Ark of the Covenant Carried by Priests"
+    "src": "/images/volumes/ark-of-covenant-and-other-biblical-relics/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Ark of Covenant and other Biblical Relics”",
+    "credit": "Public domain — Doré, Gustave (1832-1883) · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=800&q=80",
@@ -156,23 +156,23 @@ export const volume_07: Volume = {
     "scriptures": [
       {
         "reference": "Exodus 25:10-22",
-        "text": "Have them make an ark of acacia wood... Overlaid with pure gold... I will meet with you and give you all my commands for the Israelites."
+        "text": "They shall make an ark of acacia wood... and you shall overlay it with pure gold, within and without shall you overlay it... There I will meet with you, and from above the mercy seat, from between the two cherubim that are upon the ark of the testimony, I will speak with you of all that I will give you in commandment for the people of Israel. (RSV)"
       },
       {
         "reference": "Hebrews 9:3-5",
-        "text": "Behind the second curtain was a room called the Most Holy Place, which had the golden altar of incense and the gold-covered ark of the covenant."
+        "text": "Behind the second curtain stood a tent called the Holy of Holies, having the golden altar of incense and the ark of the covenant covered on all sides with gold... above it were the cherubim of glory overshadowing the mercy seat. (RSV)"
       },
       {
         "reference": "Revelation 11:19",
-        "text": "Then God’s temple in heaven was opened, and within his temple was seen the ark of his covenant."
+        "text": "Then God’s temple in heaven was opened, and the ark of his covenant was seen within his temple; and there were flashes of lightning, voices, peals of thunder, an earthquake, and heavy hail. (RSV)"
       },
       {
         "reference": "Deuteronomy 10:1-5",
-        "text": "At that time the Lord said to me, 'Chisel out two stone tablets... and come up to me on the mountain.' ... I put the tablets in the ark I had made."
+        "text": "At that time the Lord said to me, ‘Hew two tables of stone like the first, and come up to me on the mountain, and make an ark of wood.’ ... Then I turned and came down from the mountain, and put the tables in the ark which I had made; and there they are, as the Lord commanded me. (RSV)"
       },
       {
         "reference": "John 19:34",
-        "text": "Instead, one of the soldiers pierced Jesus’ side with a spear, bringing a sudden flow of blood and water."
+        "text": "But one of the soldiers pierced his side with a spear, and at once there came out blood and water. (RSV)"
       }
     ],
     "interactiveMapPoints": [],

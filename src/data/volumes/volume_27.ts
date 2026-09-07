@@ -15,9 +15,9 @@ export const volume_27: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Jesus Is God (Full References OT + NT)",
-    "credit": "Christ Pantocrator, Hagia Sophia Mosaic, Istanbul"
+    "src": "/images/volumes/jesus-is-god-full-references-ot-nt/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Jesus Is God (Full References OT + NT)”",
+    "credit": "Public domain — Raphael · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_11: Volume = {
   "category": "reference",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Biblical Maps",
-    "credit": "Historic Mediterranean Cartography and Maritime Chart"
+    "src": "/images/volumes/biblical-maps/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Biblical Maps”",
+    "credit": "Public domain — Abraham Ortelius · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80",

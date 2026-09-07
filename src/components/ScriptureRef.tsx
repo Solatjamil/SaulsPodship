@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
-import { scriptureUrl } from '../lib/bibleRef';
+import { scriptureUrl, BIBLE_COM_VERSIONS, type BibleVersion } from '../lib/bibleRef';
 
 interface ScriptureRefProps {
   reference: string;
@@ -38,18 +38,18 @@ export const SCRIPTURE_REGEX = new RegExp(
 export const ScriptureRef: React.FC<ScriptureRefProps> = ({
   reference,
   className = '',
-  version = 'NIV',
+  version = 'RSV',
   children
 }) => {
   const cleanRef = reference.replace(/[[\]*]/g, '').trim();
-  const url = scriptureUrl(cleanRef);
+  const url = scriptureUrl(cleanRef, version);
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      title={`Read ${cleanRef} on Bible.com (${version})`}
+      title={`Read ${cleanRef} on Bible.com — ${BIBLE_COM_VERSIONS[(version || 'RSV').toUpperCase() as BibleVersion]?.name || version}`}
       className={`text-[#D4AF37] hover:text-[#E8C96A] underline decoration-dotted underline-offset-4 font-semibold inline-flex items-center gap-1 transition-colors ${className}`}
     >
       <span>{children || cleanRef}</span>
@@ -59,7 +59,7 @@ export const ScriptureRef: React.FC<ScriptureRefProps> = ({
 };
 
 // Helper that replaces text occurrences of scriptures with ScriptureRef
-export const renderWithScriptureLinks = (text: string, version: string = 'NIV'): React.ReactNode => {
+export const renderWithScriptureLinks = (text: string, version: string = 'RSV'): React.ReactNode => {
   if (!text) return text;
   
   const parts: React.ReactNode[] = [];

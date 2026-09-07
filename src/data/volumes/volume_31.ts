@@ -15,9 +15,9 @@ export const volume_31: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Names of God",
-    "credit": "Moses and the Burning Bush (Doré Bible Illustrations, 1866)"
+    "src": "/images/volumes/names-of-god/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Names of God”",
+    "credit": "Public domain — Dead Sea Scrolls · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80",

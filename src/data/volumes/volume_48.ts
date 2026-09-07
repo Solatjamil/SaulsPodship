@@ -15,9 +15,9 @@ export const volume_48: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Vatican and its History",
-    "credit": "St. Peter's Square and Colonnade, Vatican City"
+    "src": "/images/volumes/vatican-and-its-history/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Vatican and its History”",
+    "credit": "Public domain — Giovanni Paolo Panini · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80",

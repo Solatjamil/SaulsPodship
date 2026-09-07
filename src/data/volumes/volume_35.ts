@@ -15,9 +15,9 @@ export const volume_35: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Original Scripture Languages",
-    "credit": "The Aleppo Codex, Historic Masoretic Hebrew Scripture"
+    "src": "/images/volumes/original-scripture-languages/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Original Scripture Languages”",
+    "credit": "Public domain — Anonymous (Ethiopia)Unknown author · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80",

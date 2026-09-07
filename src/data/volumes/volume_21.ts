@@ -15,9 +15,9 @@ export const volume_21: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Forbidden Knowledge & the Watchers",
-    "credit": "William Blake, The Great Red Dragon and the Beast"
+    "src": "/images/volumes/forbidden-knowledge-the-watchers/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Forbidden Knowledge & the Watchers”",
+    "credit": "Public domain — Gustave Doré · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=800&q=80",

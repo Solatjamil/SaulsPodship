@@ -15,9 +15,9 @@ export const volume_02: Volume = {
   "category": "reference",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1600&q=80",
-    "alt": "All Biblical Numerology",
-    "credit": "Ancient Hebrew Manuscript Scriptorium"
+    "src": "/images/volumes/all-biblical-numerology/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “All Biblical Numerology”",
+    "credit": "Public domain — Drawn by:   Paul Lautensack · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=800&q=80",

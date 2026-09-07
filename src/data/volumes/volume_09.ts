@@ -15,9 +15,9 @@ export const volume_09: Volume = {
   "category": "reference",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Bible Book Writers",
-    "credit": "Rembrandt van Rijn, The Apostle Paul Writing at His Desk"
+    "src": "/images/volumes/bible-book-writers/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Bible Book Writers”",
+    "credit": "Public domain — Walters Art Museum Illuminated Manuscripts · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80",

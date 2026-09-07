@@ -154,7 +154,7 @@ export const VolumePage: React.FC = () => {
           "name": "Saul's Podship",
           "url": "https://www.saulspodship.com"
         },
-        "image": volume.heroImage?.src || "https://www.saulspodship.com/images/hero/last-supper-1920.webp"
+        "image": volume.heroImage?.src?.startsWith("/") ? `${SITE.url}${volume.heroImage.src}` : (volume.heroImage?.src || "https://www.saulspodship.com/images/hero/last-supper-1920.webp")
       },
       {
         "@type": "FAQPage",
@@ -599,15 +599,27 @@ export const VolumePage: React.FC = () => {
                   <Copy className="w-3.5 h-3.5" />
                   <span>Copy Passage Summary</span>
                 </button>
-                {bibleComUrl(activeStoryModal.scripture) && (
-                  <a
-                    href={bibleComUrl(activeStoryModal.scripture)!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#1D4E89] hover:bg-[#2A6BB8] px-3.5 py-2 rounded-lg transition-colors"
-                  >
-                    Read Full Passage on Bible.com <ExternalLink className="w-3 h-3" />
-                  </a>
+                {bibleComUrl(activeStoryModal.scripture, 'RSV') && (
+                  <span className="inline-flex items-center gap-2">
+                    <a
+                      href={bibleComUrl(activeStoryModal.scripture, 'RSV')!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#1D4E89] hover:bg-[#2A6BB8] px-3.5 py-2 rounded-lg transition-colors"
+                      title="Read on Bible.com — Revised Standard Version (Pakistan Bible Society 'Common Bible' edition)"
+                    >
+                      Read on Bible.com (RSV) <ExternalLink className="w-3 h-3" />
+                    </a>
+                    <a
+                      href={bibleComUrl(activeStoryModal.scripture, 'KJV')!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#4A152C] bg-[#D4AF37]/20 hover:bg-[#D4AF37]/40 border border-[#D4AF37]/50 px-3 py-2 rounded-lg transition-colors"
+                      title="Read on Bible.com — King James Version"
+                    >
+                      KJV <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </span>
                 )}
                 <button
                   onClick={() => setActiveStoryModal(null)}

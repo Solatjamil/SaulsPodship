@@ -15,9 +15,9 @@ export const volume_42: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Systematic Theology Subjects",
-    "credit": "The Holy Trinity (Fresco by Masaccio, Santa Maria Novella, 1428)"
+    "src": "/images/volumes/systematic-theology-subjects/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Systematic Theology Subjects”",
+    "credit": "Public domain — Marie-Lan Nguyen · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_03: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=1600&q=80",
-    "alt": "All Big Denominations & Their Differences",
-    "credit": "Historic Gothic Cathedral of St. Peter, Cologne"
+    "src": "/images/volumes/all-big-denominations-their-differences/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “All Big Denominations & Their Differences”",
+    "credit": "Public domain — Seattle Public Library · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_25: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Holy Communion",
-    "credit": "Philippe de Champaigne, The Last Supper (1648)"
+    "src": "/images/volumes/holy-communion/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Holy Communion”",
+    "credit": "Public domain — Jacopo Tintoretto · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?auto=format&fit=crop&w=800&q=80",

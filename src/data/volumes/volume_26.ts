@@ -15,9 +15,9 @@ export const volume_26: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
-    "alt": "How The World Populated After Abel's Death",
-    "credit": "Primeval Landscape and Early Civilization Settlement"
+    "src": "/images/volumes/how-the-world-populated-after-abels-death/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “How The World Populated After Abel's Death”",
+    "credit": "Public domain — Gustave Doré · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",

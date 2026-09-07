@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F8F4E3" />
     <title>Saul's Podship | Interactive Theological Encyclopedia</title>
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="shortcut icon" type="image/svg+xml" href="/logo.svg" />
@@ -85,6 +86,48 @@
       :root {
         --hero-dim: 0.28;
       }
+      /* ===== Podship Chrome: animations, dark mode, RTL (Phase 4) ===== */
+      @keyframes spRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes spShine { 0% { background-position: -180% 0; } 100% { background-position: 260% 0; } }
+      @keyframes spFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+      .sp-armed { opacity: 0; will-change: transform, opacity; }
+      .sp-armed.sp-shown { animation: spRise .68s cubic-bezier(.22,1,.36,1) both; }
+      .hero-scrim h1 {
+        background: linear-gradient(110deg, #F8F4E3 0%, #F8F4E3 42%, #E8C96A 50%, #F8F4E3 58%, #F8F4E3 100%);
+        background-size: 250% 100%;
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+        animation: spShine 2.4s ease-out .25s 1 both;
+      }
+      .sp-armed:hover, section .grid > div:hover, section .grid > a:hover { animation-play-state: paused; }
+      html[data-theme="dark"] body { background-color: #120510; color: #E9DFC8; color-scheme: dark; }
+      html[data-theme="dark"] .bg-\[\#FDFBF7\] { background-color: #140610 !important; }
+      html[data-theme="dark"] .bg-\[\#F8F4E3\] { background-color: #1A0812 !important; }
+      html[data-theme="dark"] .bg-white, html[data-theme="dark"] .bg-white\/80, html[data-theme="dark"] .bg-white\/90, html[data-theme="dark"] .bg-white\/70 { background-color: rgba(43,17,32,.92) !important; }
+      html[data-theme="dark"] .bg-gray-50, html[data-theme="dark"] .bg-gray-100, html[data-theme="dark"] .bg-amber-50\/40, html[data-theme="dark"] .bg-amber-50\/60, html[data-theme="dark"] .bg-red-50, html[data-theme="dark"] .bg-blue-50\/60 { background-color: rgba(212,175,55,.07) !important; }
+      html[data-theme="dark"] .hover\:bg-amber-50\/40:hover, html[data-theme="dark"] .hover\:bg-gray-50:hover { background-color: rgba(212,175,55,.12) !important; }
+      html[data-theme="dark"] .text-\[\#1D2D50\] { color: #E9DFC8 !important; }
+      html[data-theme="dark"] .text-\[\#1D2D50\]\/70, html[data-theme="dark"] .text-gray-600, html[data-theme="dark"] .text-gray-500 { color: #C6B79A !important; }
+      html[data-theme="dark"] .text-gray-900, html[data-theme="dark"] .text-gray-800 { color: #F2E8D5 !important; }
+      html[data-theme="dark"] .text-gray-700 { color: #D8CBB0 !important; }
+      html[data-theme="dark"] .text-\[\#4A152C\] { color: #E8C96A !important; }
+      html[data-theme="dark"] .text-\[\#8B1C2E\] { color: #E8C96A !important; }
+      html[data-theme="dark"] .group:hover .group-hover\:text-\[\#4A152C\] { color: #E8C96A !important; }
+      html[data-theme="dark"] .hover\:text-\[\#4A152C\]:hover { color: #E8C96A !important; }
+      html[data-theme="dark"] .border-gray-200, html[data-theme="dark"] .border-gray-100, html[data-theme="dark"] .divide-gray-100 > * + * { border-color: rgba(212,175,55,.16) !important; }
+      html[data-theme="dark"] .border-\[\#4A152C\]\/10, html[data-theme="dark"] .border-\[\#4A152C\]\/15 { border-color: rgba(212,175,55,.22) !important; }
+      html[data-theme="dark"] input { color-scheme: dark; }
+      html[data-theme="dark"] img.thumb-placeholder, html[data-theme="dark"] .bg-amber-50\/40 { --tw-bg-opacity: 1; }
+      html[dir="rtl"] body { text-align: right; }
+      html[dir="rtl"] .ml-1 { margin-left: 0; margin-right: .25rem; }
+      html[dir="rtl"] .mr-1 { margin-right: 0; margin-left: .25rem; }
+      html[dir="rtl"] .ml-0\.5 { margin-left: 0; margin-right: .125rem; }
+      @media (prefers-reduced-motion: reduce) {
+        .sp-armed, .sp-armed.sp-shown { opacity: 1; animation: none !important; }
+        .hero-scrim h1 { animation: none !important; background: none; color: #F8F4E3; -webkit-text-fill-color: initial; }
+      }
+      @media (max-width: 640px) { .pill { animation: spFloat 7s ease-in-out infinite; } }
+      /* ===== end Podship Chrome ===== */
+
 
       html {
         scroll-behavior: smooth;

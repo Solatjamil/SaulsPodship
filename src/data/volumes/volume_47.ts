@@ -15,9 +15,9 @@ export const volume_47: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Types of Bad Spirits in the Bible",
-    "credit": "Gustave Doré, Jesus Casting Out the Legion of Demons"
+    "src": "/images/volumes/types-of-bad-spirits-in-the-bible/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Types of Bad Spirits in the Bible”",
+    "credit": "Public domain — Follower of Paul Bril · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",

@@ -1,0 +1,74 @@
+/* ============================================================
+   Saul's Podship skin — comparative-apologetics add-on
+   Purely an override layer: the page's own markup/styles are
+   untouched; this file retintakes them to the Podship identity
+   (wine #4A152C · gold #D4AF37/#E8C96A · cream #F8F4E3) and adds
+   dark mode, entrance animations and RTL support.
+   ============================================================ */
+
+:root {
+  --ink: #1A0812;
+  --ink-soft: #4A152C;
+  --gold: #D4AF37;
+  --gold-soft: #E8C96A;
+  --paper: #F8F4E3;
+  --paper-card: #FFFFFF;
+  --paper-alt: #F3EAD2;
+  --text: #241a17;
+  --muted: #6f5f5b;
+  --burgundy: #8B1C2E;
+  --burgundy-soft: #F6E9EE;
+  --border: #E7DAB4;
+  --wine-deep: #16060F;
+}
+
+html { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+h1, h2, h3, .hero-title, .doc-title, .section-title, .qtitle, .sp-serif { font-family: "EB Garamond", "Merriweather", Georgia, serif; }
+body {
+  background:
+    radial-gradient(circle at 10% -2%, rgba(212, 175, 55, 0.14), transparent 32%),
+    radial-gradient(circle at 92% 10%, rgba(74, 21, 44, 0.08), transparent 28%),
+    var(--paper);
+}
+
+/* ---------- header / hero ---------- */
+.hero-title {
+  background: linear-gradient(112deg, #F8F4E3 0%, #F8F4E3 42%, #E8C96A 50%, #F8F4E3 58%, #F8F4E3 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: spShine 2.6s ease-out .2s 1 both;
+}
+@keyframes spShine { 0% { background-position: -180% 0; } 100% { background-position: 260% 0; } }
+@keyframes spRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ---------- cards & question blocks ---------- */
+.qcard, .reslist, .refs { border-radius: 18px; transition: box-shadow .25s ease, transform .25s ease; }
+.qcard:hover { box-shadow: 0 14px 34px rgba(74, 21, 44, 0.12); transform: translateY(-2px); }
+.qblock-christian { background: linear-gradient(150deg, #4A152C, #2b0d1c) !important; color: #F2E6D8; border-color: rgba(212, 175, 55, 0.35) !important; }
+.qblock-christian .qblock-label { color: #E8C96A !important; }
+.section-eyebrow { letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold) !important; font-weight: 800; font-size: 11px; }
+
+/* ---------- reveal animations ---------- */
+[data-sp-reveal]:not([data-sp-shown]) { opacity: 0; transform: translateY(16px); }
+[data-sp-reveal].sp-in { animation: spRise .6s cubic-bezier(.22, 1, .36, 1) both; opacity: 1; }
+
+/* ---------- dark mode ---------- */
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 10% -2%, rgba(212, 175, 55, 0.10), transparent 34%),
+    linear-gradient(180deg, #16060F 0%, #1A0812 100%);
+  color: #E9DFC8;
+}
+html[data-theme="dark"] { --ink: #F2E8D5; --ink-soft: #E8C96A; --paper: #140610; --paper-card: #22101a; --paper-alt: #2a1420; --text: #E4D9C2; --muted: #B3A48B; --border: rgba(212, 175, 55, 0.22); --burgundy-soft: rgba(212, 175, 55, 0.06); color-scheme: dark; }
+html[data-theme="dark"] aside, html[data-theme="dark"] nav, html[data-theme="dark"] .toc, html[data-theme="dark"] header { border-color: rgba(212, 175, 55, 0.2) !important; }
+html[data-theme="dark"] .qblock { border-color: rgba(212, 175, 55, 0.16) !important; }
+
+/* ---------- RTL ---------- */
+html[dir="rtl"] body { text-align: right; }
+html[dir="rtl"] .hero-eyebrow, html[dir="rtl"] .section-eyebrow { direction: rtl; }
+html[lang="ur"] body, html[lang="ar"] body { font-family: "Noto Nastaliq Urdu", "Noto Naskh Arabic", "Inter", Tahoma, sans-serif; line-height: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title { animation: none !important; background: none; color: var(--gold-soft); -webkit-text-fill-color: initial; }
+  [data-sp-reveal] { opacity: 1 !important; transform: none !important; animation: none !important; }
+}

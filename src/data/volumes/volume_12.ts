@@ -15,9 +15,9 @@ export const volume_12: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Book of Revelation",
-    "credit": "Albrecht Dürer, The Vision of the Seven Candlesticks (1498)"
+    "src": "/images/volumes/book-of-revelation/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Book of Revelation”",
+    "credit": "Public domain — AnonymousUnknown author · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80",

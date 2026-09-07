@@ -15,9 +15,9 @@ export const volume_16: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Complete Christian Theology Map",
-    "credit": "Systematic Cartography of the Divine Attributes"
+    "src": "/images/volumes/complete-christian-theology-map/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Complete Christian Theology Map”",
+    "credit": "Public domain — Abraham van der Eyk · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_28: Volume = {
   "category": "devotional",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Lord's Prayer",
-    "credit": "James Tissot, The Lord's Prayer (Le Pater Noster, 1890)"
+    "src": "/images/volumes/lords-prayer/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Lord's Prayer”",
+    "credit": "Public domain — Lucas Gassel · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80",

@@ -15,9 +15,9 @@ export const volume_40: Volume = {
   "category": "devotional",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Sermon on the Mount",
-    "credit": "Carl Bloch, The Sermon on the Mount (1877)"
+    "src": "/images/volumes/sermon-on-the-mount/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Sermon on the Mount”",
+    "credit": "Public domain — This Photo was taken by Wolfgang Moroder.  \n\nFeel free to us · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",

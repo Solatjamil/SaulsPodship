@@ -15,9 +15,9 @@ export const volume_37: Volume = {
   "category": "history",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Primeval World Timeline & Ancient Civilizations",
-    "credit": "Pieter Bruegel the Elder, The Tower of Babel (1563)"
+    "src": "/images/volumes/primeval-world-timeline-ancient-civilizations/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Primeval World Timeline & Ancient Civilizations”",
+    "credit": "Public domain — J. M. W. Turner · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80",

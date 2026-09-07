@@ -15,9 +15,9 @@ export const volume_43: Volume = {
   "category": "scholarly",
   "lastUpdated": "2026-09-06",
   "heroImage": {
-    "src": "https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=1600&q=80",
-    "alt": "Ten Commandments & OT Laws",
-    "credit": "Rembrandt van Rijn, Moses with the Ten Commandments (1659)"
+    "src": "/images/volumes/ten-commandments-ot-laws/hero-1920.jpg",
+    "alt": "Public-domain artwork illustrating “Ten Commandments & OT Laws”",
+    "credit": "Public domain — Gustave Doré · Wikimedia Commons"
   },
   "cardImage": {
     "src": "https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=800&q=80",
