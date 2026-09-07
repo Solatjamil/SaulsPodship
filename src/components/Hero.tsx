@@ -133,7 +133,7 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
 
   // Home Hero Variant
   return (
-    <section id="home-hero" className="relative w-full overflow-hidden min-h-[100svh] flex flex-col text-white">
+    <section id="home-hero" className="relative w-full overflow-hidden min-h-[76svh] sm:min-h-[100svh] flex flex-col text-white">
       <picture className="absolute inset-0">
         <source media="(max-width: 639px)"  srcSet="/images/hero/last-supper-portrait.webp" type="image/webp" />
         <source media="(max-width: 1279px)" srcSet="/images/hero/last-supper-1280.webp"     type="image/webp" />
@@ -145,7 +145,7 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
           height="1082"
           fetchPriority="high"
           decoding="async"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-[center_64%] sm:object-center"
         />
       </picture>
       <div className="hero-overlay absolute inset-0 pointer-events-none" />

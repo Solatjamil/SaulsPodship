@@ -138,11 +138,32 @@
         scroll-behavior: smooth;
       }
       
+      html {
+        background-color: #F8F4E3;
+        max-width: 100vw;
+        overflow-x: clip; /* kills the sideways pan + the cream gutter strip */
+      }
+
       body {
         font-family: 'Inter', sans-serif;
         background-color: #F8F4E3; /* Ivory */
         color: #1D2D50; /* Deep Royal Blue */
-        overflow-x: hidden;
+        overflow-x: clip;
+        max-width: 100vw;
+      }
+
+      /* the <html> element itself was never retinted — in dark mode its
+         ivory background was the white strip at the right edge */
+      html[data-theme="dark"] { background-color: #120510; }
+
+      /* mobile: let the hero artwork read bright from its top — the heavy
+         dark wash over the upper picture looked like blank space */
+      @media (max-width: 640px) {
+        .hero-overlay {
+          background: linear-gradient(180deg,
+            rgba(8,6,10,0.16) 0%, rgba(8,6,10,0.04) 34%,
+            rgba(8,6,10,0.55) 72%, rgba(11,13,18,0.92) 100%) !important;
+        }
       }
 
       .font-serif-heading {
