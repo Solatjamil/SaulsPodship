@@ -4,7 +4,7 @@
    The switch buttons sit BELOW the preview, matching the atlas's
    footer row, and each module keeps an open-full-screen escape.
    ============================================================ */
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Compass, Crown, ExternalLink, Network } from 'lucide-react';
 
 export type ModuleId = 'map' | 'kings' | 'crossrefs';
@@ -37,7 +37,7 @@ const MODULES: {
     label: 'The Interlinked Bible \u2014 344,799 Threads',
     short: 'Interlinked Bible',
     blurb: 'Every cross-reference in Scripture \u2014 344,799 verse links forming 190,758 chapter threads across all 66 books \u2014 woven into one interactive horseshoe, with a world faith map beneath.',
-    src: '/cross-references/index.html',
+    src: '/cross-references/',
     full: '/cross-references',
     icon: Network,
   },
@@ -48,14 +48,41 @@ interface Props { compact?: boolean }
 const ModuleSwitcher: React.FC<Props> = ({ compact = false }) => {
   const [active, setActive] = useState<ModuleId>('map');
   const mod = MODULES.find(m => m.id === active)!;
+  const frameRef = useRef<HTMLIFrameElement | null>(null);
+
+  // Modules live ON the page: the frame grows to its content's height so the
+  // visitor scrolls the page once — never an inner scrollbar plus an outer one.
+  useEffect(() => {
+    const f = frameRef.current;
+    if (!f) return;
+    const fit = () => {
+      try {
+        const d = f.contentDocument;
+        if (!d || !d.body) return;
+        const h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
+        if (h > 120 && Math.abs(h - f.clientHeight) > 8) f.style.height = h + 'px';
+      } catch {
+        /* cross-origin guard */
+      }
+    };
+    fit();
+    f.addEventListener('load', fit);
+    const iv = window.setInterval(fit, 700);
+    return () => {
+      f.removeEventListener('load', fit);
+      window.clearInterval(iv);
+    };
+  }, [active]);
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-full rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-[#F8F4E3]">
         <iframe
+          ref={frameRef}
           src={mod.src}
           title={`${mod.label} — interactive module`}
           loading="lazy"
-          className={`w-full border-0 block ${compact ? 'h-[62vh] min-h-[440px] md:h-[700px]' : 'h-[80vh] min-h-[560px] md:h-[820px]'}`}
+          className="w-full border-0 block"
+          style={{ height: compact ? '62vh' : '76vh', minHeight: compact ? 440 : 560 }}
         />
       </div>
 

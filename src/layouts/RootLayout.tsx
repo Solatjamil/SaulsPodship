@@ -8,7 +8,7 @@ import { Outlet, Link, useLocation, ScrollRestoration } from 'react-router-dom';
 import { 
   BookOpen, Mic, Music, Compass, Info, ShieldCheck, Heart, 
   Menu, X, Search, ChevronRight, ExternalLink, Globe, Award,
-  Sparkles, Mail, MessageSquare, Play, Video, MapPin, Send
+  Sparkles, Mail, Play, Video, MapPin
 } from 'lucide-react';
 import ScholarAssistant from '../../components/ScholarAssistant';
 import { SITE } from '../config/site';
@@ -103,93 +103,6 @@ const AuthorSeal: React.FC = () => (
   </section>
 );
 
-
-// Floating theological chat dock — available on every page (the studio's
-// chat was only reachable by navigating away). Talks to the same /api/chat
-// endpoint the Scriptorium Studio uses, with graceful degradation.
-const ChatDock: React.FC = () => {
-  const location = useLocation();
-  // The Scriptorium Studio page already ships a full-page chat experience —
-  // don't stack a second floating chat widget on top of it.
-  const onStudioPage = location.pathname.startsWith('/studio');
-  const [open, setOpen] = useState(false);
-  const [msgs, setMsgs] = useState<{ role: 'user' | 'ai'; text: string }[]>([
-    { role: 'ai', text: "Peace! I'm Theophilus, the Podship research assistant. Ask about any book, doctrine, hymn, or the 50 volumes." }
-  ]);
-  const [q, setQ] = useState('');
-  const [busy, setBusy] = useState(false);
-  const listRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => { listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' }); }, [msgs, busy, open]);
-  const send = async () => {
-    const t = q.trim();
-    if (!t || busy) return;
-    setQ('');
-    setMsgs(m => [...m, { role: 'user', text: t }]);
-    setBusy(true);
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: t })
-      });
-      if (res.ok) {
-        const d = await res.json();
-        setMsgs(m => [...m, { role: 'ai', text: d.reply || d.text || 'The assistant returned no text — please try again.' }]);
-      } else {
-        setMsgs(m => [...m, { role: 'ai', text: 'The assistant is resting between services. Meanwhile, the Encyclopedia\'s 50 volumes await you.' }]);
-      }
-    } catch (_) {
-      setMsgs(m => [...m, { role: 'ai', text: 'I could not reach the scriptorium just now — please try again shortly.' }]);
-    }
-    setBusy(false);
-  };
-  if (onStudioPage) return null;
-
-  return (
-    <div className="fixed bottom-5 right-4 z-[70] flex flex-col items-end gap-3">
-      {open && (
-        <div className="w-[min(92vw,360px)] h-[58svh] max-h-[440px] rounded-2xl border border-[#D4AF37]/50 bg-[#1A0812] text-white shadow-2xl flex flex-col overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-2.5 bg-gradient-to-r from-[#4A152C] to-[#2b0d1c] border-b border-[#D4AF37]/40">
-            <span className="flex items-center gap-2 font-serif font-bold text-[#E8C96A]"><Sparkles className="w-4 h-4" /> Theophilus AI</span>
-            <button aria-label="Close chat" onClick={() => setOpen(false)} className="text-white/70 hover:text-[#E8C96A]"><X className="w-4 h-4" /></button>
-          </div>
-          <div ref={listRef} className="flex-1 overflow-y-auto p-3 space-y-2.5 text-[13px] leading-relaxed">
-            {msgs.map((m, i) => (
-              <div key={i} className={m.role === 'user'
-                ? 'ml-8 rounded-xl rounded-br-sm bg-[#4A152C]/70 border border-[#D4AF37]/25 px-3 py-2'
-                : 'mr-8 rounded-xl rounded-bl-sm bg-white/10 border border-white/10 px-3 py-2 whitespace-pre-wrap'}>
-                {m.text}
-              </div>
-            ))}
-            {busy && <div className="mr-8 rounded-xl bg-white/10 border border-white/10 px-3 py-2 text-white/60">consulting the scriptorium…</div>}
-          </div>
-          <div className="p-2.5 border-t border-white/10 flex gap-2">
-            <input
-              value={q}
-              onChange={e => setQ(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') send(); }}
-              placeholder="Ask about any book, doctrine, or hymn…"
-              aria-label="Message Theophilus"
-              className="flex-1 min-w-0 rounded-lg bg-white/10 border border-white/15 px-3 py-2 text-[13px] placeholder-white/40 text-white outline-none focus:border-[#D4AF37]/60"
-            />
-            <button onClick={send} disabled={busy || !q.trim()} aria-label="Send message" className="rounded-lg bg-[#D4AF37] text-[#1A0812] px-3 disabled:opacity-40">
-              <Send className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      )}
-      {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Open chat with Theophilus AI"
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8922A] text-[#1A0812] shadow-[0_10px_28px_rgba(0,0,0,0.45)] flex items-center justify-center hover:scale-105 transition-transform"
-        >
-          <MessageSquare className="w-6 h-6" />
-        </button>
-      )}
-    </div>
-  );
-};
 
 export const RootLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -541,7 +454,6 @@ export const RootLayout: React.FC = () => {
         </div>
       </footer>
 
-      <ChatDock />
     </div>
   );
 };
