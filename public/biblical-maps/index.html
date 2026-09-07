@@ -337,5 +337,91 @@ document.getElementById('reset').onclick = () => { resetAnim(); document.getElem
 
 boot();
 </script>
+
+<div class="wrap" id="rasterWrap">
+  <p class="kick">Attached Study Maps &middot; Raster Gallery</p>
+  <h1>Walk the <em>Attached</em> Maps</h1>
+  <p class="sub">The eight study maps attached to this volume &mdash; press <b>Walk the Journey</b> and footsteps trace each route station by station.</p>
+  <div class="tabs" id="rtabs" role="tablist"></div>
+  <div class="frame" style="background:#e9dfc6">
+    <img id="rimg" alt="" style="width:100%;display:block">
+    <svg id="rsvg" viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><path id="rpath" fill="none" stroke="#9c3b22" stroke-width="2.4" vector-effect="non-scaling-stroke" stroke-dasharray="1" stroke-dashoffset="1" pathLength="1"/></svg>
+    <div id="rlayer" style="position:absolute;inset:0;pointer-events:none"></div>
+  </div>
+  <div class="bar"><button id="rplay">&#9654; Walk the Journey</button><button id="rreset">&#8634; Restart</button></div>
+  <p class="cap" id="rcap"></p>
+</div>
+<div class="wrap" id="worldWrap">
+  <p class="kick">At the Foot of the Volume</p>
+  <h1>The <em>World</em> Map</h1>
+  <p class="sub">Moved to the bottom by design &mdash; after walking the sacred journeys, lift your eyes to the whole world the gospel now covers.</p>
+  <div class="frame"><svg id="wmap" viewBox="0 0 1000 500" role="img" aria-label="World map"></svg></div>
+  <p class="srcs">Coastlines: Natural Earth 1:110 m (public domain).</p>
+</div>
+<script type="module">
+const RM = {
+ 'abraham-journey': { t:"Abraham's Journey", img:'/images/maps/abraham-journey.png',
+   stops:[[63,76,'Ur of the Chaldees'],[65.5,25,'Haran'],[75,60,'Canaan — Shechem · Bethel · Hebron']] },
+ 'exodus': { t:'The Exodus from Egypt', img:'/images/maps/exodus.png',
+   stops:[[29,35,'Rameses'],[19,30,'Succoth'],[36,44,'Pi-hahiroth — the Sea crossing'],[41,43,'Elim · Mount Sinai'],[53,53,'Wilderness of Paran'],[75,28,'Kadesh-barnea'],[80,23,'Beersheba → Hebron']] },
+ 'paul-journeys': { t:"Paul's Missionary Journeys", img:'/images/maps/paul-journeys.png',
+   stops:[[34,91,'Jerusalem'],[62,71,'Antioch of Syria'],[64,52,'Seleucia'],[59,67,'Tarsus'],[50,45,'Derbe'],[61,44,'Iconium'],[51,40,'Antioch of Pisidia'],[31,49,'Attalia'],[33,42,'Athens'],[23,28,'Berea'],[23,33,'Philippi']] },
+ 'seven-churches': { t:'The Seven Churches of Revelation', img:'/images/maps/seven-churches.png',
+   stops:[[36,58,'Ephesus'],[44,64,'Smyrna'],[44,42,'Pergamum'],[48,47,'Thyatira'],[45,50,'Sardis'],[50,55,'Philadelphia'],[53,75,'Laodicea'],[36,58,'Return to Ephesus']] },
+ 'holy-land-jesus': { t:'The Holy Land in the Time of Jesus', img:'/images/maps/holy-land-jesus.png',
+   stops:[[52,20,'Nazareth of Galilee'],[37,37,'Capernaum'],[55,47,'Jericho'],[54,70,'Bethlehem'],[50,60,'Jerusalem']] },
+ 'kingdom-israel-judah': { t:'Kingdom of Israel & Judah', img:'/images/maps/kingdom-israel-judah.png',
+   stops:[[45,44,'Samaria — capital of the 10 tribes'],[85,16,'→ Assyria (722 BC)'],[34,87,'Jerusalem — capital of Judah']] },
+ 'ancient-near-east': { t:'Ancient Near East — Empires & Exiles', img:'/images/maps/ancient-near-east.png',
+   stops:[[38,50,'Israel (Samaria)'],[62,36,'Assyrian exile — 722 BC'],[35,68,'Judah (Jerusalem)'],[55,66,'Babylonian exile — 586 BC']] },
+ 'roman-empire-jesus': { t:'The Roman Empire in Jesus’ Time', img:'/images/maps/roman-empire-jesus.png',
+   stops:[[64,64,'Jerusalem'],[70,58,'Antioch — believers first called Christians'],[28,46,'Rome — the gospel to the ends of the earth']] }
+};
+const ORD = Object.keys(RM);
+const rtabs=document.getElementById('rtabs'), rimg=document.getElementById('rimg'),
+ rpath=document.getElementById('rpath'), rlayer=document.getElementById('rlayer'),
+ rcap=document.getElementById('rcap');
+let cur=null, raf=0;
+ORD.forEach((k,i)=>{ const b=document.createElement('button'); b.textContent=RM[k].t; b.setAttribute('role','tab');
+ b.setAttribute('aria-pressed',String(i===0)); b.onclick=()=>{ for(const x of rtabs.children) x.setAttribute('aria-pressed','false'); b.setAttribute('aria-pressed','true'); rsel(k); };
+ rtabs.appendChild(b); });
+function rsel(k){ cur=k; cancelAnimationFrame(raf); const r=RM[k];
+ rimg.src=r.img; rimg.alt=r.t+' — interactive journey map';
+ rpath.setAttribute('d', r.stops.map((s2,i)=>(i?'L':'M')+s2[0]+' '+s2[1]).join(' '));
+ rpath.style.strokeDashoffset=1; rlayer.innerHTML='';
+ r.stops.forEach((s2,i)=>{ const d=document.createElement('div');
+  d.style.cssText='position:absolute;left:'+s2[0]+'%;top:'+s2[1]+'%;transform:translate(-50%,-50%);text-align:center';
+  d.innerHTML='<div style="width:10px;height:10px;border-radius:50%;background:#4A152C;border:2px solid #F8F4E3;margin:0 auto"></div><div class="rlbl" style="font-family:Inter,sans-serif;font-size:10px;font-weight:700;color:#241309;background:rgba(248,244,227,.92);border:1px solid #D4AF37;border-radius:4px;padding:1px 6px;margin-top:3px;display:inline-block;opacity:0;transition:opacity .5s">'+(i+1)+'. '+s2[2]+'</div>';
+  rlayer.appendChild(d); });
+ rcap.innerHTML='<b>'+r.stops[0][2]+'</b> — press Walk the Journey.';
+}
+function segs(st){ const o=[]; let tot=0; for(let i=0;i<st.length-1;i++){ const L=Math.hypot(st[i+1][0]-st[i][0],st[i+1][1]-st[i][1]); o.push(L); tot+=L; } return {o,tot}; }
+function atP(st,o,s){ let i=0; while(i<o.length&&s>o[i]){ s-=o[i]; i++; } if(i>=o.length) i=o.length-1; const t=o[i]?s/o[i]:0;
+ return { x:st[i][0]+(st[i+1][0]-st[i][0])*t, y:st[i][1]+(st[i+1][1]-st[i][1])*t, a:Math.atan2(st[i+1][1]-st[i][1],st[i+1][0]-st[i][0])*180/Math.PI }; }
+document.getElementById('rplay').onclick=()=>{ const r=RM[cur], {o,tot}=segs(r.stops); let t0=null,next=0,side=1,shown=0;
+ cancelAnimationFrame(raf); rlayer.querySelectorAll('.rlbl').forEach(l=>l.style.opacity=0); rlayer.querySelectorAll('.rf').forEach(f=>f.remove()); rpath.style.strokeDashoffset=1;
+ const DUR=14000;
+ function fr(ts){ if(!t0)t0=ts; const p=Math.min(1,(ts-t0)/DUR), d=p*tot, w=atP(r.stops,o,d);
+  rpath.style.strokeDashoffset=1-p;
+  while(next<=d){ const fp=atP(r.stops,o,next), off=side>0?1.4:-1.4, rad=(fp.a+90)*Math.PI/180, e=document.createElement('div');
+   e.className='rf'; e.textContent='👣';
+   e.style.cssText='position:absolute;left:'+(fp.x+off*Math.cos(rad))+'%;top:'+(fp.y+off*Math.sin(rad))+'%;transform:translate(-50%,-50%) rotate('+(fp.a+90+(side>0?8:-8))+'deg);font-size:14px;opacity:.85';
+   rlayer.appendChild(e); side=-side; next+=2.2; }
+  const lbls=rlayer.querySelectorAll('.rlbl');
+  while(shown<lbls.length){ let sd=0; for(let i=0;i<shown;i++) sd+=o[i]; if(d>=sd-0.001){ lbls[shown].style.opacity=1; shown++; } else break; }
+  rcap.innerHTML=Math.round(p*100)+'% of the journey'+(p>=1?' — complete ✓':'');
+  if(p<1) raf=requestAnimationFrame(fr); }
+ raf=requestAnimationFrame(fr); };
+document.getElementById('rreset').onclick=()=>rsel(cur);
+rsel(ORD[0]);
+/* ---- world map at the bottom ---- */
+const WX=(lon)=>(lon+180)*(1000/360), WY=(lat)=>(90-lat)*(500/180);
+(async()=>{ const geo=await (await fetch('../cross-references/data/world.json')).json();
+ let out='<rect width="1000" height="500" fill="#cfd8d2"/>';
+ for(const c of geo.countries) for(const r of c.rings){ let d='M'+r[0]+' '+r[1]; for(let i=2;i<r.length;i+=2) d+='L'+r[i]+' '+r[i+1]; out+='<path d="'+d+'Z" fill="#E7DAB6" stroke="#8a7a55" stroke-width=".5"/>'; }
+ for(const [n,lo,la] of [['Rome',12.5,41.9],['Jerusalem',35.23,31.78],['Alexandria',29.92,31.2],['Antioch',36.16,36.2],['Karachi',67.0,24.86]])
+  out+='<g><circle cx="'+WX(lo)+'" cy="'+WY(la)+'" r="4" fill="#4A152C" stroke="#F8F4E3" stroke-width="1.5"/><text x="'+(WX(lo)+7)+'" y="'+(WY(la)+3)+'" style="font:700 11px Inter,sans-serif;fill:#241309;paint-order:stroke;stroke:rgba(248,244,227,.9);stroke-width:3">'+n+'</text></g>';
+ document.getElementById('wmap').innerHTML=out; })();
+</script>
 </body>
 </html>

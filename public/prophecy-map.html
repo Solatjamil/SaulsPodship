@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" href="/icons/favicon.png">
+<link rel="shortcut icon" type="image/png" href="/icons/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biblical Prophecy Map — Fulfilled &amp; Unfulfilled, Cross-Referenced</title>
 <meta name="description" content="An interactive map of 247 biblical prophecies — fulfilled, partly fulfilled and still future — with 1,063 cross-reference links, a rotatable 3D globe, and every verse opening on bible.com.">
 <meta name="theme-color" content="#F8F4E3">
+<meta property="og:title" content="The Biblical Prophecy Map | Saul's Podship">
+<meta property="og:description" content="247 prophecies woven by 1,063 cross-links — with historical, metaphorical and futurist fulfilment tags on every prophecy.">
+<meta property="og:type" content="article">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap">
@@ -112,6 +119,8 @@ html[data-theme="dark"]{
   --globe-shade:rgba(0,0,0,.28);
 }
 
+.pill.on2{background:var(--maroon);color:var(--bg2);border-color:var(--maroon)}
+.pill.on2 .sw{box-shadow:0 0 0 1px var(--gold)}
 *{box-sizing:border-box}
 html,body{height:100%}
 body,.pm-shell{
@@ -456,6 +465,14 @@ html[data-theme="dark"] .clab text{fill:var(--gold);fill-opacity:.12}
   .sub{display:none}
 }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How many prophecies are on the map?","acceptedAnswer":{"@type":"Answer","text":"247 — 107 fulfilled, 88 in part, 52 awaiting — woven by 1,063 cross-references; every one carries the three interpretive lenses."}},
+{"@type":"Question","name":"What does 'Historically Complete' mean?","acceptedAnswer":{"@type":"Answer","text":"The preterist/historicist reading counts the prophecy fulfilled within recorded history — e.g., the fall of Babylon, Jerusalem in A.D. 70, or the Messiah's first coming."}},
+{"@type":"Question","name":"What does 'Metaphorically Complete' mean?","acceptedAnswer":{"@type":"Answer","text":"The idealist/spiritual reading counts it fulfilled as symbol or spiritual reality — e.g., the millennium as Christ's present reign."}},
+{"@type":"Question","name":"Which prophecies does everyone agree are still future?","acceptedAnswer":{"@type":"Answer","text":"The Resurrection & New Creation cluster — awaited literally by all mainstream schools while functioning metaphorically as present hope."}}
+]}
+</script>
 </head>
 <body>
 <div id="app">
@@ -496,6 +513,8 @@ html[data-theme="dark"] .clab text{fill:var(--gold);fill-opacity:.12}
 
     <div class="sep"></div>
     <div class="pills" id="stPills"></div>
+    <div class="sep"></div>
+    <div class="pills" id="lensPills" title="Interpretive lenses: which school counts the prophecy complete"></div>
     <div class="sep"></div>
     <div class="pills" id="catPills"></div>
 
@@ -2824,6 +2843,7 @@ window.DATA_EXTRA4 = [
 }
 ];
 </script>
+<script src="assets/prophecy-lens.js"></script>
 <script>/* =========================================================================
    BIBLICAL PROPHECY MAP — application logic (no external dependencies)
    ========================================================================= */
@@ -3037,6 +3057,7 @@ function nodeFill(p){ return S.colorBy==="status" ? statusColor(p) : catColor(p)
 function visible(p){
   if(!S.cats.has(p.cat)) return false;
   if(!S.sts.has(p.st)) return false;
+  if(S.lens && window.LENS && LENS[p.id] && (LENS[p.id].tags||[]).indexOf(S.lens)<0) return false;
   if(S.q && S.view!=="network" && !S.searchHits.has(p.id)) return false;
   return true;
 }
@@ -3045,7 +3066,7 @@ function rebuildSearch(){
   S.searchHits = new Set();
   if(!q) return;
   P.forEach(p=>{
-    const hay = (p.t+" "+(p.d||"")+" "+(p.n||"")+" "+(p.g||[]).join(" ")+" "+(p.f||[]).join(" ")+" "+CATS[p.cat].label).toLowerCase();
+    const hay = (p.t+" "+(p.d||"")+" "+(p.n||"")+" "+(p.g||[]).join(" ")+" "+(p.f||[]).join(" ")+" "+CATS[p.cat].label+" "+((window.LENS&&LENS[p.id])?LENS[p.id].tags.join(" "):"")).toLowerCase();
     if(hay.indexOf(q)>=0) S.searchHits.add(p.id);
   });
 }
@@ -3453,6 +3474,15 @@ function renderTimeline(){
   svg.insertBefore(defs,svg.firstChild);
 }
 
+/* ---- interpretive lenses (2026-09-08 addition) ---- */
+var LENS_COLS={h:"#2E7D4F",m:"#0E7490",f:"#6D28D9"};
+function lensBadges(p){
+  if(!window.LENS||!LENS[p.id]) return "";
+  var L=LENS[p.id];
+  return '<span class="badge" style="color:'+LENS_COLS.h+';border-color:'+LENS_COLS.h+'55;background:'+LENS_COLS.h+'14" title="'+esc(L.hn)+'">⌛ '+esc(L.h)+'</span> '+
+         '<span class="badge" style="color:'+LENS_COLS.m+';border-color:'+LENS_COLS.m+'55;background:'+LENS_COLS.m+'14" title="'+esc(L.mn)+'">✦ '+esc(L.m)+'</span> '+
+         '<span class="badge" style="color:'+LENS_COLS.f+';border-color:'+LENS_COLS.f+'55;background:'+LENS_COLS.f+'14" title="'+esc(L.fn)+'">→ '+esc(L.f)+'</span> ';
+}
 /* ------------------------------------------------------------- 3. GRID */
 function renderGrid(){
   viz.innerHTML="";
@@ -3474,6 +3504,7 @@ function renderGrid(){
         '<h4>'+esc(p.t)+'</h4>'+
         '<span class="badge" style="color:'+statusColor(p)+';border-color:'+statusColor(p)+'55;background:'+statusColor(p)+'14">'+esc(STATUS[p.st].short)+'</span> '+
         '<span class="badge" style="color:'+CATS[k].color+';border-color:'+CATS[k].color+'55;background:'+CATS[k].color+'12">'+esc(CATS[k].label)+'</span>'+
+        lensBadges(p)+
         '<div class="meta">'+esc(p.g[0])+' · '+esc(yrs)+'</div>'+
         '<p>'+esc(p.d)+'</p>'+
         '<div class="foot"><span>'+(p.g||[]).length+' given</span><span>'+(p.f||[]).length+' fulfilment</span><span>'+(p.x||[]).length+' cross-refs</span> <span>'+((NBRS[p.id]||[]).length)+' links</span></div>';
@@ -3948,12 +3979,25 @@ function select(id){
     '<span class="chip" style="color:'+CATS[p.cat].color+';border-color:'+CATS[p.cat].color+'55">'+esc(CATS[p.cat].label)+'</span>'+
     '<span class="chip" style="color:'+statusColor(p)+';border-color:'+statusColor(p)+'55">● '+esc(STATUS[p.st].label)+'</span>'+
     '<span class="chip">'+esc(fmtYear(p.gy))+' → '+(p.fy==null? "still future":esc(fmtYear(p.fy)))+'</span>'));
+  if(window.LENS&&LENS[p.id]){
+    var Lz=LENS[p.id];
+    ph.appendChild(el("div","chips",
+      '<span class="chip" style="color:'+LENS_COLS.h+';border-color:'+LENS_COLS.h+'55">⌛ '+esc(Lz.h)+'</span>'+
+      '<span class="chip" style="color:'+LENS_COLS.m+';border-color:'+LENS_COLS.m+'55">✦ '+esc(Lz.m)+'</span>'+
+      '<span class="chip" style="color:'+LENS_COLS.f+';border-color:'+LENS_COLS.f+'55">→ '+esc(Lz.f)+'</span>'));
+  }
   const h=el("h2",null,esc(p.t)); ph.appendChild(h);
   const close=el("button","close","×"); close.addEventListener("click",closePanel); ph.appendChild(close);
 
   pb.innerHTML="";
   const s1=el("div","sec"); s1.appendChild(el("h5",null,"Summary"));
   s1.appendChild(el("div","sum",esc(p.d))); pb.appendChild(s1);
+  if(window.LENS&&LENS[p.id]){
+    var Lz2=LENS[p.id];
+    var sl=el("div","sec"); sl.appendChild(el("h5",null,"How the schools read it"));
+    sl.appendChild(el("div","note","<b>Historical lens</b> "+esc(Lz2.hn)+"<b>Metaphorical lens</b> "+esc(Lz2.mn)+"<b>Futurist lens</b> "+esc(Lz2.fn)));
+    pb.appendChild(sl);
+  }
 
   if(p.n){
     const sn=el("div","sec"); sn.appendChild(el("h5",null,"Interpretive note"));
@@ -4161,6 +4205,27 @@ applyTheme(currentTheme(), true);   /* read the CSS palette, set the button labe
 buildUI();
 syncTools();
 render();
+})();
+</script>
+<script>
+(function(){
+  if(!window.LENS) return;
+  S.lens="";
+  var tags=["Historically Complete","Historically In Part","Historically Not Yet","Metaphorically Complete","Ongoing Symbol","Futurist: Fulfilled","Futurist: Awaiting"];
+  var cols={"Historically Complete":"#2E7D4F","Historically In Part":"#B45309","Historically Not Yet":"#6D28D9","Metaphorically Complete":"#0E7490","Ongoing Symbol":"#0E7490","Futurist: Fulfilled":"#6D28D9","Futurist: Awaiting":"#6D28D9"};
+  var wrap=document.getElementById("lensPills"); if(!wrap) return;
+  function mk(label,color,val){
+    var b=el("button","pill");
+    b.innerHTML='<span class="sw" style="background:'+color+'"></span>'+label;
+    b.addEventListener("click",function(){
+      if(S.lens===val){ S.lens=""; Array.prototype.forEach.call(wrap.querySelectorAll(".pill"),function(x){x.classList.remove("on2");}); }
+      else { S.lens=val; Array.prototype.forEach.call(wrap.querySelectorAll(".pill"),function(x){x.classList.remove("on2");}); b.classList.add("on2"); }
+      render();
+    });
+    wrap.appendChild(b);
+  }
+  mk("Lens: all","var(--gold)","");
+  tags.forEach(function(t){ mk(t,cols[t]||"var(--gold)",t); });
 })();
 </script>
 </body>

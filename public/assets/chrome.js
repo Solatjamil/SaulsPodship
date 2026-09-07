@@ -1,0 +1,34 @@
+/* Saul's Podship — Header & module-centering retrofit (drop-in on every page)
+   Usage: <script src="/assets/chrome.js" defer></script> in the global template.
+   Implements only the requested deltas, without redesigning anything:
+   1. Removes the "YouTube" and "Browse/Explore 50 Volumes" buttons from the header.
+   2. Aligns the remaining header buttons/text/icons on one centered row.
+   3. Center-aligns module sections & module data (as requested 2026-09-08).
+   SAFETY: the /cross-references module (The Interlinked Bible) is fully excluded —
+   this script never touches that route, so the horseshoe chart & world faith map
+   render exactly as shipped. */
+(function(){
+  var path=(location.pathname||'');
+  if(/^\/cross-references/.test(path)) return;           /* never touch the Interlinked Bible */
+
+  function centerModules(){
+    if(document.getElementById('sp-chrome-css')) return;
+    var css=document.createElement('style');
+    css.id='sp-chrome-css';
+    css.textContent=[
+      'header nav,header .nav,nav.primary{justify-content:center!important;align-items:center!important;flex-wrap:wrap}',
+      'section[data-module],[class*=module-card],[class*=moduleCard]{margin-left:auto;margin-right:auto;text-align:center}'
+    ].join('');
+    document.head.appendChild(css);
+  }
+  function trimHeader(){
+    document.querySelectorAll('header a,header button,nav a,nav button').forEach(function(el){
+      var t=(el.textContent||'').trim().toLowerCase();
+      if(/youtube/.test(t)) el.remove();
+      else if(el.closest('header,nav') && /(browse|explore)\s+(all\s+)?50\s+volumes/.test(t)) el.remove();
+    });
+  }
+  function run(){ centerModules(); trimHeader(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+  setTimeout(run,1200); setTimeout(run,3000);
+})();
