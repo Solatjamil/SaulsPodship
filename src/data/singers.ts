@@ -42,13 +42,6 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
       "Trained and mentored early generations of choir masters and vocalists across urban and rural parish communities",
       "Founded a lasting family musical dynasty that continues to lead South Asian gospel hymnody across multiple generations"
     ],
-    keyZaboorOrGeet: [
-      "Aye Khudawand Tere Huzoor",
-      "Rooh-e-Quds Aaja Dil De Vich",
-      "Zaboor 23 (Rab Mera Hai Chowanwala - Classical Tabla & Choir Arrangement)",
-      "Masihi Geet & Choral Devotionals",
-      "Khuda Di Mohabbat Bemisaal"
-    ],
     era: "Historic Golden Era (Deceased Veteran)",
     isHonoredDynasty: true
   },
@@ -69,13 +62,6 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
       "Celebrated vocal coach and classical music professor who trained leading studio artists and church soloists",
       "Composed complex multi-part choral anthems, symphonic spiritual settings, and classical geets",
       "Father and mentor of veteran composer Nada Jamil, perpetuating profound musical craftsmanship"
-    ],
-    keyZaboorOrGeet: [
-      "Classical Raag-Based Devotional Masterworks",
-      "Symphonic Setting of Zaboor 91 (Raag Yaman Kalyan)",
-      "Zaboor 121 (Classical Des / Pahadi Arrangement)",
-      "Teri Hamd-o-Sana Hamesha",
-      "Masihi Classical Ghazals & Anthems"
     ],
     era: "Classical Master & Theorist (Veteran)",
     isHonoredDynasty: true
@@ -98,13 +84,6 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
       "Collaborated with leading Christian producers and ensembles across South Asia and abroad",
       "Active mentor inspiring the next generation of worship leaders in vocal technique"
     ],
-    keyZaboorOrGeet: [
-      "Teri Qudrat De Jalwe",
-      "Mera Khuda Wafadar Hai",
-      "Pyar Masih Da Kadi Na Mukke",
-      "Zaboor 100 (Khushi De Naal Gao)",
-      "Asman Te Zameen De Malik"
-    ],
     era: "Veteran Gospel Era",
     isHonoredDynasty: true
   },
@@ -125,13 +104,6 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
       "Directed musical productions for major Christian conventions, broadcasts, and choral recordings",
       "Pioneered nuanced arrangements of traditional Punjabi Zaboor with refined acoustic instrumentation",
       "Recognized widely among peers for melodic craftsmanship and devotional depth"
-    ],
-    keyZaboorOrGeet: [
-      "Yeshu Di Sana Karo",
-      "Rab Di Rehmat Be-Payan",
-      "Suna Hai Naam Yeshu Ka",
-      "Zaboor 34 (Main Har Vele Rab Di Tareef Karanga)",
-      "Roohani Geet & Worship Medleys"
     ],
     era: "Veteran Gospel Era",
     isHonoredDynasty: true

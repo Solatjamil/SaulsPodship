@@ -75,7 +75,9 @@
       "padding:8px 18px;background:rgba(22,6,15,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,175,55,.28);" +
       "font:600 13px Inter,system-ui,sans-serif;";
     bar.innerHTML =
-      '<a href="https://www.saulspodship.com/" style="margin-right:auto;color:#E8C96A;text-decoration:none;font-weight:800;letter-spacing:.02em;">\u2190 Saul\u2019s Podship</a>' +
+      '<a href="https://www.saulspodship.com/" style="margin-right:auto;display:flex;align-items:baseline;gap:10px;text-decoration:none;">' +
+      '<span style="font:700 17px \'EB Garamond\',\'Merriweather\',Georgia,serif;color:#E8C96A;">\u2393 Saul\u2019s Podship</span>' +
+      '<span style="font:800 9.5px Inter,system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,244,227,.5);">Comparative Apologetics Codex</span></a>' +
       '<select id="sp-lang" aria-label="Language" style="appearance:none;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:5px 22px 5px 9px;font:700 12px Inter,sans-serif;cursor:pointer;">' +
       '<option value="en">English</option><option value="ur">\u0627\u0631\u062F\u0648</option><option value="hi">\u0939\u093f\u0928\u094d\u0926\u0940</option><option value="ar">\u0627\u0644\u0639\u0631\u0628\u064a\u0629</option></select>' +
       '<button id="sp-theme" aria-label="Toggle dark mode" title="Toggle dark / light" style="background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:5px 10px;cursor:pointer;color:#E8C96A;font-size:14px;">\u263D</button>';

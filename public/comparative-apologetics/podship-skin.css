@@ -72,3 +72,46 @@ html[lang="ur"] body, html[lang="ar"] body { font-family: "Noto Nastaliq Urdu", 
   .hero-title { animation: none !important; background: none; color: var(--gold-soft); -webkit-text-fill-color: initial; }
   [data-sp-reveal] { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
+
+/* ============================================================
+   FULL PODSHIP VIBE — dark scriptorium masthead (v2)
+   wine #1A0812/#2D0F1E · gold #D4AF37/#E8C96A · cream #F8F4E3
+   Still pure override: page markup untouched.
+   ============================================================ */
+.hero {
+  background:
+    radial-gradient(circle at 88% -14%, rgba(212, 175, 55, 0.22), transparent 42%),
+    radial-gradient(circle at 6% 112%, rgba(139, 28, 46, 0.5), transparent 46%),
+    linear-gradient(140deg, #16060F 0%, #1A0812 44%, #2D0F1E 100%) !important;
+  color: #F4ECDA;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(22, 6, 15, 0.35);
+}
+.hero-eyebrow { color: #E8C96A !important; letter-spacing: 0.24em !important; }
+.hero-sub, .hero-meta, .hero .lead { color: rgba(244, 236, 214, 0.82) !important; }
+.hero-meta { border-top-color: rgba(212, 175, 55, 0.28) !important; }
+
+/* sidebar brand block mirrors the wine header of the main site */
+.sidebar-brand {
+  background: linear-gradient(150deg, #4A152C, #2b0d1c) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+}
+.sidebar-title { color: #E8C96A !important; }
+.sidebar-sub { color: rgba(248, 244, 227, 0.72) !important; }
+
+/* toolbar + category chips: gold trim */
+.tb-btn, .tb-chip { border-color: rgba(212, 175, 55, 0.45) !important; }
+.tb-chip.active { background: #4A152C !important; color: #E8C96A !important; border-color: #4A152C !important; }
+.catpill.active { background: #4A152C !important; color: #E8C96A !important; }
+.catcount { color: #E8C96A !important; }
+
+/* question cards get the scriptorium frame */
+.qcard { border: 1px solid rgba(212, 175, 55, 0.3) !important; }
+.qcard:hover { border-color: rgba(212, 175, 55, 0.65) !important; }
+.qtitle { color: #4A152C; }
+.qnum { color: #8B1C2E; }
+.endnote { border-left: 3px solid #D4AF37 !important; background: rgba(212, 175, 55, 0.07) !important; }
+
+html[data-theme="dark"] .hero { border-color: rgba(212, 175, 55, 0.4); }
+html[data-theme="dark"] .qtitle, html[data-theme="dark"] .qnum { color: #E8C96A; }

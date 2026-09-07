@@ -680,3 +680,88 @@ img { display: block; }
   .sp-hero h1 { background: none; color: #1A0812; -webkit-text-fill-color: initial; }
   .sp-hero h1 em { background: none; color: #8B1C2E; }
 }
+
+/* ---------- FULL PODSHIP IDENTITY: wine masthead + gold hero ---------- */
+.sp-topbar {
+  background: linear-gradient(120deg, #16060F 0%, #1A0812 40%, #2D0F1E 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 20px;
+  padding: 14px 20px;
+  box-shadow: 0 12px 34px rgba(26, 8, 18, 0.32);
+}
+.sp-logo {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 700;
+  color: #E8C96A;
+  letter-spacing: 0.01em;
+}
+.sp-logo:hover { color: #F4E3B0; }
+.sp-topbar .pill {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 175, 55, 0.45);
+  color: #F8F4E3;
+}
+.sp-topbar .pill:hover { background: rgba(212, 175, 55, 0.18); color: #fff; }
+
+.sp-hero {
+  background:
+    radial-gradient(circle at 86% -12%, rgba(212, 175, 55, 0.2), transparent 40%),
+    radial-gradient(circle at 4% 112%, rgba(139, 28, 46, 0.55), transparent 46%),
+    linear-gradient(140deg, #16060F 0%, #1A0812 38%, #2D0F1E 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 24px 60px rgba(22, 6, 15, 0.38);
+}
+.sp-hero .eyebrow { color: #E8C96A; }
+.sp-hero h1 { color: #F8F4E3; }
+.sp-hero h1 em {
+  font-style: italic;
+  background: linear-gradient(112deg, #D4AF37 0%, #F4E3B0 45%, #D4AF37 90%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: spShine 2.8s ease-out 0.3s 1 both;
+}
+.sp-hero .lede { color: rgba(244, 236, 214, 0.82); }
+.sp-cta-row .pill--dark { background: #D4AF37; border-color: #D4AF37; color: #1A0812; }
+.sp-cta-row .pill--dark:hover { background: #E8C96A; border-color: #E8C96A; color: #16060F; }
+.sp-cta-row .pill:not(.pill--dark) {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #F8F4E3;
+}
+.sp-cta-row .pill:not(.pill--dark):hover { background: rgba(212, 175, 55, 0.15); color: #fff; }
+.sp-rail-head h2 { color: #F8F4E3; }
+.sp-rail-head .see-all { color: #E8C96A; }
+.sp-hero .v-card { border: 1px solid rgba(212, 175, 55, 0.32); }
+
+/* collection cards + list section: scriptorium frames on cream */
+.coll-card, .sp-list-card { border: 1px solid rgba(212, 175, 55, 0.28); }
+.coll-card:hover, .v-card:hover { border-color: rgba(212, 175, 55, 0.6); }
+.sp-list-card h2 { font-family: var(--serif); color: var(--brand-deep); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-hero h1 em { animation: none; background: none; color: #E8C96A; -webkit-text-fill-color: initial; }
+}
+
+/* ---------- hero type tuned for the wine backdrop (gold-on-cream shimmer) ---------- */
+.sp-hero h1 {
+  background: linear-gradient(112deg, #F8F4E3 0%, #F8F4E3 44%, #E8C96A 50%, #F8F4E3 56%, #F8F4E3 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  animation: sp-rise .7s cubic-bezier(.22, 1, .36, 1) both, sp-shine 2.6s ease-out .35s 1 both;
+}
+.sp-hero h1 em {
+  background: linear-gradient(112deg, #D4AF37 0%, #F4E3B0 45%, #D4AF37 90%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  animation: sp-shine 3.1s ease-out .5s 1 both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp-hero h1 { background: none; color: #F8F4E3; -webkit-text-fill-color: initial; }
+  .sp-hero h1 em { background: none; color: #E8C96A; -webkit-text-fill-color: initial; }
+}
