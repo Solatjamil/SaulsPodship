@@ -5,9 +5,9 @@
    footer row, and each module keeps an open-full-screen escape.
    ============================================================ */
 import React, { useState } from 'react';
-import { Compass, Crown, BookOpen, ExternalLink } from 'lucide-react';
+import { Compass, Crown, BookOpen, ExternalLink, Network } from 'lucide-react';
 
-export type ModuleId = 'map' | 'kings' | 'stories';
+export type ModuleId = 'map' | 'kings' | 'stories' | 'crossrefs';
 
 const MODULES: {
   id: ModuleId; label: string; short: string; blurb: string;
@@ -40,6 +40,15 @@ const MODULES: {
     src: '/encyclopedia/all-bible-stories',
     full: '/encyclopedia/all-bible-stories',
     icon: BookOpen,
+  },
+  {
+    id: 'crossrefs',
+    label: 'The Interlinked Bible \u2014 344,799 Threads',
+    short: 'Interlinked Bible',
+    blurb: 'Every cross-reference in Scripture \u2014 344,799 verse links forming 190,758 chapter threads across all 66 books \u2014 woven into one interactive horseshoe, with a world faith map beneath.',
+    src: '/cross-references/index.html',
+    full: '/cross-references/index.html',
+    icon: Network,
   },
 ];
 

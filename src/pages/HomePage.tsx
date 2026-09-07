@@ -117,7 +117,7 @@ export const HomePage: React.FC = () => {
             Switch Between the Modules
           </h2>
           <p className="text-white/75 text-sm sm:text-base leading-relaxed max-w-2xl mt-3 font-light">
-            The prophecy atlas, the kings chronicle and the painted 100-story collection —
+            The prophecy atlas, the kings chronicle, the painted 100-story collection and the interlinked-Bible concordance —
             run them side by side without leaving this page, then open any of them full-screen.
           </p>
           <div className="mt-8 w-full">
