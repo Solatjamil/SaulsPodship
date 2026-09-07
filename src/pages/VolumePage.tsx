@@ -11,7 +11,6 @@ import {
   Layers, MapPin, HelpCircle, CheckCircle2, Table, Info,
   Search, Download, Copy, Check, Filter, ArrowUpRight, X, FileText, Printer, Crown, Globe2
 , Network} from 'lucide-react';
-import ModuleSwitcher from '../components/modules/ModuleSwitcher';
 import { getVolumeBySlug, VOLUMES } from '../data/volumes';
 import Hero from '../components/Hero';
 import ManuscriptAnalysis from '../components/ManuscriptAnalysis';
@@ -312,28 +311,6 @@ export const VolumePage: React.FC = () => {
           </section>
         )}
 
-        {slug === 'biblical-maps' && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-            <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
-              <h2 className="font-serif text-2xl font-bold text-[#E8C96A] text-center">
-                World Faith &amp; Population Map
-              </h2>
-              <p className="text-center text-xs text-white/60 mb-5 max-w-xl mx-auto">
-                Every territory filled by its majority religion — Christianity in green — with global
-                adherent totals in the legend and national populations on hover.
-              </p>
-              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/40">
-                <iframe
-                  src="/world-religion-map/index.html"
-                  title="World religion and population map"
-                  loading="lazy"
-                  className="w-full h-[560px] md:h-[680px] border-0 block bg-[#F8F4E3]"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Companion Modules — every volume page links the interactive companions */}
         <section id="companion-modules" className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8 scroll-mt-24">
           <div className="flex items-center justify-center gap-2 mb-1">
@@ -343,59 +320,18 @@ export const VolumePage: React.FC = () => {
           <p className="text-center text-[11px] sm:text-xs text-white/60 mb-5 max-w-xl mx-auto">
             Interactive charts woven from the same scholarship as the 50 volumes — open them alongside this dossier.
           </p>
-          <div className="mb-6">
-            <ModuleSwitcher compact />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a href="/kings-of-the-bible" target="_blank" rel="noopener noreferrer"
-               className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
-              <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
-                <Crown className="w-5 h-5 text-[#E8C96A]" />
-              </span>
-              <span className="flex-1 text-left">
-                <span className="block font-serif font-bold text-[13px] sm:text-sm text-white group-hover:text-[#E8C96A] transition-colors">Kings of the Bible — Full Sequence</span>
-                <span className="block text-[10px] text-white/55 mt-0.5">Every throne from Saul to the Herods, canonical order</span>
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a href="/prophecy-map" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
+              <Globe2 className="w-3.5 h-3.5" /> Biblical Prophecy Map
             </a>
-            <a href="/prophecy-map" target="_blank" rel="noopener noreferrer"
-               className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
-              <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
-                <Globe2 className="w-5 h-5 text-[#E8C96A]" />
-              </span>
-              <span className="flex-1 text-left">
-                <span className="block font-serif font-bold text-[13px] sm:text-sm text-white group-hover:text-[#E8C96A] transition-colors">Biblical Prophecy Map — 247 Threads</span>
-                <span className="block text-[10px] text-white/55 mt-0.5">Fulfilled, in-part &amp; future on a rotatable 3D globe</span>
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            <a href="/kings-of-the-bible" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
+              <Crown className="w-3.5 h-3.5" /> Kings of the Bible
             </a>
-            <a
-              href="/cross-references"
-              className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
-            >
-              <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
-                <Network className="w-5 h-5 text-[#E8C96A]" />
-              </span>
-              <span className="flex-1 text-left">
-                <span className="block font-serif font-bold text-white group-hover:text-[#E8C96A] transition-colors leading-snug">
-                  The Interlinked Bible &mdash; 344,799 Threads
-                </span>
-                <span className="block text-[11px] text-white/55 mt-0.5">
-                  Every cross-reference woven into one interactive horseshoe, plus a world faith map
-                </span>
-              </span>
-              <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            <a href="/cross-references" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
+              <Network className="w-3.5 h-3.5" /> The Interlinked Bible
             </a>
-            <a href="/encyclopedia/all-bible-stories" target="_blank" rel="noopener noreferrer"
-               className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
-              <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-[#E8C96A]" />
-              </span>
-              <span className="flex-1 text-left">
-                <span className="block font-serif font-bold text-[13px] sm:text-sm text-white group-hover:text-[#E8C96A] transition-colors">The 100 All Bible Stories</span>
-                <span className="block text-[10px] text-white/55 mt-0.5">Painted Vol-1 collection in canonical order — Creation to Revelation</span>
-              </span>
-              <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            <a href="/comparative-apologetics" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
+              <ShieldCheck className="w-3.5 h-3.5" /> Comparative Apologetics
             </a>
           </div>
         </section>
@@ -953,6 +889,50 @@ export const VolumePage: React.FC = () => {
             </Link>
           )}
         </nav>
+
+        {slug === 'biblical-maps' && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+            <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-bold text-[#E8C96A] text-center">
+                The Biblical Atlas &mdash; Interactive Journey Maps
+              </h2>
+              <p className="text-center text-xs text-white/60 mb-5 max-w-xl mx-auto">
+                Eight study maps on true geography. Press &ldquo;Walk the Journey&rdquo; and footsteps
+                trace Abraham, the Exodus, the seven churches and Paul&rsquo;s three journeys station by station.
+              </p>
+              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/40">
+                <iframe
+                  src="/biblical-maps/index.html"
+                  title="The Biblical Atlas — interactive journey maps"
+                  loading="lazy"
+                  className="w-full h-[620px] md:h-[760px] border-0 block bg-[#F8F4E3]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {slug === 'biblical-maps' && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+            <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-bold text-[#E8C96A] text-center">
+                World Faith &amp; Population Map
+              </h2>
+              <p className="text-center text-xs text-white/60 mb-5 max-w-xl mx-auto">
+                Every territory filled by its majority religion &mdash; Christianity in green &mdash; with global
+                adherent totals in the legend and national populations on hover.
+              </p>
+              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/40">
+                <iframe
+                  src="/world-religion-map/index.html"
+                  title="World religion and population map"
+                  loading="lazy"
+                  className="w-full h-[560px] md:h-[680px] border-0 block bg-[#F8F4E3]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
       </div>
     </div>
