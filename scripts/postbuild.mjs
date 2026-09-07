@@ -50,7 +50,8 @@ const staticPages = [
   '/disclaimer',
   '/sitemap',
   '/theological-archive',
-  '/comparative-apologetics'
+  '/comparative-apologetics',
+  '/videos'
 ];
 
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -195,7 +196,7 @@ for (const v of volumes) {
 
 // Pre-render static HTML for all static pages
 for (const p of staticPages) {
-  if (p === '' || p === '/comparative-apologetics') continue; // dist/index.html already exists, codex has its own static index.html
+  if (p === '' || p === '/comparative-apologetics' || p === '/videos') continue; // dist/index.html already exists, codex has its own static index.html, /videos is a standalone static module
   const targetDir = path.join(distDir, p.replace(/^\//, ''));
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });

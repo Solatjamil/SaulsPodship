@@ -1,0 +1,44 @@
+name: Sync YouTube videos
+
+# Regenerates public/videos/assets/videos-data.js from the live channel,
+# commits it when anything changed, and Vercel auto-redeploys on push.
+# If YouTube ever blocks the scrape, this run fails, nothing is committed,
+# and the site keeps serving the last good snapshot — it can never "break".
+
+on:
+  schedule:
+    - cron: "15 1,13 * * *"   # 06:15 & 18:15 Pakistan time, twice daily
+  workflow_dispatch: {}        # "Sync now" button in the Actions tab
+  push:
+    branches: [main, master]
+    paths:
+      - "public/videos/**"     # editing the module manually still re-validates
+      - "scripts/update_videos.py"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scrape channel + playlists from YouTube
+        run: python3 scripts/update_videos.py --out public/videos/assets
+
+      - name: Commit new data (only if changed)
+        run: |
+          git config user.name  "videos-sync-bot"
+          git config user.email "videos-sync-bot@users.noreply.github.com"
+          git add public/videos/assets/videos-data.js public/videos/assets/videos-data.json
+          if git diff --cached --quiet; then
+            echo "No new episodes — nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(videos): auto-sync YouTube episode data ($(date -u +%F' '%H:%M)' UTC)"
+          git push

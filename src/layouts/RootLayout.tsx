@@ -17,9 +17,10 @@ export const RootLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navLinks = [
+  const navLinks: { name: string; href: string; icon: React.ComponentType<{ className?: string }>; isExternal?: boolean; isStatic?: boolean }[] = [
     { name: 'Encyclopedia', href: '/encyclopedia', icon: BookOpen },
     { name: 'Podcast', href: '/podcast', icon: Mic },
+    { name: 'Videos', href: '/videos/', icon: Video, isStatic: true },
     { name: 'Sacred Music', href: '/music', icon: Music },
     { name: 'Scriptorium Studio', href: '/studio', icon: Sparkles },
     { name: 'Standards', href: '/scholarly-standards', icon: ShieldCheck },
@@ -66,6 +67,19 @@ export const RootLayout: React.FC = () => {
                     <Icon className="w-3.5 h-3.5 text-rose-400 group-hover:scale-110 transition-transform" />
                     <span>{item.name}</span>
                     <ExternalLink className="w-2.5 h-2.5 opacity-60 ml-0.5" />
+                  </a>
+                );
+              }
+              if (item.isStatic) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide text-white/80 hover:text-white hover:bg-white/10 transition-all"
+                    title="Bible video series"
+                  >
+                    <Icon className="w-3.5 h-3.5 opacity-80" />
+                    {item.name}
                   </a>
                 );
               }
@@ -139,6 +153,22 @@ export const RootLayout: React.FC = () => {
                       <span>{item.name} (Patreon)</span>
                     </div>
                     <ExternalLink className="w-4 h-4 opacity-50" />
+                  </a>
+                );
+              }
+              if (item.isStatic) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon className="w-4 h-4 text-[#D4AF37]" />
+                      <span>{item.name}</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 opacity-50" />
                   </a>
                 );
               }
@@ -228,6 +258,7 @@ export const RootLayout: React.FC = () => {
                 <li><Link to="/music/punjabi-zaboor" className="hover:text-[#E8C96A] transition-colors">Punjabi Zaboor (150 Psalms)</Link></li>
                 <li><Link to="/music/pakistani-singers-archive" className="hover:text-[#E8C96A] transition-colors">Pakistani Singers Archive</Link></li>
                 <li><Link to="/podcast" className="hover:text-[#E8C96A] transition-colors">Theological Podcast</Link></li>
+                <li><a href="/videos/" className="hover:text-[#E8C96A] transition-colors">Bible Video Library</a></li>
                 <li><Link to="/studio" className="hover:text-[#E8C96A] transition-colors">Scriptorium AI Studio</Link></li>
                 <li>
                   <a
