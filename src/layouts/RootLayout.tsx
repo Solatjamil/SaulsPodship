@@ -8,7 +8,7 @@ import { Outlet, Link, useLocation, ScrollRestoration } from 'react-router-dom';
 import { 
   BookOpen, Mic, Music, Compass, Info, ShieldCheck, Heart, 
   Menu, X, Search, ChevronRight, ExternalLink, Globe, Award,
-  Sparkles, Mail, MessageSquare, Play, Video
+  Sparkles, Mail, MessageSquare, Play, Video, MapPin
 } from 'lucide-react';
 import ScholarAssistant from '../../components/ScholarAssistant';
 import { SITE } from '../config/site';
@@ -37,7 +37,19 @@ const InstallPrompt: React.FC = () => {
       </p>
     );
   }
-  if (!deferred) return null;
+  if (!deferred) {
+    try {
+      if (window.matchMedia('(display-mode: standalone)').matches) return null; // already installed
+    } catch (_) {}
+    const isIos = typeof navigator !== 'undefined' && /iP(hone|ad|od)/.test(navigator.userAgent);
+    return (
+      <p className="text-[11px] text-white/50 tracking-wide max-w-md">
+        {isIos
+          ? 'iOS: tap the Share button, then “Add to Home Screen” to install the Podship app.'
+          : 'Install this site as an app: Chrome menu ⋮ → “Install app” / “Add to Home screen”.'}
+      </p>
+    );
+  }
   return (
     <button
       type="button"
@@ -55,6 +67,41 @@ const InstallPrompt: React.FC = () => {
     </button>
   );
 };
+
+
+// Author seal — formerly rendered at the end of every volume body, now a
+// single global card at the foot of EVERY page (in the shared footer).
+const AuthorSeal: React.FC = () => (
+  <section className="mt-10 pt-10 border-t border-white/10 w-full flex justify-center">
+    <div className="max-w-xl w-full p-6 rounded-3xl bg-gradient-to-br from-[#24101C] to-[#16060F] border-2 border-[#D4AF37]/40 shadow-xl relative overflow-hidden text-center">
+      <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative z-10 flex flex-col items-center gap-3">
+        <img
+          src="/images/solat.png"
+          alt="Solat Nadeem"
+          width={72}
+          height={72}
+          loading="lazy"
+          className="w-[72px] h-[72px] rounded-full object-cover ring-2 ring-[#D4AF37]/70 shadow-lg bg-white"
+        />
+        <div className="space-y-1">
+          <span className="inline-block text-[10px] font-black uppercase tracking-widest text-[#E8C96A] bg-white/10 px-3 py-1 rounded-full border border-white/10">
+            Founder &amp; Exegete
+          </span>
+          <h3 className="font-serif text-lg font-bold text-white">Solat Nadeem</h3>
+          <p className="text-[11px] text-white/70 flex items-center justify-center gap-1">
+            <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+            Sahiwal, Punjab, Pakistan &bull; Saul's Podship Scriptorium
+          </p>
+        </div>
+        <p className="text-[11px] sm:text-xs text-white/70 leading-relaxed font-light max-w-md mx-auto">
+          Dedicated to equipping the global Church with historically grounded, theologically
+          rigorous, and visually rich biblical scholarship.
+        </p>
+      </div>
+    </div>
+  </section>
+);
 
 export const RootLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -79,15 +126,13 @@ export const RootLayout: React.FC = () => {
       <header className="sticky top-0 z-50 w-full bg-[#16060f]/70 backdrop-blur-md border-b border-[#D4AF37]/20 text-white transition-all shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 md:h-20 flex items-center justify-between">
           {/* Brand Logo with Correct SVG */}
-          <Link to="/" className="flex items-center gap-3.5 group">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-[#D4AF37]/30 p-1 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-              <img src="/logo.svg" alt="Saul's Podship Logo" className="w-8 h-8 object-contain drop-shadow" />
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="font-serif font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-[#E8C96A] transition-colors">
+          <Link to="/" className="flex items-center gap-2.5 group min-w-0 shrink-0">
+            <img src="/icons/emblem.png" alt="Saul's Podship Logo" className="h-12 w-12 sm:h-14 sm:w-14 object-contain shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] group-hover:scale-105 transition-transform" />
+            <div className="flex flex-col text-left min-w-0">
+              <span className="font-serif font-bold text-base sm:text-xl tracking-tight text-white group-hover:text-[#E8C96A] transition-colors whitespace-nowrap">
                 Saul's Podship
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-[0.2em] text-[#D4AF37]/90">
+              <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-[0.18em] text-[#D4AF37]/90 whitespace-nowrap">
                 Theological Encyclopedia
               </span>
             </div>
@@ -255,9 +300,7 @@ export const RootLayout: React.FC = () => {
             {/* Column 1: Ministry Info */}
             <div className="space-y-4 flex flex-col items-center text-center">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-9 h-9 rounded-lg bg-white/10 border border-[#D4AF37]/30 p-1 flex items-center justify-center">
-                  <img src="/logo.svg" alt="Saul's Podship Logo" className="w-7 h-7 object-contain" />
-                </div>
+                <img src="/icons/emblem.png" alt="Saul's Podship Logo" className="h-10 w-10 object-contain" />
                 <span className="font-serif font-bold text-xl text-white tracking-tight">
                   Saul's Podship
                 </span>
@@ -400,6 +443,8 @@ export const RootLayout: React.FC = () => {
             </p>
             <InstallPrompt />
           </div>
+
+            <AuthorSeal />
 
           {/* Bottom Bar - Center Aligned */}
           <div className="pt-8 border-t border-white/10 flex flex-col items-center justify-center text-center text-xs text-white/60 gap-3">

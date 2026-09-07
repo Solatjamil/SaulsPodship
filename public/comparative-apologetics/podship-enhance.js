@@ -76,6 +76,7 @@
       "font:600 13px Inter,system-ui,sans-serif;";
     bar.innerHTML =
       '<a href="https://www.saulspodship.com/" style="margin-right:auto;display:flex;align-items:baseline;gap:10px;text-decoration:none;">' +
+      '<img src="/icons/emblem.png" alt="" width="22" height="22" style="border-radius:50%;" />' +
       '<span style="font:700 17px \'EB Garamond\',\'Merriweather\',Georgia,serif;color:#E8C96A;">\u2393 Saul\u2019s Podship</span>' +
       '<span style="font:800 9.5px Inter,system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,244,227,.5);">Comparative Apologetics Codex</span></a>' +
       '<select id="sp-lang" aria-label="Language" style="appearance:none;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(212,175,55,.35);border-radius:10px;padding:5px 22px 5px 9px;font:700 12px Inter,sans-serif;cursor:pointer;">' +

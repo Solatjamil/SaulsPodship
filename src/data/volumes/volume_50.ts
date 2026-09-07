@@ -68,7 +68,7 @@ export const volume_50: Volume = {
     }
   ],
   "content": {
-    "analysis": "**THE PEDAGOGICAL STRATEGY**\nThis guide is structured to move the student from the internal (Identity & Mental Health) to the external (Relationships & Science), and finally to the eternal (End Times & Hot Topics). \n\n**Strategy for Gen-Z Engagement:**\nGen-Z values authenticity over production, \"Why\" over \"What,\" and community over hierarchy. These sermons are designed to be conversational yet deeply rooted in the historical reliability of Scripture.\n\n---\n\n### **About the Author**\n**Written by Solat Nadeem**, Founder — Saul's Podship · Karachi, Pakistan.\nDedicated to equipping believers worldwide with historically grounded, theologically rigorous, and visually rich biblical scholarship.",
+    "analysis": "**THE PEDAGOGICAL STRATEGY**\nThis guide is structured to move the student from the internal (Identity & Mental Health) to the external (Relationships & Science), and finally to the eternal (End Times & Hot Topics). \n\n**Strategy for Gen-Z Engagement:**\nGen-Z values authenticity over production, \"Why\" over \"What,\" and community over hierarchy. These sermons are designed to be conversational yet deeply rooted in the historical reliability of Scripture.",
     "tables": [
       {
         "title": "MONTH 1 — Identity in a Digital Age",

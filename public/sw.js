@@ -4,7 +4,7 @@
    visits, and offer a cached shell offline. Deliberately light:
    never precache the 50 hero artworks; cache lazily instead.
    ============================================================ */
-const VERSION = 'sp-pwa-v1';
+const VERSION = 'sp-pwa-v2';
 const SHELL = [
   '/',
   '/index.html',
@@ -15,9 +15,13 @@ const SHELL = [
 const MAX_ENTRIES = 160;
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(VERSION).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting())
-  );
+  // A single unreachable shell entry must never abort SW installation
+  // (an uninstalled SW silently kills Chrome's install prompt).
+  event.waitUntil((async () => {
+    const cache = await caches.open(VERSION);
+    await Promise.all(SHELL.map((url) => cache.add(url).catch(() => undefined)));
+    self.skipWaiting();
+  })());
 });
 
 self.addEventListener('activate', (event) => {

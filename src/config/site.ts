@@ -18,7 +18,7 @@ export const SITE = {
   author: {
     name: "Solat Nadeem",
     role: "Founder & Lead Exegete",
-    location: "Karachi, Pakistan",
+    location: "Sahiwal, Punjab, Pakistan",
     email: "solatnadeem@gmail.com"
   }
 };

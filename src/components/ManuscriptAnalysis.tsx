@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize from 'rehype-sanitize';
 import { ScriptureRef, SCRIPTURE_REGEX } from './ScriptureRef';
-import { Sparkles, MapPin, BookOpen, ShieldCheck } from 'lucide-react';
+import { Sparkles, BookOpen, ShieldCheck } from 'lucide-react';
 
 interface ManuscriptAnalysisProps {
   content: string;
@@ -214,28 +214,6 @@ export const ManuscriptAnalysis: React.FC<ManuscriptAnalysisProps> = ({ content,
         </ReactMarkdown>
       </div>
 
-      {/* Author & Editorial Seal Card - Centered */}
-      <section className="mt-14 p-8 rounded-3xl bg-gradient-to-br from-[#1A0812] to-[#3B0E23] text-white border-2 border-[#D4AF37]/40 shadow-xl relative overflow-hidden font-sans text-center">
-        <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="flex flex-col items-center gap-4 relative z-10">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#D4AF37] to-[#F5E296] text-[#1A0812] flex items-center justify-center font-serif font-black text-2xl shadow-lg border-2 border-white/20">
-            SN
-          </div>
-          <div className="space-y-1 text-center">
-            <span className="inline-block text-[11px] font-black uppercase tracking-widest text-[#E8C96A] bg-white/10 px-3 py-1 rounded-full border border-white/10 mb-1">
-              Founder &amp; Exegete
-            </span>
-            <h3 className="font-serif text-xl font-bold text-white">Solat Nadeem</h3>
-            <p className="text-xs text-white/70 flex items-center justify-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
-              Karachi, Pakistan &bull; Saul's Podship Scriptorium
-            </p>
-          </div>
-          <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-light max-w-lg mx-auto">
-            Dedicated to equipping the global Church with historically grounded, theologically rigorous, and visually rich biblical scholarship.
-          </p>
-        </div>
-      </section>
     </div>
   );
 };

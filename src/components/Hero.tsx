@@ -22,9 +22,9 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
     const numPadded = volume.number < 10 ? `0${volume.number}` : `${volume.number}`;
 
     return (
-      <section id="volume-hero" className="relative w-full overflow-hidden min-h-[100svh] flex flex-col text-white">
+      <section id="volume-hero" className="relative w-full overflow-hidden min-h-[100svh] flex flex-col text-white bg-[linear-gradient(180deg,#16060F_0%,#1A0812_55%,#24101C_100%)">
         <picture className="absolute inset-0">
-          <source media="(max-width: 639px)" srcSet={`/images/volumes/${slug}/hero-portrait.webp`} type="image/webp" />
+          <source media="(max-width: 639px)" srcSet={`/images/volumes/${slug}/hero-1280.webp`} type="image/webp" />
           <source media="(max-width: 1279px)" srcSet={`/images/volumes/${slug}/hero-1280.webp`} type="image/webp" />
           <source srcSet={`/images/volumes/${slug}/hero-1920.webp`} type="image/webp" />
           <img
@@ -34,7 +34,7 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
             height="1082"
             fetchPriority="high"
             decoding="async"
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-contain sm:object-cover object-center"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               if (volume.heroImage?.src && target.src !== volume.heroImage.src) {
