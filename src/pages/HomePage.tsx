@@ -147,6 +147,13 @@ export const HomePage: React.FC = () => {
               <BookOpen className="w-3.5 h-3.5" />
               Study the Volumes Behind It
             </Link>
+            <a
+              href="/kings-of-the-bible.html"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Kings of the Bible — The Throne Line
+            </a>
           </div>
         </div>
       </section>

@@ -52,7 +52,8 @@ const staticPages = [
   '/theological-archive',
   '/comparative-apologetics',
   '/videos',
-  '/prophecy-map.html'
+  '/prophecy-map.html',
+  '/kings-of-the-bible.html'
 ];
 
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -197,7 +198,7 @@ for (const v of volumes) {
 
 // Pre-render static HTML for all static pages
 for (const p of staticPages) {
-  if (p === '' || p === '/comparative-apologetics' || p === '/videos') continue; // dist/index.html already exists, codex has its own static index.html, /videos is a standalone static module
+  if (p === '' || p === '/comparative-apologetics' || p === '/videos' || p.endsWith('.html')) continue; // dist/prophecy-map.html & friends are real files vite already copied; mkdir over them is ENOTDIR // dist/index.html already exists, codex has its own static index.html, /videos is a standalone static module
   const targetDir = path.join(distDir, p.replace(/^\//, ''));
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });

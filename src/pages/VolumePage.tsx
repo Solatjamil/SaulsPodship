@@ -23,6 +23,27 @@ import { StorySceneIcon, sceneForStory } from '../components/story/StorySceneIco
 import { bibleComUrl } from '../lib/bibleRef';
 import { SITE } from '../config/site';
 
+
+// Interactive companion modules hosted as self-contained static pages (public/*.html),
+// embedded below Key Facts on the volumes whose content they directly extend.
+const INTERACTIVE_MODULES: Record<string, { title: string; blurb: string; src: string }> = {
+  'family-tree-adam-jesus': {
+    title: 'Every King in the Bible, in Sequence',
+    blurb: "The throne line behind the family tree: Saul to Zedekiah, the divided kingdoms, foreign rulers, the Seleucid and Hasmonean years and the Herodian court — every crown in canonical order.",
+    src: '/kings-of-the-bible.html'
+  },
+  'messianic-prophecies': {
+    title: 'Every King in the Bible, in Sequence',
+    blurb: 'The royal stage on which the Davidic promises play out — the thrones the Messiah\'s lineage inherits, judged good or evil, from the United Kingdom to the Herods.',
+    src: '/kings-of-the-bible.html'
+  },
+  'all-bible-stories': {
+    title: 'Every King in the Bible, in Sequence',
+    blurb: 'The narrative spine of the Old Testament\'s king-era story, told crown by crown — Saul, David, Solomon, the divided kingdoms and the rulers of the intertestamental night.',
+    src: '/kings-of-the-bible.html'
+  }
+};
+
 export const VolumePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -188,6 +209,9 @@ export const VolumePage: React.FC = () => {
           <div className="flex items-center gap-4">
             <a href="#summary" className="hover:text-[#4A152C] whitespace-nowrap">Overview</a>
             <a href="#key-facts" className="hover:text-[#4A152C] whitespace-nowrap">Key Facts</a>
+            {INTERACTIVE_MODULES[(volume?.slug || '').toLowerCase()] && (
+              <a href="#interactive" className="hover:text-[#4A152C] whitespace-nowrap text-[#8B1C2E] font-bold">Interactive</a>
+            )}
             <a href="#exegesis" className="hover:text-[#4A152C] whitespace-nowrap">Manuscript Exegesis</a>
             {volume.content?.tables && volume.content.tables.length > 0 && (
               <a href="#tables" className="hover:text-[#4A152C] whitespace-nowrap">Tables ({volume.content.tables.length})</a>
@@ -298,6 +322,39 @@ export const VolumePage: React.FC = () => {
             </div>
           </section>
         )}
+
+        {/* Interactive companion module (self-contained static page, embedded per EMBED pattern) */}
+        {(() => {
+          const mod = INTERACTIVE_MODULES[(volume?.slug || '').toLowerCase()];
+          if (!mod) return null;
+          return (
+            <section id="interactive" className="p-8 sm:p-10 rounded-3xl bg-[#1A0812] text-white border-2 border-[#D4AF37]/40 shadow-xl space-y-6 scroll-mt-24">
+              <div className="text-center max-w-2xl mx-auto space-y-2">
+                <span className="text-xs font-black uppercase tracking-widest text-[#E8C96A]">Interactive Module &bull; Companion Atlas</span>
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">{mod.title}</h2>
+                <p className="text-sm text-white/70 leading-relaxed">{mod.blurb}</p>
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/30 bg-[#f6f0e4]">
+                <iframe
+                  src={mod.src}
+                  title={mod.title}
+                  loading="lazy"
+                  className="w-full h-[75vh] min-h-[480px] border-0 block"
+                />
+              </div>
+              <div className="text-center">
+                <a
+                  href={mod.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#D4AF37] hover:bg-[#E8C96A] text-[#1A0812] font-bold text-xs shadow-md transition-all"
+                >
+                  Open the Kings Sequence Full-Screen
+                </a>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Scholarly Exegesis & Theological Analysis Prose using ManuscriptAnalysis */}
         {volume.content?.analysis && (
