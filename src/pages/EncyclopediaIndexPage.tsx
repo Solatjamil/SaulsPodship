@@ -7,7 +7,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   BookOpen, Search, Filter, ArrowUpDown, ChevronRight, 
-  ExternalLink, Play, Calendar, ShieldCheck, Layers, BookMarked
+  ExternalLink, Play, Calendar, ShieldCheck, Layers, BookMarked, Globe2
 } from 'lucide-react';
 import { VOLUMES } from '../data/volumes';
 
@@ -112,6 +112,59 @@ export const EncyclopediaIndexPage: React.FC = () => {
                 </span>
               </button>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Companion Interactive Modules — standalone static pages that extend the corpus */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <Layers className="w-4 h-4 text-[#E8C96A]" />
+            <span className="text-xs font-black uppercase tracking-widest text-[#E8C96A]">Companion Modules</span>
+          </div>
+          <p className="text-center text-xs text-white/60 mb-6 max-w-xl mx-auto">
+            Interactive charts woven from the same scholarship as the 50 volumes — open them alongside any volume.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <a
+              href="/kings-of-the-bible.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
+            >
+              <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
+                <BookMarked className="w-5 h-5 text-[#E8C96A]" />
+              </span>
+              <span className="flex-1 text-left">
+                <span className="block font-serif font-bold text-white group-hover:text-[#E8C96A] transition-colors leading-snug">
+                  Kings of the Bible — Full Sequence
+                </span>
+                <span className="block text-[11px] text-white/55 mt-0.5">
+                  Every throne from Saul to the Herods, canonical order · also embedded in Vols. 1, 20 &amp; 29
+                </span>
+              </span>
+              <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            </a>
+            <a
+              href="/prophecy-map.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
+            >
+              <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
+                <Globe2 className="w-5 h-5 text-[#E8C96A]" />
+              </span>
+              <span className="flex-1 text-left">
+                <span className="block font-serif font-bold text-white group-hover:text-[#E8C96A] transition-colors leading-snug">
+                  Biblical Prophecy Map — 247 Threads
+                </span>
+                <span className="block text-[11px] text-white/55 mt-0.5">
+                  Fulfilled, in-part &amp; future on a rotatable 3D globe, every link to bible.com
+                </span>
+              </span>
+              <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            </a>
           </div>
         </div>
       </div>
