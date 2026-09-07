@@ -1,9 +1,13 @@
-// Painted scene thumbnails for story cards. Each story's SceneGlyph (from
-// sceneForStory) resolves to one original painting in public/images/stories/scenes/.
-// Volumes whose glyphs are covered automatically get thumbnails; others keep medallions.
+// Story artwork resolution. Preferred: unique per-story painting in
+// public/images/stories/vol1/<id>.webp (VOL1_PAINTED). Fallback: shared scene
+// painting by glyph in public/images/stories/scenes/<glyph>.webp.
+const VOL1_PAINTED = new Set(['2','3','4','5','6','14','15','16','17']); // 13 awaits its own painting
 const PAINTED = new Set([
   'altar','book','creation','fire','flood','garden','scroll','sheaves','tower','tree'
 ]);
+export function storyArt(id?: string): string | null {
+  return id && VOL1_PAINTED.has(id) ? `/images/stories/vol1/${id}.webp` : null;
+}
 export function sceneImageFor(glyph: string): string | null {
   return PAINTED.has(glyph) ? `/images/stories/scenes/${glyph}.webp` : null;
 }

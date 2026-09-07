@@ -20,7 +20,7 @@ import { StoryPanel } from '../types';
 import { ScriptureRef } from '../components/ScriptureRef';
 import { InlineMd } from '../components/InlineMd';
 import { StorySceneIcon, sceneForStory } from '../components/story/StorySceneIcon';
-import { sceneImageFor } from '../components/story/storyScenes';
+import { sceneImageFor, storyArt } from '../components/story/storyScenes';
 import { bibleComUrl } from '../lib/bibleRef';
 import { SITE } from '../config/site';
 
@@ -526,7 +526,7 @@ export const VolumePage: React.FC = () => {
             </div>
 
             {/* Grid of Story Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredPanels.map((panel, pIdx) => (
                 <div 
                   key={panel.id || pIdx} 
@@ -535,7 +535,8 @@ export const VolumePage: React.FC = () => {
                 >
                   <div className="space-y-3">
                     {(() => {
-                      const img = sceneImageFor(sceneForStory(panel.title, panel.era, `${panel.description} ${panel.characters || ''}`));
+                      const g = sceneForStory(panel.title, panel.era, `${panel.description} ${panel.characters || ''}`);
+                      const img = storyArt(panel.id) ?? sceneImageFor(g);
                       if (!img) return null;
                       return (
                         <div className="rounded-xl overflow-hidden border border-gray-200 group-hover:border-[#D4AF37]/60 shadow-sm transition-colors">
@@ -595,7 +596,7 @@ export const VolumePage: React.FC = () => {
               </button>
 
               {(() => {
-                const img = sceneImageFor(sceneForStory(activeStoryModal.title, activeStoryModal.era, `${activeStoryModal.description} ${activeStoryModal.characters || ''}`));
+                const img = storyArt(activeStoryModal.id) ?? sceneImageFor(sceneForStory(activeStoryModal.title, activeStoryModal.era, `${activeStoryModal.description} ${activeStoryModal.characters || ''}`));
                 if (!img) return null;
                 return (
                   <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm -mx-2 -mt-2">
