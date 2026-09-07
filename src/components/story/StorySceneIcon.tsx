@@ -65,7 +65,7 @@ const PATHS: Record<SceneGlyph, React.ReactNode> = {
 
 const KEYWORD_MAP: [RegExp, SceneGlyph][] = [
   [/creat|light of day|beginning|firmament|eden's founding/i, 'creation'],
-  [/adam|eve|fall|garden|eden|fig|forbidden fruit/i, 'garden'],
+    [/\bgarden of eden\b|\beden\b|\badam\b|\beve\b|forbidden fruit|fig tree|the fall\b|nakedness/i, 'garden'],
   [/noah|flood|ark|rainbow|dove of noah/i, 'flood'],
   [/babel|tower/i, 'tower'],
   [/astronom|signs in the (sky|heavens)|stars/i, 'stars'],
@@ -77,6 +77,7 @@ const KEYWORD_MAP: [RegExp, SceneGlyph][] = [
   [/sacrifice|isaac|altar|lamb of abraham/i, 'altar'],
   [/jacob|ladder|bethel|wrestl/i, 'ladder'],
   [/well|rebekah|servant's journey/i, 'well'],
+  [/goliath|valley of elah/i, 'sword'],
   [/shepherd|david's youth|ruth|boaz/i, 'shepherd'],
   [/coat|joseph's favoritism|favoritism/i, 'coat'],
   [/joseph|potiphar|sold into egypt/i, 'sheaves'],
