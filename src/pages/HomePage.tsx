@@ -105,6 +105,52 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* 2b. Biblical Prophecy Map — interactive fulfilment atlas (self-contained module page embedded per EMBED.md) */}
+      <section className="py-20 bg-[#1A0812] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-[#D4AF37] text-[#1A0812]">
+            <Compass className="w-3.5 h-3.5" />
+            Prophetic Fulfilment Atlas
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-3">
+            The Biblical Prophecy Map
+          </h2>
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed max-w-2xl mt-3 font-light">
+            247 biblical prophecies — 107 fulfilled, 88 in part, 52 still awaiting — woven
+            together by 1,063 cross-references on a rotatable 3D globe. Every thread opens
+            the passage on bible.com.
+          </p>
+
+          <div className="mt-8 w-full max-w-6xl rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-[#F8F4E3]">
+            <iframe
+              src="/prophecy-map.html"
+              title="Biblical Prophecy Map — interactive atlas of 247 fulfilled and unfulfilled prophecies"
+              loading="lazy"
+              className="w-full h-[80vh] min-h-[560px] md:h-[820px] border-0 block"
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-6">
+            <a
+              href="/prophecy-map.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#D4AF37] hover:bg-[#E8C96A] text-[#1A0812] font-bold text-xs shadow-md transition-all"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              Open the Map Full-Screen
+            </a>
+            <Link
+              to="/encyclopedia"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              Study the Volumes Behind It
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Encyclopedia Module Teaser - Centered */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         <div className="max-w-3xl mx-auto mb-10">
