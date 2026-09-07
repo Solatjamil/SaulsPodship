@@ -142,7 +142,11 @@ export const EncyclopediaIndexPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredVolumes.map((volume) => {
               const numPadded = volume.number < 10 ? `0${volume.number}` : `${volume.number}`;
-              const cardImg = volume.cardImage?.src || volume.heroImage?.src;
+              // Thumbnail = the volume's own curated hero artwork (identical photo used
+              // as the full-bleed hero background on the volume page), served in the
+              // lightweight 1280 webp variant. Legacy remote cardImage only as fallback.
+              const heroBase = volume.heroImage?.src?.replace(/hero-1920\.jpg$/, 'hero-1280.webp');
+              const cardImg = (heroBase && heroBase.includes('/images/volumes/') ? heroBase : (volume.cardImage?.src || volume.heroImage?.src));
               return (
                 <article
                   key={volume.id}
@@ -152,7 +156,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
                   <div className="relative h-48 w-full overflow-hidden bg-gray-100">
                     <img
                       src={cardImg}
-                      alt={volume.cardImage?.alt || volume.title}
+                      alt={volume.heroImage?.alt || volume.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                       loading="lazy"

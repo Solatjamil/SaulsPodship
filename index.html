@@ -5,10 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#F8F4E3" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Podship" />
     <title>Saul's Podship | Interactive Theological Encyclopedia</title>
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <link rel="shortcut icon" type="image/svg+xml" href="/logo.svg" />
-    <link rel="apple-touch-icon" href="/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/icons/app-icon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/icons/app-icon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
     
     <!-- Primary Meta Tags -->
     <meta name="title" content="Saul's Podship | Interactive Theological Encyclopedia & Digital Ministry" />
@@ -291,5 +296,12 @@
   <body style="background-color: #F8F4E3; color: #1D2D50; margin: 0; padding: 0;">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator && location.hostname !== 'localhost' && !location.port) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () { /* offline PWA simply stays unavailable */ });
+        });
+      }
+    </script>
   </body>
 </html>
