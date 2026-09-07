@@ -11,6 +11,7 @@ import {
   Layers, MapPin, HelpCircle, CheckCircle2, Table, Info,
   Search, Download, Copy, Check, Filter, ArrowUpRight, X, FileText, Printer, Crown, Globe2
 } from 'lucide-react';
+import ModuleSwitcher from '../components/modules/ModuleSwitcher';
 import { getVolumeBySlug, VOLUMES } from '../data/volumes';
 import Hero from '../components/Hero';
 import ManuscriptAnalysis from '../components/ManuscriptAnalysis';
@@ -320,7 +321,10 @@ export const VolumePage: React.FC = () => {
           <p className="text-center text-[11px] sm:text-xs text-white/60 mb-5 max-w-xl mx-auto">
             Interactive charts woven from the same scholarship as the 50 volumes — open them alongside this dossier.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-6">
+            <ModuleSwitcher compact />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a href="/kings-of-the-bible.html" target="_blank" rel="noopener noreferrer"
                className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
               <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
@@ -340,6 +344,17 @@ export const VolumePage: React.FC = () => {
               <span className="flex-1 text-left">
                 <span className="block font-serif font-bold text-[13px] sm:text-sm text-white group-hover:text-[#E8C96A] transition-colors">Biblical Prophecy Map — 247 Threads</span>
                 <span className="block text-[10px] text-white/55 mt-0.5">Fulfilled, in-part &amp; future on a rotatable 3D globe</span>
+              </span>
+              <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
+            </a>
+            <a href="/encyclopedia/all-bible-stories" target="_blank" rel="noopener noreferrer"
+               className="group flex items-center gap-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 px-4 py-3.5 transition-all">
+              <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-[#E8C96A]" />
+              </span>
+              <span className="flex-1 text-left">
+                <span className="block font-serif font-bold text-[13px] sm:text-sm text-white group-hover:text-[#E8C96A] transition-colors">The 100 All Bible Stories</span>
+                <span className="block text-[10px] text-white/55 mt-0.5">Painted Vol-1 collection in canonical order — Creation to Revelation</span>
               </span>
               <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
             </a>

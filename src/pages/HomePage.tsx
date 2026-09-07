@@ -14,6 +14,7 @@ import Hero from '../components/Hero';
 import ArchivePillarCard from '../components/theology/ArchivePillarCard';
 import ComparativeApologeticsPillar from '../components/pillars/ComparativeApologeticsPillar';
 import { VOLUMES } from '../data/volumes';
+import ModuleSwitcher from '../components/modules/ModuleSwitcher';
 import { EPISODES } from '../data/episodes';
 import { PIONEERS_AND_SINGERS } from '../data/singers';
 import { SITE } from '../config/site';
@@ -105,41 +106,24 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2b. Biblical Prophecy Map — interactive fulfilment atlas (self-contained module page embedded per EMBED.md) */}
+      {/* 2b. Interactive Modules — switch between the atlas, the throne line and the story collection */}
       <section className="py-20 bg-[#1A0812] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-[#D4AF37] text-[#1A0812]">
             <Compass className="w-3.5 h-3.5" />
-            Prophetic Fulfilment Atlas
+            Interactive Modules
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-3">
-            The Biblical Prophecy Map
+            Switch Between the Modules
           </h2>
           <p className="text-white/75 text-sm sm:text-base leading-relaxed max-w-2xl mt-3 font-light">
-            247 biblical prophecies — 107 fulfilled, 88 in part, 52 still awaiting — woven
-            together by 1,063 cross-references on a rotatable 3D globe. Every thread opens
-            the passage on bible.com.
+            The prophecy atlas, the kings chronicle and the painted 100-story collection —
+            run them side by side without leaving this page, then open any of them full-screen.
           </p>
-
-          <div className="mt-8 w-full max-w-6xl rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-[#F8F4E3]">
-            <iframe
-              src="/prophecy-map.html"
-              title="Biblical Prophecy Map — interactive atlas of 247 fulfilled and unfulfilled prophecies"
-              loading="lazy"
-              className="w-full h-[80vh] min-h-[560px] md:h-[820px] border-0 block"
-            />
+          <div className="mt-8 w-full">
+            <ModuleSwitcher />
           </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-6">
-            <a
-              href="/prophecy-map.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#D4AF37] hover:bg-[#E8C96A] text-[#1A0812] font-bold text-xs shadow-md transition-all"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              Open the Map Full-Screen
-            </a>
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
             <Link
               to="/encyclopedia"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all"
@@ -147,13 +131,6 @@ export const HomePage: React.FC = () => {
               <BookOpen className="w-3.5 h-3.5" />
               Study the Volumes Behind It
             </Link>
-            <a
-              href="/kings-of-the-bible.html"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              Kings of the Bible — The Throne Line
-            </a>
           </div>
         </div>
       </section>
