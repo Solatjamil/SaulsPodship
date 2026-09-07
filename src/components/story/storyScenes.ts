@@ -2,7 +2,8 @@
 // public/images/stories/vol1/<id>.webp (VOL1_PAINTED). Fallback: shared scene
 // painting by glyph in public/images/stories/scenes/<glyph>.webp.
 const VOL1_PAINTED = new Set(['2','3','4','5','6','14','15','16','17',
-  '13','18','19','21','23','25','27','29','36','44','47','51','52','53','75','76','89','96']);
+  '13','18','19','21','23','25','27','29','36','44','47','51','52','53','75','76','89','96',
+  '43','50','64','70','72','85','86','90','91','99']);
 //   ^ per-title art for the Revelation block, Moses cluster, and the worst shared-glyph stories
 const PAINTED = new Set([
   'altar','book','bread','city','creation','cross','crown','dove','fish','fire','flood',

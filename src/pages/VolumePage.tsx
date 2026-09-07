@@ -1,5 +1,11 @@
 /**
- * @license
+ 
+  const pagePanels = useMemo(
+    () => filteredPanels.slice(storyPage * STORY_PAGE_SIZE, (storyPage + 1) * STORY_PAGE_SIZE),
+    [filteredPanels, storyPage]
+  );
+  const storyPages = Math.max(1, Math.ceil(filteredPanels.length / STORY_PAGE_SIZE));
+  useEffect(() => { setStoryPage(0); }, [selectedEra, panelSearchQuery]);* @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -32,6 +38,8 @@ export const VolumePage: React.FC = () => {
   
   // Interactive Story Panels State
   const [selectedEra, setSelectedEra] = useState<string>('All');
+  const [storyPage, setStoryPage] = useState<number>(0);
+  const STORY_PAGE_SIZE = 50;
   const [panelSearchQuery, setPanelSearchQuery] = useState<string>('');
   const [activeStoryModal, setActiveStoryModal] = useState<StoryPanel | null>(null);
 
@@ -261,7 +269,7 @@ export const VolumePage: React.FC = () => {
       </nav>
 
       {/* 3. Main Volume Body */}
-      <div id="volume-content" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div id="volume-content" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         
         {/* Core Summary / Answer-First Box */}
         {volume.summary && (
@@ -526,8 +534,8 @@ export const VolumePage: React.FC = () => {
             </div>
 
             {/* Grid of Story Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredPanels.map((panel, pIdx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {pagePanels.map((panel, pIdx) => (
                 <div 
                   key={panel.id || pIdx} 
                   onClick={() => setActiveStoryModal(panel)}
@@ -540,7 +548,7 @@ export const VolumePage: React.FC = () => {
                       if (!img) return null;
                       return (
                         <div className="rounded-xl overflow-hidden border border-gray-200 group-hover:border-[#D4AF37]/60 shadow-sm transition-colors">
-                          <img src={img} alt={`${panel.title} — painted scene`} loading="lazy" decoding="async" className="w-full h-36 sm:h-40 object-cover" />
+                          <img src={img} alt={`${panel.title} — painted scene`} loading="lazy" decoding="async" className="w-full h-44 sm:h-52 object-cover" />
                         </div>
                       );
                     })()}
@@ -557,10 +565,10 @@ export const VolumePage: React.FC = () => {
                       </div>
                       <ScriptureRef reference={panel.scripture} className="text-xs font-semibold text-[#8B1C2E] bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded transition-colors" />
                     </div>
-                    <h3 className="font-serif font-bold text-lg text-gray-900 group-hover:text-[#4A152C] transition-colors">
+                    <h3 className="font-serif font-bold text-xl text-gray-900 group-hover:text-[#4A152C] transition-colors">
                       {panel.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans">
+                    <p className="text-sm text-gray-600 leading-relaxed font-sans">
                       <InlineMd text={panel.description} />
                     </p>
                   </div>
@@ -581,6 +589,28 @@ export const VolumePage: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {storyPages > 1 && (
+              <div className="flex items-center justify-between gap-4 mt-8 pt-5 border-t border-gray-200">
+                <button
+                  onClick={() => setStoryPage(pg => Math.max(0, pg - 1))}
+                  disabled={storyPage === 0}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4A152C] text-[#E8C96A] text-sm font-bold shadow hover:bg-[#681E3E] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  ← Previous
+                </button>
+                <span className="text-xs sm:text-sm font-semibold text-gray-600">
+                  Page <strong className="text-[#4A152C]">{storyPage + 1}</strong> of {storyPages} · Stories {storyPage * STORY_PAGE_SIZE + 1}–{Math.min((storyPage + 1) * STORY_PAGE_SIZE, filteredPanels.length)} of {filteredPanels.length}
+                </span>
+                <button
+                  onClick={() => setStoryPage(pg => Math.min(storyPages - 1, pg + 1))}
+                  disabled={storyPage >= storyPages - 1}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4A152C] text-[#E8C96A] text-sm font-bold shadow hover:bg-[#681E3E] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  Next →
+                </button>
+              </div>
+            )}
           </section>
         )}
 

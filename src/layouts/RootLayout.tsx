@@ -178,13 +178,15 @@ const ChatDock: React.FC = () => {
           </div>
         </div>
       )}
-      <button
-        onClick={() => setOpen(o => !o)}
-        aria-label={open ? 'Close chat' : 'Open chat with Theophilus AI'}
-        className="w-14 h-14 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8922A] text-[#1A0812] shadow-[0_10px_28px_rgba(0,0,0,0.45)] flex items-center justify-center hover:scale-105 transition-transform"
-      >
-        {open ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
-      </button>
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Open chat with Theophilus AI"
+          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8922A] text-[#1A0812] shadow-[0_10px_28px_rgba(0,0,0,0.45)] flex items-center justify-center hover:scale-105 transition-transform"
+        >
+          <MessageSquare className="w-6 h-6" />
+        </button>
+      )}
     </div>
   );
 };
