@@ -5,9 +5,9 @@
    footer row, and each module keeps an open-full-screen escape.
    ============================================================ */
 import React, { useState } from 'react';
-import { Compass, Crown, BookOpen, ExternalLink, Network } from 'lucide-react';
+import { Compass, Crown, ExternalLink, Network } from 'lucide-react';
 
-export type ModuleId = 'map' | 'kings' | 'stories' | 'crossrefs';
+export type ModuleId = 'map' | 'kings' | 'crossrefs';
 
 const MODULES: {
   id: ModuleId; label: string; short: string; blurb: string;
@@ -20,7 +20,7 @@ const MODULES: {
     short: 'Prophecy Map',
     blurb: '247 prophecies — 107 fulfilled, 88 in part, 52 awaiting — woven by 1,063 cross-links on a rotatable 3D globe. Every thread opens the passage on bible.com.',
     src: '/prophecy-map.html',
-    full: '/prophecy-map.html',
+    full: '/prophecy-map',
     icon: Compass,
   },
   {
@@ -29,17 +29,8 @@ const MODULES: {
     short: 'Kings & Thrones',
     blurb: 'Every throne from Saul to the Herods in canonical order — reign lengths, synchronisms, wars and prophetic witness charted line by line.',
     src: '/kings-of-the-bible.html',
-    full: '/kings-of-the-bible.html',
+    full: '/kings-of-the-bible',
     icon: Crown,
-  },
-  {
-    id: 'stories',
-    label: 'The 100 All Bible Stories',
-    short: '100 Bible Stories',
-    blurb: 'Volume 1\u2019s painted collection — one hundred narrative cards in canonical order, from Creation to the New Heaven, each with verses, theme, cross-references and title-matched art.',
-    src: '/encyclopedia/all-bible-stories',
-    full: '/encyclopedia/all-bible-stories',
-    icon: BookOpen,
   },
   {
     id: 'crossrefs',
@@ -47,7 +38,7 @@ const MODULES: {
     short: 'Interlinked Bible',
     blurb: 'Every cross-reference in Scripture \u2014 344,799 verse links forming 190,758 chapter threads across all 66 books \u2014 woven into one interactive horseshoe, with a world faith map beneath.',
     src: '/cross-references/index.html',
-    full: '/cross-references/index.html',
+    full: '/cross-references',
     icon: Network,
   },
 ];

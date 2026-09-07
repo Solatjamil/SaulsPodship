@@ -128,9 +128,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             <a
-              href="/kings-of-the-bible.html"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/kings-of-the-bible"
               className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
             >
               <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
@@ -147,9 +145,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
               <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
             </a>
             <a
-              href="/prophecy-map.html"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/prophecy-map"
               className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
             >
               <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
@@ -166,9 +162,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
               <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
             </a>
             <a
-              href="/cross-references/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/cross-references"
               className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
             >
               <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">

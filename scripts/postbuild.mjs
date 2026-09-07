@@ -52,8 +52,9 @@ const staticPages = [
   '/theological-archive',
   '/comparative-apologetics',
   '/videos',
-  '/prophecy-map.html',
-  '/kings-of-the-bible.html'
+  '/prophecy-map',
+  '/kings-of-the-bible',
+  '/cross-references'
 ];
 
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>

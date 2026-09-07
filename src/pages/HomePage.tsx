@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   BookOpen, Mic, Music, Sparkles, ShieldCheck, ArrowRight, 
-  Layers, Compass, ExternalLink, Calendar, CheckCircle2, ChevronRight,
+  Layers, Compass, ExternalLink, Calendar, CheckCircle2, ChevronRight, Network,
   Play, Award, Search, HelpCircle, FileText, Headphones, Users
 } from 'lucide-react';
 import Hero from '../components/Hero';
@@ -44,14 +44,14 @@ export const HomePage: React.FC = () => {
               Theological Heritage &amp; Foundations
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#4A152C] mt-2">
-              Five Pillars of Saul's Podship Scriptorium
+              Seven Pillars of Saul's Podship Scriptorium
             </h2>
             <p className="text-sm sm:text-base text-gray-700 mt-2 font-light">
-              Rigorous biblical scholarship, sacred music preservation, classical hermeneutics, rigorous apologetic archives, and comparative apologetics made freely accessible for believers and scholars worldwide.
+              Rigorous biblical scholarship, sacred music preservation, classical hermeneutics, rigorous apologetic archives, comparative apologetics, and two interactive atlases — the prophecy map and the interlinked-Bible concordance — made freely accessible for believers and scholars worldwide.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full">
             <div className="p-8 rounded-3xl bg-white border border-[#4A152C]/10 shadow-sm flex flex-col items-center justify-between text-center group hover:border-[#D4AF37] transition-all">
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 rounded-2xl bg-[#4A152C]/10 text-[#4A152C] flex items-center justify-center mb-4 group-hover:bg-[#4A152C] group-hover:text-[#E8C96A] transition-colors">
@@ -102,6 +102,38 @@ export const HomePage: React.FC = () => {
 
             <ArchivePillarCard />
             <ComparativeApologeticsPillar />
+
+            <div className="p-8 rounded-3xl bg-white border border-[#4A152C]/10 shadow-sm flex flex-col items-center justify-between text-center group hover:border-[#D4AF37] transition-all">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#4A152C]/10 text-[#4A152C] flex items-center justify-center mb-4 group-hover:bg-[#4A152C] group-hover:text-[#E8C96A] transition-colors">
+                  <Compass className="w-6 h-6" />
+                </div>
+                <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">Biblical Prophecy Map</h3>
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
+                  247 prophecies — 107 fulfilled, 88 in part, 52 awaiting — woven by 1,063 cross-links on a rotatable 3D globe of sacred history.
+                </p>
+              </div>
+              <Link to="/prophecy-map" className="mt-6 inline-flex items-center text-xs font-bold text-[#4A152C] hover:text-[#8B1C2E] gap-1 group">
+                <span>Open the Prophecy Atlas</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-[#4A152C]/10 shadow-sm flex flex-col items-center justify-between text-center group hover:border-[#D4AF37] transition-all">
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#4A152C]/10 text-[#4A152C] flex items-center justify-center mb-4 group-hover:bg-[#4A152C] group-hover:text-[#E8C96A] transition-colors">
+                  <Network className="w-6 h-6" />
+                </div>
+                <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">The Interlinked Bible</h3>
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
+                  344,799 cross-references forming 190,758 chapter threads across all 66 books, woven into one interactive horseshoe chart.
+                </p>
+              </div>
+              <Link to="/cross-references" className="mt-6 inline-flex items-center text-xs font-bold text-[#4A152C] hover:text-[#8B1C2E] gap-1 group">
+                <span>Weave the Cross-References</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -117,20 +149,11 @@ export const HomePage: React.FC = () => {
             Switch Between the Modules
           </h2>
           <p className="text-white/75 text-sm sm:text-base leading-relaxed max-w-2xl mt-3 font-light">
-            The prophecy atlas, the kings chronicle, the painted 100-story collection and the interlinked-Bible concordance —
-            run them side by side without leaving this page, then open any of them full-screen.
+            The prophecy atlas, the kings chronicle and the interlinked-Bible concordance —
+            run them side by side without leaving this page, then open any of them on its own page.
           </p>
           <div className="mt-8 w-full">
             <ModuleSwitcher />
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
-            <Link
-              to="/encyclopedia"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              Study the Volumes Behind It
-            </Link>
           </div>
         </div>
       </section>
