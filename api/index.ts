@@ -1049,22 +1049,6 @@ app.get("/sitemap.xml", async (req, res) => {
       }
     }
 
-    // Core study modules & atlases (static pages not covered above)
-    const extraPages: Array<[string, string]> = [
-      ["/biblical-maps", "0.8"],
-      ["/encyclopedia/biblical-maps-atlas", "0.7"],
-      ["/world-religion-map", "0.7"],
-    ];
-    for (const [path, prio] of extraPages) {
-      xml += `
-  <url>
-    <loc>https://www.saulspodship.com${path}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>${prio}</priority>
-  </url>`;
-    }
-
     xml += `\n</urlset>`;
     res.send(xml);
   } catch (err: any) {

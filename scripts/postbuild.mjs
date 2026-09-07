@@ -82,8 +82,13 @@ for (const v of volumes) {
 }
 
 sitemapXml += `</urlset>\n`;
-fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf8');
-console.log(`[POSTBUILD] Generated dist/sitemap.xml with ${staticPages.length + volumes.length} URLs`);
+if (fs.existsSync(path.join(rootDir, 'public/sitemap.xml'))) {
+  fs.copyFileSync(path.join(rootDir, 'public/sitemap.xml'), path.join(distDir, 'sitemap.xml'));
+  console.log(`[POSTBUILD] Kept shipped static public/sitemap.xml (curated, ${fs.readFileSync(path.join(distDir,'sitemap.xml'),'utf8').split('<url>').length - 1} URLs)`);
+} else {
+  fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf8');
+  console.log(`[POSTBUILD] Generated dist/sitemap.xml with ${staticPages.length + volumes.length} URLs`);
+}
 
 // 2. Generate robots.txt
 const robotsTxt = `User-agent: *

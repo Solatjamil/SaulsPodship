@@ -48,10 +48,6 @@
       "destination": "/api?originalPath=/Pakistanisingersarchive"
     },
     {
-      "source": "/sitemap.xml",
-      "destination": "/api?originalPath=/sitemap.xml"
-    },
-    {
       "source": "/((?!assets/|images/|src/|dist/).*)",
       "destination": "/index.html"
     }
