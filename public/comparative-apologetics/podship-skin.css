@@ -115,3 +115,67 @@ html[lang="ur"] body, html[lang="ar"] body { font-family: "Noto Nastaliq Urdu", 
 
 html[data-theme="dark"] .hero { border-color: rgba(212, 175, 55, 0.4); }
 html[data-theme="dark"] .qtitle, html[data-theme="dark"] .qnum { color: #E8C96A; }
+
+/* ============================================================
+   V3 — deeper Podship wine, centered layout, mobile stack fix
+   (the page's own "sacred library" theme was navy; its sticky
+   toolbar + sticky category nav both pinned to top:0 and fused
+   under our brand bar, and a decorative hero circle overflowed
+   the viewport causing left/right page pan)
+   ============================================================ */
+
+/* no horizontal panning — ever */
+html, body { overflow-x: clip; }
+.content, .hero, .qgrid { max-width: 100%; }
+.hero { overflow: hidden; }
+
+/* brand bar owns the top; page sticky bars park BELOW it */
+#sp-chrome-bar { height: 46px; box-sizing: border-box; }
+.toolbar { top: 46px !important; position: sticky; z-index: 120; }
+.catnav { position: static !important; }
+.catnav { background: transparent !important; backdrop-filter: none; border-bottom: none; padding: 14px 16px; justify-content: center; }
+.catnav-label { width: 100%; text-align: center; margin: 0 0 4px; }
+@media (min-width: 900px) { .catnav { justify-content: center; padding: 16px 64px; } .catnav-label { width: auto; margin-right: 6px; } }
+
+/* toolbar becomes a wine-glass band instead of the page's navy */
+.toolbar {
+  background: linear-gradient(180deg, rgba(22,6,15,0.96), rgba(26,8,18,0.94)) !important;
+  border-bottom: 1px solid rgba(212,175,55,0.35);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+html[data-theme="light"] .toolbar {
+  background: linear-gradient(180deg, rgba(26,8,18,0.97), rgba(45,15,30,0.95)) !important;
+}
+.tb-row { justify-content: center; }
+.tb-searchwrap { width: 100%; max-width: 620px; margin: 0 auto; min-width: 0; }
+.tb-searchwrap input { width: 100%; min-width: 0; }
+#qsort { max-width: 100%; }
+.tb-btn, .tb-chip { white-space: normal; }
+
+/* center the stage: hero, titles, controls */
+.hero { text-align: center !important; }
+.hero > * { margin-left: auto !important; margin-right: auto !important; }
+.hero-title { font-size: clamp(34px, 9vw, 52px); text-align: center; }
+.hero-eyebrow { display: block; text-align: center; }
+.hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; }
+.doc-title, .section-title, .section-sub, .subhead { text-align: center; }
+.qgrid-head { text-align: center; }
+.endnote { text-align: center; }
+/* card interiors stay left-aligned for reading */
+.qcard { text-align: left; }
+
+/* stronger wine & gold identity */
+:root { --gold: #D4AF37; --gold-soft: #E8C96A; --burgundy: #8B1C2E; }
+.hero-title {
+  background: linear-gradient(112deg, #F8F4E3 0%, #F8F4E3 40%, #E8C96A 50%, #F8F4E3 60%, #F8F4E3 100%) !important;
+  background-size: 240% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+}
+.catpill { background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.5); color: #F4E9CE; }
+.catpill:hover { border-color: #D4AF37; color: #fff; }
+.catpill.active { background: #4A152C; border-color: #D4AF37; color: #E8C96A; }
+.qcard { box-shadow: 0 10px 28px rgba(10,3,8,0.25); }
+.tb-searchwrap input { border: 1px solid rgba(212,175,55,0.45) !important; }
+
+@media (prefers-reduced-motion: reduce) { .hero-title { animation: none !important; } }
