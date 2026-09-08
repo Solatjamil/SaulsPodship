@@ -228,21 +228,23 @@ for (const artist of artists) {
 const sitemapPath = path.join(distDir, 'sitemap.xml');
 if (fs.existsSync(sitemapPath)) {
   const today = new Date().toISOString().split('T')[0];
+  let xml = fs.readFileSync(sitemapPath, 'utf8');
+  // Only append URLs the shipped sitemap does not already carry (no dupes).
   const urls = [
     `${BASE_URL}/Pakistanisingersarchive`,
     ...artists.map((a) => `${BASE_URL}/music-archive/${a.id}`)
-  ];
+  ].filter((loc) => !xml.includes(`<loc>${loc}</loc>`));
   const block = urls
     .map(
       (loc) =>
         `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`
     )
     .join('');
-  let xml = fs.readFileSync(sitemapPath, 'utf8');
-  if (xml.includes('</urlset>')) {
+  if (block && xml.includes('</urlset>')) {
     xml = xml.replace('</urlset>', block + '</urlset>');
     fs.writeFileSync(sitemapPath, xml, 'utf8');
   }
+  console.log(`[PRERENDER-MUSIC] sitemap: appended ${urls.length} new music URLs (rest already present).`);
 }
 
 console.log(
