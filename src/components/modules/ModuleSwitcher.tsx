@@ -68,9 +68,21 @@ const ModuleSwitcher: React.FC<Props> = ({ compact = false }) => {
     fit();
     f.addEventListener('load', fit);
     const iv = window.setInterval(fit, 700);
+    // Converge as the inner page's vh-sized sections reflow after each resize.
+    let ro: ResizeObserver | null = null;
+    try {
+      const d = f.contentDocument;
+      if (d && d.body && typeof ResizeObserver !== 'undefined') {
+        ro = new ResizeObserver(fit);
+        ro.observe(d.body);
+      }
+    } catch {
+      /* cross-origin guard */
+    }
     return () => {
       f.removeEventListener('load', fit);
       window.clearInterval(iv);
+      ro?.disconnect();
     };
   }, [active]);
   return (

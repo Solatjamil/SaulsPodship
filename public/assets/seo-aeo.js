@@ -73,5 +73,5 @@
     d.faq.map(function(f){return '<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>';}).join('');
   var main=document.querySelector('main')||document.getElementById('root')||document.body;
   var footer=document.querySelector('footer');
-  if(footer) main.insertBefore(sec,footer); else main.appendChild(sec);
+  if(footer && footer.parentNode===main) main.insertBefore(sec,footer); else main.appendChild(sec);
 })();
