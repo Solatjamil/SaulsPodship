@@ -46,7 +46,8 @@
   /* ---- header injection ---- */
   var shell=/^\/(cross-references|prophecy-map|kings-of-the-bible|biblical-maps|world-religion-map|encyclopedia\/biblical-maps-atlas)/.test(path)
          || /\/(prophecy-map|kings-of-the-bible)\.html$/.test(path);
-  var needs=/^\/comparative-apologetics/.test(path) || document.getElementById('sp-header') || (shell && !inFrame);
+  var spa=!!document.getElementById('root');
+  var needs=document.getElementById('sp-header') || (!spa && !inFrame && (shell || /^\/comparative-apologetics/.test(path)));
   if(!needs) return;
   var st=document.createElement('style');
   st.textContent='.sp-hdr{position:sticky;top:0;z-index:300;background:rgba(22,6,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.2);box-shadow:0 2px 12px rgba(0,0,0,.35);font-family:Inter,"Segoe UI",system-ui,sans-serif;color:#fff}'+
