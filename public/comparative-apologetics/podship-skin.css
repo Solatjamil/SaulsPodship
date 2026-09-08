@@ -229,7 +229,7 @@ h1.hero-title {
 
 
 /* ===== 2026-09-08d: cream, centered, Podship-styled search & filter toolbar ===== */
-.toolbar { background: rgba(248,244,227,.97) !important; border-bottom: 1px solid rgba(212,175,55,.4) !important;
+html[data-theme="light"] .toolbar { background: rgba(248,244,227,.97) !important; border-bottom: 1px solid rgba(212,175,55,.4) !important;
   padding: 12px 16px !important; align-items: center !important; backdrop-filter: blur(8px); }
 .tb-row { justify-content: center !important; flex-wrap: wrap !important; }
 .tb-searchwrap { background: #FFFDF6 !important; border: 1px solid rgba(74,21,44,.3) !important; border-radius: 999px !important; }
