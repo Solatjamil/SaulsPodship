@@ -209,13 +209,14 @@ body { background-color: #F8F4E3; background-image: radial-gradient(1200px 500px
 .sp-hdr { position: sticky; top: 0; z-index: 400; }
 .sidebar { top: var(--sp-hdr-h, 0px) !important; height: calc(100vh - var(--sp-hdr-h, 0px)) !important; }
 .menu-toggle { top: calc(var(--sp-hdr-h, 0px) + 10px) !important; }
+.toolbar { top: var(--sp-hdr-h, 0px) !important; }
 .progress { top: var(--sp-hdr-h, 0px) !important; }
 
 /* ===== 2026-09-08b: title legibility, single merged header ===== */
 h1.hero-title {
   background: none !important; background-image: none !important;
   -webkit-background-clip: border-box !important; background-clip: border-box !important;
-  color: #F8F4E3 !important; animation: none !important;
+  color: #F8F4E3 !important; -webkit-text-fill-color: #F8F4E3 !important; animation: none !important;
   text-shadow: 0 2px 18px rgba(0,0,0,.45);
 }
 .sp-hdr ~ #sp-chrome-bar { display: none !important; }
