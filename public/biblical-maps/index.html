@@ -46,7 +46,7 @@ html.embedded #atlasTop > .kick,html.embedded #atlasTop > h1,html.embedded #atla
 <div class="wrap" id="atlasTop" data-hero="/images/hero-biblical-maps.jpg">
   <p class="kick">A Saul's Podship Study &middot; Volume 11 &middot; Biblical Maps</p>
   <h1>The Biblical <em>Atlas</em></h1>
-  <p class="sub">Eight vector study maps on true geography plus the eight attached study maps — one atlas, one row of tabs.
+  <p class="sub">Eight attached study maps on true geography — one atlas, one row of tabs. Press Walk the Journey and footsteps trace the route.
   Press <b>Walk the Journey</b> and footsteps trace the route station by station.</p>
   <div class="tabs" id="tabs" role="tablist"></div>
   <div class="frame"><svg id="map" viewBox="0 0 100 100" role="img" aria-label="Biblical study map"></svg>
@@ -205,19 +205,11 @@ const cap = document.getElementById('cap');
 const tabsEl = document.getElementById('tabs');
 const chipsEl = document.getElementById('chips');
 
-for (const [id, m] of Object.entries(MAPS)) {
-  const b = document.createElement('button');
-  b.textContent = m.title; b.dataset.id = id; b.setAttribute('role', 'tab');
-  b.onclick = () => select(id);
-  tabsEl.appendChild(b);
-}
+/* vector duplicate tabs removed — only the eight Attached study maps remain */
 
 function poly(pts) { return 'M' + pts.map(([lo, la]) => X(lo).toFixed(1) + ' ' + Y(la).toFixed(1)).join('L') + 'Z'; }
 
-async function boot() {
-  geo = await (await fetch('../cross-references/data/world.json')).json();
-  select('abraham');
-}
+async function boot() { /* attached-only atlas */ }
 
 function select(id) {
   stopAnim();
@@ -385,6 +377,7 @@ let cur=null, raf=0, rOn=false;
 ORD.forEach((k)=>{ const b=document.createElement('button'); b.textContent='Attached \u00b7 '+RM[k].t; b.dataset.id='r:'+k; b.setAttribute('role','tab');
  b.onclick=()=>{ rsel(k); };
  rtabs.appendChild(b); });
+rsel(ORD[0]); /* default: first attached map */
 function rhide(){ rOn=false; cancelAnimationFrame(raf);
  rimg.style.display='none'; rsvg.style.display='none'; rlayer.style.display='none'; }
 window.__rHide=rhide;
