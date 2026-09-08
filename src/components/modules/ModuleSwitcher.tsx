@@ -59,6 +59,15 @@ const ModuleSwitcher: React.FC<Props> = ({ compact = false }) => {
       try {
         const d = f.contentDocument;
         if (!d || !d.body) return;
+        // Stabilize vh-sized sections (e.g. the xref horseshoe's 74vh) so the
+        // inner height is constant and the frame converges in one step
+        // instead of chasing a resize feedback loop.
+        if (d.getElementById('viz') && !d.getElementById('sp-frame-fit')) {
+          const st = d.createElement('style');
+          st.id = 'sp-frame-fit';
+          st.textContent = '#viz{height:880px !important;min-height:520px !important}';
+          d.head.appendChild(st);
+        }
         const h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
         if (h > 120 && Math.abs(h - f.clientHeight) > 2) f.style.height = h + 'px';
       } catch {
