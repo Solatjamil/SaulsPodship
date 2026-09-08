@@ -21,11 +21,18 @@
     ].join('');
     document.head.appendChild(css);
   }
+  function hide(el){
+    /* CSS-hide instead of remove(): the header is React-rendered, and deleting
+       its nodes breaks React's reconciliation (insertBefore crashes). */
+    el.style.display='none';
+    el.setAttribute('data-trimmed','1');
+    el.setAttribute('aria-hidden','true');
+  }
   function trimHeader(){
     document.querySelectorAll('header a,header button,nav a,nav button').forEach(function(el){
       var t=(el.textContent||'').trim().toLowerCase();
-      if(/youtube/.test(t)) el.remove();
-      else if(el.closest('header,nav') && /(browse|explore)\s+(all\s+)?50\s+volumes/.test(t)) el.remove();
+      if(/youtube/.test(t)) hide(el);
+      else if(el.closest('header,nav') && /(browse|explore)\s+(all\s+)?50\s+volumes/.test(t)) hide(el);
     });
   }
   function run(){ centerModules(); trimHeader(); }

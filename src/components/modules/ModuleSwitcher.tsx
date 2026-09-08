@@ -60,7 +60,7 @@ const ModuleSwitcher: React.FC<Props> = ({ compact = false }) => {
         const d = f.contentDocument;
         if (!d || !d.body) return;
         const h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
-        if (h > 120 && Math.abs(h - f.clientHeight) > 8) f.style.height = h + 'px';
+        if (h > 120 && Math.abs(h - f.clientHeight) > 2) f.style.height = h + 'px';
       } catch {
         /* cross-origin guard */
       }
