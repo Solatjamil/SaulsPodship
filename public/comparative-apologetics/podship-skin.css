@@ -226,3 +226,26 @@ h1.hero-title {
 .catpill .catcount { color: #8a6a1f; opacity: .85; }
 .catpill.active { background: #4A152C !important; color: #F8F4E3 !important; border-color: #4A152C !important; }
 .catnav-label { color: #4A152C !important; }
+
+
+/* ===== 2026-09-08d: cream, centered, Podship-styled search & filter toolbar ===== */
+.toolbar { background: rgba(248,244,227,.97) !important; border-bottom: 1px solid rgba(212,175,55,.4) !important;
+  padding: 12px 16px !important; align-items: center !important; backdrop-filter: blur(8px); }
+.tb-row { justify-content: center !important; flex-wrap: wrap !important; }
+.tb-searchwrap { background: #FFFDF6 !important; border: 1px solid rgba(74,21,44,.3) !important; border-radius: 999px !important; }
+.tb-searchwrap .tb-icon { color: #8a6a1f !important; }
+#qsearch { color: #241a17 !important; text-align: center; }
+#qsearch::placeholder { color: #6f5f5b !important; }
+#qclear { color: #6f5f5b !important; }
+#qsort { background: #FFFDF6 !important; color: #4A152C !important; border: 1px solid rgba(74,21,44,.3) !important; border-radius: 999px !important; }
+.tb-chip { background: #FFFDF6 !important; color: #4A152C !important; border: 1px solid rgba(74,21,44,.3) !important; }
+.tb-chip:hover { border-color: #D4AF37 !important; color: #8B1C2E !important; }
+.tb-chip.active { background: #4A152C !important; border-color: #4A152C !important; color: #E8C96A !important; }
+.tb-btn { background: #FFFDF6 !important; color: #4A152C !important; border: 1px solid rgba(74,21,44,.35) !important; }
+.tb-btn:hover { border-color: #D4AF37 !important; }
+.tb-count { margin-left: 0 !important; color: #6f5f5b !important; width: 100%; text-align: center; }
+.tb-tip { color: #6f5f5b !important; text-align: center; }
+.tb-tip code { color: #8a6a1f !important; background: rgba(212,175,55,.14) !important; }
+.matchhint { color: #8B1C2E !important; text-align: center; }
+#noresults { color: #8B1C2E !important; background: rgba(139,28,46,.06) !important; border: 1px solid rgba(139,28,46,.25) !important; text-align: center; }
+mark.hl { background: rgba(212,175,55,.5) !important; }

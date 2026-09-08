@@ -81,7 +81,17 @@ function faqJsonLd() {
 export default function ComparativeApologeticsPage() {
   useDocumentMeta(META);
   const frameRef = useRef<HTMLIFrameElement | null>(null);
+  const [frameH, setFrameH] = useState<number | string>("calc(100vh - 120px)");
   const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      try {
+        const h = frameRef.current?.contentDocument?.documentElement?.scrollHeight || 0;
+        if (h > 400) setFrameH(h + 24 + "px");
+      } catch { /* same-origin embed */ }
+    }, 700);
+    return () => window.clearInterval(t);
+  }, []);
 
   // Read ?q= / ?rel= from either the hash-router search or the real search.
   const initialHash = useMemo(() => {
@@ -161,15 +171,15 @@ export default function ComparativeApologeticsPage() {
           <span className="ta-hits">{ready ? `${typedIndex.length} questions loaded` : "Loading\u2026"}</span>
         </div>
 
-        <div className="rounded-2xl overflow-hidden border border-[#e3d8bd] bg-white shadow-sm">
+        <div>
           <iframe
-            ref={frameRef}
             title="Comparative Apologetics Codex — 400 questions"
             src={src}
             onLoad={() => setReady(true)}
             loading="eager"
+            ref={frameRef}
             className="w-full block"
-            style={{ height: "calc(100vh - 120px)", minHeight: 720, border: 0 }}
+            style={{ height: frameH, minHeight: 720, border: 0 }}
           />
         </div>
 
