@@ -49,22 +49,23 @@
   var needs=/^\/comparative-apologetics/.test(path) || document.getElementById('sp-header') || (shell && !inFrame);
   if(!needs) return;
   var st=document.createElement('style');
-  st.textContent='.sp-hdr{--w:#4A152C;--w2:#8B1C2E;--g:#D4AF37;--g2:#E8C96A;--c:#F8F4E3;position:sticky;top:0;z-index:300;background:rgba(248,244,227,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,175,55,.45);font-family:Inter,"Segoe UI",system-ui,sans-serif}'+
-  '.sp-hdr .row{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;padding:10px 14px;max-width:1240px;margin:0 auto;text-align:center}'+
-  '.sp-hdr .brand{display:flex;align-items:center;gap:10px;margin-right:16px;text-decoration:none}'+
-  '.sp-hdr .brand img{height:38px;width:auto;display:block}'+
-  '.sp-hdr .brand b{font-family:"EB Garamond","Merriweather",Georgia,serif;font-size:17px;color:var(--w);display:block;line-height:1.1}'+
-  '.sp-hdr .brand small{display:block;font-size:8.5px;letter-spacing:.28em;color:#B5952F;text-transform:uppercase}'+
-  '.sp-hdr a.nl{font-size:12.5px;font-weight:600;color:#2a231d;text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid transparent}'+
-  '.sp-hdr a.nl:hover{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.5)}'+
-  '.sp-hdr a.cta{font-size:12.5px;font-weight:700;color:#fff;background:var(--w);padding:8px 15px;border-radius:8px;text-decoration:none}'+
-  '.sp-hdr a.cta:hover{background:var(--w2)}'+
-  '@media (max-width:767px){.sp-hdr .row{padding:6px 8px;gap:2px}.sp-hdr a.nl{font-size:11px;padding:5px 8px}.sp-hdr a.cta{font-size:11px;padding:6px 10px}.sp-hdr .brand img{height:30px}.sp-hdr .brand b{font-size:14px}.sp-hdr .brand small{font-size:7.5px;letter-spacing:.22em}}'+
+  st.textContent='.sp-hdr{position:sticky;top:0;z-index:300;background:rgba(22,6,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,175,55,.2);box-shadow:0 2px 12px rgba(0,0,0,.35);font-family:Inter,"Segoe UI",system-ui,sans-serif;color:#fff}'+
+  '.sp-hdr .row{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;padding:8px 12px;max-width:1280px;margin:0 auto;text-align:center}'+
+  '.sp-hdr .brand{display:flex;align-items:center;gap:10px;margin-right:14px;text-decoration:none}'+
+  '.sp-hdr .brand img{height:44px;width:44px;object-fit:contain;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.45))}'+
+  '.sp-hdr .brand b{font-family:"EB Garamond","Merriweather",Georgia,serif;font-size:16px;color:#fff;display:block;line-height:1.15;white-space:nowrap}'+
+  '.sp-hdr .brand small{display:block;font-size:9px;letter-spacing:.18em;color:rgba(212,175,55,.9);text-transform:uppercase;font-weight:600;white-space:nowrap}'+
+  '.sp-hdr a.nl{font-size:12px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.8);text-decoration:none;padding:8px 11px;border-radius:8px;border:1px solid transparent}'+
+  '.sp-hdr a.nl:hover{color:#E8C96A;background:rgba(255,255,255,.1)}'+
+  '.sp-hdr a.nl.on{background:#4A152C;color:#E8C96A;border-color:rgba(212,175,55,.4)}'+
+  '.sp-hdr a.cta{font-size:12px;font-weight:700;color:#1A0812;background:#D4AF37;padding:8px 14px;border-radius:8px;text-decoration:none}'+
+  '.sp-hdr a.cta:hover{background:#E8C96A}'+
+  '@media (max-width:767px){.sp-hdr .row{padding:6px 8px;gap:2px}.sp-hdr a.nl{font-size:11px;padding:5px 8px}.sp-hdr a.cta{font-size:11px;padding:6px 10px}.sp-hdr .brand img{height:34px;width:34px}.sp-hdr .brand b{font-size:14px}.sp-hdr .brand small{font-size:7.5px;letter-spacing:.16em}}'+
   '.sp-hdr ~ #sp-chrome-bar{display:none!important}';
   document.head.appendChild(st);
   var hdr=document.createElement('header'); hdr.className='sp-hdr';
   hdr.innerHTML='<div class="row">'+
-    '<a class="brand" href="/"><img src="/icons/brand-logo.png" alt="Saul’s Podship logo"><span><b>Saul’s Podship</b><small>Digital Scriptorium</small></span></a>'+
+    '<a class="brand" href="/"><img src="/icons/emblem.png" alt="Saul’s Podship logo"><span><b>Saul’s Podship</b><small>Theological Encyclopedia</small></span></a>'+
     '<a class="nl" href="/prophecy-map">Prophecy Map</a>'+
     '<a class="nl" href="/kings-of-the-bible">Kings of the Bible</a>'+
     '<a class="nl" href="/cross-references">Interlinked Bible</a>'+

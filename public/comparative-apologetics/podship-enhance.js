@@ -32,7 +32,7 @@
   var lang = "en", theme = "light";
   try {
     lang = localStorage.getItem("sp-lang") || "en";
-    theme = localStorage.getItem("sp-theme") || "light";
+    theme = "light"; /* canonical Podship wine/cream look */
   } catch (e) {}
 
   function applyLang(l) {
@@ -97,6 +97,24 @@
     if (theme === "dark") bar.querySelector("#sp-theme").textContent = "\u2600";
   }
 
+
+  /* ----- close control for the left navigation (mobile) ----- */
+  function sidebarClose() {
+    var sb = document.getElementById("sidebar"), tg = document.getElementById("menuToggle");
+    if (!sb || !tg || sb.querySelector("#sp-sb-close")) return;
+    var x = document.createElement("button");
+    x.id = "sp-sb-close"; x.type = "button"; x.setAttribute("aria-label", "Close navigation"); x.innerHTML = "&times;";
+    x.style.cssText = "position:absolute;top:10px;right:10px;z-index:5;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.45);color:#E8C96A;border-radius:10px;width:36px;height:36px;font-size:20px;line-height:1;cursor:pointer;";
+    sb.appendChild(x);
+    var bd = document.createElement("div"); bd.id = "sp-sb-backdrop";
+    bd.style.cssText = "display:none;position:fixed;inset:0;background:rgba(10,4,8,.55);z-index:55;";
+    document.body.appendChild(bd);
+    function close() { sb.classList.remove("open"); bd.style.display = "none"; }
+    x.addEventListener("click", close);
+    bd.addEventListener("click", close);
+    tg.addEventListener("click", function () { bd.style.display = sb.classList.contains("open") ? "block" : "none"; });
+    sb.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
+  }
   function reveal() {
     if (!("IntersectionObserver" in window)) return;
     var io = new IntersectionObserver(function (entries) {
@@ -120,7 +138,7 @@
   }
 
   function boot() {
-    mount();
+    mount(); sidebarClose();
     applyTheme(theme);
     applyLang(lang);
     reveal();
