@@ -4185,8 +4185,6 @@ function buildUI(){
         clearTimeout(rt); rt=setTimeout(()=>render(),160); } }).observe(ROOT.host);
   }
 
-  /* sandboxed-iframe banner */
-  if(IN_FRAME && $("#banner")) $("#banner").style.display="block";
   if(OPTS.chrome==="headless"){
     const hdr=$("header"); if(hdr) hdr.style.display="none";
     const tbs=$("#toolbar"); if(tbs){ tbs.style.borderTop="1px solid var(--line)"; tbs.style.borderRadius="0 0 0 0"; }
