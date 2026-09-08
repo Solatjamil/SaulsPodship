@@ -249,3 +249,7 @@ html[data-theme="light"] .toolbar { background: rgba(248,244,227,.97) !important
 .matchhint { color: #8B1C2E !important; text-align: center; }
 #noresults { color: #8B1C2E !important; background: rgba(139,28,46,.06) !important; border: 1px solid rgba(139,28,46,.25) !important; text-align: center; }
 mark.hl { background: rgba(212,175,55,.5) !important; }
+
+/* noresults visibility in light theme */
+#noresults { display: none; }
+#noresults.show { display: block; }
