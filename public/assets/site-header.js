@@ -94,7 +94,7 @@
     setH();
   });
   hdr.querySelector('.drawer').addEventListener('click',function(e){ if(e.target.closest('a')){ hdr.classList.remove('open'); setH(); } });
-  document.addEventListener('click',function(e){ if(!hdr.contains(e.target)&&hdr.classList.contains('open')){ hdr.classList.remove('open'); setH(); } });
+  document.addEventListener('click',function(e){ var inHdr=e.composedPath?e.composedPath().indexOf(hdr)>-1:hdr.contains(e.target); if(!inHdr&&hdr.classList.contains('open')){ hdr.classList.remove('open'); setH(); } });
   function setH(){ document.documentElement.style.setProperty('--sp-hdr-h', hdr.offsetHeight+'px'); }
   setH(); window.addEventListener('resize', setH); window.addEventListener('load', setH);
 })();
