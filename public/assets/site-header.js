@@ -1,14 +1,14 @@
-/* Saul's Podship — Logo sync + official header injector (2026-09-08)
-   Usage: <script src="/assets/site-header.js" defer></script> in the global template.
-   - On EVERY page it loads: syncs the brand (favicon, apple-touch-icon, OG/Twitter
-     image point at the real /icons/ logo files).
-   - Injects the official site header (logo + aligned nav, NO YouTube / Browse-50-Volumes
-     buttons) on pages that lack it — specifically the Comparative Apologetics section,
-     and any page with a <div id="sp-header"></div> mount.
-   - Never touches /cross-references (The Interlinked Bible). */
+/* Saul's Podship — logo sync + official header injector + hero banner system
+   Loaded in the global SPA template AND on standalone module shells.
+   - Syncs brand assets (favicon / apple-touch-icon / OG image) on every page.
+   - Injects the official centered site header (logo + nav, NO YouTube /
+     Browse-50-Volumes) where it is missing: Comparative Apologetics, any
+     #sp-header mount, and standalone module shells (never when iframed).
+   - Responsive Divi-style hero banners: any [data-hero] element receives a
+     cover background + scrim; mobile = landscape crop with text at bottom. */
 (function(){
   var path=(location.pathname||'');
-  if(/^\/cross-references/.test(path)) return;
+  var inFrame=(function(){ try{ return window.self!==window.top; }catch(e){ return true; } })();
 
   /* ---- logo sync on every page ---- */
   function link(rel,href,sizes){
@@ -22,11 +22,34 @@
   if(!document.querySelector('meta[property="og:image"]')) og('property:og:image','https://www.saulspodship.com/icons/brand-logo.png');
   if(!document.querySelector('meta[name="twitter:image"]')) og('tw:twitter:image','https://www.saulspodship.com/icons/brand-logo.png');
 
-  /* ---- header injection where missing ---- */
-  var needs=/^\/comparative-apologetics/.test(path) || document.getElementById('sp-header');
+  /* ---- responsive hero banner system (every page this script loads on) ---- */
+  var hs=document.createElement('style');
+  hs.textContent=
+    '[data-hero]{position:relative;overflow:hidden;background-size:cover;background-position:center;background-color:#1A0812}'+
+    '[data-hero] .sp-hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,8,18,.60) 0%,rgba(26,8,18,.30) 45%,rgba(26,8,18,.82) 100%);pointer-events:none}'+
+    '[data-hero]>*:not(.sp-hero-scrim){position:relative}'+
+    '@media (min-width:768px){[data-hero]{min-height:340px}}'+
+    '@media (max-width:767px){[data-hero]{min-height:200px;display:flex;flex-direction:column;justify-content:flex-end}}';
+  document.head.appendChild(hs);
+  function wireHero(){
+    var els=document.querySelectorAll('[data-hero]');
+    for(var i=0;i<els.length;i++){ var el=els[i];
+      if(el.__spHero) continue; el.__spHero=1;
+      el.style.backgroundImage='url("'+el.getAttribute('data-hero')+'")';
+      var sc=document.createElement('div'); sc.className='sp-hero-scrim';
+      el.insertBefore(sc,el.firstChild);
+    }
+  }
+  function initHero(){ if(document.body) wireHero(); else document.addEventListener('DOMContentLoaded',wireHero); setTimeout(wireHero,900); setTimeout(wireHero,2600); }
+  initHero();
+
+  /* ---- header injection ---- */
+  var shell=/^\/(cross-references|prophecy-map|kings-of-the-bible|biblical-maps|world-religion-map|encyclopedia\/biblical-maps-atlas)/.test(path)
+         || /\/(prophecy-map|kings-of-the-bible)\.html$/.test(path);
+  var needs=/^\/comparative-apologetics/.test(path) || document.getElementById('sp-header') || (shell && !inFrame);
   if(!needs) return;
   var st=document.createElement('style');
-  st.textContent='.sp-hdr{--w:#4A152C;--w2:#8B1C2E;--g:#D4AF37;--g2:#E8C96A;--c:#F8F4E3;position:sticky;top:0;z-index:80;background:rgba(248,244,227,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,175,55,.45);font-family:Inter,"Segoe UI",system-ui,sans-serif}'+
+  st.textContent='.sp-hdr{--w:#4A152C;--w2:#8B1C2E;--g:#D4AF37;--g2:#E8C96A;--c:#F8F4E3;position:sticky;top:0;z-index:300;background:rgba(248,244,227,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,175,55,.45);font-family:Inter,"Segoe UI",system-ui,sans-serif}'+
   '.sp-hdr .row{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;padding:10px 14px;max-width:1240px;margin:0 auto;text-align:center}'+
   '.sp-hdr .brand{display:flex;align-items:center;gap:10px;margin-right:16px;text-decoration:none}'+
   '.sp-hdr .brand img{height:38px;width:auto;display:block}'+
@@ -51,4 +74,6 @@
     '</div>';
   var mount=document.getElementById('sp-header');
   if(mount) mount.replaceWith(hdr); else document.body.insertBefore(hdr,document.body.firstChild);
+  function setH(){ document.documentElement.style.setProperty('--sp-hdr-h', hdr.offsetHeight+'px'); }
+  setH(); window.addEventListener('resize', setH); window.addEventListener('load', setH);
 })();

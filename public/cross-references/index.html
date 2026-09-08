@@ -23,10 +23,10 @@
 html.embedded .study{display:none}
 html.embedded .plate{border:none;box-shadow:none;background:transparent;padding:0;border-radius:0}
 html.embedded .wrap{padding:.5rem .75rem 1.25rem}
-</style></head>
+</style><script src="/assets/site-header.js" defer></script></head>
 <body>
 <div class="wrap">
-  <div class="study">
+  <div class="study" data-hero="/images/hero-interlinked.jpg">
     <div>
       <p class="kick">A Saul's Podship Study &middot; Visual Concordance</p>
       <h1>The Interlinked <em>Bible</em></h1>
@@ -38,7 +38,7 @@ html.embedded .wrap{padding:.5rem .75rem 1.25rem}
       <span><i style="background:#6a1b9a"></i>66 books &middot; 1,189 chapters</span>
     </div>
   </div>
-  <div class="plate"><div id="viz"></div></div>
+  <div class="plate"><div id="vizload" style="display:flex;align-items:center;justify-content:center;min-height:520px;font-family:Inter,system-ui,sans-serif;font-size:.8rem;color:#7a2743;text-align:center;padding:1rem">Weaving 344,799 threads &mdash; loading the concordance (&asymp;1.5&nbsp;MB)&hellip;</div><div id="viz"></div></div>
   <p class="srcs">Cross-reference data &copy; openbible.info (CC-BY, 2024-11-04) &middot; Scripture: King James Version (public domain) &middot;
   visual language after R&ouml;mhild &amp; Harrison, <i>Visualizing the Bible</i> (2007) &middot; world faith map: see Volume 11, Biblical Maps</p>
 </div>
@@ -47,13 +47,14 @@ html.embedded .wrap{padding:.5rem .75rem 1.25rem}
   const viz = new CrossRefViz(document.getElementById('viz'), {
     baseUrl: 'data', theme: 'podship', layout: 'horseshoe', colorMode: 'distance', minWeight: 2, intro: true,
   });
+  var vl=document.getElementById('vizload'); if(vl) vl.style.display='none';
   viz.init().then(() => {
     window.viz = viz;
     const st = viz.state.meta.stats;
     document.getElementById('c-refs').textContent = st.references.toLocaleString('en-US');
     document.getElementById('c-arcs').textContent = st.arcs.toLocaleString('en-US');
     document.getElementById('c-shown').textContent = viz.state.buckets.visible.toLocaleString('en-US');
-  }).catch((e) => console.error('[cross-references]', e));
+  }).catch((e) => { console.error('[cross-references]', e); var vl=document.getElementById('vizload'); if(vl){ vl.style.display='flex'; vl.innerHTML='The concordance could not be loaded on this connection &mdash; please retry.'; } });
 </script>
 </body>
 </html>

@@ -33,7 +33,7 @@ const InstallPrompt: React.FC = () => {
   if (installed) {
     return (
       <p className="text-[11px] text-[#E8C96A]/80 tracking-wide">
-        ✓ Podship app installed — open it from your home screen any time.
+        ✓ Saul’s Podship App installed — open it from your home screen any time.
       </p>
     );
   }
@@ -45,7 +45,7 @@ const InstallPrompt: React.FC = () => {
     return (
       <p className="text-[11px] text-white/50 tracking-wide max-w-md">
         {isIos
-          ? 'iOS: tap the Share button, then “Add to Home Screen” to install the Podship app.'
+          ? 'iOS: tap the Share button, then “Add to Home Screen” to install the Saul’s Podship App.'
           : 'Install this site as an app: Chrome menu ⋮ → “Install app” / “Add to Home screen”.'}
       </p>
     );
@@ -63,7 +63,7 @@ const InstallPrompt: React.FC = () => {
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 3v12M7 10l5 5 5-5M4 21h16" />
       </svg>
-      Install the Podship App
+      Install the Saul's Podship App
     </button>
   );
 };

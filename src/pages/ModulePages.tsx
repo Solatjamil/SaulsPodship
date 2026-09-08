@@ -12,6 +12,7 @@ interface ModuleMeta {
   title: string;
   blurb: string;
   src: string;
+  hero: string;
 }
 
 const makeModulePage = (meta: ModuleMeta): React.FC => {
@@ -21,7 +22,7 @@ const makeModulePage = (meta: ModuleMeta): React.FC => {
     }, [meta.title]);
     return (
       <div className="w-full">
-        <section className="py-14 bg-[#1A0812] text-white text-center">
+        <section data-hero={meta.hero} className="py-14 text-white text-center">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest bg-[#D4AF37] text-[#1A0812]">
               {meta.kicker}
@@ -50,6 +51,7 @@ export const ProphecyMapPage = makeModulePage({
   title: 'The Biblical Prophecy Map',
   blurb: '247 biblical prophecies \u2014 107 fulfilled, 88 in part, 52 still awaiting \u2014 woven together by 1,063 cross-references on a rotatable 3D globe. Every thread opens the passage on bible.com.',
   src: '/prophecy-map.html',
+  hero: '/images/hero-prophecy.jpg',
 });
 
 export const KingsOfTheBiblePage = makeModulePage({
@@ -57,6 +59,7 @@ export const KingsOfTheBiblePage = makeModulePage({
   title: 'Kings of the Bible \u2014 The Throne Line',
   blurb: 'Every throne from Saul to the Herods in canonical order \u2014 reign lengths, synchronisms, wars and prophetic witness charted line by line.',
   src: '/kings-of-the-bible.html',
+  hero: '/images/hero-jesus-alpha-omega.jpg',
 });
 
 export const CrossReferencesPage = makeModulePage({
@@ -64,4 +67,5 @@ export const CrossReferencesPage = makeModulePage({
   title: 'The Interlinked Bible \u2014 344,799 Threads',
   blurb: 'Every cross-reference in Scripture woven into one interactive horseshoe: 66 books, 1,189 chapters, 190,758 chapter-to-chapter links, with KJV drill-down and the OT \u2192 NT scarlet thread.',
   src: '/cross-references/index.html',
+  hero: '/images/hero-interlinked.jpg',
 });

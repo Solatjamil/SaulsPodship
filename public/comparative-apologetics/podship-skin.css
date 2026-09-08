@@ -179,3 +179,34 @@ html[data-theme="light"] .toolbar {
 .tb-searchwrap input { border: 1px solid rgba(212,175,55,0.45) !important; }
 
 @media (prefers-reduced-motion: reduce) { .hero-title { animation: none !important; } }
+
+
+/* ===== 2026-09-08: Podship wine/cream vibe (replaces navy dark theme) ===== */
+:root {
+  --ink: #4A152C; --ink-soft: #8B1C2E;
+  --gold: #B5952F; --gold-soft: #D4AF37;
+  --paper: #F8F4E3; --paper-card: #FFFDF6; --paper-alt: #F3EAD2;
+  --text: #241a17; --muted: #6f5f5b;
+  --burgundy: #8B1C2E; --burgundy-soft: #F6E9EE;
+  --border: #E7DAB4;
+}
+body { background-color: #F8F4E3; background-image: radial-gradient(1200px 500px at 50% -100px, rgba(212,175,55,0.10), transparent 60%); }
+::selection { background: #D4AF37; color: #1A0812; }
+.doc-title, .section-title, .subhead, .qtitle { color: #4A152C; }
+.lead { color: #5c4a44; }
+.qblock p, .qblock li { color: #33291f; }
+.qcard { box-shadow: 0 8px 30px rgba(74,21,44,0.12); border-top: 2px solid rgba(212,175,55,0.55); background: #FFFDF6; }
+.qblock-context { border-left-color: #8B1C2E; }
+.qblock-christian p { color: #5a2b33; }
+.qblock-discussion h4 { color: #2e6b4f; }
+.qblock-sources h4 { color: #8a6a1f; }
+.qblock-resources a { color: #8B1C2E; }
+.sidebar { background: #2b0d1c; border-right: 1px solid rgba(212,175,55,0.4); }
+.hero { background: radial-gradient(1000px 420px at 85% -10%, rgba(212,175,55,0.20), transparent 60%), linear-gradient(180deg, #1A0812 0%, #4A152C 100%); }
+.catnav { background: rgba(248,244,227,0.96); }
+
+/* ===== merged, centered site header ===== */
+.sp-hdr { position: sticky; top: 0; z-index: 400; }
+.sidebar { top: var(--sp-hdr-h, 0px) !important; height: calc(100vh - var(--sp-hdr-h, 0px)) !important; }
+.menu-toggle { top: calc(var(--sp-hdr-h, 0px) + 10px) !important; }
+.progress { top: var(--sp-hdr-h, 0px) !important; }
