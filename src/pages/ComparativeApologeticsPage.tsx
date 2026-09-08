@@ -33,7 +33,7 @@ const RELIGIONS = [
   { key: "sikhism", label: "Sikhism", glyph: "\u262C", vol: "Volume IV" },
 ];
 
-const CODEX_SRC = "/comparative-apologetics/index.html";
+const CODEX_SRC = "/comparative-apologetics/codex.html";
 
 interface MetaData {
   title: string;

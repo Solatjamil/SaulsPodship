@@ -66,6 +66,6 @@ export const CrossReferencesPage = makeModulePage({
   kicker: 'A Saul\u2019s Podship Study \u00b7 Visual Concordance',
   title: 'The Interlinked Bible \u2014 344,799 Threads',
   blurb: 'Every cross-reference in Scripture woven into one interactive horseshoe: 66 books, 1,189 chapters, 190,758 chapter-to-chapter links, with KJV drill-down and the OT \u2192 NT scarlet thread.',
-  src: '/cross-references/index.html',
+  src: '/cross-references/viz.html',
   hero: '/images/hero-interlinked.jpg',
 });

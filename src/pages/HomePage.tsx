@@ -6,7 +6,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  BookOpen, Mic, Music, Sparkles, ShieldCheck, ArrowRight, 
+  BookOpen, Mic, Music, Sparkles, ShieldCheck, Video, ArrowRight, 
   Layers, Compass, ExternalLink, Calendar, CheckCircle2, ChevronRight, Network,
   Play, Award, Search, HelpCircle, FileText, Headphones, Users
 } from 'lucide-react';
@@ -87,17 +87,19 @@ export const HomePage: React.FC = () => {
             <div className="p-8 rounded-3xl bg-white border border-[#4A152C]/10 shadow-sm flex flex-col items-center justify-between text-center group hover:border-[#D4AF37] transition-all">
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 rounded-2xl bg-[#4A152C]/10 text-[#4A152C] flex items-center justify-center mb-4 group-hover:bg-[#4A152C] group-hover:text-[#E8C96A] transition-colors">
-                  <ShieldCheck className="w-6 h-6" />
+                  <Video className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">Scholarly Standards</h3>
+                <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">Visual Bible Encyclopedia</h3>
                 <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
-                  Strict adherence to classical grammatical-historical hermeneutics, objective historical context, original language transliteration, and verified citations.
+                  The video wing of the scriptorium — illustrated Bible video series,
+                  documentary-style studies and visual walk-throughs of sacred history,
+                  streamed from the Podship video library.
                 </p>
               </div>
-              <Link to="/scholarly-standards" className="mt-6 inline-flex items-center text-xs font-bold text-[#4A152C] hover:text-[#8B1C2E] gap-1 group">
-                <span>Read Peer-Review Framework</span>
+              <a href="/videos/" className="mt-6 inline-flex items-center text-xs font-bold text-[#4A152C] hover:text-[#8B1C2E] gap-1 group">
+                <span>Watch the Video Library</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </div>
 
             <ArchivePillarCard />

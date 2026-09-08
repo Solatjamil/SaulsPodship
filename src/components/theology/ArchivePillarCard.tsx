@@ -23,7 +23,7 @@ export default function ArchivePillarCard({ href = ARCHIVE_BASE }: { href?: stri
           </svg>
         </div>
 
-        <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">{STATS.toughCount} Tough Questions</h3>
+        <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">{STATS.toughCount} Tough Questions with 1000 Quiz Questions</h3>
 
         <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
           The hardest questions in Christian theology — answered in English, Urdu, Hindi and Arabic across five

@@ -68,6 +68,7 @@
   }
 
   function mount() {
+    if (window.self !== window.top) return; /* embedded: SPA provides the header */
     var bar = document.createElement("div");
     bar.id = "sp-chrome-bar";
     bar.style.cssText =
