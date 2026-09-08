@@ -58,7 +58,9 @@
   '.sp-hdr a.nl{font-size:12.5px;font-weight:600;color:#2a231d;text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid transparent}'+
   '.sp-hdr a.nl:hover{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.5)}'+
   '.sp-hdr a.cta{font-size:12.5px;font-weight:700;color:#fff;background:var(--w);padding:8px 15px;border-radius:8px;text-decoration:none}'+
-  '.sp-hdr a.cta:hover{background:var(--w2)}';
+  '.sp-hdr a.cta:hover{background:var(--w2)}'+
+  '@media (max-width:767px){.sp-hdr .row{padding:6px 8px;gap:2px}.sp-hdr a.nl{font-size:11px;padding:5px 8px}.sp-hdr a.cta{font-size:11px;padding:6px 10px}.sp-hdr .brand img{height:30px}.sp-hdr .brand b{font-size:14px}.sp-hdr .brand small{font-size:7.5px;letter-spacing:.22em}}'+
+  '.sp-hdr ~ #sp-chrome-bar{display:none!important}';
   document.head.appendChild(st);
   var hdr=document.createElement('header'); hdr.className='sp-hdr';
   hdr.innerHTML='<div class="row">'+

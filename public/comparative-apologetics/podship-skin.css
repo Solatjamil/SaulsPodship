@@ -9,8 +9,8 @@
 :root {
   --ink: #1A0812;
   --ink-soft: #4A152C;
-  --gold: #D4AF37;
-  --gold-soft: #E8C96A;
+  --gold: #a9812f;
+  --gold-soft: #c9a75c;
   --paper: #F8F4E3;
   --paper-card: #FFFFFF;
   --paper-alt: #F3EAD2;
@@ -184,7 +184,7 @@ html[data-theme="light"] .toolbar {
 /* ===== 2026-09-08: Podship wine/cream vibe (replaces navy dark theme) ===== */
 :root {
   --ink: #4A152C; --ink-soft: #8B1C2E;
-  --gold: #B5952F; --gold-soft: #D4AF37;
+  --gold: #a9812f; --gold-soft: #c9a75c;
   --paper: #F8F4E3; --paper-card: #FFFDF6; --paper-alt: #F3EAD2;
   --text: #241a17; --muted: #6f5f5b;
   --burgundy: #8B1C2E; --burgundy-soft: #F6E9EE;
@@ -210,3 +210,12 @@ body { background-color: #F8F4E3; background-image: radial-gradient(1200px 500px
 .sidebar { top: var(--sp-hdr-h, 0px) !important; height: calc(100vh - var(--sp-hdr-h, 0px)) !important; }
 .menu-toggle { top: calc(var(--sp-hdr-h, 0px) + 10px) !important; }
 .progress { top: var(--sp-hdr-h, 0px) !important; }
+
+/* ===== 2026-09-08b: title legibility, single merged header ===== */
+h1.hero-title {
+  background: none !important; background-image: none !important;
+  -webkit-background-clip: border-box !important; background-clip: border-box !important;
+  color: #F8F4E3 !important; animation: none !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.45);
+}
+.sp-hdr ~ #sp-chrome-bar { display: none !important; }
