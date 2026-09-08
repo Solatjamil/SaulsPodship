@@ -23,6 +23,7 @@ import { StorySceneIcon, sceneForStory } from '../components/story/StorySceneIco
 import { sceneImageFor, storyArt } from '../components/story/storyScenes';
 import { bibleComUrl } from '../lib/bibleRef';
 import { SITE } from '../config/site';
+import AutoFrame from '../components/modules/AutoFrame';
 
 
 
@@ -273,6 +274,19 @@ export const VolumePage: React.FC = () => {
       <div id="volume-content" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
         
         {/* Core Summary / Answer-First Box */}
+        {slug === 'biblical-maps' && (
+          <section id="biblical-atlas" className="pt-8 pb-2 text-center scroll-mt-24">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#4A152C]">
+              The Biblical Atlas &mdash; Interactive Journey Maps
+            </h2>
+            <p className="text-[11px] sm:text-sm text-gray-600 mt-2 mb-6 max-w-2xl mx-auto">
+              Eight study maps on true geography. Press &ldquo;Walk the Journey&rdquo; and footsteps
+              trace Abraham, the Exodus, the seven churches and Paul&rsquo;s three journeys station by station.
+            </p>
+            <AutoFrame src="/biblical-maps/index.html" title="The Biblical Atlas — interactive journey maps" initial="70vh" min={520} />
+          </section>
+        )}
+
         {volume.summary && (
           <section id="summary" className="p-8 sm:p-10 rounded-3xl bg-[#4A152C]/5 border-2 border-[#4A152C]/20 shadow-sm relative overflow-hidden text-center">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
@@ -712,7 +726,7 @@ export const VolumePage: React.FC = () => {
         )}
 
         {/* 4. Clickable Scriptorium Study Toolkit & Verified Links */}
-        <section id="resources" className="p-8 sm:p-10 rounded-3xl bg-[#1A0812] text-white border-2 border-[#D4AF37]/40 shadow-xl space-y-6">
+        <section id="resources" className="p-8 sm:p-10 rounded-3xl bg-[#1A0812] text-white border-2 border-[#D4AF37]/40 shadow-xl space-y-6 text-center">
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-[#E8C96A]">
               Official Publications &amp; Multi-Media Resources
@@ -820,7 +834,7 @@ export const VolumePage: React.FC = () => {
 
         {/* Related Volumes Grid */}
         {relatedVolumeObjects.length > 0 && (
-          <section id="related" className="space-y-6 pt-6">
+          <section id="related" className="space-y-6 pt-6 text-center">
             <div className="border-b border-gray-200 pb-3 text-center">
               <span className="text-xs font-bold uppercase tracking-widest text-[#8B1C2E]">
                 Connected Doctrine
@@ -868,7 +882,7 @@ export const VolumePage: React.FC = () => {
         )}
 
         {/* Previous / Next Volume Pagination Navigation */}
-        <nav aria-label="Adjacent Volume Navigation" className="pt-8 border-t border-gray-200 flex items-center justify-between gap-4">
+        <nav aria-label="Adjacent Volume Navigation" className="pt-8 border-t border-gray-200 flex flex-wrap items-center justify-center gap-4 text-center">
           {prevVolume ? (
             <Link
               to={`/encyclopedia/${prevVolume.slug}`}
@@ -891,46 +905,15 @@ export const VolumePage: React.FC = () => {
         </nav>
 
         {slug === 'biblical-maps' && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
-            <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
-              <h2 className="font-serif text-2xl font-bold text-[#E8C96A] text-center">
-                The Biblical Atlas &mdash; Interactive Journey Maps
-              </h2>
-              <p className="text-center text-xs text-white/60 mb-5 max-w-xl mx-auto">
-                Eight study maps on true geography. Press &ldquo;Walk the Journey&rdquo; and footsteps
-                trace Abraham, the Exodus, the seven churches and Paul&rsquo;s three journeys station by station.
-              </p>
-              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/40">
-                <iframe
-                  src="/biblical-maps/index.html"
-                  title="The Biblical Atlas — interactive journey maps"
-                  loading="lazy"
-                  className="w-full h-[620px] md:h-[760px] border-0 block bg-[#F8F4E3]"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {slug === 'biblical-maps' && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-            <div className="rounded-3xl bg-[#1A0812] border-2 border-[#D4AF37]/40 shadow-xl p-6 sm:p-8">
-              <h2 className="font-serif text-2xl font-bold text-[#E8C96A] text-center">
-                World Faith &amp; Population Map
-              </h2>
-              <p className="text-center text-xs text-white/60 mb-5 max-w-xl mx-auto">
-                Every territory filled by its majority religion &mdash; Christianity in green &mdash; with global
-                adherent totals in the legend and national populations on hover.
-              </p>
-              <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/40">
-                <iframe
-                  src="/world-religion-map/index.html"
-                  title="World religion and population map"
-                  loading="lazy"
-                  className="w-full h-[560px] md:h-[680px] border-0 block bg-[#F8F4E3]"
-                />
-              </div>
-            </div>
+          <section className="pt-8 pb-10 text-center">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#4A152C]">
+              World Faith &amp; Population Map
+            </h2>
+            <p className="text-[11px] sm:text-sm text-gray-600 mt-2 mb-6 max-w-2xl mx-auto">
+              Every territory filled by its majority religion &mdash; Christianity in green &mdash; with global
+              adherent totals in the legend and national populations on hover.
+            </p>
+            <AutoFrame src="/world-religion-map/index.html" title="World religion and population map" initial="70vh" min={480} />
           </section>
         )}
 

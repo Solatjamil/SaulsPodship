@@ -5,6 +5,7 @@
  * module document in an iframe — same isolation pattern as /comparative-apologetics.
  */
 import React, { useEffect } from 'react';
+import AutoFrame from '../components/modules/AutoFrame';
 
 interface ModuleMeta {
   kicker: string;
@@ -33,16 +34,9 @@ const makeModulePage = (meta: ModuleMeta): React.FC => {
             </p>
           </div>
         </section>
-        <section className="py-10 bg-[#F8F4E3]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="w-full rounded-3xl overflow-hidden border-2 border-[#D4AF37]/40 shadow-2xl bg-white">
-              <iframe
-                src={meta.src}
-                title={`${meta.title} — interactive module`}
-                loading="lazy"
-                className="w-full h-[80vh] min-h-[560px] md:h-[820px] border-0 block"
-              />
-            </div>
+        <section className="py-8 bg-[#F8F4E3]">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+            <AutoFrame src={meta.src} title={`${meta.title} — interactive module`} />
           </div>
         </section>
       </div>

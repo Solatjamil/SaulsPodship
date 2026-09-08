@@ -140,7 +140,7 @@ export const RootLayout: React.FC = () => {
           </Link>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 ml-auto">
             {navLinks.map((item) => {
               const Icon = item.icon;
               if (item.isExternal) {

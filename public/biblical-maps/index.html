@@ -36,9 +36,14 @@
   .chips button[aria-pressed="true"] { background: #b5952f; color: #fff; border-color: #b5952f; }
   .srcs { font-family: Inter, system-ui, sans-serif; font-size: .66rem; color: rgba(42,35,29,.55); margin-top: .8rem; }
 </style>
-</head>
+<script>if(window.self!==window.top)document.documentElement.classList.add("embedded");</script><style>
+html.embedded .frame{border:none;border-radius:0;box-shadow:none}
+html.embedded .wrap h1,html.embedded .kick,html.embedded .sub,html.embedded .cap{ text-align:center}
+html.embedded .tabs,html.embedded .bar{justify-content:center}
+html.embedded #atlasTop > .kick,html.embedded #atlasTop > h1,html.embedded #atlasTop > .sub{display:none}
+</style></head>
 <body>
-<div class="wrap">
+<div class="wrap" id="atlasTop">
   <p class="kick">A Saul's Podship Study &middot; Volume 11 &middot; Biblical Maps</p>
   <h1>The Biblical <em>Atlas</em></h1>
   <p class="sub">Eight study maps on true geography. Press <b>Walk the Journey</b> and footsteps trace the
