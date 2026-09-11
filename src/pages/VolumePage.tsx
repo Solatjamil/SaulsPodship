@@ -9,7 +9,7 @@ import {
   BookOpen, Calendar, Clock, ExternalLink, Play, ChevronLeft, 
   ChevronRight, Bookmark, Share2, ShieldCheck, Sparkles, 
   Layers, MapPin, HelpCircle, CheckCircle2, Table, Info,
-  Search, Download, Copy, Check, Filter, ArrowUpRight, X, FileText, Printer, Crown, Globe2
+  Search, Download, Copy, Check, Filter, ArrowUpRight, X, FileText, Printer, Globe2
 , Network} from 'lucide-react';
 import { getVolumeBySlug, VOLUMES } from '../data/volumes';
 import Hero from '../components/Hero';
@@ -337,9 +337,6 @@ export const VolumePage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a href="/prophecy-map" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
               <Globe2 className="w-3.5 h-3.5" /> Biblical Prophecy Map
-            </a>
-            <a href="/kings-of-the-bible" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
-              <Crown className="w-3.5 h-3.5" /> Kings of the Bible
             </a>
             <a href="/cross-references" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">
               <Network className="w-3.5 h-3.5" /> The Interlinked Bible

@@ -29,8 +29,7 @@
     label.style.cssText='width:100%;font-family:Inter,sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#B5952F';
     label.textContent='Companion Modules';
     bar.appendChild(label);
-    [ {href:'/kings-of-the-bible',label:'Kings of the Bible'},
-      {href:'/prophecy-map',label:'Biblical Prophecy Map'},
+    [ {href:'/prophecy-map',label:'Biblical Prophecy Map'},
       {href:'/cross-references',label:'The Interlinked Bible'},
       {href:'/comparative-apologetics',label:'Comparative Apologetics'} ]
       .forEach(function(t){ bar.appendChild(btn(t)); });

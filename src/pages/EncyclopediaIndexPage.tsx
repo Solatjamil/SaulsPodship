@@ -7,7 +7,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   BookOpen, Search, Filter, ArrowUpDown, ChevronRight, 
-  ExternalLink, Play, Calendar, ShieldCheck, Layers, BookMarked, Globe2
+  ExternalLink, Play, Calendar, ShieldCheck, Layers, Globe2
 , Network} from 'lucide-react';
 import { VOLUME_INDEX as VOLUMES } from '../data/volumes/index-lite';
 
@@ -127,23 +127,6 @@ export const EncyclopediaIndexPage: React.FC = () => {
             Interactive charts woven from the same scholarship as the 51 volumes — open them alongside any volume.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-            <a
-              href="/kings-of-the-bible"
-              className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"
-            >
-              <span className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#4A152C] border border-[#D4AF37]/40 flex items-center justify-center">
-                <BookMarked className="w-5 h-5 text-[#E8C96A]" />
-              </span>
-              <span className="flex-1 text-left">
-                <span className="block font-serif font-bold text-white group-hover:text-[#E8C96A] transition-colors leading-snug">
-                  Kings of the Bible — Full Sequence
-                </span>
-                <span className="block text-[11px] text-white/55 mt-0.5">
-                  Every throne from Saul to the Herods, canonical order
-                </span>
-              </span>
-              <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-[#E8C96A] flex-shrink-0" />
-            </a>
             <a
               href="/prophecy-map"
               className="group flex items-center gap-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#D4AF37]/25 hover:border-[#D4AF37]/70 p-5 transition-all"

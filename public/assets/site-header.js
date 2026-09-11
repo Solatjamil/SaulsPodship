@@ -77,7 +77,7 @@
   var hdr=document.createElement('header'); hdr.className='sp-hdr';
   function nl(href,label){ var on=(path===href)||(href!=='/'&&path.indexOf(href)===0); return '<a class="nl'+(on?' on':'')+'" href="'+href+'">'+label+'</a>'; }
   function dl(href,label){ var on=(path===href)||(href!=='/'&&path.indexOf(href)===0); return '<a class="'+(on?'on':'')+'" href="'+href+'"><span>'+label+'</span><i>&#8250;</i></a>'; }
-  var links=[['/prophecy-map','Prophecy Map'],['/kings-of-the-bible','Kings of the Bible'],['/cross-references','Interlinked Bible'],['/encyclopedia','Encyclopedia'],['/comparative-apologetics','Comparative Apologetics'],['/podcast','Podcast'],['/music','Music &amp; Zaboor']];
+  var links=[['/prophecy-map','Prophecy Map'],['/cross-references','Interlinked Bible'],['/encyclopedia','Encyclopedia'],['/comparative-apologetics','Comparative Apologetics'],['/podcast','Podcast'],['/music','Music &amp; Zaboor']];
   var navH='',drwH='';
   for(var i=0;i<links.length;i++){ navH+=nl(links[i][0],links[i][1]); drwH+=dl(links[i][0],links[i][1]); }
   hdr.innerHTML='<div class="row">'+

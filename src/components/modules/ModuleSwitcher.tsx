@@ -6,7 +6,7 @@
    ============================================================ */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Compass, Crown, ExternalLink, Network } from 'lucide-react';
+import { ArrowRight, Compass, ExternalLink, Network } from 'lucide-react';
 import AutoFrame from './AutoFrame';
 
 /** true below the lg breakpoint (phones / tablets / installed app) */
@@ -21,7 +21,7 @@ function useIsMobile() {
   return m;
 }
 
-export type ModuleId = 'map' | 'kings' | 'crossrefs';
+export type ModuleId = 'map' | 'crossrefs';
 
 const MODULES: {
   id: ModuleId; label: string; short: string; blurb: string;
@@ -36,15 +36,6 @@ const MODULES: {
     src: '/prophecy-map.html',
     full: '/prophecy-map',
     icon: Compass,
-  },
-  {
-    id: 'kings',
-    label: 'Kings of the Bible — The Throne Line',
-    short: 'Kings & Thrones',
-    blurb: 'Every throne from Saul to the Herods in canonical order — reign lengths, synchronisms, wars and prophetic witness charted line by line.',
-    src: '/kings-of-the-bible.html',
-    full: '/kings-of-the-bible',
-    icon: Crown,
   },
   {
     id: 'crossrefs',
