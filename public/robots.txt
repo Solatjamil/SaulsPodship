@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://www.saulspodship.com/sitemap.xml
-Sitemap: https://www.saulspodship.com/sitemap-theological-archive.xml
