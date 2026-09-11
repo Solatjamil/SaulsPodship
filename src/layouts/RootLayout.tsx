@@ -3,16 +3,19 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Outlet, Link, useLocation, ScrollRestoration } from 'react-router-dom';
 import { 
   BookOpen, Mic, Music, Compass, Info, ShieldCheck, Heart, 
   Menu, X, Search, ChevronRight, ExternalLink, Globe, Award,
   Sparkles, Mail, Play, Video, MapPin
 } from 'lucide-react';
-import ScholarAssistant from '../../components/ScholarAssistant';
+// Floating AI assistant pulls in framer-motion + the full catalogue — load it
+// after first paint instead of inside the critical bundle.
+const ScholarAssistant = lazy(() => import('../../components/ScholarAssistant'));
 import { SITE } from '../config/site';
 import ChromeControls from '../components/ChromeControls';
+import BottomNav from '../components/BottomNav';
 
 
 // Chrome/Edge fire beforeinstallprompt when the PWA criteria (manifest +
@@ -120,17 +123,17 @@ export const RootLayout: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1D2D50] font-sans antialiased selection:bg-[#4A152C] selection:text-[#E8C96A]">
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1D2D50] font-sans antialiased selection:bg-[#4A152C] selection:text-[#E8C96A] pb-[calc(64px+env(safe-area-inset-bottom))] lg:pb-0">
       <ScrollRestoration />
 
       {/* Global Navigation Header */}
       <header className="sticky top-0 z-50 w-full bg-[#16060f]/70 backdrop-blur-md border-b border-[#D4AF37]/20 text-white transition-all shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 md:h-20 flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-5 lg:px-6 h-14 sm:h-16 md:h-20 flex items-center justify-between gap-3 lg:gap-4">
           {/* Brand Logo with Correct SVG */}
-          <Link to="/" className="flex items-center gap-2.5 group min-w-0 shrink-0">
-            <img src="/icons/emblem.png" alt="Saul's Podship Logo" className="h-12 w-12 sm:h-14 sm:w-14 object-contain shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] group-hover:scale-105 transition-transform" />
+          <Link to="/" className="flex items-center gap-2.5 group min-w-0 shrink-0 lg:gap-2">
+            <img src="/icons/emblem.png" alt="Saul's Podship Logo" className="h-12 w-12 sm:h-14 sm:w-14 lg:h-11 lg:w-11 xl:h-14 xl:w-14 object-contain shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] group-hover:scale-105 transition-transform" />
             <div className="flex flex-col text-left min-w-0">
-              <span className="font-serif font-bold text-base sm:text-xl tracking-tight text-white group-hover:text-[#E8C96A] transition-colors whitespace-nowrap">
+              <span className="font-serif font-bold text-base sm:text-xl lg:text-lg xl:text-xl tracking-tight text-white group-hover:text-[#E8C96A] transition-colors whitespace-nowrap">
                 Saul's Podship
               </span>
               <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-[0.18em] text-[#D4AF37]/90 whitespace-nowrap">
@@ -140,7 +143,7 @@ export const RootLayout: React.FC = () => {
           </Link>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 ml-auto">
+          <nav className="hidden lg:flex flex-1 min-w-0 flex-nowrap items-center justify-end gap-0.5 xl:gap-1 ml-auto sp-desktop-nav">
             {navLinks.map((item) => {
               const Icon = item.icon;
               if (item.isExternal) {
@@ -150,12 +153,12 @@ export const RootLayout: React.FC = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide text-white/80 hover:text-[#E8C96A] hover:bg-white/10 transition-all group"
+                    className="inline-flex h-10 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-1.5 xl:px-2.5 2xl:px-3 text-[13px] xl:text-sm font-semibold leading-none text-white/80 hover:text-[#E8C96A] hover:bg-white/10 transition-all group"
                     title="Partner on Patreon"
                   >
-                    <Icon className="w-3.5 h-3.5 text-rose-400 group-hover:scale-110 transition-transform" />
+                    <Icon className="hidden 2xl:block w-4 h-4 text-rose-400 group-hover:scale-110 transition-transform" />
                     <span>{item.name}</span>
-                    <ExternalLink className="w-2.5 h-2.5 opacity-60 ml-0.5" />
+                    <ExternalLink className="hidden 2xl:block w-3 h-3 opacity-60" />
                   </a>
                 );
               }
@@ -164,10 +167,10 @@ export const RootLayout: React.FC = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide text-white/80 hover:text-white hover:bg-white/10 transition-all"
+                    className="inline-flex h-10 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-1.5 xl:px-2.5 2xl:px-3 text-[13px] xl:text-sm font-semibold leading-none text-white/80 hover:text-white hover:bg-white/10 transition-all"
                     title="Bible video series"
                   >
-                    <Icon className="w-3.5 h-3.5 opacity-80" />
+                    <Icon className="hidden 2xl:block w-4 h-4 opacity-80" />
                     {item.name}
                   </a>
                 );
@@ -177,13 +180,13 @@ export const RootLayout: React.FC = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+                  className={`inline-flex h-10 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-1.5 xl:px-2.5 2xl:px-3 text-[13px] xl:text-sm font-semibold leading-none transition-all ${
                     isActive
                       ? 'bg-[#4A152C] text-[#E8C96A] border border-[#D4AF37]/40 shadow-inner'
                       : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5 opacity-80" />
+                  <Icon className="hidden 2xl:block w-4 h-4 opacity-80" />
                   {item.name}
                 </Link>
               );
@@ -191,7 +194,7 @@ export const RootLayout: React.FC = () => {
           </nav>
 
           {/* Right Header Controls */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex h-10 shrink-0 items-center gap-2 sm:gap-3">
             <ChromeControls />
 
 
@@ -277,7 +280,9 @@ export const RootLayout: React.FC = () => {
       </main>
 
       {/* Interactive AI Scholar Floating Assistant */}
-      <ScholarAssistant />
+      <Suspense fallback={null}>
+        <ScholarAssistant />
+      </Suspense>
 
       {/* Global Scriptorium Footer - Center Aligned */}
       <footer className="w-full bg-[#1A0812] text-white border-t-2 border-[#D4AF37]/30 pt-16 pb-12 text-center">
@@ -454,6 +459,7 @@ export const RootLayout: React.FC = () => {
         </div>
       </footer>
 
+      <BottomNav />
     </div>
   );
 };

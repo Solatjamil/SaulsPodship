@@ -7,7 +7,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, BookOpen, Search, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CATEGORIES } from "../api/data";
+// Lightweight catalogue (title/overview only) — keeps the 50 volume bodies out of the home-page bundle.
+import { VOLUME_INDEX as CATEGORIES } from "../src/data/volumes/index-lite";
 import { ChatMessage } from '../types';
 
 const ScholarAssistant: React.FC = () => {
@@ -78,7 +79,7 @@ const ScholarAssistant: React.FC = () => {
   };
 
   return (
-    <div className={`fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end transition-all duration-300 ${
+    <div className={`fixed bottom-[calc(72px+env(safe-area-inset-bottom))] right-4 lg:bottom-8 lg:right-8 z-[100] flex flex-col items-end transition-all duration-300 ${
       scrolledPastHero
         ? 'opacity-100 translate-y-0 pointer-events-auto'
         : 'opacity-0 translate-y-4 pointer-events-none md:opacity-100 md:translate-y-0 md:pointer-events-auto'

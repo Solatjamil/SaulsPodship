@@ -146,7 +146,7 @@ export const ChromeControls: React.FC = () => {
           value={lang}
           onChange={(e) => setLang(e.target.value as Lang)}
           aria-label="Website language"
-          className="appearance-none bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-xl pl-8 pr-6 py-2 cursor-pointer border border-[#D4AF37]/25 transition-colors focus:outline-none"
+          className="appearance-none h-10 bg-white/10 hover:bg-white/20 text-white text-[13px] font-bold rounded-xl pl-8 pr-6 lg:pl-7 lg:pr-5 xl:pl-8 xl:pr-6 cursor-pointer border border-[#D4AF37]/25 transition-colors focus:outline-none"
         >
           {options.map(([v, l]) => <option key={v} value={v} className="text-black">{l}</option>)}
         </select>
@@ -156,7 +156,7 @@ export const ChromeControls: React.FC = () => {
         onClick={() => setTheme(t => (t === 'dark' ? 'light' : 'dark'))}
         aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
-        className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#E8C96A] border border-[#D4AF37]/25 transition-all"
+        className="h-10 w-10 inline-flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-[#E8C96A] border border-[#D4AF37]/25 transition-all"
       >
         {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
       </button>
@@ -168,6 +168,11 @@ export const ChromeControls: React.FC = () => {
 let io: IntersectionObserver | null = null;
 export function scanReveal() {
   if (!('IntersectionObserver' in window)) return;
+  // Phones / tablets: never gate content behind the observer. On mobile the
+  // Prophecy Map & Interlinked Bible pillar cards were stuck at opacity:0
+  // whenever the observer did not fire (tall single-column grid, -8% margin).
+  if (window.matchMedia('(max-width: 1023.98px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!io) {
     io = new IntersectionObserver((entries) => {
       for (const e of entries) {
@@ -180,8 +185,15 @@ export function scanReveal() {
           io?.unobserve(el);
         }
       }
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    }, { rootMargin: '0px 0px 0px 0px', threshold: 0.01 });
   }
+  // Safety net: anything still hidden 1.5s after arming is revealed regardless.
+  window.setTimeout(() => {
+    document.querySelectorAll('.sp-armed:not(.sp-shown)').forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 1.5) el.classList.add('sp-shown');
+    });
+  }, 1500);
   document.querySelectorAll('main section > div > h2, section .grid > div, section .grid > a, #videos .v-card, .hero-scrim > .pill, .hero-scrim h1').forEach((el) => {
     if ((el as HTMLElement).dataset.spReveal) return;
     (el as HTMLElement).dataset.spReveal = '1';

@@ -20,24 +20,27 @@
     "three": "^0.160.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@types/express": "^5.0.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/three": "^0.160.0",
     "@vitejs/plugin-react": "^4.3.0",
     "esbuild": "^0.28.0",
+    "tailwindcss": "^4.3.3",
     "tsx": "^4.22.4",
     "typescript": "^5.0.0",
     "vite": "^6.0.0",
     "vitest": "^5.0.0"
   },
   "scripts": {
-    "dev": "tsx server.ts",
+    "dev": "node scripts/gen-volume-index.mjs && tsx server.ts",
     "prebuild": "(python3 -c 'from PIL import Image' 2>/dev/null && python3 scripts/make_hero_variants.py public/images/hero/last-supper-source.jpg public/images/hero last-supper) || echo '[INFO] Skipping image generation (Python PIL not installed)'; node scripts/test-hero-variants.mjs",
-    "build": "node scripts/check-links.mjs && vite build && node scripts/postbuild.mjs && node scripts/prerender-music.mjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "node scripts/gen-volume-index.mjs && node scripts/check-links.mjs && vite build && node scripts/postbuild.mjs && node scripts/prerender-music.mjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "test": "node scripts/test-hero-variants.mjs",
     "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "gen:volumes": "node scripts/gen-volume-index.mjs"
   }
 }

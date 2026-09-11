@@ -13,7 +13,7 @@ import {
 import Hero from '../components/Hero';
 import ArchivePillarCard from '../components/theology/ArchivePillarCard';
 import ComparativeApologeticsPillar from '../components/pillars/ComparativeApologeticsPillar';
-import { VOLUMES } from '../data/volumes';
+import { VOLUME_INDEX as VOLUMES } from '../data/volumes/index-lite';
 import ModuleSwitcher from '../components/modules/ModuleSwitcher';
 import { EPISODES } from '../data/episodes';
 import { PIONEERS_AND_SINGERS } from '../data/singers';

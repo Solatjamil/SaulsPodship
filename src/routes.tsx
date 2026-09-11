@@ -3,32 +3,47 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import HomePage from './pages/HomePage';
-import EncyclopediaIndexPage from './pages/EncyclopediaIndexPage';
-import VolumePage from './pages/VolumePage';
-import VolumeNumberRedirect from './pages/VolumeNumberRedirect';
-import AboutPage from './pages/AboutPage';
-import ScholarlyStandardsPage from './pages/ScholarlyStandardsPage';
-import PodcastPage from './pages/PodcastPage';
-import PodcastEpisodePage from './pages/PodcastEpisodePage';
-import MusicPage from './pages/MusicPage';
-import PunjabiZaboorPage from './pages/PunjabiZaboorPage';
-import SingersArchivePage from './pages/SingersArchivePage';
-import StudioPage from './pages/StudioPage';
-import TheologicalArchivePage from './pages/TheologicalArchivePage';
-import ComparativeApologeticsPage from './pages/ComparativeApologeticsPage';
-import { ProphecyMapPage, KingsOfTheBiblePage, CrossReferencesPage } from './pages/ModulePages';
-import SupportPage from './pages/SupportPage';
-import FaqPage from './pages/FaqPage';
-import ContactPage from './pages/ContactPage';
-import PrivacyPage from './pages/PrivacyPage';
-import TermsPage from './pages/TermsPage';
-import DisclaimerPage from './pages/DisclaimerPage';
-import SitemapPage from './pages/SitemapPage';
 import NotFoundPage from './pages/NotFoundPage';
+
+// Route-level code splitting: the home page ships only what it needs; every
+// other page (50 volumes, studio, archives, modules…) downloads on first visit
+// to that route and is then cached by the browser / service worker.
+const EncyclopediaIndexPage = lazy(() => import('./pages/EncyclopediaIndexPage'));
+const VolumePage = lazy(() => import('./pages/VolumePage'));
+const VolumeNumberRedirect = lazy(() => import('./pages/VolumeNumberRedirect'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ScholarlyStandardsPage = lazy(() => import('./pages/ScholarlyStandardsPage'));
+const PodcastPage = lazy(() => import('./pages/PodcastPage'));
+const PodcastEpisodePage = lazy(() => import('./pages/PodcastEpisodePage'));
+const MusicPage = lazy(() => import('./pages/MusicPage'));
+const PunjabiZaboorPage = lazy(() => import('./pages/PunjabiZaboorPage'));
+const SingersArchivePage = lazy(() => import('./pages/SingersArchivePage'));
+const StudioPage = lazy(() => import('./pages/StudioPage'));
+const TheologicalArchivePage = lazy(() => import('./pages/TheologicalArchivePage'));
+const ComparativeApologeticsPage = lazy(() => import('./pages/ComparativeApologeticsPage'));
+const ProphecyMapPage = lazy(() => import('./pages/ModulePages').then(m => ({ default: m.ProphecyMapPage })));
+const KingsOfTheBiblePage = lazy(() => import('./pages/ModulePages').then(m => ({ default: m.KingsOfTheBiblePage })));
+const CrossReferencesPage = lazy(() => import('./pages/ModulePages').then(m => ({ default: m.CrossReferencesPage })));
+const SupportPage = lazy(() => import('./pages/SupportPage'));
+const FaqPage = lazy(() => import('./pages/FaqPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
+const SitemapPage = lazy(() => import('./pages/SitemapPage'));
+
+const PageFallback: React.FC = () => (
+  <div className="min-h-[50vh] flex items-center justify-center" role="status" aria-live="polite">
+    <span className="inline-block h-9 w-9 rounded-full border-2 border-[#D4AF37]/30 border-t-[#D4AF37] animate-spin" />
+    <span className="sr-only">Loading…</span>
+  </div>
+);
+
+const L = (el: React.ReactElement) => <Suspense fallback={<PageFallback />}>{el}</Suspense>;
 
 export const routeConfig: RouteObject[] = [
   {
@@ -42,95 +57,95 @@ export const routeConfig: RouteObject[] = [
       },
       {
         path: 'encyclopedia',
-        element: <EncyclopediaIndexPage />
+        element: L(<EncyclopediaIndexPage />)
       },
       {
         path: 'encyclopedia/:slug',
-        element: <VolumePage />
+        element: L(<VolumePage />)
       },
       {
         path: 'encyclopedia/by-number/:num',
-        element: <VolumeNumberRedirect />
+        element: L(<VolumeNumberRedirect />)
       },
       {
         path: 'about',
-        element: <AboutPage />
+        element: L(<AboutPage />)
       },
       {
         path: 'scholarly-standards',
-        element: <ScholarlyStandardsPage />
+        element: L(<ScholarlyStandardsPage />)
       },
       {
         path: 'podcast',
-        element: <PodcastPage />
+        element: L(<PodcastPage />)
       },
       {
         path: 'podcast/:episode',
-        element: <PodcastEpisodePage />
+        element: L(<PodcastEpisodePage />)
       },
       {
         path: 'music',
-        element: <MusicPage />
+        element: L(<MusicPage />)
       },
       {
         path: 'music/punjabi-zaboor',
-        element: <PunjabiZaboorPage />
+        element: L(<PunjabiZaboorPage />)
       },
       {
         path: 'music/pakistani-singers-archive',
-        element: <SingersArchivePage />
+        element: L(<SingersArchivePage />)
       },
       {
         path: 'studio',
-        element: <StudioPage />
+        element: L(<StudioPage />)
       },
       {
         path: 'theological-archive',
-        element: <TheologicalArchivePage />
+        element: L(<TheologicalArchivePage />)
       },
       {
         path: 'comparative-apologetics',
-        element: <ComparativeApologeticsPage />
+        element: L(<ComparativeApologeticsPage />)
       },
       {
         path: 'prophecy-map',
-        element: <ProphecyMapPage />
+        element: L(<ProphecyMapPage />)
       },
       {
         path: 'kings-of-the-bible',
-        element: <KingsOfTheBiblePage />
+        element: L(<KingsOfTheBiblePage />)
       },
       {
         path: 'cross-references',
-        element: <CrossReferencesPage />
+        element: L(<CrossReferencesPage />)
       },
       {
         path: 'support',
-        element: <SupportPage />
+        element: L(<SupportPage />)
       },
       {
         path: 'faq',
-        element: <FaqPage />
+        element: L(<FaqPage />)
       },
       {
         path: 'contact',
-        element: <ContactPage />
+        element: L(<ContactPage />)
       },
       {
         path: 'privacy',
-        element: <PrivacyPage />
+        element: L(<PrivacyPage />)
       },
       {
         path: 'terms',
-        element: <TermsPage />
+        element: L(<TermsPage />)
       },
       {
         path: 'disclaimer',
-        element: <DisclaimerPage />
+        element: L(<DisclaimerPage />)
       },
       {
         path: 'sitemap',
-        element: <SitemapPage />
+        element: L(<SitemapPage />)
       },
       {
         path: '*',

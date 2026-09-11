@@ -6,7 +6,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Compass, ExternalLink } from 'lucide-react';
-import { VOLUMES } from '../data/volumes';
+import { VOLUME_INDEX as VOLUMES } from '../data/volumes/index-lite';
 
 export const SitemapPage: React.FC = () => {
   return (

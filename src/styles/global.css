@@ -1,0 +1,231 @@
+/* Saul's Podship — global stylesheet (compiled by Tailwind v4 at build time).
+   Replaces the runtime cdn.tailwindcss.com script (407 KB, compiled CSS in the
+   browser on every visit). Static module shells and retrofit scripts that use
+   Tailwind classes are picked up through @source. */
+@import "tailwindcss";
+@source "../../public/assets/*.js";
+@source "../../public/videos/**/*.html";
+@source "../../public/*.html";
+@source "../../components/**/*.tsx";
+
+@theme {
+  --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "EB Garamond", "Merriweather", Georgia, serif;
+}
+
+/* Tailwind v4 resets button cursor / border-color defaults; restore v3 feel */
+@layer base {
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  *, ::after, ::before, ::backdrop, ::file-selector-button { border-color: var(--color-gray-200, #e5e7eb); }
+}
+
+/* ---- former inline <style> from index.html ---- */
+:root {
+  --hero-dim: 0.28;
+}
+/* ===== Podship Chrome: animations, dark mode, RTL (Phase 4) ===== */
+@keyframes spRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spShine { 0% { background-position: -180% 0; } 100% { background-position: 260% 0; } }
+@keyframes spFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.sp-armed { opacity: 0; will-change: transform, opacity; }
+.sp-armed.sp-shown { animation: spRise .68s cubic-bezier(.22,1,.36,1) both; }
+.hero-scrim h1 {
+  background: linear-gradient(110deg, #F8F4E3 0%, #F8F4E3 42%, #E8C96A 50%, #F8F4E3 58%, #F8F4E3 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: spShine 2.4s ease-out .25s 1 both;
+}
+.sp-armed:hover, section .grid > div:hover, section .grid > a:hover { animation-play-state: paused; }
+html[data-theme="dark"] body { background-color: #120510; color: #E9DFC8; color-scheme: dark; }
+html[data-theme="dark"] .bg-\[\#FDFBF7\] { background-color: #140610 !important; }
+html[data-theme="dark"] .bg-\[\#F8F4E3\] { background-color: #1A0812 !important; }
+html[data-theme="dark"] .bg-white, html[data-theme="dark"] .bg-white\/80, html[data-theme="dark"] .bg-white\/90, html[data-theme="dark"] .bg-white\/70 { background-color: rgba(43,17,32,.92) !important; }
+html[data-theme="dark"] .bg-gray-50, html[data-theme="dark"] .bg-gray-100, html[data-theme="dark"] .bg-amber-50\/40, html[data-theme="dark"] .bg-amber-50\/60, html[data-theme="dark"] .bg-red-50, html[data-theme="dark"] .bg-blue-50\/60 { background-color: rgba(212,175,55,.07) !important; }
+html[data-theme="dark"] .hover\:bg-amber-50\/40:hover, html[data-theme="dark"] .hover\:bg-gray-50:hover { background-color: rgba(212,175,55,.12) !important; }
+html[data-theme="dark"] .text-\[\#1D2D50\] { color: #E9DFC8 !important; }
+html[data-theme="dark"] .text-\[\#1D2D50\]\/70, html[data-theme="dark"] .text-gray-600, html[data-theme="dark"] .text-gray-500 { color: #C6B79A !important; }
+html[data-theme="dark"] .text-gray-900, html[data-theme="dark"] .text-gray-800 { color: #F2E8D5 !important; }
+html[data-theme="dark"] .text-gray-700 { color: #D8CBB0 !important; }
+html[data-theme="dark"] .text-\[\#4A152C\] { color: #E8C96A !important; }
+html[data-theme="dark"] .text-\[\#8B1C2E\] { color: #E8C96A !important; }
+html[data-theme="dark"] .group:hover .group-hover\:text-\[\#4A152C\] { color: #E8C96A !important; }
+html[data-theme="dark"] .hover\:text-\[\#4A152C\]:hover { color: #E8C96A !important; }
+html[data-theme="dark"] .border-gray-200, html[data-theme="dark"] .border-gray-100, html[data-theme="dark"] .divide-gray-100 > * + * { border-color: rgba(212,175,55,.16) !important; }
+html[data-theme="dark"] .border-\[\#4A152C\]\/10, html[data-theme="dark"] .border-\[\#4A152C\]\/15 { border-color: rgba(212,175,55,.22) !important; }
+html[data-theme="dark"] input { color-scheme: dark; }
+html[data-theme="dark"] img.thumb-placeholder, html[data-theme="dark"] .bg-amber-50\/40 { --tw-bg-opacity: 1; }
+html[dir="rtl"] body { text-align: right; }
+html[dir="rtl"] .ml-1 { margin-left: 0; margin-right: .25rem; }
+html[dir="rtl"] .mr-1 { margin-right: 0; margin-left: .25rem; }
+html[dir="rtl"] .ml-0\.5 { margin-left: 0; margin-right: .125rem; }
+@media (prefers-reduced-motion: reduce) {
+  .sp-armed, .sp-armed.sp-shown { opacity: 1; animation: none !important; }
+  .hero-scrim h1 { animation: none !important; background: none; color: #F8F4E3; -webkit-text-fill-color: initial; }
+}
+@media (max-width: 640px) { .pill { animation: spFloat 7s ease-in-out infinite; } }
+/* ===== end Podship Chrome ===== */
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  background-color: #F8F4E3;
+  max-width: 100vw;
+  overflow-x: clip; /* kills the sideways pan + the cream gutter strip */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F8F4E3; /* Ivory */
+  color: #1D2D50; /* Deep Royal Blue */
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+/* the <html> element itself was never retinted — in dark mode its
+   ivory background was the white strip at the right edge */
+html[data-theme="dark"] { background-color: #120510; }
+
+/* mobile: let the hero artwork read bright from its top — the heavy
+   dark wash over the upper picture looked like blank space */
+@media (max-width: 640px) {
+  .hero-overlay {
+    background: linear-gradient(180deg,
+      rgba(8,6,10,0.16) 0%, rgba(8,6,10,0.04) 34%,
+      rgba(8,6,10,0.55) 72%, rgba(11,13,18,0.92) 100%) !important;
+  }
+}
+
+.font-serif-heading {
+  font-family: 'Merriweather', serif;
+}
+
+.font-scripture {
+  font-family: 'EB Garamond', serif;
+}
+
+/* Hero Visual Visibility & Dimming Optimization */
+.hero-overlay {
+  background: linear-gradient(180deg,
+    rgba(8,6,10, calc(var(--hero-dim) * 0.6)) 0%,
+    rgba(8,6,10, calc(var(--hero-dim) * 0.2)) 40%,
+    rgba(8,6,10, calc(var(--hero-dim) * 0.9)) 78%,
+    rgba(11,13,18, 0.92) 100%);
+}
+
+.hero-scrim {
+  background: radial-gradient(ellipse at center, rgba(8,6,10,0.55), rgba(8,6,10,0.25) 70%, transparent);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background-color: #4A152C;
+  color: #E8C96A;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: #D4AF37;
+  color: #1A0812;
+  font-weight: 800;
+  box-shadow: 0 4px 14px 0 rgba(212, 175, 55, 0.35);
+  transition: all 0.2s ease;
+}
+.btn-gold:hover {
+  background-color: #E8C96A;
+  transform: translateY(-1px);
+}
+
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: #DC2626;
+  color: #FFFFFF;
+  font-weight: 700;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.3);
+  transition: all 0.2s ease;
+}
+.btn-red:hover {
+  background-color: #EF4444;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover {
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #E8C96A;
+}
+
+.hero-content {
+  background: radial-gradient(ellipse at center, rgba(8,6,10,0.55) 0%, transparent 70%);
+  padding: 2rem;
+}
+
+/* Center Alignment Across Site */
+main, section, article, header, footer {
+  text-align: center;
+}
+.prose, .manuscript {
+  text-align: center;
+}
+.prose ul, .prose ol {
+  list-style-position: inside;
+  padding-left: 0;
+}
+.prose li {
+  text-align: center;
+}
+table {
+  margin-inline: auto;
+}
+th, td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Custom Scrollbar for the encyclopedia feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F4E3; 
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b5952f; 
+}

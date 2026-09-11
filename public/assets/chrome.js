@@ -16,7 +16,7 @@
     var css=document.createElement('style');
     css.id='sp-chrome-css';
     css.textContent=[
-      'header nav,header .nav,nav.primary{justify-content:center!important;align-items:center!important;flex-wrap:wrap}',
+      /* header nav is laid out by RootLayout (single row, right-aligned) — do not override */
       'section[data-module],[class*=module-card],[class*=moduleCard]{margin-left:auto;margin-right:auto;text-align:center}'
     ].join('');
     document.head.appendChild(css);

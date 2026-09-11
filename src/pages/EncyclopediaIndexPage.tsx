@@ -9,7 +9,7 @@ import {
   BookOpen, Search, Filter, ArrowUpDown, ChevronRight, 
   ExternalLink, Play, Calendar, ShieldCheck, Layers, BookMarked, Globe2
 , Network} from 'lucide-react';
-import { VOLUMES } from '../data/volumes';
+import { VOLUME_INDEX as VOLUMES } from '../data/volumes/index-lite';
 
 export const EncyclopediaIndexPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
