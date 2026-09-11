@@ -54,7 +54,7 @@
   ],
   "headers": [
     {
-      "source": "/assets/(.*)-[A-Za-z0-9_-]{8}\\.(js|css|woff2)",
+      "source": "/assets/:name-:hash.:ext(js|css|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -63,20 +63,20 @@
       ]
     },
     {
-      "source": "/(images|icons)/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=2592000, stale-while-revalidate=604800"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(chrome|site-header|seo-aeo|companion|maps-atlas|prophecy-lens)\\.js",
+      "source": "/assets/:file(chrome|site-header|seo-aeo|companion|maps-atlas|prophecy-lens).js",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/:dir(images|icons)/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=604800"
         }
       ]
     },
