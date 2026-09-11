@@ -210,6 +210,8 @@ export function buildUI(root, viz) {
         <p class="spcr__foot">Data \u00a9 openbible.info (CC-BY) \u00b7 scripture: King James Version.
           Inspired by Christoph R\u00f6mhild &amp; Chris Harrison, <i>Visualizing the Bible</i> (2007).</p>
       </div>`;
+    /* phones: keep the intro sheet closed so the horseshoe itself is visible first */
+    if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) { els.panel.classList.remove('is-open'); return; }
     els.panel.classList.add('is-open');
   }
 

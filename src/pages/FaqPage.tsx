@@ -13,7 +13,7 @@ export const FaqPage: React.FC = () => {
   const faqs = [
     {
       category: "Encyclopedia & Doctrine",
-      q: "What is the scope of the 50-Volume Theological Encyclopedia?",
+      q: "What is the scope of the 51-Volume Theological Encyclopedia?",
       a: "The encyclopedia covers 50 exhaustive volumes spanning Systematic Theology, Biblical Typology, Messianic Prophecy, Patristic Church History, Hebrew/Greek Exegesis, the Tabernacle, and the Book of Revelation. Each volume is complete with structured data tables, historical timelines, and verified scripture citations."
     },
     {
@@ -29,7 +29,7 @@ export const FaqPage: React.FC = () => {
     {
       category: "Access & Usage",
       q: "Is the theological content freely accessible for churches, seminaries, and students?",
-      a: "Yes. All 50 volumes, research monographs, audio masterclasses, and data tables are published freely for personal study, church education, academic research, and sermon preparation."
+      a: "Yes. All 51 volumes, research monographs, audio masterclasses, and data tables are published freely for personal study, church education, academic research, and sermon preparation."
     },
     {
       category: "Access & Usage",

@@ -213,7 +213,7 @@ export const PunjabiZaboorPage: React.FC = () => {
             Composing &amp; Transmitting the Zaboor Through the Generations
           </h3>
           <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-serif font-light">
-            While Rev. Imam-ud-Din Shahbaz versified the Psalms, the living musical tradition was cultivated by eminent Christian classical music theorists, choir masters, and composers—such as <strong>Robson J. Din (M.Mus)</strong>, revered for his masterly command of classical raga structures; his brother the late patriarch <strong>Jamson J. Din</strong>, legendary master Tabla Artist and pioneer harmonium choir director; alongside <strong>Dr. Bashir Anwar</strong>, <strong>Nadeem Jamil</strong>, and <strong>Nada Jamil</strong>.
+            While Rev. Imam-ud-Din Shahbaz versified the Psalms, the living musical tradition was cultivated by eminent Christian classical music theorists, choir masters, and composers—such as <strong>Robson J. Din (M.Mus)</strong>, revered for his masterly command of classical raga structures; his brother the late patriarch <strong>Jamson J. Din</strong> (17 February 1942 – October 2020), legendary master Tabla Artist and pioneer harmonium choir director; alongside <strong>Dr. Bashir Anwar</strong>, <strong>Nadeem Jamil</strong>, and <strong>Nada Jamil</strong>.
           </p>
           <div className="pt-1">
             <Link

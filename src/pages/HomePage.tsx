@@ -57,7 +57,7 @@ export const HomePage: React.FC = () => {
                 <div className="w-12 h-12 rounded-2xl bg-[#4A152C]/10 text-[#4A152C] flex items-center justify-center mb-4 group-hover:bg-[#4A152C] group-hover:text-[#E8C96A] transition-colors">
                   <BookOpen className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">50 Academic Volumes</h3>
+                <h3 className="font-serif font-bold text-xl text-[#4A152C] mb-2">51 Academic Volumes</h3>
                 <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
                   Comprehensive biblical exegesis covering historical theology, Hebrew and Greek linguistic nuances, covenantal progression, and systematic doctrines.
                 </p>
@@ -169,7 +169,7 @@ export const HomePage: React.FC = () => {
             Authoritative Theological Corpus
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A152C] mt-2">
-            The 50-Volume Scriptorium
+            The 51-Volume Scriptorium
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base mt-2 font-light">
             Each volume features deep textual exegesis, comparative linguistic analysis, structured data tables, historical timelines, and peer-reviewed doctrine.
@@ -251,7 +251,7 @@ export const HomePage: React.FC = () => {
           to="/encyclopedia"
           className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#4A152C] hover:bg-[#681E3E] text-[#E8C96A] font-extrabold text-sm shadow-xl transition-all"
         >
-          <span>Explore All 50 Volumes in Catalog</span>
+          <span>Explore All 51 Volumes in Catalog</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </section>

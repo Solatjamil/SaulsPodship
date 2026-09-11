@@ -50,7 +50,7 @@ export const ScholarlyStandardsPage: React.FC = () => {
               <div>
                 <h3 className="font-serif font-bold text-lg text-gray-900 mb-1">2. Original Language Grounding</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  All doctrinal definitions in our 50 volumes reference original Hebrew (Masoretic Text), Aramaic (Targums / Daniel), and Greek (Novum Testamentum Graece / Septuagint) terms with precise transliterations and morphological breakdowns.
+                  All doctrinal definitions in our 51 volumes reference original Hebrew (Masoretic Text), Aramaic (Targums / Daniel), and Greek (Novum Testamentum Graece / Septuagint) terms with precise transliterations and morphological breakdowns.
                 </p>
               </div>
             </div>
@@ -74,7 +74,7 @@ export const ScholarlyStandardsPage: React.FC = () => {
             Verified Link Policy
           </h2>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Every external blog article link and YouTube video reference across the 50 volumes is audited for active status. Broken links and speculative URLs are strictly forbidden from our public records.
+            Every external blog article link and YouTube video reference across the 51 volumes is audited for active status. Broken links and speculative URLs are strictly forbidden from our public records.
           </p>
         </section>
       </div>

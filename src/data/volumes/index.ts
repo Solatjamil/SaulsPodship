@@ -55,6 +55,7 @@ import { volume_47 } from './volume_47';
 import { volume_48 } from './volume_48';
 import { volume_49 } from './volume_49';
 import { volume_50 } from './volume_50';
+import { volume_51 } from './volume_51';
 
 export const VOLUMES: Volume[] = [
   volume_01,
@@ -107,6 +108,7 @@ export const VOLUMES: Volume[] = [
   volume_48,
   volume_49,
   volume_50,
+  volume_51,
 ];
 
 export function getVolumeBySlug(slug: string): Volume | undefined {

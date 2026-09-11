@@ -103,7 +103,7 @@ export const VolumePage: React.FC = () => {
 
   // Copy Citation Helper
   const handleCopyCitation = () => {
-    const citation = `Saul's Podship Scriptorium. "${volume.title}: ${volume.subtitle || ''}." The 50-Volume Theological Encyclopedia, Vol. ${volume.number}, edited by Solat Nadeem, ${new Date().getFullYear()}, https://www.saulspodship.com/encyclopedia/${volume.slug}.`;
+    const citation = `Saul's Podship Scriptorium. "${volume.title}: ${volume.subtitle || ''}." The 51-Volume Theological Encyclopedia, Vol. ${volume.number}, edited by Solat Nadeem, ${new Date().getFullYear()}, https://www.saulspodship.com/encyclopedia/${volume.slug}.`;
     navigator.clipboard.writeText(citation);
     setCopiedCitation(true);
     setTimeout(() => setCopiedCitation(false), 2500);
@@ -332,7 +332,7 @@ export const VolumePage: React.FC = () => {
             <span className="text-xs font-black uppercase tracking-widest text-[#E8C96A]">Companion Modules</span>
           </div>
           <p className="text-center text-[11px] sm:text-xs text-white/60 mb-5 max-w-xl mx-auto">
-            Interactive charts woven from the same scholarship as the 50 volumes — open them alongside this dossier.
+            Interactive charts woven from the same scholarship as the 51 volumes — open them alongside this dossier.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a href="/prophecy-map" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-[#E8C96A] font-bold text-xs border border-[#D4AF37]/30 transition-all">

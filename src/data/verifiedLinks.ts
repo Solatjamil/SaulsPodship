@@ -65,4 +65,5 @@ export const VERIFIED_LINKS: Record<string, VolumeLinkRecord> = {
   "vatican-and-its-history": { articleLink: "https://goshsays.blogspot.com/2026/02/vatican-its-history.html", youtubeLink: "https://youtu.be/pDeMBdYmxCA", youtubeStatus: "scheduled" },  // #48
   "worlds-all-big-churches": { articleLink: "https://goshsays.blogspot.com/2026/02/worlds-all-big-churches.html", youtubeLink: "https://youtu.be/htbG7okSD54", youtubeStatus: "scheduled" },  // #49
   "1-year-sermon-guide-52-gen-z-topics": { articleLink: "https://goshsays.blogspot.com/2026/02/1-year-sermon-guide-52-gen-z-topics.html", youtubeLink: "https://youtu.be/lV4eQ_BrUU4", youtubeStatus: "scheduled" },  // #50
+  "kings-of-the-bible": { articleLink: "https://www.saulspodship.com/kings-of-the-bible", youtubeStatus: "scheduled" },  // #51 — interactive module, added 2026-09-11
 };

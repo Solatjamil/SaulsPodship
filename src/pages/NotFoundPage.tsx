@@ -34,7 +34,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = () => {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#4A152C] text-[#E8C96A] font-bold text-xs shadow hover:bg-[#681E3E] transition-all"
           >
             <BookOpen className="w-4 h-4" />
-            <span>Browse 50 Volumes</span>
+            <span>Browse 51 Volumes</span>
           </Link>
           <Link
             to="/"

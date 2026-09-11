@@ -50,5 +50,5 @@ if (hasError) {
   console.error('[CONTENT REGRESSION] Verification failed.');
   process.exit(1);
 } else {
-  console.log(`[CONTENT REGRESSION] Passed! All 50 volumes verified. Vol 22 verified with 8 panels and 7 tables.`);
+  console.log(`[CONTENT REGRESSION] Passed! All volumes verified. Vol 22 verified with 8 panels and 7 tables.`);
 }

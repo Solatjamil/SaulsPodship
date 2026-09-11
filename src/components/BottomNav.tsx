@@ -2,10 +2,10 @@
  * BottomNav — app-style bottom navigation for phones / tablets / installed PWA.
  * Visible < 1024px (the same breakpoint where the desktop nav row is hidden).
  *
- *   Home · Prophecy · Kings (centre) · Bible Links · Videos · More
+ *   Home · Questions · Volumes (centre) · Apologetics · Videos · More
  *
- * "More" opens a bottom sheet with every remaining destination — Comparative
- * Apologetics, 100 Tough Questions, the 50 Volumes, Podcast, Music, Studio…
+ * "More" opens a bottom sheet with every remaining destination — Prophecy Map,
+ * Bible Links (cross-references), Biblical Maps, Podcast, Music, Studio…
  */
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -19,9 +19,9 @@ type Item = { to: string; label: string; icon: React.ComponentType<{ className?:
 
 const TABS: Item[] = [
   { to: '/',                   label: 'Home',        icon: Home },
-  { to: '/prophecy-map',       label: 'Prophecy',    icon: Globe2 },
-  { to: '/kings-of-the-bible', label: 'Kings',       icon: Crown },
-  { to: '/cross-references',   label: 'Bible Links', icon: Network },
+  { to: '/theological-archive',     label: 'Questions',   icon: HelpCircle },
+  { to: '/encyclopedia',            label: 'Volumes',     icon: BookOpen },
+  { to: '/comparative-apologetics', label: 'Apologetics', icon: Scale },
   { to: '/videos/',            label: 'Videos',      icon: Video, static: true },
 ];
 
@@ -29,9 +29,9 @@ const MORE: { heading: string; items: Item[] }[] = [
   {
     heading: 'Study modules',
     items: [
-      { to: '/comparative-apologetics', label: 'Comparative Apologetics · 400 Questions', icon: Scale },
-      { to: '/theological-archive',     label: '100 Tough Questions · 1000 Quiz',          icon: HelpCircle },
-      { to: '/encyclopedia',            label: '50 Academic Volumes',                     icon: BookOpen },
+      { to: '/prophecy-map',            label: 'Prophecy Map · Globe & Timeline',        icon: Globe2 },
+      { to: '/cross-references',        label: 'Bible Links · Interlinked Cross-References', icon: Network },
+      { to: '/kings-of-the-bible',      label: 'Kings of the Bible · Volume 51',         icon: Crown },
       { to: '/encyclopedia/biblical-maps-atlas.html', label: 'Biblical Maps Atlas',       icon: Map, static: true },
     ],
   },

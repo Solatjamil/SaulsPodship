@@ -317,7 +317,7 @@ export const RootLayout: React.FC = () => {
                 Encyclopedia
               </h3>
               <ul className="space-y-2.5 text-xs text-white/70 text-center">
-                <li><Link to="/encyclopedia" className="hover:text-[#E8C96A] transition-colors">All 50 Volumes Index</Link></li>
+                <li><Link to="/encyclopedia" className="hover:text-[#E8C96A] transition-colors">All 51 Volumes Index</Link></li>
                 <li><Link to="/encyclopedia/all-bible-stories" className="hover:text-[#E8C96A] transition-colors">Vol 01: All Bible Stories</Link></li>
                 <li><Link to="/encyclopedia/names-of-god" className="hover:text-[#E8C96A] transition-colors">Vol 30: Names of God</Link></li>
                 <li><Link to="/encyclopedia/messianic-prophecies" className="hover:text-[#E8C96A] transition-colors">Vol 29: Messianic Prophecies</Link></li>

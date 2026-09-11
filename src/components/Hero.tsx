@@ -163,13 +163,13 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
             A rigorous, peer-reviewed digital scriptorium for Christian exegesis, historic theology, indigenous Punjabi Zaboor hymnody, and academic scripture analysis.
           </p>
           <p className="md:hidden text-xs sm:text-sm text-[#F8F4E3]/95 leading-snug">
-            An interactive theological encyclopedia — 50 illustrated volumes from Eden to the New Jerusalem.
+            An interactive theological encyclopedia — 51 illustrated volumes from Eden to the New Jerusalem.
           </p>
 
           {/* MOBILE: 2 primary buttons side-by-side + 2 text links. DESKTOP: all four as buttons */}
           <div className="grid grid-cols-2 gap-2 mt-4 md:flex md:flex-wrap md:justify-center md:gap-3 w-full sm:w-auto">
             <Link to="/encyclopedia" className="btn-gold text-xs sm:text-sm py-2 px-3 sm:py-3 sm:px-5">
-              Explore 50 Volumes
+              Explore 51 Volumes
             </Link>
             <a href={SITE.youtube} target="_blank" rel="noopener noreferrer" className="btn-red text-xs sm:text-sm py-2 px-3 sm:py-3 sm:px-5">
               YouTube Channel

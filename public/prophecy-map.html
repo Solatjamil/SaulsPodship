@@ -483,9 +483,20 @@ html[data-theme="dark"] .clab text{fill:var(--gold);fill-opacity:.12}
   #toolbar.sp-filters-open .pills,#toolbar.sp-filters-open .sel,#toolbar.sp-filters-open .toggle,#toolbar.sp-filters-open #viewTools{display:flex}
   #toolbar.sp-filters-open .sel{display:block;width:100%}
   #toolbar.sp-filters-open #viewTools{flex-wrap:wrap}
-  #stage{flex:none;height:min(72svh,560px);min-height:420px}
-  html.embedded #stage{height:560px}
+  #stage{flex:none;height:min(62svh,480px);min-height:380px}
+  html.embedded #stage{height:480px}
+  #spAxes{display:flex}
 }
+/* ---- phone axis controls (rotate the globe / pan other views) ---- */
+#spAxes{display:none;flex-direction:column;gap:6px;padding:8px 12px 10px;border-top:1px solid var(--line);
+  background:var(--panel);font-family:Inter,system-ui,sans-serif;font-size:11px;color:var(--txt2)}
+#spAxes label{display:flex;align-items:center;gap:8px}
+#spAxes label b{width:56px;font-weight:600;letter-spacing:.02em;flex:none}
+#spAxes input[type=range]{flex:1;accent-color:var(--maroon);height:26px;touch-action:pan-x}
+#spAxes .row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+#spAxes button{background:var(--panel3);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:11px;color:var(--txt2);cursor:pointer}
+#spAxes button.primary{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+@media (max-width:767px){ #spAxes{display:flex} }
 @media (min-width:768px){ #spFiltersBtn{display:none} }
 </style>
 <script type="application/ld+json">
@@ -589,6 +600,14 @@ html.embedded .hrow,html.embedded #toolbar .tabs,html.embedded .pills{justify-co
         <button id="btnCopy">Copy all verses</button>
       </div>
     </aside>
+  </div>
+  <div id="spAxes" aria-label="Rotate and pan controls">
+    <label><b>Rotate ⟷</b><input type="range" id="spAxX" min="-314" max="314" step="1" value="0" aria-label="Rotate left / right"></label>
+    <label><b>Rotate ⟰</b><input type="range" id="spAxY" min="-135" max="135" step="1" value="0" aria-label="Tilt up / down"></label>
+    <div class="row">
+      <span id="spAxHint">Drag the sliders to turn the globe · pinch or ＋/－ to zoom</span>
+      <button type="button" class="primary" onclick="(function(){var t=document.getElementById('stage');var y=t.getBoundingClientRect().bottom+window.scrollY+8;if(window.self!==window.top){try{window.parent.postMessage({sp:'skip-module'},'*');}catch(e){}}window.scrollTo({top:y,behavior:'smooth'});})()">Skip module ↓</button>
+    </div>
   </div>
 </div>
 
@@ -3953,6 +3972,34 @@ function bindGlobeEvents(cv){
   },{passive:false});
 }
 function gzoom(f){ G.zoom=Math.max(0.45,Math.min(3.2,G.zoom*f)); G.dirty=true; }
+/* ---- phone axis sliders: X = yaw, Y = pitch (globe) ---- */
+(function(){
+  const ax=document.getElementById("spAxX"), ay=document.getElementById("spAxY");
+  if(!ax||!ay) return;
+  let syncing=false;
+  function fromSliders(){
+    if(S.view!=="globe") return;
+    G.auto=false; const b=document.getElementById("gspin"); if(b){ b.textContent="Resume spin"; b.classList.add("on"); }
+    G.fly=null; G.vYaw=G.vPitch=0;
+    G.yaw=parseInt(ax.value,10)/100; G.pitch=Math.max(-1.35,Math.min(1.35,parseInt(ay.value,10)/100)); G.dirty=true;
+  }
+  ax.addEventListener("input",fromSliders); ay.addEventListener("input",fromSliders);
+  /* keep the sliders in step with drag / auto-rotation */
+  setInterval(()=>{ if(S.view!=="globe"||document.activeElement===ax||document.activeElement===ay) return;
+    const yaw=((G.yaw+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI;
+    ax.value=Math.round(yaw*100); ay.value=Math.round(G.pitch*100); },250);
+  /* other views: sliders pan the svg / grid horizontally & vertically */
+  window.__pmState={G,S};
+  window.spAxesMode=function(view){
+    const hint=document.getElementById("spAxHint"); const lbls=document.querySelectorAll("#spAxes label b");
+    if(view==="globe"){ lbls[0].textContent="Rotate ⟷"; lbls[1].textContent="Rotate ⟰"; hint.textContent="Drag the sliders to turn the globe · pinch or ＋/－ to zoom"; ax.min=-314; ax.max=314; ay.min=-135; ay.max=135; ax.value=Math.round(G.yaw*100); ay.value=Math.round(G.pitch*100); }
+    else { lbls[0].textContent="Scroll ⟷"; lbls[1].textContent="Scroll ⟰"; hint.textContent="Slide to move across the chart"; ax.min=0; ax.max=100; ay.min=0; ay.max=100;
+      const el=viz; ax.value=el.scrollWidth>el.clientWidth? Math.round(100*el.scrollLeft/(el.scrollWidth-el.clientWidth)):0; ay.value=el.scrollHeight>el.clientHeight? Math.round(100*el.scrollTop/(el.scrollHeight-el.clientHeight)):0; }
+  };
+  function panFromSliders(){ if(S.view==="globe") return; const el=viz;
+    el.scrollLeft=(el.scrollWidth-el.clientWidth)*parseInt(ax.value,10)/100; el.scrollTop=(el.scrollHeight-el.clientHeight)*parseInt(ay.value,10)/100; }
+  ax.addEventListener("input",panFromSliders); ay.addEventListener("input",panFromSliders);
+})();
 function greset(){ G.yaw=-0.55; G.pitch=-0.22; G.zoom=1; G.vYaw=G.vPitch=0; G.fly=null; G.dirty=true; }
 
 /* --------------------------------------------------------------- RENDER */
@@ -3963,6 +4010,7 @@ function render(){
   else if(S.view==="network") renderNetwork();
   else if(S.view==="timeline") renderTimeline();
   else renderGrid();
+  if(window.spAxesMode) window.spAxesMode(S.view);
   updateCounts();
   const hint=$("#lgHint");
   if(hint) hint.innerHTML = S.view==="globe"

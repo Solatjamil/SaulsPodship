@@ -30,7 +30,7 @@ export const StudioPage: React.FC = () => {
         const data = await res.json();
         setResearchResponse(data.reply || data.text || "Scriptorium analysis generated successfully.");
       } else {
-        setResearchResponse("The theological research assistant is currently optimizing query parameters. Please consult our 50 volumes in the Encyclopedia.");
+        setResearchResponse("The theological research assistant is currently optimizing query parameters. Please consult our 51 volumes in the Encyclopedia.");
       }
     } catch (err) {
       setResearchResponse("The Scriptorium research assistant operates on our 50-volume corpus. You may browse all topics directly in the Encyclopedia.");

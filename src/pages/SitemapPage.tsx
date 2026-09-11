@@ -32,7 +32,7 @@ export const SitemapPage: React.FC = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm">
             <Link to="/" className="text-[#4A152C] hover:underline font-semibold">Home &amp; Hero</Link>
-            <Link to="/encyclopedia" className="text-[#4A152C] hover:underline font-semibold">50-Volume Encyclopedia Catalog</Link>
+            <Link to="/encyclopedia" className="text-[#4A152C] hover:underline font-semibold">51-Volume Encyclopedia Catalog</Link>
             <Link to="/podcast" className="text-[#4A152C] hover:underline font-semibold">Theological Podcast</Link>
             <a href="/videos/" className="text-[#4A152C] hover:underline font-semibold">Bible Video Library</a>
             <Link to="/music" className="text-[#4A152C] hover:underline font-semibold">Sacred Music &amp; Hymnody</Link>
@@ -52,7 +52,7 @@ export const SitemapPage: React.FC = () => {
           </div>
         </section>
 
-        {/* All 50 Volumes */}
+        {/* All 51 Volumes */}
         <section className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-4">
           <h2 className="font-serif text-xl font-bold text-[#4A152C] border-b border-gray-100 pb-2">
             The 50 Encyclopedia Volumes

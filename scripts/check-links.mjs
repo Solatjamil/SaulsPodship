@@ -32,7 +32,7 @@ for (const v of volumes) {
 }
 
 if (missingLinks === 0) {
-  console.log(`[LINK CHECK] SUCCESS: All 50 volumes possess verified canonical article links.`);
+  console.log(`[LINK CHECK] SUCCESS: All ${volumes.length} volumes possess verified canonical article links.`);
 } else {
   console.log(`[LINK CHECK] Found ${missingLinks} volumes without article links.`);
 }

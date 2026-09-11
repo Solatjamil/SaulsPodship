@@ -17,7 +17,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<'number' | 'title'>('number');
 
   const categories = [
-    { id: 'all', label: 'All 50 Volumes', count: VOLUMES.length },
+    { id: 'all', label: 'All 51 Volumes', count: VOLUMES.length },
     { id: 'scholarly', label: 'Scholarly Exegesis', count: VOLUMES.filter(v => v.category === 'scholarly').length },
     { id: 'history', label: 'Historical Theology', count: VOLUMES.filter(v => v.category === 'history').length },
     { id: 'devotional', label: 'Devotional & Spiritual', count: VOLUMES.filter(v => v.category === 'devotional').length },
@@ -55,7 +55,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
             Complete Scriptorium Catalog
           </div>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-            50-Volume Theological Encyclopedia
+            51-Volume Theological Encyclopedia
           </h1>
           <p className="max-w-3xl mx-auto text-sm sm:text-base text-white/80 leading-relaxed font-light">
             Peer-reviewed doctrinal treatises, linguistic exegesis in Hebrew, Greek, and Aramaic, comparative canonical tables, historical timelines, and complete scriptural references.
@@ -87,7 +87,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-semibold text-gray-700 hover:bg-gray-50"
               >
                 <ArrowUpDown className="w-3.5 h-3.5" />
-                <span>{sortBy === 'number' ? 'Volume Number (1-50)' : 'Alphabetical Title'}</span>
+                <span>{sortBy === 'number' ? 'Volume Number (1-51)' : 'Alphabetical Title'}</span>
               </button>
             </div>
           </div>
@@ -124,7 +124,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
             <span className="text-xs font-black uppercase tracking-widest text-[#E8C96A]">Companion Modules</span>
           </div>
           <p className="text-center text-xs text-white/60 mb-6 max-w-xl mx-auto">
-            Interactive charts woven from the same scholarship as the 50 volumes — open them alongside any volume.
+            Interactive charts woven from the same scholarship as the 51 volumes — open them alongside any volume.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             <a
@@ -186,7 +186,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-center justify-between mb-8">
           <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">
-            Showing {filteredVolumes.length} of 50 Volumes
+            Showing {filteredVolumes.length} of 51 Volumes
           </p>
         </div>
 

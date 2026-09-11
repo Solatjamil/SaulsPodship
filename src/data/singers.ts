@@ -27,14 +27,14 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
   {
     id: "jamson-j-din",
     name: "Jamson J. Din",
-    badge: "Deceased Patriarch & Master Composer",
+    badge: "Late Patriarch & Master Composer (1942–2020)",
     role: "Legendary Tabla Artist, Gospel Music Composer, Singer & Choir Director",
     status: "deceased",
     category: "both",
-    dates: "Deceased Pioneer",
+    dates: "17 February 1942 – October 2020",
     academicCredentials: "Master of Tabla Virtuosity, Devotional Harmonium & Classical Choral Conducting",
     lineageNote: "Patriarch of the Din Musical Dynasty; Brother of Robson J. Din; Father of Nadeem Jamil; Grandfather of Solat Nadeem",
-    bio: "Patriarch of a revered Pakistani Christian musical family and a legendary pioneer in gospel music composition, devotional singing, and percussion. Jamson J. Din was renowned as a master Tabla Artist whose rhythmic brilliance, intricate bols, and deep spiritual sensitivity anchored decades of worship across Punjab. Alongside his mastery of the harmonium and choral hymnody, his dedication to sacred rhythm set an indelible benchmark for gospel musicians throughout Pakistan.",
+    bio: "Born 17 February 1942 and called home in October 2020, Jamson J. Din was the patriarch of a revered Pakistani Christian musical family and a legendary pioneer in gospel music composition, devotional singing, and percussion. Jamson J. Din was renowned as a master Tabla Artist whose rhythmic brilliance, intricate bols, and deep spiritual sensitivity anchored decades of worship across Punjab. Alongside his mastery of the harmonium and choral hymnody, his dedication to sacred rhythm set an indelible benchmark for gospel musicians throughout Pakistan.",
     majorContributions: [
       "Master Tabla Artist and percussion virtuoso who defined traditional Punjabi Zaboor accompaniment",
       "Pioneered foundational gospel compositions and choral psalm arrangements in Pakistani churches",

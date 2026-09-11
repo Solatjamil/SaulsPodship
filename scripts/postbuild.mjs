@@ -230,4 +230,4 @@ const notFoundHtml = baseTemplate.replace(
   `<title>Page Not Found | Saul's Podship</title>`
 );
 fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf8');
-console.log(`[POSTBUILD] Pre-rendered all 50 volumes + static pages + redirects successfully.`);
+console.log(`[POSTBUILD] Pre-rendered all volumes + static pages + redirects successfully.`);

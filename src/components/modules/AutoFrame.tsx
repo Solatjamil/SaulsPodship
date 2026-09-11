@@ -29,7 +29,7 @@ const AutoFrame: React.FC<Props> = ({ src, title, initial = '76vh', min = 560, c
         if (!d.getElementById('sp-frame-fit')) {
           const st = d.createElement('style');
           st.id = 'sp-frame-fit';
-          st.textContent = '#viz{height:880px !important;min-height:520px !important}';
+          st.textContent = '@media (min-width:768px){#viz{height:880px !important;min-height:520px !important}}';
           d.head.appendChild(st);
         }
         const h = Math.max(d.documentElement.scrollHeight, d.body.scrollHeight);
@@ -51,7 +51,15 @@ const AutoFrame: React.FC<Props> = ({ src, title, initial = '76vh', min = 560, c
     } catch {
       /* cross-origin guard */
     }
+    // "Skip module ↓" inside the frame: scroll the host page just past the iframe
+    const onMsg = (e: MessageEvent) => {
+      if (e.source !== f.contentWindow || !e.data || e.data.sp !== 'skip-module') return;
+      const bottom = f.getBoundingClientRect().bottom + window.scrollY - 56;
+      window.scrollTo({ top: bottom, behavior: 'smooth' });
+    };
+    window.addEventListener('message', onMsg);
     return () => {
+      window.removeEventListener('message', onMsg);
       f.removeEventListener('load', fit);
       window.clearInterval(iv);
       ro?.disconnect();

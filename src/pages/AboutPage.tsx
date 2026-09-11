@@ -61,7 +61,7 @@ export const AboutPage: React.FC = () => {
             <Award className="w-8 h-8 text-[#8B1C2E] mb-3" />
             <h3 className="font-serif font-bold text-lg text-[#4A152C] mb-2">Open Scriptorium</h3>
             <p className="text-xs text-gray-600 leading-relaxed">
-              All 50 volumes, audio lectures, data tables, and study materials remain completely free and accessible for worldwide research.
+              All 51 volumes, audio lectures, data tables, and study materials remain completely free and accessible for worldwide research.
             </p>
           </div>
         </section>
@@ -71,7 +71,7 @@ export const AboutPage: React.FC = () => {
             Explore the Encyclopedia
           </h2>
           <p className="text-sm text-white/80 leading-relaxed">
-            Discover all 50 volumes covering Systematic Theology, Messianic Prophecies, Biblical Numerology, the Book of Revelation, and the Five Offerings of Leviticus.
+            Discover all 51 volumes covering Systematic Theology, Messianic Prophecies, Biblical Numerology, the Book of Revelation, and the Five Offerings of Leviticus.
           </p>
           <div className="pt-2">
             <Link
