@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { compose as composeOffline, durationSeconds, type Composition } from "../src/lib/studio/composeEngine";
+import { StudioPlayer, renderWav, loadLibrary, saveToLibrary as saveLocal, removeFromLibrary, leadSheetText } from "../src/lib/studio/audioEngine";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Music, Sliders, Hash, Activity, Sparkles, Book, Save, Trash, Play,
-  Search, ChevronLeft, ArrowRight, CornerDownRight, Volume2, Globe, FileText
+  Music, Sliders, Hash, Activity, Sparkles, Book, Save, Trash, Play, Pause, Square,
+  Search, ChevronLeft, ArrowRight, CornerDownRight, Volume2, Globe, FileText, Download, Shuffle, Drum, Waves
 } from "lucide-react";
 import {
   STYLES, WI, SAI, RHYTHMS, ZB, KB, RI, RMp, SD,
@@ -54,62 +56,55 @@ export const GospelComposer: React.FC<GospelComposerProps> = ({
   const [savedCompositions, setSavedCompositions] = useState<any[]>([]);
   const [recentlySavedId, setRecentlySavedId] = useState<string | null>(null);
 
-  // Sync Compositions list from Backend DB
-  const loadSavedCompositions = async () => {
-    try {
-      const res = await fetch("/api/compositions");
-      if (res.ok) {
-        const list = await res.json();
-        setSavedCompositions(list);
-      }
-    } catch (e) {
-      console.error("Failed to load compositions list:", e);
-    }
-  };
+  // ---- Devotional Library (stored in this browser, no server needed) ----
+  const loadSavedCompositions = () => setSavedCompositions(loadLibrary());
+  useEffect(() => { loadSavedCompositions(); }, []);
 
-  useEffect(() => {
-    loadSavedCompositions();
-  }, []);
-
-  // Save composition to custom backend database
-  const saveToLibrary = async (compToSave: any) => {
+  const saveToLibrary = (compToSave: any) => {
     if (!compToSave) return;
-    try {
-      const res = await fetch("/api/compositions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(compToSave),
-      });
-      if (res.ok) {
-        const result = await res.json();
-        setRecentlySavedId(result.item.id);
-        loadSavedCompositions();
-        setTimeout(() => setRecentlySavedId(null), 3000);
-      } else {
-        alert("Failed to save. Make sure the server backend is fully online.");
-      }
-    } catch (e: any) {
-      alert("Error saving: " + e.message);
-    }
+    setSavedCompositions(saveLocal(compToSave));
+    setRecentlySavedId(compToSave.id);
+    setTimeout(() => setRecentlySavedId(null), 3000);
   };
 
-  // Delete composition from custom backend database
-  const deleteFromLibrary = async (id: string) => {
-    if (!window.confirm("Are you sure you want to delete this composition?")) return;
-    try {
-      const res = await fetch(`/api/compositions/${id}`, {
-        method: "DELETE",
-      });
-      if (res.ok) {
-        loadSavedCompositions();
-        if (composition && composition.id === id) {
-          setComposition(null);
-        }
-      }
-    } catch (e: any) {
-      alert("Error deleting: " + e.message);
-    }
+  const deleteFromLibrary = (id: string) => {
+    if (!window.confirm("Remove this composition from your library?")) return;
+    setSavedCompositions(removeFromLibrary(id));
+    if (composition && composition.id === id) setComposition(null);
   };
+
+  // ---- Player (Web Audio, synthesised in the browser) ----
+  const playerRef = useRef<StudioPlayer | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState({ elapsed: 0, total: 0, bar: 0 });
+  const [stems, setStems] = useState({ drone: true, perc: true, bass: true });
+  const [rendering, setRendering] = useState(false);
+  useEffect(() => {
+    const p = new StudioPlayer();
+    p.onProgress = (elapsed, total, bar) => setProgress({ elapsed, total, bar });
+    p.onEnd = () => setIsPlaying(false);
+    playerRef.current = p;
+    return () => p.stop();
+  }, []);
+  useEffect(() => { if (playerRef.current) playerRef.current.muted = { drone: !stems.drone, perc: !stems.perc, bass: !stems.bass }; }, [stems]);
+  const togglePlay = (c: any) => {
+    const p = playerRef.current; if (!p || !c) return;
+    if (isPlaying) { p.stop(); setIsPlaying(false); return; }
+    p.play(c); setIsPlaying(true);
+  };
+  const stopPlay = () => { playerRef.current?.stop(); setIsPlaying(false); setProgress({ elapsed: 0, total: 0, bar: 0 }); };
+  const downloadWav = async (c: any) => {
+    if (!c) return; setRendering(true);
+    try {
+      const blob = await renderWav(c, { drone: !stems.drone, perc: !stems.perc, bass: !stems.bass });
+      const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `${c.title.replace(/[^a-z0-9]+/gi, "-")}.wav`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    } finally { setRendering(false); }
+  };
+  const downloadSheet = (c: any) => {
+    if (!c) return; const blob = new Blob([leadSheetText(c)], { type: "text/plain" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `${c.title.replace(/[^a-z0-9]+/gi, "-")}-lead-sheet.txt`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  };
+  const fmt = (sec: number) => `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, "0")}`;
 
   // Helper toggle functions
   const handleToggleInstrument = (instrName: string) => {
@@ -419,80 +414,37 @@ export const GospelComposer: React.FC<GospelComposerProps> = ({
     );
   };
 
-  // Call Server-Side API endpoint
-  const handleCompose = async () => {
+  // Compose — runs entirely in the browser (deterministic engine, no AI / no server)
+  const handleCompose = (variationSeed?: number) => {
     if (!selectedInstrs.length) {
       setErrorMessage("Please select at least one instrument.");
       return;
     }
-
+    stopPlay();
     setLoading(true);
     setErrorMessage("");
     setComposition(null);
-
-    const styleDesc = SD[styleMode] || SD.punjabi;
-    const hCtx = ctxH
-      ? `\nSIALKOT GEET KI KITAB HYMN: "${ctxH.r}" (${ctxH.u}) — ${
-          ctxH.t === "zaboor" ? "Zaboor setting" : "Masihi Geet"
-        }, Theme: ${ctxH.tp}. Capture the devotional spirit of this beloved South Asian Christian hymn.`
-      : "";
-    const zCtx = ctxZ
-      ? `\nPUNJABI ZABOOR ${ctxZ.n}: "${ctxZ.r}" (${ctxZ.p}) — Raag: ${ctxZ.rg}, ${
-          ctxZ.bpm
-        } BPM, Theme: ${ctxZ.tp}. Compose in authentic Desi Raag style. Describe raag characteristics in the raagDescription field.`
-      : "";
-    const rCtx = selectedRhythmId
-      ? (() => {
-          const r = RHYTHMS.find((x) => x.id === selectedRhythmId);
-          return r
-            ? `\nRHYTHM/TAAL PATTERN: "${r.nm}" — ${r.tgs.join(", ")}${
-                r.r ? " — Raag: " + r.r : ""
-              }. Pattern: ${r.pt}`
-            : "";
-        })()
-      : "";
-
-    const systemPrompt = `You are 'Theophilus', the world's premier sacred music composer with deep mastery of both Western Gospel and South Asian devotional music — especially the Punjabi Zaboor (1908 Desi Ragan Vich tradition by Dr. Imam Din Shahbaz) and the Sialkot Convention Geet Ki Kitab.
-    
-Return a response conforming STRICTLY to the specified output XML/JSON schema. Keep romanized Punjabi/Urdu for South Asian styles. Remove any single quotes inside string fields (use "dont" instead of "don't" etc.) to guarantee perfect JSON parser output.`;
-
-    const userPrompt = `Compose a ${styleMode.toUpperCase()} sacred music piece with these specifications:
-    Genre: ${genre.replace(/-/g, " ")}
-    Musical Key / Raag: ${keyRaag}
-    Time Signature / Taal: ${timeSig}
-    Tempo: ${tempo}
-    Instruments available: ${selectedInstrs.join(", ")}
-    Style direction: ${styleDesc}
-    ${hCtx}${zCtx}${rCtx}
-    ${promptTxt ? `Composer's vision: "${promptTxt}"` : ""}
-
-    Requirements:
-    - At least 5 distinct sections with heartfelt, scripture-inspired lyrics (minimum 4 lines each).
-    - If South Asian: naturally weave in romanized Punjabi or Urdu phrases.
-    - Provide sheetNotes for at least 2 instrument parts with real melodic content.
-    - Make the composition intellectually, historically, and spiritually coherent.`;
-
-    try {
-      const res = await fetch("/api/compose", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ systemPrompt, userPrompt }),
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Generation endpoint returned an error");
+    const rhythm = selectedRhythmId ? RHYTHMS.find((x) => x.id === selectedRhythmId) || null : null;
+    // small delay so the console animation reads as "writing"
+    window.setTimeout(() => {
+      try {
+        const result: Composition = composeOffline({
+          styleMode, genre, keyRaag, timeSig, tempo,
+          instruments: selectedInstrs, prompt: promptTxt,
+          zaboor: ctxZ, geet: ctxH, rhythm: rhythm ? { nm: rhythm.nm, pt: rhythm.pt, r: rhythm.r } : null,
+          seed: variationSeed,
+        });
+        setComposition(result);
+        setActiveSubTab("comp");
+      } catch (e: any) {
+        console.error(e);
+        setErrorMessage(e.message || "The composer could not write this piece. Please try again.");
+      } finally {
+        setLoading(false);
       }
-
-      const data = await res.json();
-      setComposition(data);
-    } catch (e: any) {
-      console.error(e);
-      setErrorMessage(e.message || "An unexpected error occurred. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    }, 900);
   };
+  const handleVariation = () => handleCompose(Math.floor(Math.random() * 1e9));
 
   // Searching logic for Zaboors and Hymns
   const filteredZaboors = ZB.filter((z) => {
@@ -551,7 +503,7 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
             SACRED STRINGS &amp; GOSPEL COMPOSER
           </h2>
           <p className="text-xs opacity-60 mt-1 max-w-xl font-serif-heading italic">
-            Durable full-stack AI melody generator set to traditional 1908 Punjabi Zaboor Raags, Sialkot hymns, &amp; global gospel.
+            Write, hear and download sacred songs set to the 1908 Punjabi Zaboor raags, Sialkot hymns &amp; global gospel — composed and played right here in your browser.
           </p>
         </div>
 
@@ -827,18 +779,18 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
                 <div className="p-4 rounded-2xl border border-red-500/20 bg-red-500/10 text-red-100 text-xs leading-relaxed">
                   <strong>General Error: </strong> {errorMessage}
                   <p className="opacity-60 text-[10px] mt-1">
-                    Tip: Try writing smaller descriptions without raw special characters, and make sure the server database configuration is online in Secrets.
+                    Tip: choose at least one instrument, then compose again.
                   </p>
                 </div>
               )}
 
               {/* Click to compose button */}
               <button
-                onClick={handleCompose}
+                onClick={() => handleCompose()}
                 disabled={loading}
                 className="w-full py-4 text-center rounded-2xl text-xs uppercase font-serif-heading font-black tracking-[0.25em] text-[#4a152c] transition-all bg-gradient-to-r from-[#D4AF37] to-[#E8C97A] hover:scale-[1.01] hover:shadow-xl active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {loading ? "✦ Composing spiritual music in the archives... ✦" : "✦ Compose Sacred Music ✦"}
+                {loading ? "✦ Writing the score... ✦" : "✦ Compose Sacred Music ✦"}
               </button>
             </div>
 
@@ -851,10 +803,10 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
                     <span className="text-[#D4AF37] animate-pulse">⚜</span>
                   </div>
                   <h4 className="text-[#D4AF37] uppercase font-black text-xs tracking-widest">
-                    AI Theological Musician Active
+                    Theophilus is writing
                   </h4>
                   <p className="text-[10px] opacity-70 leading-relaxed font-serif-heading max-w-xs">
-                    Sifting through the 1908 Desi Raag manuscripts and the Sialkot Convening databases to formulate deep chords, authentic Punjabi-Urdu meter, and vector staffs...
+                    Setting the raag, laying the theka, shaping the melody and fitting the words — a moment, please…
                   </p>
                 </div>
               )}
@@ -865,7 +817,7 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
                   {/* Save to library banner */}
                   <div className="flex items-center justify-between border border-[#D4AF37]/20 p-4 rounded-3xl bg-[#D4AF37]/5">
                     <span className="text-[10px] font-black tracking-widest text-[#D4AF37]">
-                      Composition Generated successfully!
+                      Your song is ready
                     </span>
                     <button
                       onClick={() => saveToLibrary(composition)}
@@ -878,6 +830,56 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
                       <Save className="w-3 h-3" />
                       {recentlySavedId ? "Saved successfully!" : "Save to Library"}
                     </button>
+                  </div>
+
+                  {/* ---- PLAYER (Suno-style card) ---- */}
+                  <div className="rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-br from-[#1A0812] via-[#2D0F1E] to-[#1A0812] text-white p-5 space-y-4 shadow-xl">
+                    <div className="flex items-start gap-4">
+                      <button
+                        type="button"
+                        onClick={() => togglePlay(composition)}
+                        aria-label={isPlaying ? "Pause" : "Play"}
+                        className="h-16 w-16 shrink-0 rounded-full bg-[#D4AF37] text-[#1A0812] flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                      >
+                        {isPlaying ? <Pause className="w-7 h-7" /> : <Play className="w-7 h-7 ml-1" />}
+                      </button>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[9px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Now playing · Scriptorium Studio</p>
+                        <h3 className="font-serif text-lg font-bold leading-tight truncate">{composition.title}</h3>
+                        <p className="text-[11px] text-white/70 truncate">{composition.subtitle}</p>
+                        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[10px] text-white/60 font-mono">
+                          <span>{composition.key}</span><span>{composition.timeSig}</span><span>{composition.bpm} BPM</span><span>{fmt(durationSeconds(composition))}</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* progress */}
+                    <div className="space-y-1">
+                      <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-[#D4AF37] to-[#E8C97A] transition-[width] duration-150" style={{ width: `${progress.total ? Math.min(100, (progress.elapsed / progress.total) * 100) : 0}%` }} />
+                      </div>
+                      <div className="flex justify-between text-[10px] font-mono text-white/60">
+                        <span>{fmt(progress.elapsed)}</span>
+                        <span className="truncate px-2 text-[#E8C96A]">{isPlaying ? (composition.sections.find((_: any, i: number, arr: any[]) => { const start = arr.slice(0, i).reduce((n: number, x: any) => n + x.measures, 0); return progress.bar >= start && progress.bar < start + arr[i].measures; })?.name || "") : "Press play to hear the arrangement"}</span>
+                        <span>{fmt(progress.total || durationSeconds(composition))}</span>
+                      </div>
+                    </div>
+                    {/* stems + actions */}
+                    <div className="flex flex-wrap items-center gap-2">
+                      {([["drone", "Drone", Waves], ["perc", "Tabla / Dholak", Drum], ["bass", "Bass", Volume2]] as const).map(([k, label, Icon]) => (
+                        <button key={k} type="button" onClick={() => setStems(st => ({ ...st, [k]: !st[k] }))}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider border transition-colors ${stems[k] ? "bg-[#D4AF37]/20 border-[#D4AF37]/60 text-[#E8C96A]" : "bg-white/5 border-white/15 text-white/50 line-through"}`}>
+                          <Icon className="w-3 h-3" /> {label}
+                        </button>
+                      ))}
+                      <span className="flex-1" />
+                      <button type="button" onClick={stopPlay} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20"><Square className="w-3 h-3" /> Stop</button>
+                      <button type="button" onClick={handleVariation} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20"><Shuffle className="w-3 h-3" /> New variation</button>
+                      <button type="button" onClick={() => downloadWav(composition)} disabled={rendering} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#D4AF37] text-[#1A0812] hover:bg-[#E8C97A] disabled:opacity-50"><Download className="w-3 h-3" /> {rendering ? "Rendering…" : "Download WAV"}</button>
+                      <button type="button" onClick={() => downloadSheet(composition)} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20"><FileText className="w-3 h-3" /> Lead sheet</button>
+                    </div>
+                    {composition.theka && (
+                      <p className="text-[10px] font-mono text-white/55 border-t border-white/10 pt-3"><span className="text-[#D4AF37] font-bold">Theka:</span> {composition.theka}</p>
+                    )}
                   </div>
 
                   {/* output tabs */}
@@ -1356,7 +1358,7 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
             <div className="p-4 rounded-3xl bg-[#D4AF37]/5 border border-[#D4AF37]/20 flex gap-4 text-xs items-center leading-relaxed">
               <span className="text-2xl">🔒</span>
               <div>
-                <strong>Saved Devotional Compositions:</strong> These items are persistent-stored on the backend using the local database registry. Read them, pull sheet notations, or prune records directly.
+                <strong>Saved Devotional Compositions:</strong> Saved in this browser on this device — no account needed. Play them, load them back into the studio, download WAV or lead sheets, or remove them.
               </div>
             </div>
 
@@ -1385,6 +1387,13 @@ Return a response conforming STRICTLY to the specified output XML/JSON schema. K
                             {comp.subtitle || "No subtitle"}
                           </p>
                         </div>
+                        <button
+                          onClick={() => { setComposition(comp); setActiveTab("c"); setActiveSubTab("comp"); window.setTimeout(() => togglePlay(comp), 50); }}
+                          className="p-2 rounded-full bg-[#D4AF37] text-[#4a152c] hover:scale-110 transition-transform mr-1"
+                          aria-label="Play"
+                        >
+                          <Play className="w-3 h-3 ml-0.5" />
+                        </button>
                         <button
                           onClick={() => deleteFromLibrary(comp.id)}
                           className="p-2 rounded-xl text-neutral-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
