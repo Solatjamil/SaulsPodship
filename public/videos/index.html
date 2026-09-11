@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos — Saul's Podship | Scripture through story, sound, and Spirit</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="canonical" href="https://www.saulspodship.com/videos/">
+<meta name="description" content="Watch Saul's Podship on YouTube — the whole Bible explained one book at a time, plus the 14 non-canonical books. Listen to Scripture through story, sound, and Spirit.">
+<meta property="og:title" content="Videos — Saul's Podship">
+<meta property="og:description" content="See Scripture in a fresh way. 66 canonical books + the hidden prophetic voices, one episode at a time.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://i.ytimg.com/vi/cRXHxirU2L8/maxresdefault.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;0,800;1,600&family=Inter:wght@400;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/videos.css">
+<!-- JSON-LD (episode list for search engines) -->
+<script type="application/ld+json" id="sp-schema">{"@context":"https://schema.org","@type":"WebPage"}</script>
+</head>
+<body>
+
+<div class="sp-shell">
+
+  <!-- ============ top bar ============ -->
+  <header class="sp-topbar">
+    <a class="sp-logo" href="https://www.saulspodship.com/">
+      <img class="sp-logo-img" src="assets/logo.png" alt="Saul's Podship logo" width="40" height="40">
+      Saul's&nbsp;Podship
+    </a>
+    <nav>
+      <a class="pill" data-href="subscribe" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        Subscribe
+      </a>
+    </nav>
+  </header>
+
+  <!-- ============ hero ============ -->
+  <section class="sp-hero">
+    <span class="eyebrow">
+      <span class="yt-chip" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13l11-6.5z"/></svg>
+      </span>
+      Videos
+    </span>
+
+    <h1>See Scripture in a <em>fresh</em> way.</h1>
+    <p class="lede">
+      Saul's Podship is a biblical ministry exploring Scripture through story, sound, and
+      Spirit. Walk the whole Bible — 66 canonical books and the 14 non-canonical voices —
+      one short, narrated episode at a time. Press play and listen.
+    </p>
+
+    <div class="sp-cta-row">
+      <a class="pill pill--dark" data-href="yt" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+        Watch on YouTube
+      </a>
+      <a class="pill" href="https://www.youtube.com/playlist?list=PL8xJ8m8_tH6mBsW14vBGQUngWnequdV5X" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h11M4 12h11M4 18h7M18 14l4 3-4 3"/></svg>
+        Start with the Torah
+      </a>
+    </div>
+
+    <!-- latest episodes rail -->
+    <div class="sp-rail-wrap">
+      <div class="sp-rail-head">
+        <h2>Fresh from the studio</h2>
+        <a class="see-all" href="#sp-list-card">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+      </div>
+      <div class="sp-rail" id="sp-rail" role="list" aria-label="Latest episodes"></div>
+    </div>
+  </section>
+
+  <!-- ============ collections (playlists) ============ -->
+  <div class="sp-coll" id="sp-coll" aria-label="Playlists"></div>
+
+  <!-- ============ the full link list ============ -->
+  <section class="sp-list-card" id="sp-list-card">
+    <div class="sp-list-head">
+      <div>
+        <h2>The Watch List</h2>
+        <div class="sp-count" id="sp-count"></div>
+      </div>
+      <div class="sp-tools" id="sp-tools">
+        <div id="sp-chips" class="sp-tools" role="group" aria-label="Filter episodes"></div>
+        <span class="sp-search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <input id="sp-q" type="search" placeholder="Search books…" aria-label="Search episodes">
+        </span>
+      </div>
+    </div>
+
+    <div id="sp-list" role="list" aria-label="All episodes"></div>
+    <div class="sp-more" id="sp-more"></div>
+  </section>
+
+  <p class="sp-footnote">
+    <span id="sp-generated"></span> — <a data-href="yt" target="_blank" rel="noopener">youtube.com/@thesaulspodship</a>
+  </p>
+</div>
+
+<!-- ============ player modal ============ -->
+<div class="sp-modal" id="sp-modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="sp-modal-card">
+    <button class="close-x" id="sp-m-close" aria-label="Close player">✕</button>
+    <div class="frame" id="sp-frame"></div>
+    <div class="body">
+      <h3 id="sp-m-title"></h3>
+      <div class="actions">
+        <a class="pill pill--dark" id="sp-m-yt" href="#" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          Watch on YouTube
+        </a>
+        <div class="nav-btns">
+          <button class="pill" id="sp-m-prev" aria-label="Previous episode">← Prev</button>
+          <button class="pill" id="sp-m-next" aria-label="Next episode">Next →</button>
+        </div>
+      </div>
+      <p style="margin:14px 0 0"><button id="sp-m-nextline" class="see-all" style="background:none;border:0;cursor:pointer;font:inherit"></button></p>
+    </div>
+  </div>
+</div>
+
+<script src="assets/videos-data.js"></script>
+<script src="assets/videos.js"></script>
+<script>
+/* Build JSON-LD for search engines from the same dataset */
+(function () {
+  try {
+    var D = window.SAULS_VIDEOS; if (!D) return;
+    var items = D.videos.map(function (v, i) {
+      return {
+        '@type': 'ListItem', 'position': i + 1,
+        'url': 'https://www.youtube.com/watch?v=' + v.id,
+        'name': v.title,
+        'thumbnailUrl': 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg'
+      };
+    });
+    var ld = {
+      '@context': 'https://schema.org', '@type': 'ItemList',
+      name: "Saul's Podship — Episodes",
+      description: 'The whole Bible, one book at a time — canonical and non-canonical episodes on YouTube.',
+      numberOfItems: items.length, itemListElement: items
+    };
+    document.getElementById('sp-schema').textContent = JSON.stringify(ld);
+  } catch (e) { console.warn('schema skipped', e); }
+})();
+</script>
+<script src="/assets/bottom-nav.js?v=260911" defer></script>
+</body>
+</html>

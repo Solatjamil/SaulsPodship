@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where did God come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "God did not come from anywhere. He is uncreated and eternal — the one being who simply is, from whom everything else derives its existence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If God is good, why is there evil and suffering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scripture does not explain evil away; it says God is neither its author nor its victim, and that in Christ he entered suffering rather than merely permitting it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can God be three Persons and one God?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One divine essence subsisting in three distinct Persons — not three gods, not one Person in three masks. The distinction is of relation, not of substance."
+      }
+    }
+  ]
+}
