@@ -27,8 +27,8 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ themeStyles, currentView
       answer: "Saul's Podship is an interactive theological research archive and digital ministry project led by Solat Nadeem. By combining robust historical-grammatical hermeneutics, immersive timelines, graphic lineages, and narrative audio, we make complex biblical scholarship accessible, engaging, and spiritually transformative for a modern digital generation."
     },
     {
-      question: "How do I navigate and study the 50 Volumes of Saul's Podship Encyclopedia?",
-      answer: "The library is structured into 50 distinct scholarly chapters mapping key biblical eras, original Hebrew covenants, and prophecies. To begin studying, click 'Access The Library' on the landing page, choose an active Volume card, and adjust your personal Scholar settings (such as Ivory/Sepia/Midnight, font size, and serif legibility) from the preferences drawer. Each volume features detailed timelines, maps, and scholarly analyses."
+      question: "How do I navigate and study the 51 Volumes of Saul's Podship Encyclopedia?",
+      answer: "The library is structured into 51 distinct scholarly chapters mapping key biblical eras, original Hebrew covenants, and prophecies. To begin studying, click 'Access The Library' on the landing page, choose an active Volume card, and adjust your personal Scholar settings (such as Ivory/Sepia/Midnight, font size, and serif legibility) from the preferences drawer. Each volume features detailed timelines, maps, and scholarly analyses."
     },
     {
       question: "What is the meaning and purpose of the 'Electric Border' interactive effect?",

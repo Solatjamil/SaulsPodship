@@ -7,7 +7,7 @@
  * "More" opens a bottom sheet with every remaining destination — Prophecy Map,
  * Bible Links (cross-references), Biblical Maps, Podcast, Music, Studio…
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Home, Globe2, Network, Crown, Video, LayoutGrid, X,
@@ -59,6 +59,36 @@ const isActive = (to: string, pathname: string) =>
 const BottomNav: React.FC = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+
+  // position:fixed pins to the LAYOUT viewport; when the browser pinch-zooms
+  // (or auto-zooms into a small input) the bar slides out of view. Track the
+  // visual viewport and keep the bar glued to its bottom edge instead.
+  useEffect(() => {
+    const vv = window.visualViewport;
+    const nav = navRef.current;
+    if (!vv || !nav) return;
+    let raf = 0;
+    const place = () => {
+      raf = 0;
+      const scale = vv.scale || 1;
+      if (scale <= 1.02 && Math.abs(vv.offsetTop) < 1) {
+        nav.style.transform = ''; nav.style.top = ''; nav.style.left = ''; nav.style.width = ''; nav.style.bottom = '';
+        return;
+      }
+      const h = nav.offsetHeight;
+      nav.style.bottom = 'auto';
+      nav.style.left = `${vv.offsetLeft}px`;
+      nav.style.width = `${vv.width}px`;
+      nav.style.top = `${vv.offsetTop + vv.height - h / scale}px`;
+      nav.style.transformOrigin = 'top left';
+      nav.style.transform = `scale(${1 / scale})`;
+    };
+    const onChange = () => { if (!raf) raf = requestAnimationFrame(place); };
+    vv.addEventListener('resize', onChange); vv.addEventListener('scroll', onChange); window.addEventListener('scroll', onChange, { passive: true });
+    place();
+    return () => { vv.removeEventListener('resize', onChange); vv.removeEventListener('scroll', onChange); window.removeEventListener('scroll', onChange); if (raf) cancelAnimationFrame(raf); };
+  }, []);
 
   // close the sheet on navigation + lock scroll while open
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -134,6 +164,7 @@ const BottomNav: React.FC = () => {
 
       {/* ---- tab bar ---- */}
       <nav
+        ref={navRef}
         id="sp-bottom-nav"
         aria-label="Primary mobile navigation"
         className="lg:hidden fixed inset-x-0 bottom-0 z-[400] bg-[#16060f]/95 backdrop-blur-xl border-t border-[#D4AF37]/30 shadow-[0_-6px_24px_rgba(0,0,0,0.35)] pb-[env(safe-area-inset-bottom)] text-left"

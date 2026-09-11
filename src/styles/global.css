@@ -229,3 +229,9 @@ th, td {
 ::-webkit-scrollbar-thumb:hover {
   background: #b5952f; 
 }
+
+/* ===== 2026-09-11: stop mobile browsers auto-zooming into small form
+   controls (that zoom is what made the bottom nav "disappear") ===== */
+@media (max-width: 1023px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea { font-size: 16px !important; }
+}

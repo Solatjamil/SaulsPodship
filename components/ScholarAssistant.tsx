@@ -7,7 +7,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, BookOpen, Search, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Lightweight catalogue (title/overview only) — keeps the 50 volume bodies out of the home-page bundle.
+// Lightweight catalogue (title/overview only) — keeps the 51 volume bodies out of the home-page bundle.
 import { VOLUME_INDEX as CATEGORIES } from "../src/data/volumes/index-lite";
 import { ChatMessage } from '../types';
 

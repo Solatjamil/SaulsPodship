@@ -20,7 +20,7 @@ export const SitemapPage: React.FC = () => {
           <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-white">
             HTML Site Directory &amp; Sitemap
           </h1>
-          <p className="text-xs sm:text-sm text-white/70">Complete structured directory of all 50 theological volumes and ministry pages.</p>
+          <p className="text-xs sm:text-sm text-white/70">Complete structured directory of all 51 theological volumes and ministry pages.</p>
         </div>
       </section>
 
@@ -55,7 +55,7 @@ export const SitemapPage: React.FC = () => {
         {/* All 51 Volumes */}
         <section className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-4">
           <h2 className="font-serif text-xl font-bold text-[#4A152C] border-b border-gray-100 pb-2">
-            The 50 Encyclopedia Volumes
+            The 51 Encyclopedia Volumes
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             {VOLUMES.map((v) => (

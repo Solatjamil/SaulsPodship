@@ -36,7 +36,7 @@ export const AboutPage: React.FC = () => {
             Saul's Podship was established as an open-access digital scriptorium. In an era of soundbite theology, we labor to restore depth, historic grounding, and rigorous linguistic exegesis to the study of the Holy Scriptures.
           </p>
           <p className="text-base text-gray-700 leading-relaxed">
-            Our encyclopedia spans 50 comprehensive volumes authored with academic discipline, cross-referencing Hebrew, Greek, and Aramaic manuscripts with the ecumenical creeds and historical councils of the church.
+            Our encyclopedia spans 51 comprehensive volumes authored with academic discipline, cross-referencing Hebrew, Greek, and Aramaic manuscripts with the ecumenical creeds and historical councils of the church.
           </p>
         </section>
 

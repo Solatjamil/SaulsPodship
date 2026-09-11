@@ -1120,6 +1120,7 @@ a:hover{text-decoration:underline;}
 ${list.map(a => `<div class="card"><h2>${a.name}</h2><div class="role">${a.badge || a.role}</div><div class="bio">${String(a.bio || "").slice(0, 260)}${String(a.bio || "").length > 260 ? "…" : ""}</div><a href="/music-archive/${a.id}">Read Biography &amp; Legacy →</a></div>`).join("\n")}
 </div>
 <div class="home"><a href="/">← Return to Saul's Podship</a></div>
+<script src="/assets/bottom-nav.js?v=260911" defer></script>
 </body>
 </html>`);
   }
@@ -1157,6 +1158,7 @@ app.get("/encyclopedia/:slug", async (req, res) => {
   <h1 style="color:#4A152C; font-size:2rem; margin-bottom:1rem;">Volume Not Found</h1>
   <p style="margin-bottom:2rem;">The requested encyclopedia volume could not be located.</p>
   <a href="/" style="background-color:#4A152C; color:#D4AF37; padding:0.8rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:bold;">Return to Encyclopedia</a>
+<script src="/assets/bottom-nav.js?v=260911" defer></script>
 </body>
 </html>`);
     }
@@ -1312,6 +1314,7 @@ app.get("/encyclopedia/:slug", async (req, res) => {
       ${relatedLinksHtml}
     </div>
   </div>
+<script src="/assets/bottom-nav.js?v=260911" defer></script>
 </body>
 </html>`;
     res.send(html);
@@ -1365,6 +1368,7 @@ app.get("/music-archive/:slug", async (req, res) => {
   <h1 style="color:#d4af37; font-size:2rem; margin-bottom:1rem;">Artist Profile Not Found</h1>
   <p style="margin-bottom:2rem; opacity:0.8;">The requested gospel musician profile could not be found in our archive.</p>
   <a href="/Pakistanisingersarchive" style="background-color:#d4af37; color:#0d0906; padding:0.8rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:bold;">Return to Music Archive</a>
+<script src="/assets/bottom-nav.js?v=260911" defer></script>
 </body>
 </html>`);
     }
@@ -1452,6 +1456,7 @@ app.get("/music-archive/:slug", async (req, res) => {
 
     ${linksHtml}
   </div>
+<script src="/assets/bottom-nav.js?v=260911" defer></script>
 </body>
 </html>`;
     res.send(html);

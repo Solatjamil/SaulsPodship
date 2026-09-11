@@ -72,6 +72,46 @@ const InstallPrompt: React.FC = () => {
 };
 
 
+// Mobile install banner — a dismissible strip above the bottom nav that
+// surfaces Chrome's native install prompt (or the iOS Share instructions).
+const InstallBanner: React.FC = () => {
+  const [deferred, setDeferred] = useState<any>(null);
+  const [show, setShow] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+  useEffect(() => {
+    try {
+      if (window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone) return;
+      const snooze = Number(localStorage.getItem('sp-install-snooze') || 0);
+      if (snooze && Date.now() - snooze < 7 * 864e5) return;
+    } catch (_) {}
+    const ios = /iP(hone|ad|od)/.test(navigator.userAgent) && !(window as any).MSStream;
+    setIsIos(ios);
+    const onPrompt = (e: Event) => { e.preventDefault(); setDeferred(e); setShow(true); };
+    window.addEventListener('beforeinstallprompt', onPrompt as EventListener);
+    const onInstalled = () => setShow(false);
+    window.addEventListener('appinstalled', onInstalled);
+    const t = window.setTimeout(() => { if (ios) setShow(true); }, 4000);
+    return () => { window.removeEventListener('beforeinstallprompt', onPrompt as EventListener); window.removeEventListener('appinstalled', onInstalled); window.clearTimeout(t); };
+  }, []);
+  if (!show) return null;
+  const dismiss = () => { setShow(false); try { localStorage.setItem('sp-install-snooze', String(Date.now())); } catch (_) {} };
+  return (
+    <div className="lg:hidden fixed inset-x-3 bottom-[calc(72px+env(safe-area-inset-bottom))] z-[380] rounded-2xl border border-[#D4AF37]/50 bg-[#1A0812]/97 backdrop-blur-xl text-white shadow-2xl p-3 flex items-center gap-3">
+      <img src="/icons/icon-192.png" alt="" width={44} height={44} className="h-11 w-11 rounded-xl shrink-0" />
+      <div className="min-w-0 flex-1">
+        <p className="text-[13px] font-bold leading-tight">Install the Saul’s Podship App</p>
+        <p className="text-[11px] text-white/65 leading-snug truncate">{isIos && !deferred ? 'Tap Share, then “Add to Home Screen”.' : 'Faster, full-screen, works offline.'}</p>
+      </div>
+      {deferred ? (
+        <button type="button" onClick={async () => { deferred.prompt(); try { await deferred.userChoice; } catch (_) {} setDeferred(null); setShow(false); }}
+          className="shrink-0 rounded-full bg-[#D4AF37] px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-[#1A0812]">Install</button>
+      ) : null}
+      <button type="button" onClick={dismiss} aria-label="Dismiss" className="shrink-0 h-8 w-8 inline-flex items-center justify-center rounded-full bg-white/10 text-white/80"><X className="w-4 h-4" /></button>
+    </div>
+  );
+};
+
+
 // Author seal — formerly rendered at the end of every volume body, now a
 // single global card at the foot of EVERY page (in the shared footer).
 const AuthorSeal: React.FC = () => (
@@ -459,6 +499,7 @@ export const RootLayout: React.FC = () => {
         </div>
       </footer>
 
+      <InstallBanner />
       <BottomNav />
     </div>
   );

@@ -86,7 +86,7 @@ export const SupportPage: React.FC = () => {
             Where Your Support Goes
           </h2>
           <p className="text-base text-gray-700 leading-relaxed font-serif font-light text-center max-w-2xl mx-auto">
-            Every volume in our 50-volume encyclopedia, every podcast masterclass, and every digital hymn archive is provided completely free of charge to pastors, students, missionaries, and believers worldwide.
+            Every volume in our 51-volume encyclopedia, every podcast masterclass, and every digital hymn archive is provided completely free of charge to pastors, students, missionaries, and believers worldwide.
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -95,7 +95,7 @@ export const SupportPage: React.FC = () => {
               <div>
                 <h3 className="font-bold text-sm text-gray-900 mb-1">Open Theological Publishing</h3>
                 <p className="text-xs text-gray-600 leading-relaxed">
-                  Keeping all 50 encyclopedia volumes and scholarly reference tables free from commercial paywalls.
+                  Keeping all 51 encyclopedia volumes and scholarly reference tables free from commercial paywalls.
                 </p>
               </div>
             </div>

@@ -2,7 +2,7 @@
   "id": "https://www.saulspodship.com/",
   "name": "Saul's Podship App — Biblical Theology Library",
   "short_name": "Saul's Podship App",
-  "description": "The whole Bible, volume by volume: an interactive theological scriptorium with 50 study volumes, videos, podcasts and Punjabi Zaboor — Scripture through story, sound, and Spirit.",
+  "description": "The whole Bible, volume by volume: an interactive theological scriptorium with 51 study volumes, videos, podcasts and Punjabi Zaboor — Scripture through story, sound, and Spirit.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -22,7 +22,7 @@
     {
       "name": "Theological Encyclopedia",
       "short_name": "Encyclopedia",
-      "description": "Browse all 50 volumes",
+      "description": "Browse all 51 volumes",
       "url": "/encyclopedia",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },

@@ -268,3 +268,44 @@ mark.hl { background: rgba(212,175,55,.5) !important; }
 .qcard.open .qtitle::after { content: "\25BE"; }
 .qcard:not(.open) .qgrid { display: none; }
 .qcard.hide { display: none; }
+
+/* ===== 2026-09-11b: toolbar layout for LIGHT theme (codex.html only
+   defines the toolbar layout under html[data-theme="dark"], so in the
+   parchment theme the search box, sort and chips fell back to raw browser
+   controls, left-aligned and unstyled). Centered, Podship pill styling. */
+.toolbar { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 10px !important; padding: 14px 16px !important; text-align: center; }
+.tb-row { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; align-items: center !important; gap: 8px !important; width: 100%; max-width: 900px; margin: 0 auto; }
+.tb-searchwrap { display: flex !important; align-items: center !important; gap: 8px !important; flex: 1 1 260px !important; padding: 9px 14px !important; box-sizing: border-box; }
+.tb-searchwrap .tb-icon { font-size: 15px; line-height: 1; }
+#qsearch { flex: 1 1 auto !important; min-width: 0 !important; width: auto !important; background: transparent !important; border: 0 !important; outline: 0 !important; font: 500 14px/1.3 Inter, system-ui, sans-serif !important; text-align: left !important; }
+#qclear { background: none !important; border: 0 !important; font-size: 18px; line-height: 1; padding: 0 2px; cursor: pointer; }
+#qsort { appearance: none; -webkit-appearance: none; padding: 9px 34px 9px 14px !important; font: 600 13px Inter, system-ui, sans-serif !important; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234A152C' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important; background-position: right 13px center !important; }
+.tb-chip, .tb-btn { border-radius: 999px !important; padding: 8px 14px !important; font: 600 12.5px/1 Inter, system-ui, sans-serif !important; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.tb-chip .n { font-weight: 500; opacity: .75; font-size: 11px; }
+.tb-chip.active .n { opacity: .9; }
+.tb-btn { font-weight: 700 !important; letter-spacing: .04em; text-transform: uppercase; font-size: 11px !important; }
+.tb-count { display: block; width: 100%; font: 600 12px Inter, system-ui, sans-serif; margin-top: 2px; }
+.tb-tip { width: 100%; font: 400 12.5px/1.6 Inter, system-ui, sans-serif !important; opacity: .85; max-width: 640px; }
+.tb-tip code { padding: 1px 6px; border-radius: 6px; font-size: 11.5px; }
+
+/* dark toggle: same layout, legible colours on the wine band */
+html[data-theme="dark"] .toolbar { background: linear-gradient(180deg, rgba(22,6,15,.97), rgba(45,15,30,.95)) !important; border-bottom: 1px solid rgba(212,175,55,.35) !important; }
+html[data-theme="dark"] .tb-searchwrap { background: rgba(255,255,255,.06) !important; border: 1px solid rgba(212,175,55,.45) !important; border-radius: 999px !important; }
+html[data-theme="dark"] #qsearch { color: #F8F4E3 !important; }
+html[data-theme="dark"] #qsearch::placeholder { color: rgba(248,244,227,.55) !important; }
+html[data-theme="dark"] #qsort, html[data-theme="dark"] .tb-chip, html[data-theme="dark"] .tb-btn { background: rgba(255,255,255,.06) !important; color: #F8F4E3 !important; border: 1px solid rgba(212,175,55,.45) !important; border-radius: 999px !important; }
+html[data-theme="dark"] #qsort { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23E8C96A' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") !important; }
+html[data-theme="dark"] .tb-chip.active { background: #D4AF37 !important; color: #1A0812 !important; border-color: #D4AF37 !important; }
+html[data-theme="dark"] .tb-count, html[data-theme="dark"] .tb-tip, html[data-theme="dark"] .matchhint { color: rgba(248,244,227,.8) !important; }
+html[data-theme="dark"] .tb-tip code { color: #E8C96A !important; background: rgba(212,175,55,.18) !important; }
+html[data-theme="dark"] #noresults { color: #F8F4E3 !important; background: rgba(212,175,55,.12) !important; border-color: rgba(212,175,55,.4) !important; }
+html[data-theme="dark"] mark.hl { background: rgba(212,175,55,.45) !important; color: #fff; }
+
+/* no focus auto-zoom on phones */
+@media (max-width: 1023px) { #qsearch, #qsort, .toolbar input, .toolbar select { font-size: 16px !important; } }
+html[data-theme="dark"] #qsort { background-color: #2a0f1e !important; color: #F8F4E3 !important; }
+html[data-theme="dark"] #qsort option { background: #1A0812; color: #F8F4E3; }
+html[data-theme="dark"] .catpill { background: rgba(255,255,255,.06) !important; color: #F8F4E3 !important; border-color: rgba(212,175,55,.45) !important; }
+html[data-theme="dark"] .catpill .catcount, html[data-theme="dark"] .catnav-label { color: #E8C96A !important; }

@@ -2,9 +2,9 @@
    Saul's Podship service worker
    Goals: make the site installable (PWA), open fast on repeat
    visits, and offer a cached shell offline. Deliberately light:
-   never precache the 50 hero artworks; cache lazily instead.
+   never precache the 51 hero artworks; cache lazily instead.
    ============================================================ */
-const VERSION = 'sp-pwa-v4';
+const VERSION = 'sp-pwa-v5';
 const SHELL = [
   '/',
   '/index.html',
