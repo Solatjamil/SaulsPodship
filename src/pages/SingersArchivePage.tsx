@@ -120,7 +120,7 @@ export const SingersArchivePage: React.FC = () => {
               The Din Family Musical Dynasty
             </h2>
             <p className="text-sm text-white/80 leading-relaxed font-light max-w-4xl">
-              Honoring the multi-generational lineage of veteran gospel music composers, classical scholars, and singers whose mastery of Hindustani classical ragas, sacred harmonium, and choral hymnody shaped Christian worship across Pakistan.
+              Honoring a four-generation lineage that begins with Pastor Jamil-ud-Din, one of the first pastors of the City Church of Montgomery (present-day Sahiwal), and continues through gospel composers, classical scholars and singers whose mastery of Hindustani ragas, sacred harmonium and choral hymnody shaped Christian worship across Pakistan.
             </p>
           </div>
 
@@ -131,8 +131,17 @@ export const SingersArchivePage: React.FC = () => {
                 className="p-6 rounded-2xl bg-black/40 backdrop-blur-md border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-                    <div>
+                  <div className="flex items-start gap-4 border-b border-white/10 pb-3">
+                    <div className="shrink-0">
+                      {member.photo ? (
+                        <img src={member.photo.src} alt={member.photo.alt} title={member.photo.credit} loading="lazy" className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover object-top border-2 border-[#D4AF37]/60 shadow" />
+                      ) : (
+                        <div aria-hidden className="h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-[#D4AF37]/60 bg-[#4A152C] text-[#E8C96A] flex items-center justify-center font-serif text-xl font-bold">
+                          {member.name.replace(/^(Rev\.|Dr\.|Padri|Pastor|Master)\s+/, '').split(/\s+/).slice(0, 2).map(w => w[0]).join('')}
+                        </div>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
                         member.status === 'deceased' 
                           ? 'bg-rose-950/80 text-rose-300 border border-rose-700/50' 
@@ -144,10 +153,10 @@ export const SingersArchivePage: React.FC = () => {
                         {member.name}
                       </h3>
                       <p className="text-xs text-[#E8C96A] font-medium">{member.role}</p>
+                      <span className="mt-2 inline-block text-xs font-mono text-white/70 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
+                        {member.dates}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono text-white/70 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
-                      {member.dates}
-                    </span>
                   </div>
 
                   {member.academicCredentials && (
@@ -331,7 +340,16 @@ export const SingersArchivePage: React.FC = () => {
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-gray-100 pb-4">
-                    <div className="space-y-1">
+                    <div className="shrink-0">
+                      {singer.photo ? (
+                        <img src={singer.photo.src} alt={singer.photo.alt} title={singer.photo.credit} loading="lazy" className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover object-top border-2 border-[#D4AF37]/50 shadow" />
+                      ) : (
+                        <div aria-hidden className="h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-[#D4AF37]/50 bg-[#F8F4E3] text-[#4A152C] flex items-center justify-center font-serif text-xl font-bold">
+                          {singer.name.replace(/^(Rev\.|Dr\.|Padri|Pastor|Master)\s+/, '').split(/\s+/).slice(0, 2).map(w => w[0]).join('')}
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1 min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
                           singer.status === 'deceased'

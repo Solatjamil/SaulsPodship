@@ -21,9 +21,31 @@ export interface SingerRecord {
   keyZaboorOrGeet?: string[];
   era: string;
   isHonoredDynasty?: boolean;
+  /** Portrait (public-domain / family archive). Path under /public or absolute URL. */
+  photo?: { src: string; alt: string; credit?: string };
 }
 
 export const HONORED_DIN_DYNASTY: SingerRecord[] = [
+  {
+    id: "pastor-jamil-ud-din",
+    name: "Pastor Jamil-ud-Din",
+    badge: "Founding Pastor & Patriarch of the Din Dynasty",
+    role: "Pastor, Hymn Leader & Father of the Din Musical Dynasty",
+    status: "deceased",
+    category: "musicologist",
+    dates: "Early 20th century — Montgomery (Sahiwal)",
+    academicCredentials: "Ordained Pastoral Ministry · Congregational Psalmody & Zaboor Leadership",
+    lineageNote: "Father of Jamson J. Din and Robson J. Din; Grandfather of Nadeem Jamil and Nada Jamil; Great-grandfather of Solat Nadeem",
+    bio: "Pastor Jamil-ud-Din was one of the first pastors of the City Church of Montgomery — present-day Sahiwal, Punjab — one of the earliest churches established in that city. As a shepherd of a young congregation he led Punjabi Zaboor and Masihi Geet in worship long before recordings existed, planting the sacred musical seed that his sons Jamson J. Din and Robson J. Din would carry into composition, tabla mastery and classical scholarship. The Din Musical Dynasty traces its calling to his pulpit and his hymn-singing household.",
+    majorContributions: [
+      "One of the first pastors of the City Church, Montgomery (now Sahiwal) — among the first churches of the city",
+      "Led congregational Punjabi Zaboor singing and established the family's tradition of worship music",
+      "Father and first teacher of Jamson J. Din (tabla master and composer) and Robson J. Din (M.Mus, classical maestro)",
+      "Source of a four-generation lineage of Pakistani Christian gospel musicians and ministers"
+    ],
+    era: "Founding Pastoral Era (Deceased Pioneer)",
+    isHonoredDynasty: true
+  },
   {
     id: "jamson-j-din",
     name: "Jamson J. Din",
@@ -33,7 +55,7 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
     category: "both",
     dates: "17 February 1942 – October 2020",
     academicCredentials: "Master of Tabla Virtuosity, Devotional Harmonium & Classical Choral Conducting",
-    lineageNote: "Patriarch of the Din Musical Dynasty; Brother of Robson J. Din; Father of Nadeem Jamil; Grandfather of Solat Nadeem",
+    lineageNote: "Son of Pastor Jamil-ud-Din; Patriarch of the Din Musical Dynasty; Brother of Robson J. Din; Father of Nadeem Jamil; Grandfather of Solat Nadeem",
     bio: "Born 17 February 1942 and called home in October 2020, Jamson J. Din was the patriarch of a revered Pakistani Christian musical family and a legendary pioneer in gospel music composition, devotional singing, and percussion. Jamson J. Din was renowned as a master Tabla Artist whose rhythmic brilliance, intricate bols, and deep spiritual sensitivity anchored decades of worship across Punjab. Alongside his mastery of the harmonium and choral hymnody, his dedication to sacred rhythm set an indelible benchmark for gospel musicians throughout Pakistan.",
     majorContributions: [
       "Master Tabla Artist and percussion virtuoso who defined traditional Punjabi Zaboor accompaniment",
@@ -54,7 +76,7 @@ export const HONORED_DIN_DYNASTY: SingerRecord[] = [
     category: "both",
     dates: "Prominent Veteran Maestro",
     academicCredentials: "Masters in Music (M.Mus) — Immense Authority in Hindustani Classical Music & Ragas",
-    lineageNote: "Eminent Classical Maestro; Brother of Jamson J. Din; Father of Nada Jamil; Uncle of Nadeem Jamil",
+    lineageNote: "Son of Pastor Jamil-ud-Din; Eminent Classical Maestro; Brother of Jamson J. Din; Father of Nada Jamil; Uncle of Nadeem Jamil",
     bio: "A towering luminary and one of the most intellectually and classically accomplished composers in the history of the Pakistani Christian music industry. Holding an esteemed Masters in Music (M.Mus), Robson J. Din possesses immense, encyclopedic authority in North Indian classical music, the classical Thaat system, microtonal inflection (shruti), raga exegesis, and advanced vocal orchestration. Brother of the late Jamson J. Din, he infused South Asian Christian hymnody with extraordinary harmonic depth, teaching singers the subtleties of classical discipline while penning monumental compositions that unite authentic theological truth with immaculate melodic purity.",
     majorContributions: [
       "Holder of a prestigious Masters in Music (M.Mus) with immense mastery of classical musicology and raga theory",
@@ -135,7 +157,8 @@ export const HISTORIC_PIONEERS_AND_MAESTROS: SingerRecord[] = [
       "Zaboor 24 (Zameen Te Jo Kujh)",
       "Zaboor 150 (Rab Di Tareef Karo)"
     ],
-    era: "Historic Pioneer (19th–20th Century)"
+    era: "Historic Pioneer (19th–20th Century)",
+    photo: { src: "/images/singers/imam-ud-din-shahbaz.jpg", alt: "Portrait of Rev. Imam-ud-Din Shahbaz", credit: "Public domain · Wikimedia Commons" },
   },
   {
     id: "padri-albert-khokhar",

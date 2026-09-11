@@ -100,7 +100,7 @@ export const MusicPage: React.FC = () => {
               The Jamson &amp; Robson Din Musical Dynasty
             </h2>
             <p className="text-sm text-white/80 leading-relaxed font-light">
-              Celebrating the multi-generational family of veteran gospel music composers, classical scholars, and singers who enriched Pakistani church worship with classical mastery, sacred harmonium, and choral hymnody.
+              From Pastor Jamil-ud-Din — one of the first pastors of the City Church of Montgomery (today Sahiwal) — through his sons Jamson and Robson to the present generation: a family of gospel composers, classical scholars and singers who enriched Pakistani church worship with classical mastery, sacred harmonium and choral hymnody.
             </p>
           </div>
 
@@ -111,8 +111,17 @@ export const MusicPage: React.FC = () => {
                 className="p-6 sm:p-8 rounded-2xl bg-black/40 backdrop-blur-md border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-                    <div>
+                  <div className="flex items-start gap-4 border-b border-white/10 pb-3">
+                    <div className="shrink-0">
+                      {member.photo ? (
+                        <img src={member.photo.src} alt={member.photo.alt} title={member.photo.credit} loading="lazy" className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover object-top border-2 border-[#D4AF37]/60 shadow" />
+                      ) : (
+                        <div aria-hidden className="h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-[#D4AF37]/60 bg-[#4A152C] text-[#E8C96A] flex items-center justify-center font-serif text-xl font-bold">
+                          {member.name.replace(/^(Rev\.|Dr\.|Padri|Pastor|Master)\s+/, '').split(/\s+/).slice(0, 2).map(w => w[0]).join('')}
+                        </div>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
                         member.status === 'deceased'
                           ? 'bg-rose-950/80 text-rose-300 border border-rose-700/50'
@@ -124,10 +133,10 @@ export const MusicPage: React.FC = () => {
                         {member.name}
                       </h3>
                       <p className="text-xs text-[#E8C96A] font-medium">{member.role}</p>
+                      <span className="mt-2 inline-block text-xs font-mono text-white/70 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
+                        {member.dates}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono text-white/70 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
-                      {member.dates}
-                    </span>
                   </div>
 
                   {member.academicCredentials && (

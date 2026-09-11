@@ -22,16 +22,6 @@ export interface EmbeddedArtist {
 
 export const EMBEDDED_ARTISTS: EmbeddedArtist[] = [
   {
-    "id": "imam-ud-din-shahbaz",
-    "name": "Imam-ud-Din Shahbaz",
-    "badge": "Historic Pioneer",
-    "also": "",
-    "role": "Historic Pioneer / Patriarch of Gospel",
-    "dates": "1845 – 1921",
-    "bio": "The undisputed pioneer of Pakistani gospel music heritage. A Punjabi evangelist and poet from Zafarwal, he produced the first metrical translation of the entire Book of Psalms into Punjabi, known as Punjabi Zabur, completing all 150 psalms set to local ragas between 1888 and 1908. Earned a Doctor of Divinity from Tarkio College, Missouri. His translations are still sung in Pakistani churches today, making him arguably the single most enduring influence in Pakistani Christian worship music. Died 1921 in Bhalwal, Pakistan.",
-    "links": {}
-  },
-  {
     "id": "saleem-raza-noel-dias",
     "name": "Saleem Raza (Noel Dias)",
     "badge": "Historic Pioneer",
@@ -77,13 +67,23 @@ export const EMBEDDED_ARTISTS: EmbeddedArtist[] = [
     }
   },
   {
+    "id": "pastor-jamil-ud-din",
+    "name": "Pastor Jamil-ud-Din",
+    "badge": "Deceased",
+    "also": "Founding Pastor / Father of Jamson &amp; Robson J. Din",
+    "role": "Pastor · Hymn Leader · Patriarch of the Din Musical Dynasty",
+    "dates": "",
+    "bio": "One of the first pastors of the City Church of Montgomery — present-day Sahiwal — one of the earliest churches of that city. Led congregational Punjabi Zaboor and Masihi Geet worship and raised the household from which the Din Musical Dynasty grew: his sons Jamson J. Din (tabla master, composer) and Robson J. Din (M.Mus, classical maestro), grandsons Nadeem Jamil and Nada Jamil, and great-grandson Solat Nadeem.",
+    "links": {}
+  },
+  {
     "id": "jamson-j-din",
     "name": "Jamson J. Din",
     "badge": "Deceased",
-    "also": "Patriarch / Gospel Minister",
+    "also": "Patriarch / Gospel Minister · 17 February 1942 – October 2020",
     "role": "Gospel Patriarch / Ministry Founder",
     "dates": "",
-    "bio": "Patriarch figure of Pakistani gospel music whose legacy is honored across Pakistani Christian communities. His son Nadeem Jamson carries forward his ministry legacy. Deep archival connections to Geet Ki Kitab and early gospel recordings. Exact dates not publicly documented; held in high regard as a founding voice of the ministry tradition.",
+    "bio": "Son of Pastor Jamil-ud-Din of the City Church, Montgomery (Sahiwal). Patriarch figure of Pakistani gospel music whose legacy is honored across Pakistani Christian communities. His son Nadeem Jamson carries forward his ministry legacy. Deep archival connections to Geet Ki Kitab and early gospel recordings. Born 17 February 1942; passed away October 2020. Held in high regard as a founding voice of the ministry tradition.",
     "links": {}
   },
   {
