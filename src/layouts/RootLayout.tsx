@@ -44,17 +44,24 @@ const InstallPrompt: React.FC = () => {
       </p>
     );
   }
+  let standalone = false;
+  try { standalone = window.matchMedia('(display-mode: standalone)').matches || !!(navigator as any).standalone; } catch (_) {}
+  if (standalone) return null; // already running as the installed app
+  const isIos = typeof navigator !== 'undefined' && /iP(hone|ad|od)/.test(navigator.userAgent);
   if (!deferred) {
-    try {
-      if (window.matchMedia('(display-mode: standalone)').matches) return null; // already installed
-    } catch (_) {}
-    const isIos = typeof navigator !== 'undefined' && /iP(hone|ad|od)/.test(navigator.userAgent);
     return (
-      <p className="text-[11px] text-white/50 tracking-wide max-w-md">
-        {isIos
-          ? 'iOS: tap the Share button, then “Add to Home Screen” to install the Saul’s Podship App.'
-          : 'Install this site as an app: Chrome menu ⋮ → “Install app” / “Add to Home screen”.'}
-      </p>
+      <button
+        type="button"
+        onClick={() => alert(isIos
+          ? 'Tap the Share button in Safari, then choose “Add to Home Screen”.'
+          : 'Open the Chrome menu (⋮ at the top right) and tap “Install app” or “Add to Home screen”.')}
+        className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/60 bg-[#D4AF37] px-5 py-2 text-xs font-extrabold uppercase tracking-widest text-[#1A0812] shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-[#E8C96A]"
+      >
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M12 3v12M7 10l5 5 5-5M4 21h16" />
+        </svg>
+        Install the Saul's Podship App
+      </button>
     );
   }
   return (
