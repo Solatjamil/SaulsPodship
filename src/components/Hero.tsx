@@ -18,6 +18,11 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) => {
   if (variant === 'volume' && volume) {
     const slug = volume.slug;
+    // Image folder: normally /images/volumes/<slug>/, but a volume may point
+    // its heroImage at a different local folder (e.g. a "-v2" re-issue that
+    // bypasses stale CDN caches) — derive the base from it when present.
+    const m = /^(\/images\/volumes\/[^/]+)\/hero-/.exec(volume.heroImage?.src || '');
+    const base = m ? m[1] : `/images/volumes/${slug}`;
     const heroCredit = volume.heroImage?.credit || 'Historical Theological Archive';
     const numPadded = volume.number < 10 ? `0${volume.number}` : `${volume.number}`;
 
@@ -27,11 +32,11 @@ export const Hero: React.FC<HeroProps> = ({ variant, volume, onStartReading }) =
           className="relative w-full aspect-video sm:absolute sm:inset-0 sm:aspect-auto"
           style={{ background: 'linear-gradient(180deg, #16060F 0%, #1A0812 62%, #24101C 100%)' }}
         >
-          <source media="(max-width: 639px)" srcSet={`/images/volumes/${slug}/hero-1280.webp`} type="image/webp" />
-          <source media="(max-width: 1279px)" srcSet={`/images/volumes/${slug}/hero-1280.webp`} type="image/webp" />
-          <source srcSet={`/images/volumes/${slug}/hero-1920.webp`} type="image/webp" />
+          <source media="(max-width: 639px)" srcSet={`${base}/hero-1280.webp`} type="image/webp" />
+          <source media="(max-width: 1279px)" srcSet={`${base}/hero-1280.webp`} type="image/webp" />
+          <source srcSet={`${base}/hero-1920.webp`} type="image/webp" />
           <img
-            src={`/images/volumes/${slug}/hero-1920.jpg`}
+            src={`${base}/hero-1920.jpg`}
             alt={volume.heroImage?.alt || volume.title}
             width="1920"
             height="1082"
