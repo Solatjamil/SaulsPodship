@@ -4,7 +4,7 @@
    visits, and offer a cached shell offline. Deliberately light:
    never precache the 51 hero artworks; cache lazily instead.
    ============================================================ */
-const VERSION = 'sp-pwa-v5';
+const VERSION = 'sp-pwa-v6';
 const SHELL = [
   '/',
   '/index.html',
@@ -69,10 +69,19 @@ self.addEventListener('fetch', (event) => {
     // stale-while-revalidate for assets and prerendered archive pages
     event.respondWith(
       caches.open(VERSION).then(async (cache) => {
-        const hit = await cache.match(req, { ignoreSearch: isAsset });
+        let hit = await cache.match(req, { ignoreSearch: isAsset });
+        // Never serve a poisoned entry: an image/asset path that was once
+        // answered by the SPA HTML fallback (status 200, text/html) must be
+        // refetched, not replayed as a broken picture.
+        if (hit && isAsset) {
+          const ct = hit.headers.get('content-type') || '';
+          if (/text\/html/i.test(ct)) { await cache.delete(req); hit = undefined; }
+        }
         const refresh = fetch(req)
           .then((res) => {
-            if (res && res.status === 200) { cache.put(req, res.clone()); trimCache(cache); }
+            const ct = (res && res.headers.get('content-type')) || '';
+            const okType = !isAsset || !/text\/html/i.test(ct);
+            if (res && res.status === 200 && okType) { cache.put(req, res.clone()); trimCache(cache); }
             return res;
           })
           .catch(() => null);
