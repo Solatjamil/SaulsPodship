@@ -107,6 +107,10 @@
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
     <script>
+      // Chrome fires beforeinstallprompt very early — often before the React
+      // app has mounted — so capture it here and let the app pick it up later.
+      window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.__spInstallEvt = e; window.dispatchEvent(new CustomEvent('sp-install-ready')); });
+      window.addEventListener('appinstalled', function () { window.__spInstalled = true; window.__spInstallEvt = null; });
       if ('serviceWorker' in navigator && location.hostname !== 'localhost' && !location.port) {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('/sw.js').catch(function () { /* offline PWA simply stays unavailable */ });

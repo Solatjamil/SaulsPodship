@@ -24,8 +24,12 @@ const InstallPrompt: React.FC = () => {
   const [deferred, setDeferred] = useState<any>(null);
   const [installed, setInstalled] = useState(false);
   useEffect(() => {
+    const w = window as any;
+    if (w.__spInstallEvt) setDeferred(w.__spInstallEvt);
+    if (w.__spInstalled) setInstalled(true);
     const onPrompt = (e: Event) => { e.preventDefault(); setDeferred(e); };
     const onInstalled = () => { setInstalled(true); setDeferred(null); };
+    window.addEventListener('sp-install-ready', () => setDeferred(w.__spInstallEvt));
     window.addEventListener('beforeinstallprompt', onPrompt as EventListener);
     window.addEventListener('appinstalled', onInstalled);
     return () => {
@@ -79,33 +83,49 @@ const InstallBanner: React.FC = () => {
   const [show, setShow] = useState(false);
   const [isIos, setIsIos] = useState(false);
   useEffect(() => {
+    const w = window as any;
     try {
-      if (window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone) return;
+      if (window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone || w.__spInstalled) return;
       const snooze = Number(localStorage.getItem('sp-install-snooze') || 0);
-      if (snooze && Date.now() - snooze < 7 * 864e5) return;
+      if (snooze && Date.now() - snooze < 3 * 864e5) return;
     } catch (_) {}
-    const ios = /iP(hone|ad|od)/.test(navigator.userAgent) && !(window as any).MSStream;
+    const ios = /iP(hone|ad|od)/.test(navigator.userAgent) && !w.MSStream;
     setIsIos(ios);
-    const onPrompt = (e: Event) => { e.preventDefault(); setDeferred(e); setShow(true); };
+    // event may already have fired before React mounted (captured in index.html)
+    if (w.__spInstallEvt) setDeferred(w.__spInstallEvt);
+    const onReady = () => setDeferred(w.__spInstallEvt);
+    const onPrompt = (e: Event) => { e.preventDefault(); w.__spInstallEvt = e; setDeferred(e); };
+    window.addEventListener('sp-install-ready', onReady);
     window.addEventListener('beforeinstallprompt', onPrompt as EventListener);
     const onInstalled = () => setShow(false);
     window.addEventListener('appinstalled', onInstalled);
-    const t = window.setTimeout(() => { if (ios) setShow(true); }, 4000);
-    return () => { window.removeEventListener('beforeinstallprompt', onPrompt as EventListener); window.removeEventListener('appinstalled', onInstalled); window.clearTimeout(t); };
+    // show on every phone/tablet after a short beat — with the native prompt
+    // when Chrome offers it, otherwise with clear manual instructions
+    const t = window.setTimeout(() => setShow(true), 2500);
+    return () => { window.removeEventListener('sp-install-ready', onReady); window.removeEventListener('beforeinstallprompt', onPrompt as EventListener); window.removeEventListener('appinstalled', onInstalled); window.clearTimeout(t); };
   }, []);
   if (!show) return null;
   const dismiss = () => { setShow(false); try { localStorage.setItem('sp-install-snooze', String(Date.now())); } catch (_) {} };
+  const install = async () => {
+    if (deferred) {
+      deferred.prompt();
+      try { const r = await deferred.userChoice; if (r && r.outcome === 'accepted') setShow(false); } catch (_) {}
+      (window as any).__spInstallEvt = null; setDeferred(null);
+    } else {
+      alert(isIos
+        ? 'Tap the Share button in Safari, then choose “Add to Home Screen”.'
+        : 'Open the Chrome menu (⋮ at the top right) and tap “Install app” or “Add to Home screen”.');
+    }
+  };
   return (
     <div className="lg:hidden fixed inset-x-3 bottom-[calc(72px+env(safe-area-inset-bottom))] z-[380] rounded-2xl border border-[#D4AF37]/50 bg-[#1A0812]/97 backdrop-blur-xl text-white shadow-2xl p-3 flex items-center gap-3">
       <img src="/icons/icon-192.png" alt="" width={44} height={44} className="h-11 w-11 rounded-xl shrink-0" />
       <div className="min-w-0 flex-1">
         <p className="text-[13px] font-bold leading-tight">Install the Saul’s Podship App</p>
-        <p className="text-[11px] text-white/65 leading-snug truncate">{isIos && !deferred ? 'Tap Share, then “Add to Home Screen”.' : 'Faster, full-screen, works offline.'}</p>
+        <p className="text-[11px] text-white/65 leading-snug truncate">{deferred ? 'Faster, full-screen, works offline.' : isIos ? 'Share → “Add to Home Screen”.' : 'Menu ⋮ → “Install app”.'}</p>
       </div>
-      {deferred ? (
-        <button type="button" onClick={async () => { deferred.prompt(); try { await deferred.userChoice; } catch (_) {} setDeferred(null); setShow(false); }}
-          className="shrink-0 rounded-full bg-[#D4AF37] px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-[#1A0812]">Install</button>
-      ) : null}
+      <button type="button" onClick={install}
+        className="shrink-0 rounded-full bg-[#D4AF37] px-4 py-2 text-[11px] font-extrabold uppercase tracking-wider text-[#1A0812]">{deferred ? 'Install' : 'How'}</button>
       <button type="button" onClick={dismiss} aria-label="Dismiss" className="shrink-0 h-8 w-8 inline-flex items-center justify-center rounded-full bg-white/10 text-white/80"><X className="w-4 h-4" /></button>
     </div>
   );
