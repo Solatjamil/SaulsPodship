@@ -464,6 +464,29 @@ html[data-theme="dark"] .clab text{fill:var(--gold);fill-opacity:.12}
   h1{font-size:16px}
   .sub{display:none}
 }
+/* ---------- phones: the toolbar must never eat the stage ----------
+   #app is a 100vh flex column; on a 390px screen the wrapped pills alone
+   were ~700px tall, so #stage collapsed to 0px and the Globe / Network
+   canvases were invisible. Filters now fold behind a toggle and the stage
+   keeps a guaranteed height. */
+@media (max-width:767px){
+  #app{height:auto;min-height:100svh}
+  #toolbar{padding:8px 10px;gap:7px;position:relative}
+  #toolbar .tabs{width:100%;justify-content:space-between}
+  #toolbar .tabs button{flex:1;padding:8px 4px;font-size:11px}
+  #toolbar .search{flex:1 1 auto;min-width:0}
+  #toolbar .search input{width:100%}
+  #spFiltersBtn{display:inline-flex;align-items:center;gap:6px;background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:6px 12px;font-size:12px;color:var(--txt2);cursor:pointer;white-space:nowrap}
+  #spFiltersBtn.on{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+  #toolbar .sep,#toolbar .pills,#toolbar .sel,#toolbar .toggle,#toolbar #viewTools{display:none}
+  #toolbar.sp-filters-open .pills,#toolbar.sp-filters-open .sel,#toolbar.sp-filters-open .toggle,#toolbar.sp-filters-open #viewTools{display:flex}
+  #toolbar.sp-filters-open .sel{display:block;width:100%}
+  #toolbar.sp-filters-open #viewTools{flex-wrap:wrap}
+  #stage{flex:none;height:min(72svh,560px);min-height:420px}
+  html.embedded #stage{height:560px}
+}
+@media (min-width:768px){ #spFiltersBtn{display:none} }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -514,6 +537,8 @@ html.embedded .hrow,html.embedded #toolbar .tabs,html.embedded .pills{justify-co
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Search prophecy or verse…  ( / )" autocomplete="off">
     </div>
+    <button id="spFiltersBtn" type="button" aria-expanded="false" aria-controls="toolbar" onclick="(function(b){var t=document.getElementById('toolbar');var on=t.classList.toggle('sp-filters-open');b.classList.toggle('on',on);b.setAttribute('aria-expanded',on);b.lastChild.textContent=on?' Hide filters':' Filters';window.dispatchEvent(new Event('resize'));})(this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 5h18M6 12h12M10 19h4"/></svg> Filters</button>
 
     <div class="sep"></div>
     <div class="pills" id="stPills"></div>

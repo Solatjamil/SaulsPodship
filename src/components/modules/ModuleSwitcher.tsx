@@ -4,9 +4,22 @@
    "window"): a borderless auto-height frame flows with content,
    and the switch buttons sit below, centered, as on the atlas.
    ============================================================ */
-import React, { useState } from 'react';
-import { Compass, Crown, ExternalLink, Network } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Compass, Crown, ExternalLink, Network } from 'lucide-react';
 import AutoFrame from './AutoFrame';
+
+/** true below the lg breakpoint (phones / tablets / installed app) */
+function useIsMobile() {
+  const [m, setM] = useState<boolean>(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 1023.98px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023.98px)');
+    const on = () => setM(mq.matches);
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  return m;
+}
 
 export type ModuleId = 'map' | 'kings' | 'crossrefs';
 
@@ -49,6 +62,37 @@ interface Props { compact?: boolean }
 const ModuleSwitcher: React.FC<Props> = ({ compact = false }) => {
   const [active, setActive] = useState<ModuleId>('map');
   const mod = MODULES.find(m => m.id === active)!;
+  const isMobile = useIsMobile();
+
+  // Phones / app view: no embedded module (the iframes are heavy and the
+  // toolbars swallow the small screen). Show routing cards that open each
+  // module on its own full page instead.
+  if (isMobile) {
+    return (
+      <div className="w-full grid grid-cols-1 gap-3 text-left">
+        {MODULES.map(m => {
+          const Icon = m.icon;
+          return (
+            <Link
+              key={m.id}
+              to={m.full}
+              className="group flex items-center gap-4 rounded-2xl border border-[#D4AF37]/30 bg-white/5 px-4 py-4 active:bg-white/10 transition-colors"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#D4AF37] text-[#1A0812] shadow-md">
+                <Icon className="w-6 h-6" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-serif font-bold text-base text-white leading-tight">{m.label}</span>
+                <span className="mt-1 block text-[11px] leading-snug text-white/65 line-clamp-2">{m.blurb}</span>
+              </span>
+              <ArrowRight className="w-5 h-5 shrink-0 text-[#E8C96A] group-active:translate-x-0.5 transition-transform" />
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-full">

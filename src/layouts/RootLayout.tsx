@@ -130,13 +130,13 @@ export const RootLayout: React.FC = () => {
       <header className="sticky top-0 z-50 w-full bg-[#16060f]/70 backdrop-blur-md border-b border-[#D4AF37]/20 text-white transition-all shadow-md">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-5 lg:px-6 h-14 sm:h-16 md:h-20 flex items-center justify-between gap-3 lg:gap-4">
           {/* Brand Logo with Correct SVG */}
-          <Link to="/" className="flex items-center gap-2.5 group min-w-0 shrink-0 lg:gap-2">
-            <img src="/icons/emblem.png" alt="Saul's Podship Logo" className="h-12 w-12 sm:h-14 sm:w-14 lg:h-11 lg:w-11 xl:h-14 xl:w-14 object-contain shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] group-hover:scale-105 transition-transform" />
+          <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group min-w-0 shrink lg:shrink-0 lg:gap-2">
+            <img src="/icons/emblem.png" alt="Saul's Podship Logo" className="h-10 w-10 sm:h-14 sm:w-14 lg:h-11 lg:w-11 xl:h-14 xl:w-14 object-contain shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] group-hover:scale-105 transition-transform" />
             <div className="flex flex-col text-left min-w-0">
-              <span className="font-serif font-bold text-base sm:text-xl lg:text-lg xl:text-xl tracking-tight text-white group-hover:text-[#E8C96A] transition-colors whitespace-nowrap">
+              <span className="font-serif font-bold text-[15px] sm:text-xl lg:text-lg xl:text-xl tracking-tight text-white group-hover:text-[#E8C96A] transition-colors whitespace-nowrap truncate">
                 Saul's Podship
               </span>
-              <span className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-[0.18em] text-[#D4AF37]/90 whitespace-nowrap">
+              <span className="text-[8px] sm:text-[10px] uppercase font-semibold tracking-[0.14em] sm:tracking-[0.18em] text-[#D4AF37]/90 whitespace-nowrap truncate">
                 Theological Encyclopedia
               </span>
             </div>
@@ -194,7 +194,7 @@ export const RootLayout: React.FC = () => {
           </nav>
 
           {/* Right Header Controls */}
-          <div className="flex h-10 shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex h-10 shrink-0 items-center gap-1.5 sm:gap-3">
             <ChromeControls />
 
 
@@ -203,7 +203,7 @@ export const RootLayout: React.FC = () => {
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors focus:outline-none"
+              className="lg:hidden h-10 w-10 inline-flex items-center justify-center rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors focus:outline-none shrink-0"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

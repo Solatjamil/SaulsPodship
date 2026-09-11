@@ -139,14 +139,14 @@ export const ChromeControls: React.FC = () => {
   const options: Array<[Lang, string]> = [['en', 'English'], ['ur', 'اردو'], ['hi', 'हिन्दी'], ['ar', 'العربية']];
 
   return (
-    <div className="flex items-center gap-2" data-sp-i18n-skip>
+    <div className="flex items-center gap-1.5 sm:gap-2 shrink-0" data-sp-i18n-skip>
       <label className="relative flex items-center">
-        <Globe className="w-4 h-4 text-[#D4AF37] absolute left-2.5 pointer-events-none" />
+        <Globe className="w-4 h-4 text-[#D4AF37] absolute left-2 sm:left-2.5 pointer-events-none" />
         <select
           value={lang}
           onChange={(e) => setLang(e.target.value as Lang)}
           aria-label="Website language"
-          className="appearance-none h-10 bg-white/10 hover:bg-white/20 text-white text-[13px] font-bold rounded-xl pl-8 pr-6 lg:pl-7 lg:pr-5 xl:pl-8 xl:pr-6 cursor-pointer border border-[#D4AF37]/25 transition-colors focus:outline-none"
+          className="appearance-none h-10 max-w-[104px] sm:max-w-none bg-white/10 hover:bg-white/20 text-white text-[12px] sm:text-[13px] font-bold rounded-xl pl-7 pr-5 sm:pl-8 sm:pr-6 lg:pl-7 lg:pr-5 xl:pl-8 xl:pr-6 cursor-pointer border border-[#D4AF37]/25 transition-colors focus:outline-none"
         >
           {options.map(([v, l]) => <option key={v} value={v} className="text-black">{l}</option>)}
         </select>
