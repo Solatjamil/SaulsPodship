@@ -253,3 +253,18 @@ mark.hl { background: rgba(212,175,55,.5) !important; }
 /* noresults visibility in light theme */
 #noresults { display: none; }
 #noresults.show { display: block; }
+
+/* ===== 2026-09-11: collapsed question cards in LIGHT mode =====
+   codex.html's accordion rules (.qcard:not(.open) .qgrid{display:none} etc.)
+   were concatenated under an html[data-theme="dark"] prefix, so in the
+   default parchment theme all 400 cards rendered fully expanded — the page
+   (and the SPA's auto-height iframe) grew past 1,000,000px on phones.
+   Mirror the accordion for every theme here; behaviour is unchanged in dark. */
+.qcard { scroll-margin-top: 150px; }
+.qcard .qtitle { cursor: pointer; position: relative; padding-right: 40px; border-radius: 8px; transition: background .15s ease; }
+.qcard .qtitle:hover { background: rgba(212,175,55,.12); }
+.qcard .qtitle:focus-visible { outline: 2px solid var(--gold, #D4AF37); outline-offset: 2px; }
+.qcard .qtitle::after { content: "\25B8"; position: absolute; right: 12px; top: 14px; color: var(--gold, #D4AF37); font-size: 17px; line-height: 1.4; }
+.qcard.open .qtitle::after { content: "\25BE"; }
+.qcard:not(.open) .qgrid { display: none; }
+.qcard.hide { display: none; }

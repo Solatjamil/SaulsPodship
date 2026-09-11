@@ -84,13 +84,35 @@ export default function ComparativeApologeticsPage() {
   const [frameH, setFrameH] = useState<number | string>("calc(100vh - 120px)");
   const [ready, setReady] = useState(false);
   useEffect(() => {
-    const t = window.setInterval(() => {
+    // Auto-height the same-origin codex frame WITHOUT a feedback loop.
+    // Measuring documentElement.scrollHeight is unsafe here: once the frame is
+    // taller than the content, the codex's own 100vh sidebar / min-heights track
+    // the frame's viewport, scrollHeight grows to match, and the frame balloons
+    // (it reached >1,000,000px in production). Measure the real content block
+    // (.wrap → main.content) instead, and only grow when the delta is meaningful.
+    const measure = () => {
       try {
-        const h = frameRef.current?.contentDocument?.documentElement?.scrollHeight || 0;
-        if (h > 400) setFrameH(h + 24 + "px");
-      } catch { /* same-origin embed */ }
-    }, 700);
-    return () => window.clearInterval(t);
+        const d = frameRef.current?.contentDocument;
+        if (!d || !d.body) return;
+        const content =
+          (d.querySelector(".wrap") as HTMLElement | null) ||
+          (d.querySelector("main") as HTMLElement | null) ||
+          d.body;
+        // offsetHeight of the static content block is independent of the
+        // frame's own viewport; add the codex's bottom padding + a safety margin.
+        const h = Math.ceil(content.getBoundingClientRect().height) + 48;
+        if (h > 400 && h < 200000) {
+          setFrameH((prev) => {
+            const prevN = typeof prev === "number" ? prev : parseInt(String(prev), 10) || 0;
+            return Math.abs(prevN - h) > 8 ? h : prev;
+          });
+        }
+      } catch { /* cross-origin guard */ }
+    };
+    const t = window.setInterval(measure, 700);
+    const f = frameRef.current;
+    f?.addEventListener("load", measure);
+    return () => { window.clearInterval(t); f?.removeEventListener("load", measure); };
   }, []);
 
   // Read ?q= / ?rel= from either the hash-router search or the real search.
