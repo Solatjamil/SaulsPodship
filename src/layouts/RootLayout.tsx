@@ -369,7 +369,7 @@ export const RootLayout: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs text-[#E8C96A]">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                   <ShieldCheck className="w-3.5 h-3.5" />
-                  50 Peer-Reviewed Volumes
+                  51 Peer-Reviewed Volumes
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                   <Award className="w-3.5 h-3.5" />

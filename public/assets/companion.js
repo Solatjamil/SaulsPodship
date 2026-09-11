@@ -1,4 +1,4 @@
-/* Saul's Podship — Companion Module retrofit (drop-in for ALL 50 volume pages)
+/* Saul's Podship — Companion Module retrofit (drop-in for ALL 51 volume pages)
    Usage: <script src="/assets/companion.js" defer></script> in the volume template.
    Per the 2026-09-08 spec: removes the companion "view" cards and renders plain
    ROUTING BUTTONS at the BOTTOM of the content, styled with the site's own tokens
@@ -20,8 +20,16 @@
   }
   function run(){
     var head=findCompanion(); if(!head) return;
-    var sec=head; for(var up=0; up<5 && sec.parentElement; up++){ sec=sec.parentElement; if(sec.querySelectorAll('a').length>=3) break; }
     if(document.querySelector('[data-companion-routes]')) return; /* idempotent */
+    /* Only replace the SMALL companion panel: climb until we find the first
+       ancestor that contains 2+ links, and never accept anything that also
+       contains the volume grid / hero / more than 12 links (the page shell). */
+    var sec=null, cur=head;
+    for(var up=0; up<5 && cur.parentElement; up++){
+      cur=cur.parentElement; var n=cur.querySelectorAll('a').length;
+      if(n>=2){ if(n<=12 && !cur.querySelector('main, #volume-hero, h1')) sec=cur; break; }
+    }
+    if(!sec) return; /* unknown layout — do nothing rather than break the page */
     var bar=document.createElement('div');
     bar.setAttribute('data-companion-routes','1');
     bar.style.cssText='display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:34px auto 12px;text-align:center;max-width:1100px';
@@ -33,8 +41,7 @@
       {href:'/cross-references',label:'The Interlinked Bible'},
       {href:'/comparative-apologetics',label:'Comparative Apologetics'} ]
       .forEach(function(t){ bar.appendChild(btn(t)); });
-    var main=document.querySelector('main')||document.getElementById('root')||document.body;
-    main.appendChild(bar); /* bottom of the content */
+    sec.parentElement.insertBefore(bar, sec); /* same place, as plain routing buttons */
     try{ sec.remove(); }catch(e){}
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){setTimeout(run,300)});
