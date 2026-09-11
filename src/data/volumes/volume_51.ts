@@ -21,7 +21,7 @@ export const volume_51: Volume = {
     "credit": "Saul’s Podship archive"
   },
   "cardImage": {
-    "src": "/images/hero-second-coming.jpg",
+    "src": "/images/volumes/kings-of-the-bible/hero-1280.webp",
     "alt": "Kings of the Bible — Full Sequence"
   },
   "metaDescription": "Every king in the Bible in sequence — from Jesus the King of Kings through Saul, David, Israel, Judah, the exile, the Apocrypha, the Herods and Nero to the Beast — with reign, reference and end.",
