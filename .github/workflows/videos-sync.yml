@@ -12,8 +12,8 @@ on:
   push:
     branches: [main, master]
     paths:
-      - "public/videos/**"     # editing the module manually still re-validates
-      - "scripts/update_videos.py"
+      - "scripts/update_videos.py"   # only re-run when the scraper itself changes
+      # (layout/CSS edits under public/videos no longer trigger a YouTube scrape)
 
 permissions:
   contents: write
@@ -28,8 +28,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Scrape channel + playlists from YouTube
-        run: python3 scripts/update_videos.py --out public/videos/assets
+      - name: Scrape channel + playlists from YouTube (retry on transient block)
+        run: |
+          for i in 1 2 3; do
+            python3 scripts/update_videos.py --out public/videos/assets && exit 0
+            echo "attempt $i failed — waiting before retry"; sleep $((i*60))
+          done
+          echo "::warning::YouTube scrape failed after 3 attempts; keeping last good snapshot."
+          exit 0
 
       - name: Commit new data (only if changed)
         run: |
