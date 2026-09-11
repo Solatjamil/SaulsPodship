@@ -195,7 +195,7 @@ export const EncyclopediaIndexPage: React.FC = () => {
               // as the full-bleed hero background on the volume page), served in the
               // lightweight 1280 webp variant. Legacy remote cardImage only as fallback.
               const heroBase = volume.heroImage?.src?.replace(/hero-1920\.jpg$/, 'hero-1280.webp');
-              const cardImg = (heroBase && heroBase.includes('/images/volumes/') ? heroBase : (volume.cardImage?.src || volume.heroImage?.src));
+              const cardImg = (volume.cardImage?.src?.includes('/images/volumes/') ? volume.cardImage.src : (heroBase && heroBase.includes('/images/volumes/') ? heroBase : (volume.cardImage?.src || volume.heroImage?.src)));
               return (
                 <article
                   key={volume.id}

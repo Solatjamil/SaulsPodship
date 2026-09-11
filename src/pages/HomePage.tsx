@@ -205,7 +205,7 @@ export const HomePage: React.FC = () => {
                 {/* Card Image — same curated artwork as the volume's hero banner */}
                 <div className="relative h-48 w-full overflow-hidden bg-gray-100">
                   <img
-                    src={(vol.heroImage?.src?.includes('/images/volumes/') ? vol.heroImage.src.replace(/hero-1920\.jpg$/, 'hero-1280.webp') : null) || vol.cardImage?.src || vol.heroImage?.src}
+                    src={(vol.cardImage?.src?.includes('/images/volumes/') ? vol.cardImage.src : null) || (vol.heroImage?.src?.includes('/images/volumes/') ? vol.heroImage.src.replace(/hero-1920\.jpg$/, 'hero-1280.webp') : null) || vol.cardImage?.src || vol.heroImage?.src}
                     alt={vol.heroImage?.alt || vol.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
