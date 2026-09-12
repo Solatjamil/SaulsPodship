@@ -210,7 +210,8 @@ export const RootLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#1D2D50] font-sans antialiased selection:bg-[#4A152C] selection:text-[#E8C96A] pb-[calc(64px+env(safe-area-inset-bottom))] lg:pb-0">
-      <ScrollRestoration />
+      {/* key by path: full page loads all share key "default", which made a new page inherit the previous page's offset */}
+      <ScrollRestoration getKey={(loc) => loc.pathname} />
 
       {/* Global Navigation Header */}
       <header className="sticky top-0 z-50 w-full bg-[#16060f]/70 backdrop-blur-md border-b border-[#D4AF37]/20 text-white transition-all shadow-md">
