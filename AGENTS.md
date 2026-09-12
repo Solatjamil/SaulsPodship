@@ -49,3 +49,24 @@ ls dist/comparative-apologetics/index.html
 Then open `/#/comparative-apologetics`, click a religion chip (it filters **and**
 scrolls to that section), click a question title (it expands), and change the sort to
 "Most asked in Pakistan & India".
+
+## Deployment storage hygiene (Vercel)
+
+Every push to `main` creates a production deployment, and Vercel keeps a FULL copy
+of the build output (`dist/`, ~95 MB) for every retained deployment. ~120 pushes in
+three weeks is what caused the 11 GB Deployment Storage spike in Sep 2026.
+
+- **Push day-to-day work to the `dev` branch, not `main`.** A workflow promotes
+  `dev` → `main` once daily (17:15 PKT) after a build check. Direct pushes to
+  `main` are reserved for emergency hotfixes only — each one is a production
+  deployment that stores a full ~95 MB build copy in Vercel Deployment Storage.
+- Before committing any new or edited image under `public/`, run:
+  `python3 scripts/optimize_images.py` (needs Pillow). It compresses in place and
+  generates missing `hero-1920.webp` variants. Never commit multi-MB PNG/JPG.
+- Keep hero generation settings in `scripts/make_hero_variants.py` at q<=80.
+- To reclaim storage: Actions -> "Clean old Vercel deployments" (needs the
+  `VERCEL_TOKEN` repo secret); dry-run first. Deletions are restorable 30 days.
+- **Git identity:** always commit with
+  `user.email = 111325113+Solatjamil@users.noreply.github.com` (GitHub noreply of the
+  repo owner). Vercel BLOCKS deployments whose commit email cannot be matched to a
+  GitHub account (e.g. `agent@arena.ai` was blocked on 2026-09-13).

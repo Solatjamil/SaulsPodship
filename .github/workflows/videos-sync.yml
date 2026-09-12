@@ -7,7 +7,7 @@ name: Sync YouTube videos
 
 on:
   schedule:
-    - cron: "15 1,13 * * *"   # 06:15 & 18:15 Pakistan time, twice daily
+    - cron: "15 13 * * *"   # 18:15 Pakistan time, once daily (was 2x: each run = 1 production deploy)
   workflow_dispatch: {}        # "Sync now" button in the Actions tab
   push:
     branches: [main, master]

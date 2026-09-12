@@ -1,0 +1,47 @@
+name: Clean old Vercel deployments
+
+# Frees Vercel Deployment Storage by deleting old deployments of this project.
+# Every deployment stores a full copy of the build output (~95 MB), so pruning
+# old ones is the fastest way to reclaim gigabytes.
+#
+# Setup (one time): GitHub repo -> Settings -> Secrets and variables -> Actions
+#   -> New repository secret -> name: VERCEL_TOKEN
+#   (create the token at vercel.com -> Account Settings -> Tokens)
+#
+# Run: Actions tab -> "Clean old Vercel deployments" -> Run workflow.
+#   Defaults to a DRY RUN (prints the plan). Set dry_run=false to delete.
+#   Deleted deployments stay restorable in Vercel for 30 days.
+
+on:
+  workflow_dispatch:
+    inputs:
+      keep_production:
+        description: "Keep this many most-recent production deployments"
+        default: "3"
+      keep_preview:
+        description: "Keep this many most-recent preview deployments"
+        default: "1"
+      older_than_days:
+        description: "Only delete deployments older than N days (0 = any age)"
+        default: "0"
+      dry_run:
+        description: "true = print plan only, false = actually delete"
+        type: boolean
+        default: true
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Delete old deployments
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          ARGS="--project sauls-podship --keep-production ${{ inputs.keep_production }} --keep-preview ${{ inputs.keep_preview }}"
+          if [ "${{ inputs.older_than_days }}" != "0" ]; then ARGS="$ARGS --older-than-days ${{ inputs.older_than_days }}"; fi
+          if [ "${{ inputs.dry_run }}" = "false" ]; then ARGS="$ARGS --yes"; fi
+          node scripts/cleanup_vercel_deployments.mjs $ARGS

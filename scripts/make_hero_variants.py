@@ -31,15 +31,15 @@ def make_variants(input_path: str, output_dir: str, basename: str):
     
     out_1920_webp = os.path.join(output_dir, f"{basename}-1920.webp")
     out_1920_jpg = os.path.join(output_dir, f"{basename}-1920.jpg")
-    img_1920.save(out_1920_webp, "WEBP", quality=86, method=6)
-    img_1920.save(out_1920_jpg, "JPEG", quality=88, optimize=True)
+    img_1920.save(out_1920_webp, "WEBP", quality=78, method=6)
+    img_1920.save(out_1920_jpg, "JPEG", quality=80, optimize=True, progressive=True)
 
     # 2. Tablet 1280 variant
     w_1280 = 1280
     h_1280 = int(round(w_1280 * orig_h / orig_w))
     img_1280 = src.resize((w_1280, h_1280), Image.Resampling.LANCZOS)
     out_1280_webp = os.path.join(output_dir, f"{basename}-1280.webp")
-    img_1280.save(out_1280_webp, "WEBP", quality=85, method=6)
+    img_1280.save(out_1280_webp, "WEBP", quality=78, method=6)
 
     # 3. Mobile Portrait (1080 x 1920)
     target_pw = 1080
@@ -73,7 +73,7 @@ def make_variants(input_path: str, output_dir: str, basename: str):
     portrait_canvas.paste(fg_img, (0, fg_y))
 
     out_portrait_webp = os.path.join(output_dir, f"{basename}-portrait.webp")
-    portrait_canvas.save(out_portrait_webp, "WEBP", quality=85, method=6)
+    portrait_canvas.save(out_portrait_webp, "WEBP", quality=78, method=6)
 
     # 4. Social / OG Image (1200 x 630)
     og_w = 1200
@@ -84,7 +84,7 @@ def make_variants(input_path: str, output_dir: str, basename: str):
     og_crop_y = (og_scaled.height - og_h) // 2
     og_img = og_scaled.crop((og_crop_x, og_crop_y, og_crop_x + og_w, og_crop_y + og_h))
     out_og_jpg = os.path.join(output_dir, f"{basename}-og.jpg")
-    og_img.save(out_og_jpg, "JPEG", quality=88, optimize=True)
+    og_img.save(out_og_jpg, "JPEG", quality=80, optimize=True, progressive=True)
 
     print(f"Generated variants successfully for {basename}:")
     print(f"  - {out_1920_webp} ({os.path.getsize(out_1920_webp)} bytes)")
