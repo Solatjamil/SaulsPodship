@@ -1,8 +1,8 @@
 /**
  * Scriptorium Studio — Web Audio playback engine.
  * Synthesises the composition in the browser: tanpura/shruti drone,
- * a lead voice (harmonium-like additive tone), a bass line and a
- * simple tabla/dholak kit derived from the taal. Also renders the
+ * a formant-shaped sung lead with vibrato and meend, harmonium doubling,
+ * chord pad, bass line, tabla/dholak kit from the taal, and a hall reverb. Also renders the
  * same score offline to a WAV blob for download.
  */
 import type { Composition } from './composeEngine';
@@ -33,35 +33,69 @@ export function schedule(c: Composition): { notes: ScheduledNote[]; total: numbe
 
 type Ctx = AudioContext | OfflineAudioContext;
 
-function leadVoice(ctx: Ctx, out: AudioNode, f: number, t0: number, d: number, style: string) {
+/* ------------------------------------------------------------ voices */
+/** Sung lead: a bright pulse/saw source shaped by two vowel formant filters,
+ *  with a real (connected) vibrato LFO and a meend (slide) into each note. */
+function leadVoice(ctx: Ctx, out: AudioNode, f: number, t0: number, d: number, style: string, vel = 1) {
   const g = ctx.createGain(); g.connect(out);
-  const a = Math.min(0.06, d * 0.3); const r = Math.min(0.25, d * 0.5);
-  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.22, t0 + a); g.gain.setValueAtTime(0.22, t0 + d - r); g.gain.linearRampToValueAtTime(0, t0 + d);
-  const partials = style === 'orchestral' || style === 'contemporary' ? [[1, 1, 'sawtooth'], [2, 0.25, 'sine']] : [[1, 1, 'triangle'], [2, 0.35, 'sine'], [3, 0.18, 'sine'], [4, 0.08, 'sine']];
-  partials.forEach(([mul, amp, type]) => {
-    const o = ctx.createOscillator(); o.type = type as OscillatorType; o.frequency.value = f * (mul as number);
-    // gentle meend (slide) into the note for the South Asian styles
-    if (mul === 1 && (style === 'raag' || style === 'punjabi' || style === 'urdu-ghazal')) { o.frequency.setValueAtTime(f * 0.97, t0); o.frequency.exponentialRampToValueAtTime(f, t0 + Math.min(0.08, d / 3)); }
-    const pg = ctx.createGain(); pg.gain.value = amp as number; o.connect(pg).connect(g); o.start(t0); o.stop(t0 + d + 0.05);
+  const a = Math.min(0.09, d * 0.3); const r = Math.min(0.3, d * 0.45); const lvl = 0.5 * vel;
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(lvl, t0 + a); g.gain.setValueAtTime(lvl, t0 + Math.max(a, d - r)); g.gain.linearRampToValueAtTime(0, t0 + d);
+  const sa = ['raag', 'punjabi', 'urdu-ghazal'].includes(style);
+  // two detuned sources = natural chorus
+  const srcs: OscillatorNode[] = [];
+  [[0, 1], [7, 0.6]].forEach(([cents, amp]) => {
+    const o = ctx.createOscillator(); o.type = 'sawtooth'; o.detune.value = cents as number;
+    o.frequency.setValueAtTime(sa ? f * 0.965 : f * 0.985, t0); o.frequency.exponentialRampToValueAtTime(f, t0 + Math.min(sa ? 0.12 : 0.05, d / 3));
+    const pg = ctx.createGain(); pg.gain.value = amp as number; o.connect(pg);
+    srcs.push(o); o.start(t0); o.stop(t0 + d + 0.05);
+    // formants: vowel "aa" (700 / 1200 Hz) drifting to "ee/o" on long notes
+    const f1 = ctx.createBiquadFilter(); f1.type = 'bandpass'; f1.frequency.value = 700; f1.Q.value = 5;
+    const f2 = ctx.createBiquadFilter(); f2.type = 'bandpass'; f2.frequency.value = 1200; f2.Q.value = 7;
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3400;
+    if (d > 1.2) { f1.frequency.linearRampToValueAtTime(520, t0 + d); f2.frequency.linearRampToValueAtTime(1000, t0 + d); }
+    const mix = ctx.createGain(); mix.gain.value = 1.6;
+    pg.connect(f1).connect(mix); pg.connect(f2).connect(mix); pg.connect(lp); const lpg = ctx.createGain(); lpg.gain.value = 0.25; lp.connect(lpg).connect(mix);
+    mix.connect(g);
   });
-  // vibrato
-  const lfo = ctx.createOscillator(); const lg = ctx.createGain(); lfo.frequency.value = 5.5; lg.gain.value = f * 0.004; lfo.connect(lg);
-  // (vibrato only on the fundamental is enough for the ear) — attach to nothing if unsupported
-  lfo.start(t0); lfo.stop(t0 + d + 0.05);
+  // connected vibrato, fading in after the onset like a singer
+  const lfo = ctx.createOscillator(); lfo.frequency.value = sa ? 5.2 : 5.8; const lg = ctx.createGain();
+  lg.gain.setValueAtTime(0, t0); lg.gain.linearRampToValueAtTime(f * 0.012, t0 + Math.min(0.35, d * 0.5));
+  lfo.connect(lg); srcs.forEach(o => lg.connect(o.frequency)); lfo.start(t0); lfo.stop(t0 + d + 0.05);
+}
+
+/** Harmonium / organ doubling of the melody — sustained reeds an octave around the voice */
+function harmonium(ctx: Ctx, out: AudioNode, f: number, t0: number, d: number) {
+  const g = ctx.createGain(); g.connect(out);
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.11, t0 + 0.04); g.gain.setValueAtTime(0.11, t0 + d - 0.05); g.gain.linearRampToValueAtTime(0, t0 + d + 0.02);
+  [[1, 1, 'square'], [2, 0.3, 'sawtooth'], [0.5, 0.35, 'square']].forEach(([mul, amp, type]) => {
+    const o = ctx.createOscillator(); o.type = type as OscillatorType; o.frequency.value = f * (mul as number); o.detune.value = (Math.random() - 0.5) * 6;
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1800; const pg = ctx.createGain(); pg.gain.value = amp as number;
+    o.connect(lp).connect(pg).connect(g); o.start(t0); o.stop(t0 + d + 0.1);
+  });
+}
+
+/** Soft chord pad under each bar (strings / synth pad) */
+function chordPad(ctx: Ctx, out: AudioNode, midis: number[], t0: number, d: number, style: string) {
+  const g = ctx.createGain(); g.connect(out);
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.07, t0 + 0.5); g.gain.setValueAtTime(0.07, t0 + d - 0.4); g.gain.linearRampToValueAtTime(0, t0 + d + 0.05);
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = style === 'contemporary' ? 2200 : 1400; lp.connect(g);
+  midis.forEach(m => [-6, 6].forEach(det => { const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = mtof(m); o.detune.value = det; const pg = ctx.createGain(); pg.gain.value = 0.35; o.connect(pg).connect(lp); o.start(t0); o.stop(t0 + d + 0.1); }));
 }
 
 function bassVoice(ctx: Ctx, out: AudioNode, f: number, t0: number, d: number) {
   const g = ctx.createGain(); g.connect(out);
-  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.28, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t0 + d);
+  g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.32, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t0 + d);
   const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f; o.connect(g); o.start(t0); o.stop(t0 + d + 0.05);
-  const o2 = ctx.createOscillator(); o2.type = 'triangle'; o2.frequency.value = f * 2; const g2 = ctx.createGain(); g2.gain.value = 0.15; o2.connect(g2).connect(g); o2.start(t0); o2.stop(t0 + d + 0.05);
+  const o2 = ctx.createOscillator(); o2.type = 'triangle'; o2.frequency.value = f * 2; const g2 = ctx.createGain(); g2.gain.value = 0.18; o2.connect(g2).connect(g); o2.start(t0); o2.stop(t0 + d + 0.05);
 }
 
 function drone(ctx: Ctx, out: AudioNode, rootMidi: number, t0: number, t1: number) {
-  const g = ctx.createGain(); g.connect(out); g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.07, t0 + 1.5); g.gain.setValueAtTime(0.07, t1 - 1.5); g.gain.linearRampToValueAtTime(0, t1);
+  const g = ctx.createGain(); g.connect(out); g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.09, t0 + 1.5); g.gain.setValueAtTime(0.09, t1 - 1.5); g.gain.linearRampToValueAtTime(0, t1);
   [rootMidi - 12, rootMidi - 5, rootMidi, rootMidi + 7].forEach((m, i) => {
     const o = ctx.createOscillator(); o.type = i % 2 ? 'sawtooth' : 'triangle'; o.frequency.value = mtof(m);
     const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 900; const pg = ctx.createGain(); pg.gain.value = i === 2 ? 0.6 : 0.35;
+    // slow tanpura shimmer
+    const lfo = ctx.createOscillator(); lfo.frequency.value = 0.1 + i * 0.07; const lg = ctx.createGain(); lg.gain.value = 250; lfo.connect(lg).connect(f.frequency); lfo.start(t0); lfo.stop(t1);
     o.connect(f).connect(pg).connect(g); o.start(t0); o.stop(t1);
   });
 }
@@ -71,40 +105,77 @@ function perc(ctx: Ctx, out: AudioNode, kind: 'low' | 'high' | 'boom', t0: numbe
   const g = ctx.createGain(); g.connect(out);
   if (kind === 'high') {
     const n = noise(ctx, 0.08); const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 2600; f.Q.value = 6;
-    g.gain.setValueAtTime(0.18 * vel, t0); g.gain.exponentialRampToValueAtTime(0.001, t0 + 0.08); n.connect(f).connect(g); n.start(t0);
+    g.gain.setValueAtTime(0.22 * vel, t0); g.gain.exponentialRampToValueAtTime(0.001, t0 + 0.08); n.connect(f).connect(g); n.start(t0);
     return;
   }
   const o = ctx.createOscillator(); o.type = 'sine';
   const f0 = kind === 'boom' ? 75 : 180; o.frequency.setValueAtTime(f0 * 1.6, t0); o.frequency.exponentialRampToValueAtTime(f0, t0 + (kind === 'boom' ? 0.18 : 0.06));
-  g.gain.setValueAtTime((kind === 'boom' ? 0.5 : 0.3) * vel, t0); g.gain.exponentialRampToValueAtTime(0.001, t0 + (kind === 'boom' ? 0.45 : 0.22));
+  g.gain.setValueAtTime((kind === 'boom' ? 0.55 : 0.34) * vel, t0); g.gain.exponentialRampToValueAtTime(0.001, t0 + (kind === 'boom' ? 0.45 : 0.22));
   o.connect(g); o.start(t0); o.stop(t0 + 0.5);
+  if (kind === 'low') { const n = noise(ctx, 0.03); const ng = ctx.createGain(); ng.gain.setValueAtTime(0.12 * vel, t0); ng.gain.exponentialRampToValueAtTime(0.001, t0 + 0.03); n.connect(ng).connect(out); n.start(t0); }
 }
 function noise(ctx: Ctx, dur: number) {
   const buf = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dur), ctx.sampleRate); const d = buf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
   const s = ctx.createBufferSource(); s.buffer = buf; return s;
 }
 
-function thekaPattern(theka: string | undefined, beatsPerBar: number): ('low' | 'high' | 'boom' | null)[] {
+/** Simple hall: exponentially-decaying stereo noise convolution */
+function reverb(ctx: Ctx, seconds = 2.2): ConvolverNode {
+  const sr = ctx.sampleRate; const len = Math.ceil(sr * seconds); const buf = ctx.createBuffer(2, len, sr);
+  for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
+  const cv = ctx.createConvolver(); cv.buffer = buf; return cv;
+}
+
+function thekaPattern(theka: string | undefined): ('low' | 'high' | 'boom' | null)[] {
   const bols = (theka || 'DHA GE NA TI NA KA DHIN NA').replace(/\|/g, ' ').trim().split(/\s+/);
   const map = (b: string) => /^DHA|DHIN/i.test(b) ? 'low' : /^GE|GHE|KAT/i.test(b) ? 'boom' : /^NA|TIN|TA|TI|KA|TU|TIRKIT|DHAGE/i.test(b) ? 'high' : null;
-  const pat = bols.map(map);
-  // fit to bar: if pattern longer than beats*2 it's a 16-beat theka expressed in half-beats
-  return pat;
+  return bols.map(map);
+}
+
+/** Chord symbol → MIDI triad around the melody register */
+function chordMidis(sym: string, rootMidi: number): number[] {
+  const m = /^([A-G]#?)(m)?/.exec((sym || '').trim()); if (!m) return [rootMidi - 12, rootMidi - 5, rootMidi];
+  const NOTE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']; const pc = NOTE.indexOf(m[1]); if (pc < 0) return [rootMidi - 12, rootMidi - 5, rootMidi];
+  let r = rootMidi - 12 + ((pc - (rootMidi % 12) + 12) % 12); if (r > rootMidi - 5) r -= 12;
+  return /5$/.test(sym) ? [r, r + 7, r + 12] : [r, r + (m[2] ? 3 : 4), r + 7];
 }
 
 function renderInto(ctx: Ctx, master: AudioNode, c: Composition, startAt: number, muted: { drone: boolean; perc: boolean; bass: boolean }) {
   const { notes, total, barTimes, beat } = schedule(c);
   const isSA = ['punjabi', 'raag', 'urdu-ghazal'].includes(c.style) || !!c.raag;
-  if (!muted.drone && (isSA || c.style === 'soothing')) drone(ctx, master, c.rootMidi, startAt, startAt + total);
-  notes.forEach(n => { if (n.part === 'lead') leadVoice(ctx, master, mtof(n.midi), startAt + n.t, n.d, c.style); else if (!muted.bass) bassVoice(ctx, master, mtof(n.midi), startAt + n.t, n.d); });
+  // send bus: everything gets a little hall, the voice a bit more
+  const wet = ctx.createGain(); wet.gain.value = 0.28; const cv = reverb(ctx, isSA ? 2.6 : 1.9); wet.connect(cv).connect(master);
+  const dry = master;
+  const voiceBus = ctx.createGain(); voiceBus.connect(dry); const vSend = ctx.createGain(); vSend.gain.value = 0.7; voiceBus.connect(vSend).connect(wet);
+  const bandBus = ctx.createGain(); bandBus.connect(dry); const bSend = ctx.createGain(); bSend.gain.value = 0.35; bandBus.connect(bSend).connect(wet);
+  const percBus = ctx.createGain(); percBus.connect(dry); const pSend = ctx.createGain(); pSend.gain.value = 0.15; percBus.connect(pSend).connect(wet);
+
+  if (!muted.drone && (isSA || c.style === 'soothing')) drone(ctx, bandBus, c.rootMidi, startAt, startAt + total);
+  const barLen = c.beatsPerBar * beat;
+  const sectionOf = (bi: number) => c.sections.findIndex((s, i, arr) => { const start = arr.slice(0, i).reduce((n, x) => n + x.measures, 0); return bi >= start && bi < start + s.measures; });
+  // chord pad per bar (skips the intro bar 0 so the alaap breathes)
+  barTimes.forEach((bt, bi) => {
+    const si = sectionOf(bi); if (si < 0) return; const sec = c.sections[si];
+    const start = c.sections.slice(0, si).reduce((n, x) => n + x.measures, 0);
+    const sym = sec.chordProgression[(bi - start) % Math.max(1, sec.chordProgression.length)];
+    chordPad(ctx, bandBus, chordMidis(sym, c.rootMidi), startAt + bt, barLen, c.style);
+  });
+  notes.forEach(n => {
+    if (n.part === 'lead') {
+      const f = mtof(n.midi); const vel = n.section === 0 ? 0.7 : (n.section === 2 || n.section === 4 || n.section === 6 ? 1 : 0.85);
+      leadVoice(ctx, voiceBus, f, startAt + n.t, n.d, c.style, vel);
+      if (isSA || c.style === 'soothing') harmonium(ctx, bandBus, f, startAt + n.t, n.d);
+    } else if (!muted.bass) bassVoice(ctx, bandBus, mtof(n.midi), startAt + n.t, n.d);
+  });
   if (!muted.perc) {
-    const pat = thekaPattern(c.theka, c.beatsPerBar); const barLen = c.beatsPerBar * beat;
-    const sub = pat.length / c.beatsPerBar; // hits per beat
+    const pat = thekaPattern(c.theka); const sub = pat.length / c.beatsPerBar; // hits per beat
     barTimes.forEach((bt, bi) => {
-      const sec = c.sections.findIndex((s, i, arr) => { const start = arr.slice(0, i).reduce((n, x) => n + x.measures, 0); return bi >= start && bi < start + s.measures; });
-      if (sec <= 0) return; // no percussion in the intro
+      const sec = sectionOf(bi);
+      if (sec < 0) return;
+      // intro: light "na" ticks only so the arrangement is never silent; full theka from the verse
+      const light = sec === 0;
       const vel = sec === 2 || sec === 4 || sec === 6 ? 1 : 0.7;
-      pat.forEach((k, i) => { if (!k) return; const t = startAt + bt + (i / sub) * beat; if (t < startAt + bt + barLen) perc(ctx, master, k, t, i === 0 ? 1 : vel * 0.8); });
+      pat.forEach((k, i) => { if (!k) return; if (light && k !== 'high') return; const t = startAt + bt + (i / sub) * beat; if (t < startAt + bt + barLen) perc(ctx, percBus, k, t, (i === 0 ? 1 : vel * 0.8) * (light ? 0.5 : 1)); });
     });
   }
   return total;
@@ -124,10 +195,11 @@ export class StudioPlayer {
   play(c: Composition) {
     this.stop();
     const AC = (window.AudioContext || (window as any).webkitAudioContext) as typeof AudioContext; const ctx = new AC();
-    const master = ctx.createGain(); master.gain.value = 0.9;
-    const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; master.connect(comp).connect(ctx.destination);
+    if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+    const master = ctx.createGain(); master.gain.value = 0.8;
+    const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -16; comp.ratio.value = 4; comp.knee.value = 12; master.connect(comp).connect(ctx.destination);
     this.ctx = ctx; this.master = master; this.barTimes = schedule(c).barTimes;
-    const t0 = ctx.currentTime + 0.1; this.total = renderInto(ctx, master, c, t0, this.muted); this.startedAt = t0;
+    const t0 = ctx.currentTime + 0.25; this.total = renderInto(ctx, master, c, t0, this.muted); this.startedAt = t0;
     const tick = () => { if (!this.ctx) return; const el = this.ctx.currentTime - this.startedAt; const bar = this.barTimes.filter(b => b <= el).length - 1; this.onProgress?.(Math.max(0, el), this.total, Math.max(0, bar)); if (el >= this.total) { this.stop(); this.onEnd?.(); return; } this.raf = requestAnimationFrame(tick); };
     this.raf = requestAnimationFrame(tick);
   }
@@ -137,8 +209,8 @@ export class StudioPlayer {
 /** Render to a 44.1 kHz stereo WAV blob */
 export async function renderWav(c: Composition, muted = { drone: false, perc: false, bass: false }): Promise<Blob> {
   const { total } = schedule(c); const sr = 44100;
-  const ctx = new OfflineAudioContext(2, Math.ceil((total + 1) * sr), sr);
-  const master = ctx.createGain(); master.gain.value = 0.9; const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; master.connect(comp).connect(ctx.destination);
+  const ctx = new OfflineAudioContext(2, Math.ceil((total + 3) * sr), sr);
+  const master = ctx.createGain(); master.gain.value = 0.8; const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -16; comp.ratio.value = 4; comp.knee.value = 12; master.connect(comp).connect(ctx.destination);
   renderInto(ctx, master, c, 0.05, muted);
   const buf = await ctx.startRendering();
   return encodeWav(buf);

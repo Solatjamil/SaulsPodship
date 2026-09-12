@@ -4,7 +4,7 @@
  */
 
 import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
-import { Outlet, Link, useLocation, ScrollRestoration } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigationType, ScrollRestoration } from 'react-router-dom';
 import { 
   BookOpen, Mic, Music, Compass, Info, ShieldCheck, Heart, 
   Menu, X, Search, ChevronRight, ExternalLink, Globe, Award,
@@ -177,6 +177,25 @@ const AuthorSeal: React.FC = () => (
 export const RootLayout: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navType = useNavigationType();
+
+  // Every route change starts at the top of the new page, instantly.
+  // (ScrollRestoration alone raced with lazy pages + smooth scrolling, so the
+  // new page kept the previous page's offset and landed on FAQ / Companion blocks.)
+  useEffect(() => {
+    if (location.hash || navType === 'POP') return; // anchors + back/forward keep their own position
+    const root = document.documentElement; const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    let userMoved = false;
+    const onUser = () => { userMoved = true; };
+    window.addEventListener('wheel', onUser, { passive: true }); window.addEventListener('touchstart', onUser, { passive: true }); window.addEventListener('keydown', onUser);
+    const top = () => { if (!userMoved) window.scrollTo(0, 0); };
+    top();
+    // lazy pages + iframes (Prophecy Map, Interlinked Bible) grow after mount; re-pin until settled
+    const ids = [40, 160, 400, 900].map(ms => window.setTimeout(top, ms));
+    const done = window.setTimeout(() => { root.style.scrollBehavior = prev; }, 950);
+    return () => { ids.forEach(clearTimeout); clearTimeout(done); root.style.scrollBehavior = prev; window.removeEventListener('wheel', onUser); window.removeEventListener('touchstart', onUser); window.removeEventListener('keydown', onUser); };
+  }, [location.pathname, location.search, navType]);
 
   const navLinks: { name: string; href: string; icon: React.ComponentType<{ className?: string }>; isExternal?: boolean; isStatic?: boolean }[] = [
     { name: 'Encyclopedia', href: '/encyclopedia', icon: BookOpen },
