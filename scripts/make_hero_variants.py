@@ -73,7 +73,8 @@ def make_variants(input_path: str, output_dir: str, basename: str):
     portrait_canvas.paste(fg_img, (0, fg_y))
 
     out_portrait_webp = os.path.join(output_dir, f"{basename}-portrait.webp")
-    portrait_canvas.save(out_portrait_webp, "WEBP", quality=78, method=6)
+    # portrait variant retired 2026-09-13: referenced by no component (7.4 MB per deploy)
+    # portrait_canvas.save(out_portrait_webp, "WEBP", quality=78, method=6)
 
     # 4. Social / OG Image (1200 x 630)
     og_w = 1200
