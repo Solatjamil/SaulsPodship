@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     port: 3000,
+    // Allow the sandbox/preview proxy hosts (e.g. https://3000-*.e2b.app) to
+    // reach the dev server; Vite's host check would 403 them otherwise.
+    allowedHosts: ['.e2b.app'],
   },
   build: {
     outDir: 'dist',
